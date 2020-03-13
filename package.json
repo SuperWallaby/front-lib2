@@ -1,13 +1,14 @@
 {
   "name": "@janda-com/front",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
   "scripts": {
+    "prebuild": "rm -r ./build",
     "build": "rollup -c",
-    "postbuild": "npx copy src/scss build/scss",
+    "postbuild": "cd ./src/scss && npx copy *.scss **/* ../../build/scss && cd ../../",
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",

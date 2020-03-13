@@ -1,0 +1,35 @@
+import React from "react";
+import { JDColor, TMarginSize } from "../../types/enum";
+import { JDatomExtentionSet, TElements } from "../../types/interface";
+import { IIcons } from "../icons/declation";
+export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement>, JDatomExtentionSet {
+    disabled?: boolean;
+    label?: string | TElements;
+    icon?: IIcons;
+    refContainer?: any;
+    cunsumPadding?: boolean;
+    onClick?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+    iconClasses?: string[];
+    dataTip?: any;
+    dataFor?: any;
+    padding?: TMarginSize;
+    mode?: "flat" | "normal" | "border";
+    size?: "tiny" | "small" | "large" | "long" | "longLarge";
+    flat?: boolean;
+    float?: string;
+    type?: "button" | "submit" | "reset" | undefined;
+    color?: "white";
+    thema?: JDColor | null;
+    pulse?: boolean;
+    blink?: boolean;
+    toggle?: boolean;
+    preloader?: boolean;
+    transparent?: boolean;
+    className?: string;
+    br?: "round" | "normal" | "no";
+    hrefOpen?: string;
+    tooltip?: string;
+    redirect?: string;
+}
+declare const Button: React.FC<IButtonProps>;
+export default Button;

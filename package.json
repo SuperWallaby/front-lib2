@@ -1,12 +1,13 @@
 {
-  "name": "my-module",
-  "version": "1.0.2",
-  "description": "",
+  "name": "@janda-com/front",
+  "version": "0.0.2",
+  "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
   "scripts": {
     "build": "rollup -c",
+    "postbuild": "npx copy src/scss build/scss",
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",
@@ -62,5 +63,14 @@
       "afterAll",
       "jest"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/react-tooltip": "^3.11.0",
+    "classnames": "^2.2.6",
+    "react-tooltip": "^4.1.2"
   }
 }

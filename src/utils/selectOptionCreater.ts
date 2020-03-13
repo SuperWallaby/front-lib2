@@ -1,4 +1,4 @@
-import { IselectedOption } from "../atoms/forms/selectBox/SelectBox";
+import { IselectedOption } from "../types/interface";
 
 interface IProps {
   count: number;
@@ -13,7 +13,7 @@ const selectOpCreater = ({
 }: IProps): IselectedOption<number>[] => {
   return Array(count)
     .fill(0)
-    .map((value, index) => ({
+    .map((_, index) => ({
       label: `${index + start}${labelAdd}`,
       value: index + start
     }));

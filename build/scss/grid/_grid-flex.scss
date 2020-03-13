@@ -1,4 +1,4 @@
-@import '~Styles';
+@import "../style_config.scss";
 
 // stylelint-disable declaration-block-no-duplicate-properties
 .flex-grid-grow {
@@ -14,7 +14,6 @@
   }
 
   & > * {
-  
     flex: 1;
     margin-left: $flex-grid--column-margin;
     max-width: 100%; //for slider....
@@ -22,75 +21,74 @@
     &.col--grow-1 {
       flex-grow: 1;
     }
-    
+
     &.col--grow-2 {
       flex-grow: 2;
     }
-  
+
     &.col--grow-3 {
       flex-grow: 3;
     }
-  
+
     &.col--grow-4 {
       flex-grow: 4;
     }
-  
+
     &.col--grow-5 {
       flex-grow: 5;
     }
-  
+
     &.col--grow-6 {
       flex-grow: 6;
     }
-  
+
     &.col--grow-7 {
       flex-grow: 7;
     }
-  
+
     &.col--grow-8 {
       flex-grow: 8;
     }
-  
+
     &.col--grow-9 {
       flex-grow: 9;
     }
-  
+
     &.col--grow-10 {
       flex-grow: 10;
     }
-  
+
     &.col--grow-11 {
       flex-grow: 11;
     }
-  
+
     &.col--grow-12 {
       flex-grow: 12;
     }
-    
+
     // fixed-width column (default = 200px)
     &.flex-grid__col--fixed-width {
       flex: 0 0 $flex-grid__column--fixed-width;
     }
-    
-    
+
     &:first-child {
       margin-left: 0rem;
     }
-  
+
     &:last-child {
       margin-right: 0rem;
     }
   }
 }
 
-// todo: 이부분 mixin으로 하자 
+// todo: 이부분 mixin으로 하자
 // 특정 시점에 Grow 풀기
-@include response ($phablet) {
+@include response($phablet) {
   .flex-grid--md {
     display: block;
   }
 
-  .flex-grid--md>* {
+  .flex-grid--md > * {
     padding-left: 0;
     padding-right: 0;
 
@@ -100,12 +98,12 @@
   }
 }
 
-@include response ($mobile) {
+@include response($mobile) {
   .flex-grid--sm {
     display: block;
   }
 
-  .flex-grid--sm>* {
+  .flex-grid--sm > * {
     padding-left: 0;
     padding-right: 0;
 
@@ -115,12 +113,12 @@
   }
 }
 
-@include response ($desktophd) {
+@include response($desktophd) {
   .flex-grid--wlg {
     display: block;
   }
 
-  .flex-grid--wlg>* {
+  .flex-grid--wlg > * {
     padding-left: 0;
     padding-right: 0;
 
@@ -130,12 +128,12 @@
   }
 }
 
-@include response ($tablet) {
+@include response($tablet) {
   .flex-grid--wmd {
     display: block;
   }
 
-  .flex-grid--wmd>* {
+  .flex-grid--wmd > * {
     padding-left: 0;
     padding-right: 0;
 
@@ -145,12 +143,12 @@
   }
 }
 
-@include response ($desktop) {
+@include response($desktop) {
   .flex-grid--lg {
     display: block;
   }
 
-  .flex-grid--lg>* {
+  .flex-grid--lg > * {
     padding-left: 0;
     padding-right: 0;
 
@@ -159,13 +157,11 @@
     }
   }
 }
-
 
 // 그리드 비대 정리 시스템
 // 마진은 space-between 에 의하여 빈 자리로 사용된다.
 
 .flex-grid {
-
   flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
@@ -186,7 +182,7 @@
     flex-direction: column;
     height: 100%;
     .flex-grid {
-      margin:0;
+      margin: 0;
     }
 
     & > div:last-child {
@@ -204,13 +200,12 @@
   @include grid-system-vertical(sm);
 
   &--unGrow.flex-grid {
-    flex: 0 0!important;
+    flex: 0 0 !important;
   }
 
-  @include grid-system-all()
+  @include grid-system-all();
 
   &--noMargin {
-    @include grid-system-all(true)
+    @include grid-system-all(true);
   }
-
 }

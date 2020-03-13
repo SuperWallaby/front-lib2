@@ -1,5 +1,3 @@
-import { PricingType } from "../types/enum";
-
 function instanceOfA<T>(
   object: any,
   key: string,

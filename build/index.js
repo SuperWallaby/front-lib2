@@ -3768,394 +3768,7 @@ var Button = function (_a) {
             React__default.createElement("span", null, tooltip)))));
 };
 
-var PricingType;
-(function (PricingType) {
-    PricingType["DOMITORY"] = "DOMITORY";
-    PricingType["ROOM"] = "ROOM";
-})(PricingType || (PricingType = {}));
-var ItemStatus;
-(function (ItemStatus) {
-    ItemStatus["CANCELED"] = "CANCELED";
-    ItemStatus["PENDING"] = "PENDING";
-    ItemStatus["PERMITTED"] = "PERMITTED";
-})(ItemStatus || (ItemStatus = {}));
-var InfoKey;
-(function (InfoKey) {
-    InfoKey["RESV_GUID"] = "RESV_GUID";
-    InfoKey["RESV_WARN"] = "RESV_WARN";
-    InfoKey["AFTER_GUIDE"] = "AFTER_GUIDE";
-    InfoKey["AFTER_WARN"] = "AFTER_WARN";
-})(InfoKey || (InfoKey = {}));
-var UserRole;
-(function (UserRole) {
-    UserRole["ADMIN"] = "ADMIN";
-    UserRole["BUYER"] = "BUYER";
-    UserRole["SELLER"] = "SELLER";
-})(UserRole || (UserRole = {}));
-var CustomFieldType;
-(function (CustomFieldType) {
-    CustomFieldType["LIST"] = "LIST";
-    CustomFieldType["STRING"] = "STRING";
-})(CustomFieldType || (CustomFieldType = {}));
-var StoreType;
-(function (StoreType) {
-    StoreType["LEASE"] = "LEASE";
-    StoreType["TICKET"] = "TICKET";
-})(StoreType || (StoreType = {}));
-var CreaditCardTypes;
-(function (CreaditCardTypes) {
-    //  AMX
-    CreaditCardTypes["AMX"] = "AMX";
-    // bc
-    CreaditCardTypes["BC_CARD"] = "BC_CARD";
-    // ch
-    CreaditCardTypes["CHUKHYUP"] = "CHUKHYUP";
-    // # ct
-    CreaditCardTypes["CITY"] = "CITY";
-    // # diners
-    CreaditCardTypes["DINERS"] = "DINERS";
-    // # dn
-    CreaditCardTypes["DONGNAM"] = "DONGNAM";
-    // # gj
-    CreaditCardTypes["GWANGJU"] = "GWANGJU";
-    // # hd
-    CreaditCardTypes["HYUNDAI"] = "HYUNDAI";
-    // # hm
-    CreaditCardTypes["HANMI"] = "HANMI";
-    // # hn
-    CreaditCardTypes["KEB_HANA"] = "KEB_HANA";
-    // # jb
-    CreaditCardTypes["JEONBOOK"] = "JEONBOOK";
-    // # jcb
-    CreaditCardTypes["JCB"] = "JCB";
-    // # jh
-    CreaditCardTypes["CHOHUNG"] = "CHOHUNG";
-    // # jj
-    CreaditCardTypes["JEJU_BANK"] = "JEJU_BANK";
-    // # kakao
-    CreaditCardTypes["KAKAO_BANK"] = "KAKAO_BANK";
-    // # kbank
-    CreaditCardTypes["K_BANK"] = "K_BANK";
-    // # kdb
-    CreaditCardTypes["KDB"] = "KDB";
-    // # km
-    CreaditCardTypes["KB_CARD"] = "KB_CARD";
-    // # koreapost
-    CreaditCardTypes["KOREA_POST"] = "KOREA_POST";
-    // # lt
-    CreaditCardTypes["LOTTE_CARD"] = "LOTTE_CARD";
-    // # master
-    CreaditCardTypes["MASTER_CARD"] = "MASTER_CARD";
-    // # nh
-    CreaditCardTypes["NONGHYUP"] = "NONGHYUP";
-    // # okcashbag
-    CreaditCardTypes["OK_CASH_BAG"] = "OK_CASH_BAG";
-    // # sh
-    CreaditCardTypes["SUHYUP"] = "SUHYUP";
-    // # shm
-    CreaditCardTypes["SHINSEGAE"] = "SHINSEGAE";
-    // # sm
-    CreaditCardTypes["MG_CARD"] = "MG_CARD";
-    // # jc
-    CreaditCardTypes["JEOCHUK"] = "JEOCHUK";
-    // # ss
-    CreaditCardTypes["SAMSUNG"] = "SAMSUNG";
-    // # wr
-    CreaditCardTypes["WOORI"] = "WOORI";
-    // # visa
-    CreaditCardTypes["VISA"] = "VISA";
-    // # yr
-    CreaditCardTypes["UNIONPAY"] = "UNIONPAY";
-})(CreaditCardTypes || (CreaditCardTypes = {}));
-var DateFormat;
-(function (DateFormat) {
-    DateFormat["WITH_TIME"] = "YY.MM.DD HH:mm";
-    DateFormat["YYMMDD"] = "YY.MM.DD";
-    DateFormat["MMDD"] = "MM.DD";
-})(DateFormat || (DateFormat = {}));
-var GuestType;
-(function (GuestType) {
-    GuestType["BLOCK"] = "BLOCK";
-    GuestType["GUEST"] = "GUEST";
-})(GuestType || (GuestType = {}));
-var MemoType;
-(function (MemoType) {
-    MemoType["HOST"] = "HOST";
-})(MemoType || (MemoType = {}));
-var PaymentType;
-(function (PaymentType) {
-    PaymentType["ONE_TIME"] = "ONE_TIME";
-    PaymentType["SUBSCRIPTION"] = "SUBSCRIPTION";
-})(PaymentType || (PaymentType = {}));
-var SalesStatisticsUnit;
-(function (SalesStatisticsUnit) {
-    SalesStatisticsUnit["BY_DATE"] = "BY_DATE";
-    SalesStatisticsUnit["BY_DAY_OF_WEEK"] = "BY_DAY_OF_WEEK";
-    SalesStatisticsUnit["MONTHLY"] = "MONTHLY";
-    SalesStatisticsUnit["WEEKLY"] = "WEEKLY";
-    SalesStatisticsUnit["YEARLY"] = "YEARLY";
-})(SalesStatisticsUnit || (SalesStatisticsUnit = {}));
-var HouseType;
-(function (HouseType) {
-    HouseType["GUEST_HOUSE"] = "GUEST_HOUSE";
-    HouseType["HOSTEL"] = "HOSTEL";
-    HouseType["HOTEL"] = "HOTEL";
-    HouseType["MOTEL"] = "MOTEL";
-    HouseType["PENSION"] = "PENSION";
-    HouseType["YOUTH_HOSTEL"] = "YOUTH_HOSTEL";
-})(HouseType || (HouseType = {}));
-var Language;
-(function (Language) {
-    Language["KOREAN"] = "KOREAN";
-    Language["ENGLISH"] = "ENGLISH";
-    Language["JAPANESE"] = "JAPANESE";
-    Language["CHINESE"] = "CHINESE";
-})(Language || (Language = {}));
-var LanguageShortResverse;
-(function (LanguageShortResverse) {
-    LanguageShortResverse["kr"] = "KOREAN";
-    LanguageShortResverse["jp"] = "JAPANESE";
-    LanguageShortResverse["cn"] = "CHINESE";
-    LanguageShortResverse["en"] = "ENGLISH";
-})(LanguageShortResverse || (LanguageShortResverse = {}));
-var LanguageResverseShort;
-(function (LanguageResverseShort) {
-    LanguageResverseShort["KOREAN"] = "kr";
-    LanguageResverseShort["ENGLISH"] = "en";
-    LanguageResverseShort["JAPANESE"] = "jp";
-    LanguageResverseShort["CHINESE"] = "cn";
-})(LanguageResverseShort || (LanguageResverseShort = {}));
-var LangShortToNational;
-(function (LangShortToNational) {
-    LangShortToNational["kr"] = "kr";
-    LangShortToNational["en"] = "gb";
-    LangShortToNational["jp"] = "jp";
-    LangShortToNational["cn"] = "cn";
-})(LangShortToNational || (LangShortToNational = {}));
-var LanguageItSelf;
-(function (LanguageItSelf) {
-    LanguageItSelf["KOREAN"] = "\uD55C\uAD6D\uC5B4";
-    LanguageItSelf["ENGLISH"] = "English";
-    LanguageItSelf["JAPANESE"] = "\u65E5\u672C\u8A9E";
-    LanguageItSelf["CHINESE"] = "\u4E2D\u570B\u8A9E";
-})(LanguageItSelf || (LanguageItSelf = {}));
-var HouseStatus;
-(function (HouseStatus) {
-    HouseStatus["ENABLE"] = "ENABLE";
-    HouseStatus["DISALBE"] = "DISALBE";
-    HouseStatus["WAIT"] = "WAIT";
-})(HouseStatus || (HouseStatus = {}));
-var RoomGender;
-(function (RoomGender) {
-    RoomGender["FEMALE"] = "FEMALE";
-    RoomGender["MALE"] = "MALE";
-    RoomGender["ANY"] = "ANY";
-    RoomGender["SEPARATELY"] = "SEPARATELY";
-})(RoomGender || (RoomGender = {}));
-//= =============================================================
-// START Enums from Front End
-//= =============================================================
-var TimePerMs;
-(function (TimePerMs) {
-    TimePerMs[TimePerMs["DAY"] = 86400000] = "DAY";
-    TimePerMs[TimePerMs["H"] = 3600000] = "H";
-    TimePerMs[TimePerMs["M"] = 60000] = "M";
-})(TimePerMs || (TimePerMs = {}));
-var PaymentStatus;
-(function (PaymentStatus) {
-    PaymentStatus["CANCELED"] = "CANCELED";
-    PaymentStatus["COMPLETED"] = "COMPLETED";
-    PaymentStatus["FAILED"] = "FAILED";
-    PaymentStatus["NOT_YET"] = "NOT_YET";
-})(PaymentStatus || (PaymentStatus = {}));
-var BookingStatus;
-(function (BookingStatus) {
-    BookingStatus["CANCELED"] = "CANCELED";
-    BookingStatus["COMPLETED"] = "COMPLETED";
-})(BookingStatus || (BookingStatus = {}));
-var PayMethod;
-(function (PayMethod) {
-    PayMethod["BILL"] = "BILL";
-    PayMethod["VBANK"] = "VBANK";
-    PayMethod["CASH"] = "CASH";
-    PayMethod["CARD"] = "CARD";
-    PayMethod["CHANNEL_PAY"] = "CHANNEL_PAY";
-    PayMethod["BANK_TRANSFER"] = "BANK_TRANSFER";
-})(PayMethod || (PayMethod = {}));
-// css variable 의 breackPoints 와 일치하도록 하세요.
-var WindowSize;
-(function (WindowSize) {
-    WindowSize[WindowSize["MOBILE"] = 400] = "MOBILE";
-    WindowSize[WindowSize["PHABLET"] = 550] = "PHABLET";
-    WindowSize[WindowSize["TABLET"] = 750] = "TABLET";
-    WindowSize[WindowSize["DESKTOP"] = 1000] = "DESKTOP";
-    WindowSize[WindowSize["DESKTOPHD"] = 1200] = "DESKTOPHD";
-})(WindowSize || (WindowSize = {}));
-var WindowSizeShort;
-(function (WindowSizeShort) {
-    WindowSizeShort["MOBILE"] = "sm";
-    WindowSizeShort["PHABLET"] = "md";
-    WindowSizeShort["TABLET"] = "wmd";
-    WindowSizeShort["DESKTOP"] = "lg";
-    WindowSizeShort["DESKTOPHD"] = "wlg";
-})(WindowSizeShort || (WindowSizeShort = {}));
-var WindowSizeHeight;
-(function (WindowSizeHeight) {
-    WindowSizeHeight[WindowSizeHeight["MOBILE"] = 560] = "MOBILE";
-    WindowSizeHeight[WindowSizeHeight["PHABLET"] = 560] = "PHABLET";
-    WindowSizeHeight[WindowSizeHeight["TABLET"] = 560] = "TABLET";
-    WindowSizeHeight[WindowSizeHeight["DESKTOP"] = 668] = "DESKTOP";
-    WindowSizeHeight[WindowSizeHeight["DESKTOPHD"] = 980] = "DESKTOPHD";
-})(WindowSizeHeight || (WindowSizeHeight = {}));
-// 👿 deprecate
-var GlobalCSS;
-(function (GlobalCSS) {
-    GlobalCSS[GlobalCSS["TIMELINE_HEADER_HEIGHT"] = 36] = "TIMELINE_HEADER_HEIGHT";
-})(GlobalCSS || (GlobalCSS = {}));
-var Gender;
-(function (Gender) {
-    Gender["FEMALE"] = "FEMALE";
-    Gender["MALE"] = "MALE";
-})(Gender || (Gender = {}));
-var ExcelExpress;
-(function (ExcelExpress) {
-    ExcelExpress["SELECT_OP"] = "SELECT_OP";
-    ExcelExpress["DATE_OP"] = "DATE_OP";
-    ExcelExpress["COUNT_OP"] = "COUNT_OP";
-})(ExcelExpress || (ExcelExpress = {}));
-var NotiType;
-(function (NotiType) {
-    NotiType["ELSE"] = "ELSE";
-    NotiType["NEW_BOOKING"] = "NEW_BOOKING";
-    NotiType["PRODUCT_EXPIRE"] = "PRODUCT_EXPIRE";
-    NotiType["TO_ALL"] = "TO_ALL";
-})(NotiType || (NotiType = {}));
-var AutoSendWhen;
-(function (AutoSendWhen) {
-    AutoSendWhen["WEHN_BOOKING_CANCEL"] = "WEHN_BOOKING_CANCEL";
-    AutoSendWhen["WHEN_BOOKING_CREATED"] = "WHEN_BOOKING_CREATED";
-    AutoSendWhen["WHEN_BOOKING_CREATED_PAYMENT_NOT_YET"] = "WHEN_BOOKING_CREATED_PAYMENT_NOT_YET";
-    AutoSendWhen["WHEN_BOOKING_UPDATE"] = "WHEN_BOOKING_UPDATE";
-})(AutoSendWhen || (AutoSendWhen = {}));
-var Funnels;
-(function (Funnels) {
-    Funnels["AGODA"] = "AGODA";
-    Funnels["AIRBNB"] = "AIRBNB";
-    Funnels["BOOKING_COM"] = "BOOKING_COM";
-    Funnels["COOPANG"] = "COOPANG";
-    Funnels["ELSE_CHANNEL"] = "ELSE_CHANNEL";
-    Funnels["FREINDS"] = "FREINDS";
-    Funnels["HOMEPAGE"] = "HOMEPAGE";
-    Funnels["NAVER"] = "NAVER";
-    Funnels["PHONE_CALL"] = "PHONE_CALL";
-    Funnels["WALK_IN"] = "WALK_IN";
-    Funnels["YANOLJA"] = "YANOLJA";
-    Funnels["YEOGIEOTTAE"] = "YEOGIEOTTAE";
-})(Funnels || (Funnels = {}));
-var SendTarget;
-(function (SendTarget) {
-    SendTarget["BOTH"] = "BOTH";
-    SendTarget["GUEST"] = "GUEST";
-    SendTarget["HOST"] = "HOST";
-})(SendTarget || (SendTarget = {}));
-var LayoutType;
-(function (LayoutType) {
-    LayoutType["Layout_A"] = "Layout_A";
-    LayoutType["Layout_B"] = "Layout_B";
-})(LayoutType || (LayoutType = {}));
-var Day;
-(function (Day) {
-    Day["FRI"] = "FRI";
-    Day["MON"] = "MON";
-    Day["SAT"] = "SAT";
-    Day["SUN"] = "SUN";
-    Day["THU"] = "THU";
-    Day["TUE"] = "TUE";
-    Day["WED"] = "WED";
-})(Day || (Day = {}));
-var ProductTypeKey;
-(function (ProductTypeKey) {
-    ProductTypeKey["DEMO"] = "DEMO";
-    ProductTypeKey["NEGOTIATION"] = "NEGOTIATION";
-    ProductTypeKey["PREMIUM"] = "PREMIUM";
-    ProductTypeKey["STANDARD"] = "STANDARD";
-})(ProductTypeKey || (ProductTypeKey = {}));
-var SERVICE_CONTECT;
-(function (SERVICE_CONTECT) {
-    SERVICE_CONTECT["SERVICE_MANGER_PHONE"] = "070-4128-8244";
-    SERVICE_CONTECT["SERVICE_MANGER_MAIL"] = "support@stayjanda.com";
-})(SERVICE_CONTECT || (SERVICE_CONTECT = {}));
-var NotiLevel;
-(function (NotiLevel) {
-    NotiLevel["NORMAL"] = "NORMAL";
-    NotiLevel["WARN"] = "WARN";
-})(NotiLevel || (NotiLevel = {}));
-var PayTarget;
-(function (PayTarget) {
-    PayTarget["USAGE_PLAN"] = "USAGE_PLAN";
-    PayTarget["BOOKING"] = "BOOKING";
-    PayTarget["SMS"] = "SMS";
-})(PayTarget || (PayTarget = {}));
-//= =============================================================
-// START global options
-//= =============================================================
-var GetSmsTarget;
-(function (GetSmsTarget) {
-    GetSmsTarget["TODAY_STAY"] = "TODAY_STAY";
-    GetSmsTarget["TODAY_CHECKIN"] = "TODAY_CHECKIN";
-    GetSmsTarget["TOMORROW_CHECKIN"] = "TOMORROW_CHECKIN";
-    GetSmsTarget["EXSIST_INFO"] = "EXSIST_INFO";
-})(GetSmsTarget || (GetSmsTarget = {}));
-
-var DEFULAT_BH_FULL = {
-    days: [Day.MON, Day.THU, Day.WED, Day.TUE, Day.FRI, Day.SAT, Day.SUN],
-    end: 1440,
-    time: 1440,
-    start: 0
-};
-var DEFAULT_STORE = {
-    name: "",
-    manager: {
-        __typename: "Manager",
-        isVerifiedPhoneNumber: false,
-        name: "",
-        phoneNumber: ""
-    },
-    infos: [],
-    products: [],
-    customFields: [],
-    type: StoreType.LEASE,
-    description: "",
-    __typename: "Store",
-    _id: "",
-    code: "",
-    createdAt: "",
-    expiresAt: "",
-    updatedAt: "",
-    intro: "",
-    warning: "",
-    groups: [{
-            __typename: "StoreGroup",
-            _id: "",
-            code: ""
-        }],
-    businessHours: [__assign({ __typename: "Period", time: 0, end: 0, days: [], start: 0 }, DEFULAT_BH_FULL)],
-    productCount: 0,
-    periodOption: {
-        __typename: "PeriodOption",
-        max: 60 * 3,
-        min: 15,
-        unit: 15
-    },
-    location: null
-};
-var DEFULAT_BH = {
-    __typename: "Period",
-    days: [Day.MON, Day.THU, Day.WED, Day.TUE, Day.FRI, Day.SAT, Day.SUN],
-    end: 0,
-    start: 0,
-    time: 0,
-};
+var DEFAULT_PHOTO = "https://s3.ap-northeast-2.amazonaws.com/booking.stayjanda.files/infographic/noimg.png";
 
 //
 var optionFineder = function (options, value) {
@@ -10353,28 +9966,6 @@ var useStoreSelect = function (stores, withCode, defaultPropCode, defaultIdProp)
     withCode || localStorage.setItem("lastSelectStore", selectedStoreValue);
     return { storeSelectHook: storeSelectHook, selectedStoreValue: selectedStoreValue, storesOp: storesOp };
 };
-// // 오늘기준
-// const DdefaultRange = {
-//   endHour: 24 // hour
-//   startHour: 0, // hour
-// }
-var defaultTimeBlockProps = {
-    isSelected: false
-};
-var useTimePicker = function (_a) {
-    var _b = _a.timeUnit, timeUnit = _b === void 0 ? TimePerMs.H / 2 : _b, defaultBlocks = _a.defaultBlocks, startDate = _a.startDate;
-    // if (timeUnit < TimePerMs.M * 15) throw Error("timeUnit must over 15 min");
-    var currentTime = momentTimezone$1.valueOf();
-    // @ts-ignore
-    var defaultFormatedBlocks = React.useMemo(function () { return (defaultBlocks === null || defaultBlocks === void 0 ? void 0 : defaultBlocks.map(function (b) { return (__assign(__assign(__assign({}, defaultTimeBlockProps), { start: momentTimezone$1(b.segment.from).valueOf(), end: momentTimezone$1(b.segment.to).valueOf(), isPast: momentTimezone$1(b.segment.from).valueOf() < currentTime - timeUnit }), b)); })) || []; }, [startDate]);
-    var _c = React.useState(defaultFormatedBlocks), timeBlocks = _c[0], setTimeBlocks = _c[1];
-    var selecteds = timeBlocks.filter(function (tb) { return tb.isSelected; });
-    var lastSelectedTarget = selecteds[selecteds.length - 1];
-    var firstSelectedTarget = selecteds[0];
-    var end = (lastSelectedTarget === null || lastSelectedTarget === void 0 ? void 0 : lastSelectedTarget.segment.to) || 0;
-    var start = (firstSelectedTarget === null || firstSelectedTarget === void 0 ? void 0 : firstSelectedTarget.segment.from) || 0;
-    return { timeBlocks: timeBlocks, setTimeBlocks: setTimeBlocks, timeUnit: timeUnit, start: start, end: end };
-};
 // //  이미지 업로더
 // const useImageUploader = (
 //   imgKey: string,
@@ -10673,12 +10264,123 @@ var hook = {
     useStoreSelect: useStoreSelect,
     useShouldSave: useShouldSave,
     useDayPicker: useDayPicker,
-    useTimePicker: useTimePicker,
     usePageNation: usePageNation,
     useRedirect: useRedirect,
-    useCheckBoxTable: useCheckBoxTable
+    useCheckBoxTable: useCheckBoxTable,
 };
 
+var DateFormat;
+(function (DateFormat) {
+    DateFormat["WITH_TIME"] = "YY.MM.DD HH:mm";
+    DateFormat["YYMMDD"] = "YY.MM.DD";
+    DateFormat["MMDD"] = "MM.DD";
+})(DateFormat || (DateFormat = {}));
+var Language;
+(function (Language) {
+    Language["KOREAN"] = "KOREAN";
+    Language["ENGLISH"] = "ENGLISH";
+    Language["JAPANESE"] = "JAPANESE";
+    Language["CHINESE"] = "CHINESE";
+})(Language || (Language = {}));
+var LanguageShortResverse;
+(function (LanguageShortResverse) {
+    LanguageShortResverse["kr"] = "KOREAN";
+    LanguageShortResverse["jp"] = "JAPANESE";
+    LanguageShortResverse["cn"] = "CHINESE";
+    LanguageShortResverse["en"] = "ENGLISH";
+})(LanguageShortResverse || (LanguageShortResverse = {}));
+var LanguageResverseShort;
+(function (LanguageResverseShort) {
+    LanguageResverseShort["KOREAN"] = "kr";
+    LanguageResverseShort["ENGLISH"] = "en";
+    LanguageResverseShort["JAPANESE"] = "jp";
+    LanguageResverseShort["CHINESE"] = "cn";
+})(LanguageResverseShort || (LanguageResverseShort = {}));
+var LangShortToNational;
+(function (LangShortToNational) {
+    LangShortToNational["kr"] = "kr";
+    LangShortToNational["en"] = "gb";
+    LangShortToNational["jp"] = "jp";
+    LangShortToNational["cn"] = "cn";
+})(LangShortToNational || (LangShortToNational = {}));
+var LanguageItSelf;
+(function (LanguageItSelf) {
+    LanguageItSelf["KOREAN"] = "\uD55C\uAD6D\uC5B4";
+    LanguageItSelf["ENGLISH"] = "English";
+    LanguageItSelf["JAPANESE"] = "\u65E5\u672C\u8A9E";
+    LanguageItSelf["CHINESE"] = "\u4E2D\u570B\u8A9E";
+})(LanguageItSelf || (LanguageItSelf = {}));
+var RoomGender;
+(function (RoomGender) {
+    RoomGender["FEMALE"] = "FEMALE";
+    RoomGender["MALE"] = "MALE";
+    RoomGender["ANY"] = "ANY";
+    RoomGender["SEPARATELY"] = "SEPARATELY";
+})(RoomGender || (RoomGender = {}));
+//= =============================================================
+// START Enums from Front End
+//= =============================================================
+var TimePerMs;
+(function (TimePerMs) {
+    TimePerMs[TimePerMs["DAY"] = 86400000] = "DAY";
+    TimePerMs[TimePerMs["H"] = 3600000] = "H";
+    TimePerMs[TimePerMs["M"] = 60000] = "M";
+})(TimePerMs || (TimePerMs = {}));
+var Gender;
+(function (Gender) {
+    Gender["FEMALE"] = "FEMALE";
+    Gender["MALE"] = "MALE";
+})(Gender || (Gender = {}));
+var ExcelExpress;
+(function (ExcelExpress) {
+    ExcelExpress["SELECT_OP"] = "SELECT_OP";
+    ExcelExpress["DATE_OP"] = "DATE_OP";
+    ExcelExpress["COUNT_OP"] = "COUNT_OP";
+})(ExcelExpress || (ExcelExpress = {}));
+var NotiType;
+(function (NotiType) {
+    NotiType["ELSE"] = "ELSE";
+    NotiType["NEW_BOOKING"] = "NEW_BOOKING";
+    NotiType["PRODUCT_EXPIRE"] = "PRODUCT_EXPIRE";
+    NotiType["TO_ALL"] = "TO_ALL";
+})(NotiType || (NotiType = {}));
+var Funnels;
+(function (Funnels) {
+    Funnels["AGODA"] = "AGODA";
+    Funnels["AIRBNB"] = "AIRBNB";
+    Funnels["BOOKING_COM"] = "BOOKING_COM";
+    Funnels["COOPANG"] = "COOPANG";
+    Funnels["ELSE_CHANNEL"] = "ELSE_CHANNEL";
+    Funnels["FREINDS"] = "FREINDS";
+    Funnels["HOMEPAGE"] = "HOMEPAGE";
+    Funnels["NAVER"] = "NAVER";
+    Funnels["PHONE_CALL"] = "PHONE_CALL";
+    Funnels["WALK_IN"] = "WALK_IN";
+    Funnels["YANOLJA"] = "YANOLJA";
+    Funnels["YEOGIEOTTAE"] = "YEOGIEOTTAE";
+})(Funnels || (Funnels = {}));
+var SendTarget;
+(function (SendTarget) {
+    SendTarget["BOTH"] = "BOTH";
+    SendTarget["GUEST"] = "GUEST";
+    SendTarget["HOST"] = "HOST";
+})(SendTarget || (SendTarget = {}));
+var LayoutType;
+(function (LayoutType) {
+    LayoutType["Layout_A"] = "Layout_A";
+    LayoutType["Layout_B"] = "Layout_B";
+})(LayoutType || (LayoutType = {}));
+(function (Day) {
+    Day["FRI"] = "FRI";
+    Day["MON"] = "MON";
+    Day["SAT"] = "SAT";
+    Day["SUN"] = "SUN";
+    Day["THU"] = "THU";
+    Day["TUE"] = "TUE";
+    Day["WED"] = "WED";
+})(exports.Day || (exports.Day = {}));
+
+exports.DEFAULT_PHOTO = DEFAULT_PHOTO;
 exports.JDbutton = Button;
 exports.JDicon = JDIcon;
 exports.JDtooltip = JDToolTip;

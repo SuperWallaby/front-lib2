@@ -1,41 +1,40 @@
-@import "~Styles";
+@import "../style_config.scss";
 
 .JDtooltip.__react_component_tooltip {
-    border-radius: $standard-border-radius;
-    &.show {
-        opacity: 1;
-    }
- 
-    &.type-info{
-        background-color:$blue-color;
-        
-        &:after{
-            border-top-color:$blue-color;
-        }
-    }
+  border-radius: $standard-border-radius;
+  &.show {
+    opacity: 1;
+  }
 
-    &.type-success{
-        background-color:$primary-color;
-        
-        &:after{
-            border-top-color:$primary-color;
-        }
-    }
+  &.type-info {
+    background-color: $blue-color;
 
-    &.type-error{
-        background-color:$error-color;
-        
-        &:after{
-            border-top-color:$error-color;
-        }
-
+    &:after {
+      border-top-color: $blue-color;
     }
+  }
 
-    &.type-dark{
-        background-color:$html-color;
-        
-        &:after{
-            border-top-color:$html-color;
-        }
+  &.type-success {
+    background-color: $primary-color;
+
+    &:after {
+      border-top-color: $primary-color;
     }
+  }
+
+  &.type-error {
+    background-color: $error-color;
+
+    &:after {
+      border-top-color: $error-color;
+    }
+  }
+
+  &.type-dark {
+    background-color: $html-color;
+
+    &:after {
+      border-top-color: $html-color;
+    }
+  }
 }

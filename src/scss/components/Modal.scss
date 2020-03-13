@@ -1,0 +1,175 @@
+@import "../style_config.scss";
+
+$modal-padding: $standard-large-space !default;
+$modal-header-padding: $modal-padding;
+// ⚠️ JDmodal 로 수정할수없음
+.ReactModal {
+  overflow-x: hidden !important;
+  // 모달 장막
+  &__Overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: $z-index-9;
+    background-color: $modal-background-color;
+    opacity: 0;
+    transition: 0.2s;
+    transition-timing-function: ease-in-out;
+
+    &--after-open {
+      opacity: 1;
+    }
+  }
+
+  // 모달 전체 내용
+  &__Content {
+    background-color: white;
+    position: relative;
+    outline: none;
+    border-radius: $modal-border-radius;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.3s;
+    transition-timing-function: ease-out;
+
+    &--after-open {
+      transform: scale(1);
+      opacity: 1;
+    }
+    @extend %z-depth-3;
+
+    @include response($full, $phablet) {
+      max-width: 80%;
+    }
+
+    @include response($phablet) {
+      width: 100%;
+      max-width: 95%;
+      min-width: 90%;
+      margin: $container-padding;
+    }
+
+    max-height: 88vh;
+
+    @extend %JDscrollbar;
+
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+
+    @include response($phablet) {
+      // padding: $modal-padding /2;
+      max-height: 88%;
+      margin-bottom: 10%;
+    }
+  }
+}
+
+.inIframe {
+  .ReactModal {
+    &__Content {
+      margin-bottom: 0% !important;
+      margin-top: 0% !important;
+    }
+  }
+}
+
+// 커스텀 여기서부터
+.JDmodal-overlay {
+  &--underHeader {
+    z-index: $z-index-7;
+    height: 100vh;
+    .ReactModal__Content {
+      top: 1.5rem;
+      max-height: calc(88vh - #{$header-height});
+    }
+  }
+
+  &--noAnimation {
+    transition: 0s !important;
+    .ReactModal__Content {
+      transition: 0s !important;
+    }
+  }
+}
+
+// ⭐
+.JDmodal {
+  &__body {
+    padding: $modal-padding;
+  }
+
+  &__closeIcon {
+    position: absolute;
+    top: $modal-header-padding;
+    right: $modal-header-padding;
+  }
+
+  &__head {
+    padding: $modal-header-padding;
+    border-bottom: 1px solid $grey-level1;
+  }
+  &--loading {
+    min-width: 0 !important;
+    max-width: fit-content !important;
+    width: fit-content !important;
+  }
+
+  &--alert {
+    font-weight: bold;
+  }
+
+  &--paddingLarge {
+    @include response($full, $tablet) {
+      padding: $standard-huge-space;
+    }
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--visibleOverflow {
+    overflow: visible !important;
+    @include response($tablet) {
+      overflow: auto;
+    }
+  }
+
+  // 엔드섹션
+  &__endSection {
+    padding-top: 0;
+    &--confirm {
+      padding-top: $modal-section-padding;
+    }
+
+    &--float {
+      position: absolute;
+    }
+
+    bottom: 0 + $modal-padding;
+    left: $modal-padding;
+    right: $modal-padding;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    .JDbtn {
+      margin-bottom: 0;
+    }
+    h6 {
+      margin-bottom: 0;
+    }
+  }
+
+  // 모달 내부 영역구분
+  .modal__section {
+    padding-bottom: $modal-section-padding;
+  }
+}

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, ChangeEvent } from "react";
-import { IScheduleBlock, ITimeBlocks, IselectedOption } from "../types/interface";
+import { IselectedOption } from "../types/interface";
 import { TLanguageShort } from "../types/enum";
 export declare type IUseFetch = [any, boolean, boolean, (url: string | undefined) => void];
 declare const useShouldSave: (updateValue: any[]) => {
@@ -13,7 +13,6 @@ export interface IuseImageUploaderOption {
 }
 export declare type IuseTimePickerProps = {
     timeUnit?: number;
-    defaultBlocks?: IScheduleBlock[];
     defaultRange?: {
         startHour: number;
         endHour: number;
@@ -32,13 +31,6 @@ declare const useStoreSelect: (stores: {
         value: string;
         label: string;
     }[];
-};
-declare const useTimePicker: ({ timeUnit, defaultBlocks, startDate }: IuseTimePickerProps) => {
-    timeBlocks: ITimeBlocks[];
-    setTimeBlocks: Dispatch<SetStateAction<ITimeBlocks[]>>;
-    timeUnit: number;
-    start: any;
-    end: any;
 };
 export declare type TlocalImg = {
     key: string;
@@ -174,16 +166,9 @@ declare const _default: {
         setShouldSave: Dispatch<SetStateAction<boolean>>;
     };
     useDayPicker: typeof useDayPicker;
-    useTimePicker: ({ timeUnit, defaultBlocks, startDate }: IuseTimePickerProps) => {
-        timeBlocks: ITimeBlocks[];
-        setTimeBlocks: Dispatch<SetStateAction<ITimeBlocks[]>>;
-        timeUnit: number;
-        start: any;
-        end: any;
-    };
     usePageNation: typeof usePageNation;
     useRedirect: typeof useRedirect;
     useCheckBoxTable: (defaultCheckIds?: string[], allIds?: string[]) => IUseCheckBoxTable;
 };
 export default _default;
-export { useInput, useCheckBox, useRadio, useSwitch, useSelect, useToggle, useModal, useSideNav, useRange, useDebounce, useStoreSelect, useShouldSave, useDayPicker, useTimePicker, usePageNation, useRedirect, useCheckBoxTable };
+export { useInput, useCheckBox, useRadio, useSwitch, useSelect, useToggle, useModal, useSideNav, useRange, useDebounce, useStoreSelect, useShouldSave, useDayPicker, usePageNation, useRedirect, useCheckBoxTable };

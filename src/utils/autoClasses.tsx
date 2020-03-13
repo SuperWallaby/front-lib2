@@ -5,6 +5,7 @@ import {
   IconSize,
   TMarginSize
 } from "../types/enum";
+import { JDatomExtentionSet } from "../types/interface";
 
 // 업데이트 => 구성요소에 들어가는 글로벌 css를 이걸로교체
 // 우선은 마진만 시험적용
@@ -115,7 +116,16 @@ const mbClass = (boxName: string, size?: TMarginSize) => {
   return obj;
 };
 
+const JDatomClasses = (configs: JDatomExtentionSet) => {
+  const { mb, mr } = configs;
+  return {
+    ...JDmrClass(mr),
+    ...JDmbClass(mb)
+  };
+};
+
 export {
+  JDatomClasses,
   iconSizeClass,
   JDmbClass,
   JDmrClass,

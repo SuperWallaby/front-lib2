@@ -1,2 +1,2 @@
-declare const copytoClipboard: (text: string, msg?: string | undefined) => void;
+declare const copytoClipboard: (text: string) => void;
 export default copytoClipboard;

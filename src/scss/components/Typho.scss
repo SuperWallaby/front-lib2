@@ -1,0 +1,11 @@
+@import "../style_config.scss";
+
+.JDtypho {
+  &--hover {
+    cursor: pointer;
+  }
+
+  color: inherit;
+  @include colorText--prefixer();
+  @include sizeText--prefixer();
+}

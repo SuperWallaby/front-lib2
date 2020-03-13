@@ -1,18 +1,8 @@
 /// <reference types="react" />
 import { TMarginSize } from "./enum";
-import { getMyStores_GetMyStores_data, getProductsForBuyer_GetProductsForBuyer_data, getMyStores_GetMyStores_data_businessHours, getMyProfile_GetMyProfile_data_user_stores, getProductsForBuyer_GetProductsForBuyer_data_schedules_list, getProductsForBuyer_GetProductsForBuyer_data_items, getMyStores_GetMyStores_data_customFields, getProductsForBuyer_GetProductsForBuyer_data_schedules } from "./api";
 import { MutationFunctionOptions } from "@apollo/react-common";
 import { ExecutionResult } from "graphql";
 export interface ANY {
-}
-export interface IProduct extends getProductsForBuyer_GetProductsForBuyer_data {
-}
-export interface IStore extends getMyStores_GetMyStores_data {
-}
-export interface IStoreContext extends getMyProfile_GetMyProfile_data_user_stores {
-    [key: string]: any;
-}
-export interface ICustomFiled extends getMyStores_GetMyStores_data_customFields {
 }
 export interface IInput extends React.HTMLAttributes<HTMLInputElement> {
 }
@@ -22,18 +12,6 @@ export interface ISpan extends React.HTMLAttributes<HTMLSpanElement> {
 }
 export interface IUl extends React.HTMLAttributes<HTMLUListElement> {
 }
-export interface IScheduleBlock extends getProductsForBuyer_GetProductsForBuyer_data_schedules_list {
-}
-export interface ITimeBlocks extends IScheduleBlock {
-    isSelected: boolean;
-    isPast: boolean;
-    start: number;
-    end: number;
-}
-export declare type TSchedule = getProductsForBuyer_GetProductsForBuyer_data_schedules;
-export declare type TItemBuyer = getProductsForBuyer_GetProductsForBuyer_data_items;
-export declare type TBH = getMyStores_GetMyStores_data_businessHours;
-export declare type TUserMode = "buyer" | "saler";
 export declare type TRef = React.MutableRefObject<any>;
 export declare type TElements = string | JSX.Element | JSX.Element[] | string[];
 export declare type TMuFn<m, mv> = (options?: MutationFunctionOptions<m, mv> | undefined) => Promise<ExecutionResult<m>>;

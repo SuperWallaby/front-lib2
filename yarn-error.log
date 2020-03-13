@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add isMobile
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js publish
 
 PATH: 
-  C:\Program Files (x86)\NAT Service;C:\ProgramData\Boxstarter;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;"C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk1.8.0_181\bin";C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\PuTTY\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\edb\as11\bin;C:\Program Files\edb\as11\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\minjae\AppData\Roaming\Python\Python37\Scripts;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files\7-Zip;C:\Program Files\Amazon\AWSCLI\bin\;C:\Go\bin;"C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;";C:\Users\colto\AppData\Local\Microsoft\WindowsApps;;C:\Users\colto\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\colto\go\bin
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\colto\bin;C:\Users\colto\AppData\Local\Temp\yarn--1584083536418-0.6529917326379007;C:\Users\colto\Desktop\projects\jd-library\node_modules\.bin;C:\Users\colto\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\colto\Desktop\projects\jd-library\node_modules\.bin;C:\Users\colto\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\colto\AppData\Local\Yarn\bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs;C:\Program Files (x86)\NAT Service;C:\ProgramData\Boxstarter;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapat;C:\Program Files\Java\jdk1.8.0_181\bin";C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\PuTTY;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\edb\as11\bin;C:\Program Files\edb\as11\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\minjae\AppData\Roaming\Python\Python37\Scripts;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files\7-Zip;C:\Program Files\Amazon\AWSCLI\bin;C:\Go\bin;C:\WINDOWS\system3;C:\WINDOWS;C:\WINDOWS\System32\Wbem;.;C:\Users\colto\AppData\Local\Microsoft\WindowsApps;C:\Users\colto\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\colto\go\bin
 
 Yarn version: 
   1.12.3
@@ -14,22 +14,22 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/isMobile: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65003:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:129018:22)
-      at Request.emit (events.js:210:5)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:129990:10)
-      at Request.emit (events.js:210:5)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:129912:12)
-      at Object.onceWrapper (events.js:299:28)
-      at IncomingMessage.emit (events.js:215:7)
-      at endReadableNT (_stream_readable.js:1184:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: canceled
+      at Interface.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:125278:13)
+      at Interface.emit (events.js:210:5)
+      at Interface._ttyWrite (readline.js:887:16)
+      at ReadStream.onkeypress (readline.js:191:10)
+      at ReadStream.emit (events.js:210:5)
+      at emitKeys (internal/readline/utils.js:433:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1153:36)
+      at ReadStream.emit (events.js:210:5)
+      at addChunk (_stream_readable.js:309:12)
 
 npm manifest: 
   {
     "name": "@janda-com/front",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "description": "@jd-com/front",
     "main": "build/index.js",
     "module": "build/index.es.js",
@@ -114,6 +114,7 @@ npm manifest:
       "apollo-client": "^2.6.8",
       "classnames": "^2.2.6",
       "graphql": "^14.6.0",
+      "is-mobile": "^2.2.1",
       "jquery": "^3.4.1",
       "moment-timezone": "^0.5.28",
       "react-modal": "^3.11.2",
@@ -6634,6 +6635,11 @@ Lockfile:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/is-map/-/is-map-2.0.1.tgz#520dafc4307bb8ebc33b813de5ce7c9400d644a1"
     integrity sha512-T/S49scO8plUiAOA2DBTBG3JHpn1yiw0kRp6dgiZ0v2/6twi5eiB0rHtHFH9ZIrvlWc6+4O+m4zg5+Z833aXgw==
+  
+  is-mobile@^2.2.1:
+    version "2.2.1"
+    resolved "https://registry.yarnpkg.com/is-mobile/-/is-mobile-2.2.1.tgz#10f2320012c410cc285feecb13406bd586f1b2f8"
+    integrity sha512-6zELsfVFr326eq2CI53yvqq6YBanOxKBybwDT+MbMS2laBnK6Ez8m5XHSuTQQbnKRfpDzCod1CMWW5q3wZYMvA==
   
   is-module@^1.0.0:
     version "1.0.0"

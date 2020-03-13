@@ -8,7 +8,6 @@ import {
   textSizeClass,
   colorClass
 } from "../../utils/autoClasses";
-import "./Typho.scss";
 
 interface IProps extends IDiv, JDatomExtentionSet {
   size?: TextSize;

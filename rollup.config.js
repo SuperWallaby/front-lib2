@@ -26,7 +26,7 @@ export default {
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
-      exclude: ["**/__tests__/**"],
+      exclude: ["**/__tests__/**", "src/**/*.stories.tsx"],
       clean: true
     }),
     json(),

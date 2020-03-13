@@ -1,4 +1,5 @@
-import React, { Fragment, useRef, useState, useEffect, useCallback } from 'react';
+import React, { Fragment, useState, useRef, useEffect, useCallback } from 'react';
+import reactDom, { createPortal } from 'react-dom';
 import 'react-image-file-resizer';
 
 /*! *****************************************************************************
@@ -51,6 +52,10 @@ var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof win
 
 function commonjsRequire () {
 	throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
+}
+
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -171,6 +176,32 @@ var colorClass = function (boxName, color) {
     obj[boxName + "--blue"] = color === "blue";
     obj[boxName + "--third"] = color === "third";
     return obj;
+};
+var textAlignClass = function (boxName, align) {
+    var obj = {};
+    obj[boxName + "--left"] = align === "left";
+    obj[boxName + "--center"] = align === "center";
+    obj[boxName + "--right"] = align === "right";
+    return obj;
+};
+var textSizeClass = function (boxName, size) {
+    var obj = {};
+    (obj[boxName + "--h1"] = size === "h1"),
+        (obj[boxName + "--h2"] = size === "h2"),
+        (obj[boxName + "--h3"] = size === "h3"),
+        (obj[boxName + "--h4"] = size === "h4"),
+        (obj[boxName + "--h5"] = size === "h5"),
+        (obj[boxName + "--h6"] = size === "h6"),
+        (obj["JDlarge-text"] = size === "large"),
+        (obj["JDsmall-text"] = size === "normal"),
+        (obj["JDsmall-text"] = size === "small"),
+        (obj["JDtiny-text"] = size === "tiny"),
+        (obj[boxName + "--superTiny"] = size === "superTiny");
+    return obj;
+};
+var JDatomClasses = function (configs) {
+    var mb = configs.mb, mr = configs.mr;
+    return __assign(__assign({}, JDmrClass(mr)), JDmbClass(mb));
 };
 
 var s4 = function () {
@@ -329,7 +360,7 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-function unwrapExports (x) {
+function unwrapExports$1 (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
@@ -346,7 +377,7 @@ exports.isValidElementType=function(a){return "string"===typeof a||"function"===
 exports.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return y(a)===n};exports.isFragment=function(a){return y(a)===e};exports.isLazy=function(a){return y(a)===t};exports.isMemo=function(a){return y(a)===r};exports.isPortal=function(a){return y(a)===d};exports.isProfiler=function(a){return y(a)===g};exports.isStrictMode=function(a){return y(a)===f};exports.isSuspense=function(a){return y(a)===p};
 });
 
-unwrapExports(reactIs_production_min);
+unwrapExports$1(reactIs_production_min);
 var reactIs_production_min_1 = reactIs_production_min.typeOf;
 var reactIs_production_min_2 = reactIs_production_min.AsyncMode;
 var reactIs_production_min_3 = reactIs_production_min.ConcurrentMode;
@@ -604,7 +635,7 @@ exports.isSuspense = isSuspense;
 }
 });
 
-unwrapExports(reactIs_development);
+unwrapExports$1(reactIs_development);
 var reactIs_development_1 = reactIs_development.typeOf;
 var reactIs_development_2 = reactIs_development.AsyncMode;
 var reactIs_development_3 = reactIs_development.ConcurrentMode;
@@ -3761,15 +3792,2860 @@ var Button = function (_a) {
             React.createElement("span", null, tooltip)))));
 };
 
-var DEFAULT_PHOTO = "https://s3.ap-northeast-2.amazonaws.com/booking.stayjanda.files/infographic/noimg.png";
-
-//
-var optionFineder = function (options, value) {
-    var targetOp = options.find(function (op) { return op.value === value; });
-    if (!targetOp) {
-        return { value: "", label: "Select" };
+var JDcard = function (_a) {
+    var children = _a.children, hover = _a.hover, align = _a.align, className = _a.className, onClickCard = _a.onClickCard, fullHeight = _a.fullHeight, fullWidth = _a.fullWidth, selected = _a.selected, toogleCard = _a.toogleCard, onToogleCardClick = _a.onToogleCardClick, noMargin = _a.noMargin, mb = _a.mb, mr = _a.mr, props = __rest(_a, ["children", "hover", "align", "className", "onClickCard", "fullHeight", "fullWidth", "selected", "toogleCard", "onToogleCardClick", "noMargin", "mb", "mr"]);
+    var _b = useState(true), render = _b[0], setRender = _b[1];
+    var classes = classnames("JDcard", className, __assign({ JDcard: true, "JDcard--hover": hover, "JDcard--selected": selected, "JDcard--fullHeight": fullHeight, "JDcard--fullWidth": fullWidth, "JDcard--noMargin": noMargin, "JDcard--center": align === "center" }, JDatomClasses({
+        mb: mb,
+        mr: mr
+    })));
+    var handleClickCard = function () {
+        onClickCard && onClickCard();
+    };
+    if (!render) {
+        return React.createElement("div", null);
     }
-    return targetOp;
+    return (React.createElement("div", __assign({ onClick: handleClickCard }, props, { className: classes }),
+        toogleCard && (React.createElement("span", { className: "JDcard__clearIcon" },
+            React.createElement(JDIcon, { onClick: function () {
+                    setRender(false);
+                    onToogleCardClick && onToogleCardClick();
+                }, icon: "close" }))),
+        children));
+};
+JDcard.defaultProps = {
+    hover: false
+};
+
+var reactIs_production_min$1 = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports,"__esModule",{value:!0});
+var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?Symbol.for("react.suspense_list"):
+60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.fundamental"):60117,w=b?Symbol.for("react.responder"):60118,x=b?Symbol.for("react.scope"):60119;function y(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function z(a){return y(a)===m}
+exports.typeOf=y;exports.AsyncMode=l;exports.ConcurrentMode=m;exports.ContextConsumer=k;exports.ContextProvider=h;exports.Element=c;exports.ForwardRef=n;exports.Fragment=e;exports.Lazy=t;exports.Memo=r;exports.Portal=d;exports.Profiler=g;exports.StrictMode=f;exports.Suspense=p;
+exports.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===v||a.$$typeof===w||a.$$typeof===x)};exports.isAsyncMode=function(a){return z(a)||y(a)===l};exports.isConcurrentMode=z;exports.isContextConsumer=function(a){return y(a)===k};exports.isContextProvider=function(a){return y(a)===h};
+exports.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return y(a)===n};exports.isFragment=function(a){return y(a)===e};exports.isLazy=function(a){return y(a)===t};exports.isMemo=function(a){return y(a)===r};exports.isPortal=function(a){return y(a)===d};exports.isProfiler=function(a){return y(a)===g};exports.isStrictMode=function(a){return y(a)===f};exports.isSuspense=function(a){return y(a)===p};
+});
+
+unwrapExports(reactIs_production_min$1);
+var reactIs_production_min_1$1 = reactIs_production_min$1.typeOf;
+var reactIs_production_min_2$1 = reactIs_production_min$1.AsyncMode;
+var reactIs_production_min_3$1 = reactIs_production_min$1.ConcurrentMode;
+var reactIs_production_min_4$1 = reactIs_production_min$1.ContextConsumer;
+var reactIs_production_min_5$1 = reactIs_production_min$1.ContextProvider;
+var reactIs_production_min_6$1 = reactIs_production_min$1.Element;
+var reactIs_production_min_7$1 = reactIs_production_min$1.ForwardRef;
+var reactIs_production_min_8$1 = reactIs_production_min$1.Fragment;
+var reactIs_production_min_9$1 = reactIs_production_min$1.Lazy;
+var reactIs_production_min_10$1 = reactIs_production_min$1.Memo;
+var reactIs_production_min_11$1 = reactIs_production_min$1.Portal;
+var reactIs_production_min_12$1 = reactIs_production_min$1.Profiler;
+var reactIs_production_min_13$1 = reactIs_production_min$1.StrictMode;
+var reactIs_production_min_14$1 = reactIs_production_min$1.Suspense;
+var reactIs_production_min_15$1 = reactIs_production_min$1.isValidElementType;
+var reactIs_production_min_16$1 = reactIs_production_min$1.isAsyncMode;
+var reactIs_production_min_17$1 = reactIs_production_min$1.isConcurrentMode;
+var reactIs_production_min_18$1 = reactIs_production_min$1.isContextConsumer;
+var reactIs_production_min_19$1 = reactIs_production_min$1.isContextProvider;
+var reactIs_production_min_20$1 = reactIs_production_min$1.isElement;
+var reactIs_production_min_21$1 = reactIs_production_min$1.isForwardRef;
+var reactIs_production_min_22$1 = reactIs_production_min$1.isFragment;
+var reactIs_production_min_23$1 = reactIs_production_min$1.isLazy;
+var reactIs_production_min_24$1 = reactIs_production_min$1.isMemo;
+var reactIs_production_min_25$1 = reactIs_production_min$1.isPortal;
+var reactIs_production_min_26$1 = reactIs_production_min$1.isProfiler;
+var reactIs_production_min_27$1 = reactIs_production_min$1.isStrictMode;
+var reactIs_production_min_28$1 = reactIs_production_min$1.isSuspense;
+
+var reactIs_development$1 = createCommonjsModule(function (module, exports) {
+
+
+
+if (process.env.NODE_ENV !== "production") {
+  (function() {
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE);
+}
+
+/**
+ * Forked from fbjs/warning:
+ * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+ *
+ * Only change is we use console.warn instead of console.error,
+ * and do nothing when 'console' is not supported.
+ * This really simplifies the code.
+ * ---
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+var lowPriorityWarningWithoutStack = function () {};
+
+{
+  var printWarning = function (format) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+
+    if (typeof console !== 'undefined') {
+      console.warn(message);
+    }
+
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  lowPriorityWarningWithoutStack = function (condition, format) {
+    if (format === undefined) {
+      throw new Error('`lowPriorityWarningWithoutStack(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+
+    if (!condition) {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(void 0, [format].concat(args));
+    }
+  };
+}
+
+var lowPriorityWarningWithoutStack$1 = lowPriorityWarningWithoutStack;
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true;
+      lowPriorityWarningWithoutStack$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.typeOf = typeOf;
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isValidElementType = isValidElementType;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+  })();
+}
+});
+
+unwrapExports(reactIs_development$1);
+var reactIs_development_1$1 = reactIs_development$1.typeOf;
+var reactIs_development_2$1 = reactIs_development$1.AsyncMode;
+var reactIs_development_3$1 = reactIs_development$1.ConcurrentMode;
+var reactIs_development_4$1 = reactIs_development$1.ContextConsumer;
+var reactIs_development_5$1 = reactIs_development$1.ContextProvider;
+var reactIs_development_6$1 = reactIs_development$1.Element;
+var reactIs_development_7$1 = reactIs_development$1.ForwardRef;
+var reactIs_development_8$1 = reactIs_development$1.Fragment;
+var reactIs_development_9$1 = reactIs_development$1.Lazy;
+var reactIs_development_10$1 = reactIs_development$1.Memo;
+var reactIs_development_11$1 = reactIs_development$1.Portal;
+var reactIs_development_12$1 = reactIs_development$1.Profiler;
+var reactIs_development_13$1 = reactIs_development$1.StrictMode;
+var reactIs_development_14$1 = reactIs_development$1.Suspense;
+var reactIs_development_15$1 = reactIs_development$1.isValidElementType;
+var reactIs_development_16$1 = reactIs_development$1.isAsyncMode;
+var reactIs_development_17$1 = reactIs_development$1.isConcurrentMode;
+var reactIs_development_18$1 = reactIs_development$1.isContextConsumer;
+var reactIs_development_19$1 = reactIs_development$1.isContextProvider;
+var reactIs_development_20$1 = reactIs_development$1.isElement;
+var reactIs_development_21$1 = reactIs_development$1.isForwardRef;
+var reactIs_development_22$1 = reactIs_development$1.isFragment;
+var reactIs_development_23$1 = reactIs_development$1.isLazy;
+var reactIs_development_24$1 = reactIs_development$1.isMemo;
+var reactIs_development_25$1 = reactIs_development$1.isPortal;
+var reactIs_development_26$1 = reactIs_development$1.isProfiler;
+var reactIs_development_27$1 = reactIs_development$1.isStrictMode;
+var reactIs_development_28$1 = reactIs_development$1.isSuspense;
+
+var reactIs$1 = createCommonjsModule(function (module) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = reactIs_production_min$1;
+} else {
+  module.exports = reactIs_development$1;
+}
+});
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols$1 = Object.getOwnPropertySymbols;
+var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+var propIsEnumerable$1 = Object.prototype.propertyIsEnumerable;
+
+function toObject$1(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative$1() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+var objectAssign$1 = shouldUseNative$1() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject$1(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty$1.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols$1) {
+			symbols = getOwnPropertySymbols$1(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable$1.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+var ReactPropTypesSecret_1$1 = ReactPropTypesSecret$2;
+
+var printWarning$2 = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$1;
+  var loggedTypeFailures$1 = {};
+  var has$2 = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning$2 = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
+  if (process.env.NODE_ENV !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (has$2(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$3);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning$2(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures$1)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures$1[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning$2(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes$1.resetWarningCache = function() {
+  if (process.env.NODE_ENV !== 'production') {
+    loggedTypeFailures$1 = {};
+  }
+};
+
+var checkPropTypes_1$1 = checkPropTypes$1;
+
+var has$3 = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning$3 = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  printWarning$3 = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull$1() {
+  return null;
+}
+
+var factoryWithTypeCheckers$1 = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (process.env.NODE_ENV !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret_1$1) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning$3(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull$1);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1$1);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!reactIs$1.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (process.env.NODE_ENV !== 'production') {
+        if (arguments.length > 1) {
+          printWarning$3(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning$3('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull$1;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has$3(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      process.env.NODE_ENV !== 'production' ? printWarning$3('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull$1;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning$3(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull$1;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1$1) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = objectAssign$1({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes_1$1;
+  ReactPropTypes.resetWarningCache = checkPropTypes_1$1.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+function emptyFunction$1() {}
+function emptyFunctionWithReset$1() {}
+emptyFunctionWithReset$1.resetWarningCache = emptyFunction$1;
+
+var factoryWithThrowingShims$1 = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret_1$1) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error(
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+    err.name = 'Invariant Violation';
+    throw err;
+  }  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  }  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset$1,
+    resetWarningCache: emptyFunction$1
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+var propTypes$1 = createCommonjsModule(function (module) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = reactIs$1;
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = factoryWithTypeCheckers$1(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = factoryWithThrowingShims$1();
+}
+});
+
+var tabbable_1 = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = findTabbableDescendants;
+/*!
+ * Adapted from jQuery UI core
+ *
+ * http://jqueryui.com
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/ui-core/
+ */
+
+var tabbableNode = /input|select|textarea|button|object/;
+
+function hidesContents(element) {
+  var zeroSize = element.offsetWidth <= 0 && element.offsetHeight <= 0;
+
+  // If the node is empty, this is good enough
+  if (zeroSize && !element.innerHTML) return true;
+
+  // Otherwise we need to check some styles
+  var style = window.getComputedStyle(element);
+  return zeroSize ? style.getPropertyValue("overflow") !== "visible" ||
+  // if 'overflow: visible' set, check if there is actually any overflow
+  element.scrollWidth <= 0 && element.scrollHeight <= 0 : style.getPropertyValue("display") == "none";
+}
+
+function visible(element) {
+  var parentElement = element;
+  while (parentElement) {
+    if (parentElement === document.body) break;
+    if (hidesContents(parentElement)) return false;
+    parentElement = parentElement.parentNode;
+  }
+  return true;
+}
+
+function focusable(element, isTabIndexNotNaN) {
+  var nodeName = element.nodeName.toLowerCase();
+  var res = tabbableNode.test(nodeName) && !element.disabled || (nodeName === "a" ? element.href || isTabIndexNotNaN : isTabIndexNotNaN);
+  return res && visible(element);
+}
+
+function tabbable(element) {
+  var tabIndex = element.getAttribute("tabindex");
+  if (tabIndex === null) tabIndex = undefined;
+  var isTabIndexNaN = isNaN(tabIndex);
+  return (isTabIndexNaN || tabIndex >= 0) && focusable(element, !isTabIndexNaN);
+}
+
+function findTabbableDescendants(element) {
+  return [].slice.call(element.querySelectorAll("*"), 0).filter(tabbable);
+}
+module.exports = exports["default"];
+});
+
+unwrapExports(tabbable_1);
+
+var focusManager = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.handleBlur = handleBlur;
+exports.handleFocus = handleFocus;
+exports.markForFocusLater = markForFocusLater;
+exports.returnFocus = returnFocus;
+exports.popWithoutFocus = popWithoutFocus;
+exports.setupScopedFocus = setupScopedFocus;
+exports.teardownScopedFocus = teardownScopedFocus;
+
+
+
+var _tabbable2 = _interopRequireDefault(tabbable_1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var focusLaterElements = [];
+var modalElement = null;
+var needToFocus = false;
+
+function handleBlur() {
+  needToFocus = true;
+}
+
+function handleFocus() {
+  if (needToFocus) {
+    needToFocus = false;
+    if (!modalElement) {
+      return;
+    }
+    // need to see how jQuery shims document.on('focusin') so we don't need the
+    // setTimeout, firefox doesn't support focusin, if it did, we could focus
+    // the element outside of a setTimeout. Side-effect of this implementation
+    // is that the document.body gets focus, and then we focus our element right
+    // after, seems fine.
+    setTimeout(function () {
+      if (modalElement.contains(document.activeElement)) {
+        return;
+      }
+      var el = (0, _tabbable2.default)(modalElement)[0] || modalElement;
+      el.focus();
+    }, 0);
+  }
+}
+
+function markForFocusLater() {
+  focusLaterElements.push(document.activeElement);
+}
+
+/* eslint-disable no-console */
+function returnFocus() {
+  var toFocus = null;
+  try {
+    if (focusLaterElements.length !== 0) {
+      toFocus = focusLaterElements.pop();
+      toFocus.focus();
+    }
+    return;
+  } catch (e) {
+    console.warn(["You tried to return focus to", toFocus, "but it is not in the DOM anymore"].join(" "));
+  }
+}
+/* eslint-enable no-console */
+
+function popWithoutFocus() {
+  focusLaterElements.length > 0 && focusLaterElements.pop();
+}
+
+function setupScopedFocus(element) {
+  modalElement = element;
+
+  if (window.addEventListener) {
+    window.addEventListener("blur", handleBlur, false);
+    document.addEventListener("focus", handleFocus, true);
+  } else {
+    window.attachEvent("onBlur", handleBlur);
+    document.attachEvent("onFocus", handleFocus);
+  }
+}
+
+function teardownScopedFocus() {
+  modalElement = null;
+
+  if (window.addEventListener) {
+    window.removeEventListener("blur", handleBlur);
+    document.removeEventListener("focus", handleFocus);
+  } else {
+    window.detachEvent("onBlur", handleBlur);
+    document.detachEvent("onFocus", handleFocus);
+  }
+}
+});
+
+unwrapExports(focusManager);
+var focusManager_1 = focusManager.handleBlur;
+var focusManager_2 = focusManager.handleFocus;
+var focusManager_3 = focusManager.markForFocusLater;
+var focusManager_4 = focusManager.returnFocus;
+var focusManager_5 = focusManager.popWithoutFocus;
+var focusManager_6 = focusManager.setupScopedFocus;
+var focusManager_7 = focusManager.teardownScopedFocus;
+
+var scopeTab_1 = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = scopeTab;
+
+
+
+var _tabbable2 = _interopRequireDefault(tabbable_1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function scopeTab(node, event) {
+  var tabbable = (0, _tabbable2.default)(node);
+
+  if (!tabbable.length) {
+    // Do nothing, since there are no elements that can receive focus.
+    event.preventDefault();
+    return;
+  }
+
+  var target = void 0;
+
+  var shiftKey = event.shiftKey;
+  var head = tabbable[0];
+  var tail = tabbable[tabbable.length - 1];
+
+  // proceed with default browser behavior on tab.
+  // Focus on last element on shift + tab.
+  if (node === document.activeElement) {
+    if (!shiftKey) return;
+    target = tail;
+  }
+
+  if (tail === document.activeElement && !shiftKey) {
+    target = head;
+  }
+
+  if (head === document.activeElement && shiftKey) {
+    target = tail;
+  }
+
+  if (target) {
+    event.preventDefault();
+    target.focus();
+    return;
+  }
+
+  // Safari radio issue.
+  //
+  // Safari does not move the focus to the radio button,
+  // so we need to force it to really walk through all elements.
+  //
+  // This is very error prone, since we are trying to guess
+  // if it is a safari browser from the first occurence between
+  // chrome or safari.
+  //
+  // The chrome user agent contains the first ocurrence
+  // as the 'chrome/version' and later the 'safari/version'.
+  var checkSafari = /(\bChrome\b|\bSafari\b)\//.exec(navigator.userAgent);
+  var isSafariDesktop = checkSafari != null && checkSafari[1] != "Chrome" && /\biPod\b|\biPad\b/g.exec(navigator.userAgent) == null;
+
+  // If we are not in safari desktop, let the browser control
+  // the focus
+  if (!isSafariDesktop) return;
+
+  var x = tabbable.indexOf(document.activeElement);
+
+  if (x > -1) {
+    x += shiftKey ? -1 : 1;
+  }
+
+  target = tabbable[x];
+
+  // If the tabbable element does not exist,
+  // focus head/tail based on shiftKey
+  if (typeof target === "undefined") {
+    event.preventDefault();
+    target = shiftKey ? tail : head;
+    target.focus();
+    return;
+  }
+
+  event.preventDefault();
+
+  target.focus();
+}
+module.exports = exports["default"];
+});
+
+unwrapExports(scopeTab_1);
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = process.env.NODE_ENV !== 'production';
+
+var warning = function() {};
+
+if (__DEV__) {
+  var printWarning$4 = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+    var argIndex = 0;
+    var message = 'Warning: ' +
+      format.replace(/%s/g, function() {
+        return args[argIndex++];
+      });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+          '`warning(condition, format, ...args)` requires a warning ' +
+          'message argument'
+      );
+    }
+    if (!condition) {
+      printWarning$4.apply(null, [format].concat(args));
+    }
+  };
+}
+
+var warning_1 = warning;
+
+var exenv = createCommonjsModule(function (module) {
+/*!
+  Copyright (c) 2015 Jed Watson.
+  Based on code that is Copyright 2013-2015, Facebook, Inc.
+  All rights reserved.
+*/
+/* global define */
+
+(function () {
+
+	var canUseDOM = !!(
+		typeof window !== 'undefined' &&
+		window.document &&
+		window.document.createElement
+	);
+
+	var ExecutionEnvironment = {
+
+		canUseDOM: canUseDOM,
+
+		canUseWorkers: typeof Worker !== 'undefined',
+
+		canUseEventListeners:
+			canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+		canUseViewport: canUseDOM && !!window.screen
+
+	};
+
+	if ( module.exports) {
+		module.exports = ExecutionEnvironment;
+	} else {
+		window.ExecutionEnvironment = ExecutionEnvironment;
+	}
+
+}());
+});
+
+var safeHTMLElement = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.canUseDOM = undefined;
+
+
+
+var _exenv2 = _interopRequireDefault(exenv);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var EE = _exenv2.default;
+
+var SafeHTMLElement = EE.canUseDOM ? window.HTMLElement : {};
+
+var canUseDOM = exports.canUseDOM = EE.canUseDOM;
+
+exports.default = SafeHTMLElement;
+});
+
+unwrapExports(safeHTMLElement);
+var safeHTMLElement_1 = safeHTMLElement.canUseDOM;
+
+var ariaAppHider = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.assertNodeList = assertNodeList;
+exports.setElement = setElement;
+exports.validateElement = validateElement;
+exports.hide = hide;
+exports.show = show;
+exports.documentNotReadyOrSSRTesting = documentNotReadyOrSSRTesting;
+exports.resetForTesting = resetForTesting;
+
+
+
+var _warning2 = _interopRequireDefault(warning_1);
+
+
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var globalElement = null;
+
+function assertNodeList(nodeList, selector) {
+  if (!nodeList || !nodeList.length) {
+    throw new Error("react-modal: No elements were found for selector " + selector + ".");
+  }
+}
+
+function setElement(element) {
+  var useElement = element;
+  if (typeof useElement === "string" && safeHTMLElement.canUseDOM) {
+    var el = document.querySelectorAll(useElement);
+    assertNodeList(el, useElement);
+    useElement = "length" in el ? el[0] : el;
+  }
+  globalElement = useElement || globalElement;
+  return globalElement;
+}
+
+function validateElement(appElement) {
+  if (!appElement && !globalElement) {
+    (0, _warning2.default)(false, ["react-modal: App element is not defined.", "Please use `Modal.setAppElement(el)` or set `appElement={el}`.", "This is needed so screen readers don't see main content", "when modal is opened. It is not recommended, but you can opt-out", "by setting `ariaHideApp={false}`."].join(" "));
+
+    return false;
+  }
+
+  return true;
+}
+
+function hide(appElement) {
+  if (validateElement(appElement)) {
+    (appElement || globalElement).setAttribute("aria-hidden", "true");
+  }
+}
+
+function show(appElement) {
+  if (validateElement(appElement)) {
+    (appElement || globalElement).removeAttribute("aria-hidden");
+  }
+}
+
+function documentNotReadyOrSSRTesting() {
+  globalElement = null;
+}
+
+function resetForTesting() {
+  globalElement = null;
+}
+});
+
+unwrapExports(ariaAppHider);
+var ariaAppHider_1 = ariaAppHider.assertNodeList;
+var ariaAppHider_2 = ariaAppHider.setElement;
+var ariaAppHider_3 = ariaAppHider.validateElement;
+var ariaAppHider_4 = ariaAppHider.hide;
+var ariaAppHider_5 = ariaAppHider.show;
+var ariaAppHider_6 = ariaAppHider.documentNotReadyOrSSRTesting;
+var ariaAppHider_7 = ariaAppHider.resetForTesting;
+
+var classList = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.dumpClassLists = dumpClassLists;
+var htmlClassList = {};
+var docBodyClassList = {};
+
+function dumpClassLists() {
+  if (process.env.NODE_ENV !== "production") {
+    var classes = document.getElementsByTagName("html")[0].className;
+    var buffer = "Show tracked classes:\n\n";
+
+    buffer += "<html /> (" + classes + "):\n";
+    for (var x in htmlClassList) {
+      buffer += "  " + x + " " + htmlClassList[x] + "\n";
+    }
+
+    classes = document.body.className;
+
+    // eslint-disable-next-line max-len
+    buffer += "\n\ndoc.body (" + classes + "):\n";
+    for (var _x in docBodyClassList) {
+      buffer += "  " + _x + " " + docBodyClassList[_x] + "\n";
+    }
+
+    buffer += "\n";
+
+    // eslint-disable-next-line no-console
+    console.log(buffer);
+  }
+}
+
+/**
+ * Track the number of reference of a class.
+ * @param {object} poll The poll to receive the reference.
+ * @param {string} className The class name.
+ * @return {string}
+ */
+var incrementReference = function incrementReference(poll, className) {
+  if (!poll[className]) {
+    poll[className] = 0;
+  }
+  poll[className] += 1;
+  return className;
+};
+
+/**
+ * Drop the reference of a class.
+ * @param {object} poll The poll to receive the reference.
+ * @param {string} className The class name.
+ * @return {string}
+ */
+var decrementReference = function decrementReference(poll, className) {
+  if (poll[className]) {
+    poll[className] -= 1;
+  }
+  return className;
+};
+
+/**
+ * Track a class and add to the given class list.
+ * @param {Object} classListRef A class list of an element.
+ * @param {Object} poll         The poll to be used.
+ * @param {Array}  classes      The list of classes to be tracked.
+ */
+var trackClass = function trackClass(classListRef, poll, classes) {
+  classes.forEach(function (className) {
+    incrementReference(poll, className);
+    classListRef.add(className);
+  });
+};
+
+/**
+ * Untrack a class and remove from the given class list if the reference
+ * reaches 0.
+ * @param {Object} classListRef A class list of an element.
+ * @param {Object} poll         The poll to be used.
+ * @param {Array}  classes      The list of classes to be untracked.
+ */
+var untrackClass = function untrackClass(classListRef, poll, classes) {
+  classes.forEach(function (className) {
+    decrementReference(poll, className);
+    poll[className] === 0 && classListRef.remove(className);
+  });
+};
+
+/**
+ * Public inferface to add classes to the document.body.
+ * @param {string} bodyClass The class string to be added.
+ *                           It may contain more then one class
+ *                           with ' ' as separator.
+ */
+var add = exports.add = function add(element, classString) {
+  return trackClass(element.classList, element.nodeName.toLowerCase() == "html" ? htmlClassList : docBodyClassList, classString.split(" "));
+};
+
+/**
+ * Public inferface to remove classes from the document.body.
+ * @param {string} bodyClass The class string to be added.
+ *                           It may contain more then one class
+ *                           with ' ' as separator.
+ */
+var remove = exports.remove = function remove(element, classString) {
+  return untrackClass(element.classList, element.nodeName.toLowerCase() == "html" ? htmlClassList : docBodyClassList, classString.split(" "));
+};
+});
+
+unwrapExports(classList);
+var classList_1 = classList.dumpClassLists;
+var classList_2 = classList.add;
+var classList_3 = classList.remove;
+
+var portalOpenInstances_1 = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// Tracks portals that are open and emits events to subscribers
+
+var PortalOpenInstances = function PortalOpenInstances() {
+  var _this = this;
+
+  _classCallCheck(this, PortalOpenInstances);
+
+  this.register = function (openInstance) {
+    if (_this.openInstances.indexOf(openInstance) !== -1) {
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.warn("React-Modal: Cannot register modal instance that's already open");
+      }
+      return;
+    }
+    _this.openInstances.push(openInstance);
+    _this.emit("register");
+  };
+
+  this.deregister = function (openInstance) {
+    var index = _this.openInstances.indexOf(openInstance);
+    if (index === -1) {
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.warn("React-Modal: Unable to deregister " + openInstance + " as " + "it was never registered");
+      }
+      return;
+    }
+    _this.openInstances.splice(index, 1);
+    _this.emit("deregister");
+  };
+
+  this.subscribe = function (callback) {
+    _this.subscribers.push(callback);
+  };
+
+  this.emit = function (eventType) {
+    _this.subscribers.forEach(function (subscriber) {
+      return subscriber(eventType,
+      // shallow copy to avoid accidental mutation
+      _this.openInstances.slice());
+    });
+  };
+
+  this.openInstances = [];
+  this.subscribers = [];
+};
+
+var portalOpenInstances = new PortalOpenInstances();
+
+exports.default = portalOpenInstances;
+module.exports = exports["default"];
+});
+
+unwrapExports(portalOpenInstances_1);
+
+var bodyTrap_1 = createCommonjsModule(function (module) {
+
+
+
+var _portalOpenInstances2 = _interopRequireDefault(portalOpenInstances_1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Body focus trap see Issue #742
+
+var before = void 0,
+    after = void 0,
+    instances = [];
+
+function focusContent() {
+  if (instances.length === 0) {
+    if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
+      console.warn("React-Modal: Open instances > 0 expected");
+    }
+    return;
+  }
+  instances[instances.length - 1].focusContent();
+}
+
+function bodyTrap(eventType, openInstances) {
+  if (!before || !after) {
+    before = document.createElement("div");
+    before.setAttribute("data-react-modal-body-trap", "");
+    before.style.position = "absolute";
+    before.style.opacity = "0";
+    before.setAttribute("tabindex", "0");
+    before.addEventListener("focus", focusContent);
+    after = before.cloneNode();
+    after.addEventListener("focus", focusContent);
+  }
+
+  instances = openInstances;
+
+  if (instances.length > 0) {
+    // Add focus trap
+    if (document.body.firstChild !== before) {
+      document.body.insertBefore(before, document.body.firstChild);
+    }
+    if (document.body.lastChild !== after) {
+      document.body.appendChild(after);
+    }
+  } else {
+    // Remove focus trap
+    if (before.parentElement) {
+      before.parentElement.removeChild(before);
+    }
+    if (after.parentElement) {
+      after.parentElement.removeChild(after);
+    }
+  }
+}
+
+_portalOpenInstances2.default.subscribe(bodyTrap);
+});
+
+unwrapExports(bodyTrap_1);
+
+var ModalPortal_1 = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+
+
+var _react2 = _interopRequireDefault(React);
+
+
+
+var _propTypes2 = _interopRequireDefault(propTypes$1);
+
+
+
+var focusManager$1 = _interopRequireWildcard(focusManager);
+
+
+
+var _scopeTab2 = _interopRequireDefault(scopeTab_1);
+
+
+
+var ariaAppHider$1 = _interopRequireWildcard(ariaAppHider);
+
+
+
+var classList$1 = _interopRequireWildcard(classList);
+
+
+
+var _safeHTMLElement2 = _interopRequireDefault(safeHTMLElement);
+
+
+
+var _portalOpenInstances2 = _interopRequireDefault(portalOpenInstances_1);
+
+
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// so that our CSS is statically analyzable
+var CLASS_NAMES = {
+  overlay: "ReactModal__Overlay",
+  content: "ReactModal__Content"
+};
+
+var TAB_KEY = 9;
+var ESC_KEY = 27;
+
+var ariaHiddenInstances = 0;
+
+var ModalPortal = function (_Component) {
+  _inherits(ModalPortal, _Component);
+
+  function ModalPortal(props) {
+    _classCallCheck(this, ModalPortal);
+
+    var _this = _possibleConstructorReturn(this, (ModalPortal.__proto__ || Object.getPrototypeOf(ModalPortal)).call(this, props));
+
+    _this.setOverlayRef = function (overlay) {
+      _this.overlay = overlay;
+      _this.props.overlayRef && _this.props.overlayRef(overlay);
+    };
+
+    _this.setContentRef = function (content) {
+      _this.content = content;
+      _this.props.contentRef && _this.props.contentRef(content);
+    };
+
+    _this.afterClose = function () {
+      var _this$props = _this.props,
+          appElement = _this$props.appElement,
+          ariaHideApp = _this$props.ariaHideApp,
+          htmlOpenClassName = _this$props.htmlOpenClassName,
+          bodyOpenClassName = _this$props.bodyOpenClassName;
+
+      // Remove classes.
+
+      bodyOpenClassName && classList$1.remove(document.body, bodyOpenClassName);
+
+      htmlOpenClassName && classList$1.remove(document.getElementsByTagName("html")[0], htmlOpenClassName);
+
+      // Reset aria-hidden attribute if all modals have been removed
+      if (ariaHideApp && ariaHiddenInstances > 0) {
+        ariaHiddenInstances -= 1;
+
+        if (ariaHiddenInstances === 0) {
+          ariaAppHider$1.show(appElement);
+        }
+      }
+
+      if (_this.props.shouldFocusAfterRender) {
+        if (_this.props.shouldReturnFocusAfterClose) {
+          focusManager$1.returnFocus();
+          focusManager$1.teardownScopedFocus();
+        } else {
+          focusManager$1.popWithoutFocus();
+        }
+      }
+
+      if (_this.props.onAfterClose) {
+        _this.props.onAfterClose();
+      }
+
+      _portalOpenInstances2.default.deregister(_this);
+    };
+
+    _this.open = function () {
+      _this.beforeOpen();
+      if (_this.state.afterOpen && _this.state.beforeClose) {
+        clearTimeout(_this.closeTimer);
+        _this.setState({ beforeClose: false });
+      } else {
+        if (_this.props.shouldFocusAfterRender) {
+          focusManager$1.setupScopedFocus(_this.node);
+          focusManager$1.markForFocusLater();
+        }
+
+        _this.setState({ isOpen: true }, function () {
+          _this.setState({ afterOpen: true });
+
+          if (_this.props.isOpen && _this.props.onAfterOpen) {
+            _this.props.onAfterOpen({
+              overlayEl: _this.overlay,
+              contentEl: _this.content
+            });
+          }
+        });
+      }
+    };
+
+    _this.close = function () {
+      if (_this.props.closeTimeoutMS > 0) {
+        _this.closeWithTimeout();
+      } else {
+        _this.closeWithoutTimeout();
+      }
+    };
+
+    _this.focusContent = function () {
+      return _this.content && !_this.contentHasFocus() && _this.content.focus();
+    };
+
+    _this.closeWithTimeout = function () {
+      var closesAt = Date.now() + _this.props.closeTimeoutMS;
+      _this.setState({ beforeClose: true, closesAt: closesAt }, function () {
+        _this.closeTimer = setTimeout(_this.closeWithoutTimeout, _this.state.closesAt - Date.now());
+      });
+    };
+
+    _this.closeWithoutTimeout = function () {
+      _this.setState({
+        beforeClose: false,
+        isOpen: false,
+        afterOpen: false,
+        closesAt: null
+      }, _this.afterClose);
+    };
+
+    _this.handleKeyDown = function (event) {
+      if (event.keyCode === TAB_KEY) {
+        (0, _scopeTab2.default)(_this.content, event);
+      }
+
+      if (_this.props.shouldCloseOnEsc && event.keyCode === ESC_KEY) {
+        event.stopPropagation();
+        _this.requestClose(event);
+      }
+    };
+
+    _this.handleOverlayOnClick = function (event) {
+      if (_this.shouldClose === null) {
+        _this.shouldClose = true;
+      }
+
+      if (_this.shouldClose && _this.props.shouldCloseOnOverlayClick) {
+        if (_this.ownerHandlesClose()) {
+          _this.requestClose(event);
+        } else {
+          _this.focusContent();
+        }
+      }
+      _this.shouldClose = null;
+    };
+
+    _this.handleContentOnMouseUp = function () {
+      _this.shouldClose = false;
+    };
+
+    _this.handleOverlayOnMouseDown = function (event) {
+      if (!_this.props.shouldCloseOnOverlayClick && event.target == _this.overlay) {
+        event.preventDefault();
+      }
+    };
+
+    _this.handleContentOnClick = function () {
+      _this.shouldClose = false;
+    };
+
+    _this.handleContentOnMouseDown = function () {
+      _this.shouldClose = false;
+    };
+
+    _this.requestClose = function (event) {
+      return _this.ownerHandlesClose() && _this.props.onRequestClose(event);
+    };
+
+    _this.ownerHandlesClose = function () {
+      return _this.props.onRequestClose;
+    };
+
+    _this.shouldBeClosed = function () {
+      return !_this.state.isOpen && !_this.state.beforeClose;
+    };
+
+    _this.contentHasFocus = function () {
+      return document.activeElement === _this.content || _this.content.contains(document.activeElement);
+    };
+
+    _this.buildClassName = function (which, additional) {
+      var classNames = (typeof additional === "undefined" ? "undefined" : _typeof(additional)) === "object" ? additional : {
+        base: CLASS_NAMES[which],
+        afterOpen: CLASS_NAMES[which] + "--after-open",
+        beforeClose: CLASS_NAMES[which] + "--before-close"
+      };
+      var className = classNames.base;
+      if (_this.state.afterOpen) {
+        className = className + " " + classNames.afterOpen;
+      }
+      if (_this.state.beforeClose) {
+        className = className + " " + classNames.beforeClose;
+      }
+      return typeof additional === "string" && additional ? className + " " + additional : className;
+    };
+
+    _this.attributesFromObject = function (prefix, items) {
+      return Object.keys(items).reduce(function (acc, name) {
+        acc[prefix + "-" + name] = items[name];
+        return acc;
+      }, {});
+    };
+
+    _this.state = {
+      afterOpen: false,
+      beforeClose: false
+    };
+
+    _this.shouldClose = null;
+    _this.moveFromContentToOverlay = null;
+    return _this;
+  }
+
+  _createClass(ModalPortal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.isOpen) {
+        this.open();
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (process.env.NODE_ENV !== "production") {
+        if (prevProps.bodyOpenClassName !== this.props.bodyOpenClassName) {
+          // eslint-disable-next-line no-console
+          console.warn('React-Modal: "bodyOpenClassName" prop has been modified. ' + "This may cause unexpected behavior when multiple modals are open.");
+        }
+        if (prevProps.htmlOpenClassName !== this.props.htmlOpenClassName) {
+          // eslint-disable-next-line no-console
+          console.warn('React-Modal: "htmlOpenClassName" prop has been modified. ' + "This may cause unexpected behavior when multiple modals are open.");
+        }
+      }
+
+      if (this.props.isOpen && !prevProps.isOpen) {
+        this.open();
+      } else if (!this.props.isOpen && prevProps.isOpen) {
+        this.close();
+      }
+
+      // Focus only needs to be set once when the modal is being opened
+      if (this.props.shouldFocusAfterRender && this.state.isOpen && !prevState.isOpen) {
+        this.focusContent();
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.state.isOpen) {
+        this.afterClose();
+      }
+      clearTimeout(this.closeTimer);
+    }
+  }, {
+    key: "beforeOpen",
+    value: function beforeOpen() {
+      var _props = this.props,
+          appElement = _props.appElement,
+          ariaHideApp = _props.ariaHideApp,
+          htmlOpenClassName = _props.htmlOpenClassName,
+          bodyOpenClassName = _props.bodyOpenClassName;
+
+      // Add classes.
+
+      bodyOpenClassName && classList$1.add(document.body, bodyOpenClassName);
+
+      htmlOpenClassName && classList$1.add(document.getElementsByTagName("html")[0], htmlOpenClassName);
+
+      if (ariaHideApp) {
+        ariaHiddenInstances += 1;
+        ariaAppHider$1.hide(appElement);
+      }
+
+      _portalOpenInstances2.default.register(this);
+    }
+
+    // Don't steal focus from inner elements
+
+  }, {
+    key: "render",
+    value: function render() {
+      var _props2 = this.props,
+          id = _props2.id,
+          className = _props2.className,
+          overlayClassName = _props2.overlayClassName,
+          defaultStyles = _props2.defaultStyles;
+
+      var contentStyles = className ? {} : defaultStyles.content;
+      var overlayStyles = overlayClassName ? {} : defaultStyles.overlay;
+
+      return this.shouldBeClosed() ? null : _react2.default.createElement(
+        "div",
+        {
+          ref: this.setOverlayRef,
+          className: this.buildClassName("overlay", overlayClassName),
+          style: _extends({}, overlayStyles, this.props.style.overlay),
+          onClick: this.handleOverlayOnClick,
+          onMouseDown: this.handleOverlayOnMouseDown
+        },
+        _react2.default.createElement(
+          "div",
+          _extends({
+            id: id,
+            ref: this.setContentRef,
+            style: _extends({}, contentStyles, this.props.style.content),
+            className: this.buildClassName("content", className),
+            tabIndex: "-1",
+            onKeyDown: this.handleKeyDown,
+            onMouseDown: this.handleContentOnMouseDown,
+            onMouseUp: this.handleContentOnMouseUp,
+            onClick: this.handleContentOnClick,
+            role: this.props.role,
+            "aria-label": this.props.contentLabel
+          }, this.attributesFromObject("aria", this.props.aria || {}), this.attributesFromObject("data", this.props.data || {}), {
+            "data-testid": this.props.testId
+          }),
+          this.props.children
+        )
+      );
+    }
+  }]);
+
+  return ModalPortal;
+}(React.Component);
+
+ModalPortal.defaultProps = {
+  style: {
+    overlay: {},
+    content: {}
+  },
+  defaultStyles: {}
+};
+ModalPortal.propTypes = {
+  isOpen: _propTypes2.default.bool.isRequired,
+  defaultStyles: _propTypes2.default.shape({
+    content: _propTypes2.default.object,
+    overlay: _propTypes2.default.object
+  }),
+  style: _propTypes2.default.shape({
+    content: _propTypes2.default.object,
+    overlay: _propTypes2.default.object
+  }),
+  className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+  overlayClassName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+  bodyOpenClassName: _propTypes2.default.string,
+  htmlOpenClassName: _propTypes2.default.string,
+  ariaHideApp: _propTypes2.default.bool,
+  appElement: _propTypes2.default.instanceOf(_safeHTMLElement2.default),
+  onAfterOpen: _propTypes2.default.func,
+  onAfterClose: _propTypes2.default.func,
+  onRequestClose: _propTypes2.default.func,
+  closeTimeoutMS: _propTypes2.default.number,
+  shouldFocusAfterRender: _propTypes2.default.bool,
+  shouldCloseOnOverlayClick: _propTypes2.default.bool,
+  shouldReturnFocusAfterClose: _propTypes2.default.bool,
+  role: _propTypes2.default.string,
+  contentLabel: _propTypes2.default.string,
+  aria: _propTypes2.default.object,
+  data: _propTypes2.default.object,
+  children: _propTypes2.default.node,
+  shouldCloseOnEsc: _propTypes2.default.bool,
+  overlayRef: _propTypes2.default.func,
+  contentRef: _propTypes2.default.func,
+  id: _propTypes2.default.string,
+  testId: _propTypes2.default.string
+};
+exports.default = ModalPortal;
+module.exports = exports["default"];
+});
+
+unwrapExports(ModalPortal_1);
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+function componentWillMount() {
+  // Call this.constructor.gDSFP to support sub-classes.
+  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+  if (state !== null && state !== undefined) {
+    this.setState(state);
+  }
+}
+
+function componentWillReceiveProps(nextProps) {
+  // Call this.constructor.gDSFP to support sub-classes.
+  // Use the setState() updater to ensure state isn't stale in certain edge cases.
+  function updater(prevState) {
+    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+    return state !== null && state !== undefined ? state : null;
+  }
+  // Binding "this" is important for shallow renderer support.
+  this.setState(updater.bind(this));
+}
+
+function componentWillUpdate(nextProps, nextState) {
+  try {
+    var prevProps = this.props;
+    var prevState = this.state;
+    this.props = nextProps;
+    this.state = nextState;
+    this.__reactInternalSnapshotFlag = true;
+    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+      prevProps,
+      prevState
+    );
+  } finally {
+    this.props = prevProps;
+    this.state = prevState;
+  }
+}
+
+// React may warn about cWM/cWRP/cWU methods being deprecated.
+// Add a flag to suppress these warnings for this special case.
+componentWillMount.__suppressDeprecationWarning = true;
+componentWillReceiveProps.__suppressDeprecationWarning = true;
+componentWillUpdate.__suppressDeprecationWarning = true;
+
+function polyfill(Component) {
+  var prototype = Component.prototype;
+
+  if (!prototype || !prototype.isReactComponent) {
+    throw new Error('Can only polyfill class components');
+  }
+
+  if (
+    typeof Component.getDerivedStateFromProps !== 'function' &&
+    typeof prototype.getSnapshotBeforeUpdate !== 'function'
+  ) {
+    return Component;
+  }
+
+  // If new component APIs are defined, "unsafe" lifecycles won't be called.
+  // Error if any of these lifecycles are present,
+  // Because they would work differently between older and newer (16.3+) versions of React.
+  var foundWillMountName = null;
+  var foundWillReceivePropsName = null;
+  var foundWillUpdateName = null;
+  if (typeof prototype.componentWillMount === 'function') {
+    foundWillMountName = 'componentWillMount';
+  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+    foundWillMountName = 'UNSAFE_componentWillMount';
+  }
+  if (typeof prototype.componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'componentWillReceiveProps';
+  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+  }
+  if (typeof prototype.componentWillUpdate === 'function') {
+    foundWillUpdateName = 'componentWillUpdate';
+  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+  }
+  if (
+    foundWillMountName !== null ||
+    foundWillReceivePropsName !== null ||
+    foundWillUpdateName !== null
+  ) {
+    var componentName = Component.displayName || Component.name;
+    var newApiName =
+      typeof Component.getDerivedStateFromProps === 'function'
+        ? 'getDerivedStateFromProps()'
+        : 'getSnapshotBeforeUpdate()';
+
+    throw Error(
+      'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
+        componentName +
+        ' uses ' +
+        newApiName +
+        ' but also contains the following legacy lifecycles:' +
+        (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
+        (foundWillReceivePropsName !== null
+          ? '\n  ' + foundWillReceivePropsName
+          : '') +
+        (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
+        '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
+        'https://fb.me/react-async-component-lifecycle-hooks'
+    );
+  }
+
+  // React <= 16.2 does not support static getDerivedStateFromProps.
+  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+  // Newer versions of React will ignore these lifecycles if gDSFP exists.
+  if (typeof Component.getDerivedStateFromProps === 'function') {
+    prototype.componentWillMount = componentWillMount;
+    prototype.componentWillReceiveProps = componentWillReceiveProps;
+  }
+
+  // React <= 16.2 does not support getSnapshotBeforeUpdate.
+  // As a workaround, use cWU to invoke the new lifecycle.
+  // Newer versions of React will ignore that lifecycle if gSBU exists.
+  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+    if (typeof prototype.componentDidUpdate !== 'function') {
+      throw new Error(
+        'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
+      );
+    }
+
+    prototype.componentWillUpdate = componentWillUpdate;
+
+    var componentDidUpdate = prototype.componentDidUpdate;
+
+    prototype.componentDidUpdate = function componentDidUpdatePolyfill(
+      prevProps,
+      prevState,
+      maybeSnapshot
+    ) {
+      // 16.3+ will not execute our will-update method;
+      // It will pass a snapshot value to did-update though.
+      // Older versions will require our polyfilled will-update value.
+      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+      // Because for <= 15.x versions this might be a "prevContext" object.
+      // We also can't just check "__reactInternalSnapshot",
+      // Because get-snapshot might return a falsy value.
+      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+      var snapshot = this.__reactInternalSnapshotFlag
+        ? this.__reactInternalSnapshot
+        : maybeSnapshot;
+
+      componentDidUpdate.call(this, prevProps, prevState, snapshot);
+    };
+  }
+
+  return Component;
+}
+
+var reactLifecyclesCompat_es = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    polyfill: polyfill
+});
+
+var Modal_1 = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.bodyOpenClassName = exports.portalClassName = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+
+
+var _react2 = _interopRequireDefault(React);
+
+
+
+var _reactDom2 = _interopRequireDefault(reactDom);
+
+
+
+var _propTypes2 = _interopRequireDefault(propTypes$1);
+
+
+
+var _ModalPortal2 = _interopRequireDefault(ModalPortal_1);
+
+
+
+var ariaAppHider$1 = _interopRequireWildcard(ariaAppHider);
+
+
+
+var _safeHTMLElement2 = _interopRequireDefault(safeHTMLElement);
+
+
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var portalClassName = exports.portalClassName = "ReactModalPortal";
+var bodyOpenClassName = exports.bodyOpenClassName = "ReactModal__Body--open";
+
+var isReact16 = _reactDom2.default.createPortal !== undefined;
+
+var getCreatePortal = function getCreatePortal() {
+  return isReact16 ? _reactDom2.default.createPortal : _reactDom2.default.unstable_renderSubtreeIntoContainer;
+};
+
+function getParentElement(parentSelector) {
+  return parentSelector();
+}
+
+var Modal = function (_Component) {
+  _inherits(Modal, _Component);
+
+  function Modal() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Modal);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal.__proto__ || Object.getPrototypeOf(Modal)).call.apply(_ref, [this].concat(args))), _this), _this.removePortal = function () {
+      !isReact16 && _reactDom2.default.unmountComponentAtNode(_this.node);
+      var parent = getParentElement(_this.props.parentSelector);
+      if (parent) {
+        parent.removeChild(_this.node);
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('React-Modal: "parentSelector" prop did not returned any DOM ' + "element. Make sure that the parent element is unmounted to " + "avoid any memory leaks.");
+      }
+    }, _this.portalRef = function (ref) {
+      _this.portal = ref;
+    }, _this.renderPortal = function (props) {
+      var createPortal = getCreatePortal();
+      var portal = createPortal(_this, _react2.default.createElement(_ModalPortal2.default, _extends({ defaultStyles: Modal.defaultStyles }, props)), _this.node);
+      _this.portalRef(portal);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Modal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (!safeHTMLElement.canUseDOM) return;
+
+      if (!isReact16) {
+        this.node = document.createElement("div");
+      }
+      this.node.className = this.props.portalClassName;
+
+      var parent = getParentElement(this.props.parentSelector);
+      parent.appendChild(this.node);
+
+      !isReact16 && this.renderPortal(this.props);
+    }
+  }, {
+    key: "getSnapshotBeforeUpdate",
+    value: function getSnapshotBeforeUpdate(prevProps) {
+      var prevParent = getParentElement(prevProps.parentSelector);
+      var nextParent = getParentElement(this.props.parentSelector);
+      return { prevParent: prevParent, nextParent: nextParent };
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, _, snapshot) {
+      if (!safeHTMLElement.canUseDOM) return;
+      var _props = this.props,
+          isOpen = _props.isOpen,
+          portalClassName = _props.portalClassName;
+
+
+      if (prevProps.portalClassName !== portalClassName) {
+        this.node.className = portalClassName;
+      }
+
+      var prevParent = snapshot.prevParent,
+          nextParent = snapshot.nextParent;
+
+      if (nextParent !== prevParent) {
+        prevParent.removeChild(this.node);
+        nextParent.appendChild(this.node);
+      }
+
+      // Stop unnecessary renders if modal is remaining closed
+      if (!prevProps.isOpen && !isOpen) return;
+
+      !isReact16 && this.renderPortal(this.props);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (!safeHTMLElement.canUseDOM || !this.node || !this.portal) return;
+
+      var state = this.portal.state;
+      var now = Date.now();
+      var closesAt = state.isOpen && this.props.closeTimeoutMS && (state.closesAt || now + this.props.closeTimeoutMS);
+
+      if (closesAt) {
+        if (!state.beforeClose) {
+          this.portal.closeWithTimeout();
+        }
+
+        setTimeout(this.removePortal, closesAt - now);
+      } else {
+        this.removePortal();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (!safeHTMLElement.canUseDOM || !isReact16) {
+        return null;
+      }
+
+      if (!this.node && isReact16) {
+        this.node = document.createElement("div");
+      }
+
+      var createPortal = getCreatePortal();
+      return createPortal(_react2.default.createElement(_ModalPortal2.default, _extends({
+        ref: this.portalRef,
+        defaultStyles: Modal.defaultStyles
+      }, this.props)), this.node);
+    }
+  }], [{
+    key: "setAppElement",
+    value: function setAppElement(element) {
+      ariaAppHider$1.setElement(element);
+    }
+
+    /* eslint-disable react/no-unused-prop-types */
+
+    /* eslint-enable react/no-unused-prop-types */
+
+  }]);
+
+  return Modal;
+}(React.Component);
+
+Modal.propTypes = {
+  isOpen: _propTypes2.default.bool.isRequired,
+  style: _propTypes2.default.shape({
+    content: _propTypes2.default.object,
+    overlay: _propTypes2.default.object
+  }),
+  portalClassName: _propTypes2.default.string,
+  bodyOpenClassName: _propTypes2.default.string,
+  htmlOpenClassName: _propTypes2.default.string,
+  className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+    base: _propTypes2.default.string.isRequired,
+    afterOpen: _propTypes2.default.string.isRequired,
+    beforeClose: _propTypes2.default.string.isRequired
+  })]),
+  overlayClassName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+    base: _propTypes2.default.string.isRequired,
+    afterOpen: _propTypes2.default.string.isRequired,
+    beforeClose: _propTypes2.default.string.isRequired
+  })]),
+  appElement: _propTypes2.default.instanceOf(_safeHTMLElement2.default),
+  onAfterOpen: _propTypes2.default.func,
+  onRequestClose: _propTypes2.default.func,
+  closeTimeoutMS: _propTypes2.default.number,
+  ariaHideApp: _propTypes2.default.bool,
+  shouldFocusAfterRender: _propTypes2.default.bool,
+  shouldCloseOnOverlayClick: _propTypes2.default.bool,
+  shouldReturnFocusAfterClose: _propTypes2.default.bool,
+  parentSelector: _propTypes2.default.func,
+  aria: _propTypes2.default.object,
+  data: _propTypes2.default.object,
+  role: _propTypes2.default.string,
+  contentLabel: _propTypes2.default.string,
+  shouldCloseOnEsc: _propTypes2.default.bool,
+  overlayRef: _propTypes2.default.func,
+  contentRef: _propTypes2.default.func
+};
+Modal.defaultProps = {
+  isOpen: false,
+  portalClassName: portalClassName,
+  bodyOpenClassName: bodyOpenClassName,
+  role: "dialog",
+  ariaHideApp: true,
+  closeTimeoutMS: 0,
+  shouldFocusAfterRender: true,
+  shouldCloseOnEsc: true,
+  shouldCloseOnOverlayClick: true,
+  shouldReturnFocusAfterClose: true,
+  parentSelector: function parentSelector() {
+    return document.body;
+  }
+};
+Modal.defaultStyles = {
+  overlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(255, 255, 255, 0.75)"
+  },
+  content: {
+    position: "absolute",
+    top: "40px",
+    left: "40px",
+    right: "40px",
+    bottom: "40px",
+    border: "1px solid #ccc",
+    background: "#fff",
+    overflow: "auto",
+    WebkitOverflowScrolling: "touch",
+    borderRadius: "4px",
+    outline: "none",
+    padding: "20px"
+  }
+};
+
+
+(0, reactLifecyclesCompat_es.polyfill)(Modal);
+
+exports.default = Modal;
+});
+
+unwrapExports(Modal_1);
+var Modal_2 = Modal_1.bodyOpenClassName;
+var Modal_3 = Modal_1.portalClassName;
+
+var lib = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+
+var _Modal2 = _interopRequireDefault(Modal_1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Modal2.default;
+module.exports = exports["default"];
+});
+
+var ReactModal = unwrapExports(lib);
+
+/* eslint-disable*/
+/**  배열 또는 오브젝트가 또는 스트링이 비어 있는지 검사합니다..  */
+var isEmpty = function (data) {
+    if (typeof data === "string") {
+        if (data === "")
+            return true;
+        return false;
+    }
+    else {
+        for (var key in data) {
+            if (Object.prototype.hasOwnProperty.call(data, key))
+                return false;
+        }
+    }
+    if (typeof data === "object") {
+        if (Object.prototype.toString.call(data) === "[object Date]")
+            return false;
+    }
+    return true;
+};
+
+// 카드 만료일 Get
+//  전화번호 형식에 맞추어 - 붙임
+var autoHypenPhone = function (str) {
+    if (str === void 0) { str = ""; }
+    var inStr = str.replace(/[^0-9]/g, "");
+    var tmp = "";
+    if (inStr.length < 4) {
+        return inStr;
+    }
+    if (inStr.length < 7) {
+        tmp += inStr.substr(0, 3);
+        tmp += "-";
+        tmp += inStr.substr(3);
+        return tmp;
+    }
+    if (inStr.length < 11) {
+        tmp += inStr.substr(0, 3);
+        tmp += "-";
+        tmp += inStr.substr(3, 3);
+        tmp += "-";
+        tmp += inStr.substr(6);
+        return tmp;
+    }
+    if (inStr.length >= 11) {
+        tmp += inStr.substr(0, 3);
+        tmp += "-";
+        tmp += inStr.substr(3, 4);
+        tmp += "-";
+        tmp += inStr.substr(7);
+        return tmp;
+    }
+    return inStr;
+};
+//  3글자 마다 ,붙여줌
+var autoComma = function (str) {
+    if (str === void 0) { str = ""; }
+    if (typeof str === "number")
+        return autoComma(str.toString());
+    var t = "" + str;
+    var comma = /,/g;
+    t = t.replace(comma, "");
+    var x = t.split(".");
+    var x1 = x[0];
+    var x2 = x.length > 1 ? "." + x[1] : "";
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, "$1" + "," + "$2");
+    }
+    return x1 + x2;
+};
+// 숫자로된 string 타입을 반환
+var numberStr = function (str) {
+    if (str === void 0) { str = ""; }
+    return str.replace(/[^0-9.]/g, "");
+};
+// 스트링을 숫자로 만듬
+var toNumber = function (value) {
+    if (value === void 0) { value = ""; }
+    if (typeof value === "number")
+        return value;
+    return parseInt(value.replace(/[^0-9.]/g, ""));
+};
+
+var insideRedirect = function (lastDestination) {
+    var locationHerfTo = process.env.REACT_APP_API_CLIENT_URL + "/#/" + lastDestination;
+    return locationHerfTo;
 };
 
 var moment = createCommonjsModule(function (module, exports) {
@@ -9932,6 +12808,420 @@ var moment = module.exports = momentTimezone;
 moment.tz.load(require$$1);
 });
 
+/* eslint-disable no-restricted-syntax */
+var searchListCreater = function (dataList, asName, asDetail, asId) {
+    var formatedArray = [];
+    if (dataList) {
+        formatedArray = dataList.map(function (value) {
+            var tempObject = { name: 'asName Not Matched', detail: undefined, id: undefined };
+            for (var key in value) {
+                if (Object.prototype.hasOwnProperty.call(value, key)) {
+                    var inValue = value[key];
+                    if (key === asName) {
+                        tempObject.name = inValue;
+                    }
+                    if (key === asDetail) {
+                        tempObject.detail = inValue;
+                    }
+                    if (key === asId) {
+                        tempObject.id = inValue;
+                    }
+                }
+            }
+            return tempObject;
+        });
+    }
+    return formatedArray;
+};
+
+var DEFAULT_PAGE_INFO = {
+    currentPage: 0,
+    rowCount: 0,
+    totalPage: 0
+};
+var DEFAULT_PHOTO = "https://s3.ap-northeast-2.amazonaws.com/booking.stayjanda.files/infographic/noimg.png";
+
+function queryDataFormater(data, queryName, dataName, falsyReturn) {
+    if (isEmpty(data) || isEmpty(data[queryName]))
+        return falsyReturn;
+    var inData = data[queryName];
+    var error = inData.error;
+    if (error) {
+        return falsyReturn;
+    }
+    if (dataName && inData[dataName])
+        return inData[dataName];
+    return inData;
+}
+// this is used for pagination
+function getFromResult(result, dataKey, falsyData) {
+    if (isEmpty(result)) {
+        return {
+            data: falsyData,
+            pageInfo: DEFAULT_PAGE_INFO
+        };
+    }
+    if (isEmpty(result[dataKey])) {
+        return {
+            data: falsyData,
+            pageInfo: DEFAULT_PAGE_INFO
+        };
+    }
+    return {
+        data: result[dataKey],
+        pageInfo: result["pageInfo"]
+    };
+    // console.error('queryDataFormater: EMPTY DATA');
+}
+
+var DateFormat;
+(function (DateFormat) {
+    DateFormat["WITH_TIME"] = "YY.MM.DD HH:mm";
+    DateFormat["YYMMDD"] = "YY.MM.DD";
+    DateFormat["MMDD"] = "MM.DD";
+})(DateFormat || (DateFormat = {}));
+var Language;
+(function (Language) {
+    Language["KOREAN"] = "KOREAN";
+    Language["ENGLISH"] = "ENGLISH";
+    Language["JAPANESE"] = "JAPANESE";
+    Language["CHINESE"] = "CHINESE";
+})(Language || (Language = {}));
+var LanguageShortResverse;
+(function (LanguageShortResverse) {
+    LanguageShortResverse["kr"] = "KOREAN";
+    LanguageShortResverse["jp"] = "JAPANESE";
+    LanguageShortResverse["cn"] = "CHINESE";
+    LanguageShortResverse["en"] = "ENGLISH";
+})(LanguageShortResverse || (LanguageShortResverse = {}));
+var LanguageResverseShort;
+(function (LanguageResverseShort) {
+    LanguageResverseShort["KOREAN"] = "kr";
+    LanguageResverseShort["ENGLISH"] = "en";
+    LanguageResverseShort["JAPANESE"] = "jp";
+    LanguageResverseShort["CHINESE"] = "cn";
+})(LanguageResverseShort || (LanguageResverseShort = {}));
+var LangShortToNational;
+(function (LangShortToNational) {
+    LangShortToNational["kr"] = "kr";
+    LangShortToNational["en"] = "gb";
+    LangShortToNational["jp"] = "jp";
+    LangShortToNational["cn"] = "cn";
+})(LangShortToNational || (LangShortToNational = {}));
+var LanguageItSelf;
+(function (LanguageItSelf) {
+    LanguageItSelf["KOREAN"] = "\uD55C\uAD6D\uC5B4";
+    LanguageItSelf["ENGLISH"] = "English";
+    LanguageItSelf["JAPANESE"] = "\u65E5\u672C\u8A9E";
+    LanguageItSelf["CHINESE"] = "\u4E2D\u570B\u8A9E";
+})(LanguageItSelf || (LanguageItSelf = {}));
+var RoomGender;
+(function (RoomGender) {
+    RoomGender["FEMALE"] = "FEMALE";
+    RoomGender["MALE"] = "MALE";
+    RoomGender["ANY"] = "ANY";
+    RoomGender["SEPARATELY"] = "SEPARATELY";
+})(RoomGender || (RoomGender = {}));
+//= =============================================================
+// START Enums from Front End
+//= =============================================================
+var TimePerMs;
+(function (TimePerMs) {
+    TimePerMs[TimePerMs["DAY"] = 86400000] = "DAY";
+    TimePerMs[TimePerMs["H"] = 3600000] = "H";
+    TimePerMs[TimePerMs["M"] = 60000] = "M";
+})(TimePerMs || (TimePerMs = {}));
+var Gender;
+(function (Gender) {
+    Gender["FEMALE"] = "FEMALE";
+    Gender["MALE"] = "MALE";
+})(Gender || (Gender = {}));
+var ExcelExpress;
+(function (ExcelExpress) {
+    ExcelExpress["SELECT_OP"] = "SELECT_OP";
+    ExcelExpress["DATE_OP"] = "DATE_OP";
+    ExcelExpress["COUNT_OP"] = "COUNT_OP";
+})(ExcelExpress || (ExcelExpress = {}));
+var NotiType;
+(function (NotiType) {
+    NotiType["ELSE"] = "ELSE";
+    NotiType["NEW_BOOKING"] = "NEW_BOOKING";
+    NotiType["PRODUCT_EXPIRE"] = "PRODUCT_EXPIRE";
+    NotiType["TO_ALL"] = "TO_ALL";
+})(NotiType || (NotiType = {}));
+var Funnels;
+(function (Funnels) {
+    Funnels["AGODA"] = "AGODA";
+    Funnels["AIRBNB"] = "AIRBNB";
+    Funnels["BOOKING_COM"] = "BOOKING_COM";
+    Funnels["COOPANG"] = "COOPANG";
+    Funnels["ELSE_CHANNEL"] = "ELSE_CHANNEL";
+    Funnels["FREINDS"] = "FREINDS";
+    Funnels["HOMEPAGE"] = "HOMEPAGE";
+    Funnels["NAVER"] = "NAVER";
+    Funnels["PHONE_CALL"] = "PHONE_CALL";
+    Funnels["WALK_IN"] = "WALK_IN";
+    Funnels["YANOLJA"] = "YANOLJA";
+    Funnels["YEOGIEOTTAE"] = "YEOGIEOTTAE";
+})(Funnels || (Funnels = {}));
+var SendTarget;
+(function (SendTarget) {
+    SendTarget["BOTH"] = "BOTH";
+    SendTarget["GUEST"] = "GUEST";
+    SendTarget["HOST"] = "HOST";
+})(SendTarget || (SendTarget = {}));
+var LayoutType;
+(function (LayoutType) {
+    LayoutType["Layout_A"] = "Layout_A";
+    LayoutType["Layout_B"] = "Layout_B";
+})(LayoutType || (LayoutType = {}));
+var Day;
+(function (Day) {
+    Day["FRI"] = "FRI";
+    Day["MON"] = "MON";
+    Day["SAT"] = "SAT";
+    Day["SUN"] = "SUN";
+    Day["THU"] = "THU";
+    Day["TUE"] = "TUE";
+    Day["WED"] = "WED";
+})(Day || (Day = {}));
+
+// 자정으로 시간을 맞춰주는 함수
+var setMidNight = function (time) {
+    return Math.floor(time / TimePerMs.DAY) * TimePerMs.DAY - 32400 * 1000;
+};
+
+var removeNullOfObject = function (obj) {
+    if (typeof obj === "object") {
+        for (var _i = 0, _a = Object.entries(obj); _i < _a.length; _i++) {
+            var _b = _a[_i], key = _b[0], value = _b[1];
+            if (value === null)
+                delete obj[key];
+            else if (typeof value === "object")
+                removeNullOfObject(value);
+        }
+    }
+};
+
+function randomIntFromInterval(min, max) {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function muResult(result, queryName, returnKey) {
+    if (isEmpty(result))
+        return false;
+    if (isEmpty(result["data"]))
+        return false;
+    if (isEmpty(result["data"][queryName]))
+        return false;
+    // @ts-ignore 이것도 ExecutionResult 처럼 만들면 가능하다
+    if (!result["data"][queryName].ok)
+        return false;
+    if (returnKey === undefined)
+        return true;
+    var returnValue = result["data"][queryName][returnKey];
+    return returnValue;
+}
+
+function instanceOfA(object, key, nullCheck) {
+    if (!nullCheck) {
+        return key in object;
+    }
+    else {
+        if (object[key]) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
+var jsonString = function (value) {
+    return JSON.stringify(Array.from(value.entries()));
+};
+
+// 해당인덱스가
+var isLast = function (index, arr, trueReturn, falsereturn) {
+    if (index + 1 === arr.length) {
+        return trueReturn || true;
+    }
+    else {
+        return falsereturn;
+    }
+};
+
+// 유틸리티가 더 많이 쌓이면
+var JDutils = {
+    isEmpty: isEmpty,
+    textAlignClass: textAlignClass,
+    colorClass: colorClass,
+    randomIntFromInterval: randomIntFromInterval,
+    searchListFormat: searchListCreater,
+    autoHypen: autoHypenPhone,
+    queryDataFormater: queryDataFormater,
+    setMidNight: setMidNight,
+    autoComma: autoComma,
+    isLast: isLast,
+    numberStr: numberStr,
+    toNumber: toNumber,
+    muResult: muResult,
+    removeNullOfObject: removeNullOfObject,
+    jsonString: jsonString,
+    insideRedirect: insideRedirect,
+    instanceOfA: instanceOfA,
+    s4: s4,
+    getFromResult: getFromResult
+};
+
+var ModalEndSection = function (_a) {
+    var className = _a.className, children = _a.children, props = __rest(_a, ["className", "children"]);
+    return (React.createElement("div", __assign({ className: "JDmodal__endSection " + className }, props), children));
+};
+
+var JDtypho = function (_a) {
+    var component = _a.component, decoration = _a.decoration, size = _a.size, className = _a.className, children = _a.children, color = _a.color, mb = _a.mb, weight = _a.weight, mr = _a.mr, hover = _a.hover, style = _a.style, props = __rest(_a, ["component", "decoration", "size", "className", "children", "color", "mb", "weight", "mr", "hover", "style"]);
+    var classes = classnames("JDtypho", className, __assign(__assign(__assign(__assign({ "JDtypho--hover": hover, "JDtypho-deco--bar": decoration === "bar" }, JDmbClass(mb)), JDmrClass(mr)), textSizeClass("JDtypho", size)), colorClass("JDtypho", color)));
+    var commonProps = __assign({ className: classes, style: __assign({ fontWeight: weight }, style) }, props);
+    if (component) {
+        if (component === "h6")
+            return React.createElement("h6", __assign({}, commonProps), children);
+        if (component === "h5")
+            return React.createElement("h5", __assign({}, commonProps), children);
+        if (component === "h4")
+            return React.createElement("h4", __assign({}, commonProps), children);
+        if (component === "h3")
+            return React.createElement("h3", __assign({}, commonProps), children);
+        if (component === "h2")
+            return React.createElement("h2", __assign({}, commonProps), children);
+        if (component === "h1")
+            return React.createElement("h1", __assign({}, commonProps), children);
+    }
+    return React.createElement("div", __assign({}, commonProps), children);
+};
+
+var ModalHeadSection = function (_a) {
+    var title = _a.title, closeFn = _a.closeFn;
+    return (React.createElement("div", { className: "JDmodal__head" },
+        React.createElement(JDtypho, { size: "h6", mb: "no" }, title),
+        React.createElement(JDIcon, { hover: true, onClick: function () {
+                closeFn && closeFn();
+            }, className: "JDmodal__closeIcon", icon: "close" })));
+};
+
+// let CAN_CLOSE_MODAL = false;
+var JDmodal = function (_a) {
+    var info = _a.info, center = _a.center, head = _a.head, className = _a.className, isUnderHeader = _a.isUnderHeader, isOpen = _a.isOpen, minContentsWidth = _a.minContentsWidth, minWidth = _a.minWidth, closeModal = _a.closeModal, isAlert = _a.isAlert, children = _a.children, confirm = _a.confirm, foot = _a.foot, paddingSize = _a.paddingSize, _b = _a.confirmCallBackFn, confirmCallBackFn = _b === void 0 ? info === null || info === void 0 ? void 0 : info.confirmCallBackFn : _b, visibleOverflow = _a.visibleOverflow, trueMessage = _a.trueMessage, _c = _a.noAnimation, noAnimation = _c === void 0 ? true : _c, falseMessage = _a.falseMessage, loading = _a.loading, _d = _a.contentClassName, contentClassName = _d === void 0 ? "JDmodal__body" : _d, contentWrapStyleProp = _a.contentWrapStyle, _e = _a.appElement, appElement = _e === void 0 ? document.getElementById("root") || undefined : _e, props = __rest(_a, ["info", "center", "head", "className", "isUnderHeader", "isOpen", "minContentsWidth", "minWidth", "closeModal", "isAlert", "children", "confirm", "foot", "paddingSize", "confirmCallBackFn", "visibleOverflow", "trueMessage", "noAnimation", "falseMessage", "loading", "contentClassName", "contentWrapStyle", "appElement"]);
+    var shouldAnimation = useState(!noAnimation)[0];
+    // 여기에서 info로 들어온것과 openModal 명렁으로 들어온것들 조합함
+    var inInfo = (function () {
+        var inInInfo = {};
+        if (info && info.trueBtns) {
+            inInInfo.trueMessage = info.trueBtns || trueMessage;
+        }
+        if (info && info.falseBtns) {
+            inInInfo.falseMessage = info.falseBtns || falseMessage;
+        }
+        return inInInfo;
+    })();
+    // 👿 curtton => overlay
+    var overlayClassNames = classnames("JDmodal-overlay", undefined, {
+        "JDmodal-overlay--noAnimation": !shouldAnimation,
+        "JDmodal-overlay--underHeader": isUnderHeader
+    });
+    var classes = classnames("Modal JDmodal", className, {
+        "JDmodal--center": center,
+        "JDmodal--visibleOverflow": visibleOverflow,
+        "JDmodal--alert": isAlert || confirm,
+        "JDmodal--alertWaring": info && info.thema === "warn",
+        "JDmodal--noAnimation": !shouldAnimation,
+        "JDmodal--paddingLarge": paddingSize === "large",
+        "JDmodal--loading": loading
+    });
+    var defualtJDmodalProps = {
+        className: "Modal " + classes,
+        overlayClassName: "Overlay"
+    };
+    var hanldeClickBtn = function (flag, key) {
+        confirmCallBackFn && confirmCallBackFn(flag, key);
+        info && info.callBack && info.callBack(flag, key);
+        closeModal();
+    };
+    var sharedTrueBtnProp = {
+        thema: "primary",
+        mode: "flat",
+        onClick: function () {
+            hanldeClickBtn(true);
+        },
+        label: trueMessage || "confirm"
+    };
+    var sharedFalseBtnProp = {
+        mode: "flat",
+        thema: "warn",
+        onClick: function () {
+            hanldeClickBtn(false);
+        },
+        label: falseMessage || "close"
+    };
+    var misClickPreventCloseModal = function () {
+        // if (CAN_CLOSE_MODAL) {
+        closeModal();
+        // }
+    };
+    var modalStyle = {
+        minWidth: loading || minWidth
+    };
+    var modalContentsStyle = __assign({ minWidth: minContentsWidth }, contentWrapStyleProp);
+    var getChildren = function () { return (React.createElement("div", { className: contentClassName, style: modalContentsStyle },
+        children,
+        info && info.children,
+        typeof info === "string" && info,
+        info && info.txt)); };
+    if (loading) {
+        return (React.createElement(ReactModal, __assign({}, defualtJDmodalProps, props, { overlayClassName: overlayClassNames, isOpen: true }),
+            React.createElement(Preloader, { loading: true, size: "large" })));
+    }
+    return (React.createElement(ReactModal, __assign({ isOpen: isOpen, onRequestClose: misClickPreventCloseModal, appElement: appElement }, props, defualtJDmodalProps, { 
+        // @ts-ignore
+        style: { content: __assign({}, modalStyle) }, overlayClassName: overlayClassNames }),
+        React.createElement("div", { onClick: function (e) {
+                e.stopPropagation();
+            } },
+            head && React.createElement(ModalHeadSection, __assign({ closeFn: closeModal }, head)),
+            getChildren(),
+            foot && React.createElement("div", { className: "JDmodal__endSection" }, foot),
+            confirm && (React.createElement(Fragment, null,
+                React.createElement(ModalEndSection, { className: "JDmodal__endSection--confirm" },
+                    inInfo.trueMessage instanceof Array ? (inInfo.trueMessage.map(function (message) { return (React.createElement(Button, __assign({ key: s4() }, sharedTrueBtnProp, { className: "TConfirmTureBtn", label: "" + message.msg, onClick: function () {
+                            hanldeClickBtn(true, message.callBackKey);
+                        } }))); })) : (React.createElement(Button, __assign({}, sharedTrueBtnProp))),
+                    inInfo.falseMessage instanceof Array ? (inInfo.falseMessage.map(function (message) { return (React.createElement(Button, __assign({ key: s4() }, sharedFalseBtnProp, { className: "TConfirmFalseBtn", label: "" + message, onClick: function () {
+                            hanldeClickBtn(false, message.callBackKey);
+                        } }))); })) : (React.createElement(Button, __assign({}, sharedFalseBtnProp)))))))));
+};
+
+var JDLabel = function (_a) {
+    var txt = _a.txt, className = _a.className;
+    return (React.createElement("span", { className: "JDlabel " + className }, txt));
+};
+JDLabel.propTypes = {
+    txt: propTypes$1.string.isRequired
+};
+
+var hightPortalElement = function () {
+    return document.getElementById("JDpriorityPortal");
+};
+
+//
+var optionFineder = function (options, value) {
+    var targetOp = options.find(function (op) { return op.value === value; });
+    if (!targetOp) {
+        return { value: "", label: "Select" };
+    }
+    return targetOp;
+};
+
 var useShouldSave = function (updateValue) {
     var isInitialMount = useRef(true);
     var _a = useState(false), shouldSave = _a[0], setShouldSave = _a[1];
@@ -10262,117 +13552,11 @@ var hook = {
     useCheckBoxTable: useCheckBoxTable,
 };
 
-var DateFormat;
-(function (DateFormat) {
-    DateFormat["WITH_TIME"] = "YY.MM.DD HH:mm";
-    DateFormat["YYMMDD"] = "YY.MM.DD";
-    DateFormat["MMDD"] = "MM.DD";
-})(DateFormat || (DateFormat = {}));
-var Language;
-(function (Language) {
-    Language["KOREAN"] = "KOREAN";
-    Language["ENGLISH"] = "ENGLISH";
-    Language["JAPANESE"] = "JAPANESE";
-    Language["CHINESE"] = "CHINESE";
-})(Language || (Language = {}));
-var LanguageShortResverse;
-(function (LanguageShortResverse) {
-    LanguageShortResverse["kr"] = "KOREAN";
-    LanguageShortResverse["jp"] = "JAPANESE";
-    LanguageShortResverse["cn"] = "CHINESE";
-    LanguageShortResverse["en"] = "ENGLISH";
-})(LanguageShortResverse || (LanguageShortResverse = {}));
-var LanguageResverseShort;
-(function (LanguageResverseShort) {
-    LanguageResverseShort["KOREAN"] = "kr";
-    LanguageResverseShort["ENGLISH"] = "en";
-    LanguageResverseShort["JAPANESE"] = "jp";
-    LanguageResverseShort["CHINESE"] = "cn";
-})(LanguageResverseShort || (LanguageResverseShort = {}));
-var LangShortToNational;
-(function (LangShortToNational) {
-    LangShortToNational["kr"] = "kr";
-    LangShortToNational["en"] = "gb";
-    LangShortToNational["jp"] = "jp";
-    LangShortToNational["cn"] = "cn";
-})(LangShortToNational || (LangShortToNational = {}));
-var LanguageItSelf;
-(function (LanguageItSelf) {
-    LanguageItSelf["KOREAN"] = "\uD55C\uAD6D\uC5B4";
-    LanguageItSelf["ENGLISH"] = "English";
-    LanguageItSelf["JAPANESE"] = "\u65E5\u672C\u8A9E";
-    LanguageItSelf["CHINESE"] = "\u4E2D\u570B\u8A9E";
-})(LanguageItSelf || (LanguageItSelf = {}));
-var RoomGender;
-(function (RoomGender) {
-    RoomGender["FEMALE"] = "FEMALE";
-    RoomGender["MALE"] = "MALE";
-    RoomGender["ANY"] = "ANY";
-    RoomGender["SEPARATELY"] = "SEPARATELY";
-})(RoomGender || (RoomGender = {}));
-//= =============================================================
-// START Enums from Front End
-//= =============================================================
-var TimePerMs;
-(function (TimePerMs) {
-    TimePerMs[TimePerMs["DAY"] = 86400000] = "DAY";
-    TimePerMs[TimePerMs["H"] = 3600000] = "H";
-    TimePerMs[TimePerMs["M"] = 60000] = "M";
-})(TimePerMs || (TimePerMs = {}));
-var Gender;
-(function (Gender) {
-    Gender["FEMALE"] = "FEMALE";
-    Gender["MALE"] = "MALE";
-})(Gender || (Gender = {}));
-var ExcelExpress;
-(function (ExcelExpress) {
-    ExcelExpress["SELECT_OP"] = "SELECT_OP";
-    ExcelExpress["DATE_OP"] = "DATE_OP";
-    ExcelExpress["COUNT_OP"] = "COUNT_OP";
-})(ExcelExpress || (ExcelExpress = {}));
-var NotiType;
-(function (NotiType) {
-    NotiType["ELSE"] = "ELSE";
-    NotiType["NEW_BOOKING"] = "NEW_BOOKING";
-    NotiType["PRODUCT_EXPIRE"] = "PRODUCT_EXPIRE";
-    NotiType["TO_ALL"] = "TO_ALL";
-})(NotiType || (NotiType = {}));
-var Funnels;
-(function (Funnels) {
-    Funnels["AGODA"] = "AGODA";
-    Funnels["AIRBNB"] = "AIRBNB";
-    Funnels["BOOKING_COM"] = "BOOKING_COM";
-    Funnels["COOPANG"] = "COOPANG";
-    Funnels["ELSE_CHANNEL"] = "ELSE_CHANNEL";
-    Funnels["FREINDS"] = "FREINDS";
-    Funnels["HOMEPAGE"] = "HOMEPAGE";
-    Funnels["NAVER"] = "NAVER";
-    Funnels["PHONE_CALL"] = "PHONE_CALL";
-    Funnels["WALK_IN"] = "WALK_IN";
-    Funnels["YANOLJA"] = "YANOLJA";
-    Funnels["YEOGIEOTTAE"] = "YEOGIEOTTAE";
-})(Funnels || (Funnels = {}));
-var SendTarget;
-(function (SendTarget) {
-    SendTarget["BOTH"] = "BOTH";
-    SendTarget["GUEST"] = "GUEST";
-    SendTarget["HOST"] = "HOST";
-})(SendTarget || (SendTarget = {}));
-var LayoutType;
-(function (LayoutType) {
-    LayoutType["Layout_A"] = "Layout_A";
-    LayoutType["Layout_B"] = "Layout_B";
-})(LayoutType || (LayoutType = {}));
-var Day;
-(function (Day) {
-    Day["FRI"] = "FRI";
-    Day["MON"] = "MON";
-    Day["SAT"] = "SAT";
-    Day["SUN"] = "SUN";
-    Day["THU"] = "THU";
-    Day["TUE"] = "TUE";
-    Day["WED"] = "WED";
-})(Day || (Day = {}));
+var PreloaderModal = function (_a) {
+    var loading = _a.loading;
+    var modalHook = useModal();
+    return createPortal(React.createElement(JDmodal, __assign({ loading: loading, portalClassName: "PreloaderModal" }, modalHook, { isOpen: loading || false })), hightPortalElement());
+};
 
-export { DEFAULT_PHOTO, Day, Button as JDbutton, JDIcon as JDicon, JDToolTip as JDtooltip, hook as hooks };
+export { DEFAULT_PHOTO, Day, Button as JDbutton, JDcard, JDIcon as JDicon, JDLabel as JDlabel, JDmodal, Preloader as JDpreloader, PreloaderModal as JDpreloaderModal, JDToolTip as JDtooltip, hook as hooks, JDutils as utills };
 //# sourceMappingURL=index.es.js.map

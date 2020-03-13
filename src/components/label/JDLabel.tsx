@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "./JDLabel.scss";
 
 interface IProp {
   txt: string | JSX.Element;

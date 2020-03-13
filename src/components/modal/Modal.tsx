@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import ReactModal from "react-modal";
-import "./Modal.scss";
 import classNames from "classnames";
 import Button from "../button/Button";
 import { IUseModal } from "../../hooks/hook";

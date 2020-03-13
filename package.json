@@ -1,6 +1,6 @@
 {
   "name": "@janda-com/front",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -15,7 +15,7 @@
     "storybook": "start-storybook"
   },
   "files": [
-    "dist"
+    "./build"
   ],
   "keywords": [],
   "author": "",

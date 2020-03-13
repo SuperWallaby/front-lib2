@@ -1,6 +1,6 @@
 {
   "name": "@janda-com/front",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -14,6 +14,9 @@
     "test": "jest --coverage",
     "storybook": "start-storybook"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -64,7 +67,8 @@
   "standard": {
     "ignore": [
       "node_modules/",
-      "build/"
+      "build/",
+      ".storybook/"
     ],
     "globals": [
       "describe",

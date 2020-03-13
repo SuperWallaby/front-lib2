@@ -1,6 +1,6 @@
 {
   "name": "@janda-com/front",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "rm -r ./build",
     "build": "rollup -c",
-    "postbuild": "cd ./src/scss && npx copy *.scss **/* ../../build/scss && cd ../../",
+    "postbuild": "cd ./src/scss && npx copy *.scss **/* ../../build/scss && cd ../../ && yarn publish",
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",

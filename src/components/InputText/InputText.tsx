@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
-import "./InputText.scss";
-import "./Textarea.scss";
 import classNames from "classnames";
 import JDicon from "../icons/Icons";
 import autoHyphen, {

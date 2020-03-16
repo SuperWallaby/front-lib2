@@ -1,0 +1,8 @@
+/node_modules
+/coverage
+.storybook
+.vscode
+
+rollup.config.js
+yarn-error.log
+.prettierignore

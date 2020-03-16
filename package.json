@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "rm -r ./build",
     "build": "rollup -c",
-    "postbuild": "cd ./src/scss && npx copy *.scss **/* ../../build/scss && cd ../../ && yarn publish",
+    "postbuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../ && yarn publish",
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",

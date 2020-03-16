@@ -14,6 +14,22 @@ import muResult from "./mutationResultSafty";
 import instanceOfA from "./interfaceMatch";
 import jsonString from "./jsonString";
 import isLast from "./isLast";
+import {
+  isEmail,
+  isNumber,
+  isYYYYMMDD,
+  isPhone,
+  isName,
+  isUrl,
+  isMaxOver,
+  isPassword,
+  isNumberMinMax,
+  isLengthIn,
+  isHaveScharacter,
+  isHaveNumber,
+  isIncludeSpecialChar
+  // @ts-ignore
+} from "./validater.js";
 
 const JDutils = {
   isEmpty,
@@ -34,7 +50,20 @@ const JDutils = {
   insideRedirect,
   instanceOfA,
   s4,
-  getFromResult
+  getFromResult,
+  isEmail,
+  isNumber,
+  isYYYYMMDD,
+  isPhone,
+  isName,
+  isUrl,
+  isMaxOver,
+  isPassword,
+  isNumberMinMax,
+  isLengthIn,
+  isHaveScharacter,
+  isHaveNumber,
+  isIncludeSpecialChar
 };
 
 export default JDutils;

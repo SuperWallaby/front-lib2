@@ -14,6 +14,7 @@ import muResult from "./mutationResultSafty";
 import instanceOfA from "./interfaceMatch";
 import jsonString from "./jsonString";
 import isLast from "./isLast";
+import onCompletedMessage from "./onCompletedMessage";
 import {
   isEmail,
   isNumber,
@@ -39,6 +40,7 @@ const JDutils = {
   searchListFormat,
   autoHypen,
   queryDataFormater,
+  onCompletedMessage,
   setMidNight,
   autoComma,
   isLast,
@@ -81,6 +83,7 @@ export {
   setMidNight,
   searchHoliday,
   randomIntFromInterval,
+  onCompletedMessage,
   autoComma,
   numberStr,
   muResult,

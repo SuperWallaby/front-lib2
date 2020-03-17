@@ -2,6 +2,7 @@ import JDbutton from "./components/button/Button";
 import JDicon from "./components/icons/Icons";
 import JDtooltip from "./components/tooltip/Tooltip";
 import JDcard from "./components/cards/Card";
+import Toast from "./components/toast/Toast";
 import JDmodal from "./components/modal/Modal";
 import JDlabel from "./components/label/JDLabel";
 import JDpreloader from "./components/preloader/Preloader";
@@ -26,5 +27,6 @@ export {
     JDpreloader,
     JDlabel,
     utills,
-    InputText
+    InputText,
+    Toast
 }

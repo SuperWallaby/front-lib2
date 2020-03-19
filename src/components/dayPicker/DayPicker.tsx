@@ -1,9 +1,10 @@
 import React, { Fragment, useRef, useEffect } from "react";
-import DayPicker, {
+import {
   CaptionElementProps,
   DayModifiers,
   DayPickerProps
 } from "react-day-picker";
+const DayPicker = require("react-day-picker").default;
 import classNames from "classnames";
 import Caption from "./component/Caption";
 import Information from "./component/Information";
@@ -40,6 +41,7 @@ export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
   displayCaption?: boolean;
   displayHeader?: boolean;
   displayInfo?: boolean;
+  currentLang?: "kr" | "en";
 }
 
 const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
@@ -62,6 +64,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     setFrom,
     to,
     setTo,
+    currentLang,
     entered,
     displayYear = true,
     canSelectBeforeDay,
@@ -187,7 +190,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--center": calenaderPosition === "left"
     });
 
-    const { MONTHS, WEEKDAYS_LONG, WEEKDAYS_SHORT } = getDateCharLang();
+    const { MONTHS, WEEKDAYS_EN, WEEKDAYS_KR } = getDateCharLang();
 
     const modifiers = { start: from || undefined, end: entered || undefined };
     const selectedDays: any = [from, { from, to: entered }];
@@ -222,8 +225,8 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       onDayMouseEnter: handleDayMouseEnter,
       pagedNavigation: true,
       months: MONTHS,
-      weekdaysLong: WEEKDAYS_LONG,
-      weekdaysShort: WEEKDAYS_SHORT,
+      weekdaysLong: currentLang ? WEEKDAYS_EN : WEEKDAYS_KR,
+      weekdaysShort: currentLang ? WEEKDAYS_EN : WEEKDAYS_KR,
       locale: lang,
       showOutsideDays: false,
       disabledDays: canSelectBeforeDay ? undefined : [{ before: new Date() }],

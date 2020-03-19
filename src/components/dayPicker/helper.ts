@@ -14,7 +14,7 @@ export const getDateCharLang = () => {
     `11`,
     `12`
   ];
-  const WEEKDAYS_LONG = [
+  const WEEKDAYS_EN = [
     "sun",
     "mon",
     "tue",
@@ -23,14 +23,14 @@ export const getDateCharLang = () => {
     "fri",
     "sat"
   ];
-  const WEEKDAYS_SHORT = [
-    "sun",
-    "mon",
-    "tue",
-    "wed",
-    "thu",
-    "fri",
-    "sat"
+  const WEEKDAYS_KR = [
+    "일",
+    "월",
+    "화",
+    "수",
+    "목",
+    "금",
+    "토"
   ];
-  return { WEEKDAYS_SHORT, WEEKDAYS_LONG, MONTHS };
+  return { WEEKDAYS_EN, WEEKDAYS_KR, MONTHS };
 };

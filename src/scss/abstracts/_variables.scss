@@ -277,11 +277,11 @@ $nav-link-padding: $standard-small-space 0rem !default;
 // ANCHOR ICon=========================================================================
 $icon-space: $standard-small-space !default;
 $icon-size-default: 1em !default;
-$icon-size-tiny: 0.8rem !default;
-$icon-size-small: 1.25rem !default;
-$icon-size-normal: 1.45rem !default;
-$icon-size-large: 1.8rem !default;
-$icon-size-huge: 2.25rem !default;
+$icon-size-tiny: 0.6rem !default;
+$icon-size-small: 0.8rem !default;
+$icon-size-normal: 1rem !default;
+$icon-size-large: 1.4rem !default;
+$icon-size-huge: 1.8rem !default;
 $icon-size-largest: 4rem !default;
 $icon-size-largest2: 6rem !default;
 
@@ -289,7 +289,7 @@ $icon-size-largest2: 6rem !default;
 // ANCHOR DayPicker=========================================================================
 
 // -- Shared styles
-$daypicker-block-height: 3rem !default;
+$daypicker-block-height: 2.4rem !default;
 $daypicker-border-tick: 0.2rem !default;
 $daypicker-disabled-color: $grey-level2 !default;
 $daypicker-otuside-bgcolor: #fff !default;

@@ -1,4 +1,4 @@
-@import "../style_config.scss";
+@import "../../style_config.scss";
 
 // end부분 회색주석
 #root,
@@ -148,6 +148,7 @@
         .DayPicker-Weekday {
           flex: 1 1;
           text-align: center;
+          font-size: $typho-small;
 
           abbr {
             text-decoration: none;
@@ -180,6 +181,7 @@
 
             .DayPicker-Day {
               cursor: pointer;
+              font-size: $typho-small;
               flex: 1 1;
               border-color: white;
               text-align: center;
@@ -254,7 +256,7 @@
         }
       }
     }
-    @import "./component/horizen/horizen.scss";
-    @import "./component/input/JDdayPickerInput.scss";
+    @import "./horizen.scss";
+    @import "./JDdayPickerInput.scss";
   }
 }

@@ -38,6 +38,7 @@ const ArrowDayByDay: React.FC<Iprops> = ({
       </span>
       <JDIcon
         hover
+        size="tiny"
         className="DayPicker-box--inputComponent__arrow DayPicker-box--inputComponent__arrow--right"
         onClick={e => {
           e.stopPropagation();

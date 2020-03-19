@@ -4,6 +4,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../button/Button";
 
+const JDMonthTextChanger = (Month: string | number): string => {
+  if (Month === "December" || Month === 11) return "12";
+  if (Month === "November" || Month === 10) return "11";
+  if (Month === "October" || Month === 9) return "10";
+  if (Month === "September" || Month === 8) return "9";
+  if (Month === "August" || Month === 7) return "8";
+  if (Month === "July" || Month === 6) return "7";
+  if (Month === "June" || Month === 5) return "6";
+  if (Month === "May" || Month === 4) return "5";
+  if (Month === "April" || Month === 3) return "4";
+  if (Month === "March" || Month === 2) return "3";
+  if (Month === "February" || Month === 1) return "2";
+  if (Month === "January" || Month === 0) return "1";
+  console.error("JDMonthTextChanger Month is not 0~11");
+  return "";
+};
+
 const Navbar = ({
   nextMonth,
   previousMonth,
@@ -21,8 +38,14 @@ const Navbar = ({
       <Button
         size="small"
         className={"DayPicker__navbtns--left"}
-        label={prev}
-        icon="arrowRight"
+        label={JDMonthTextChanger(prev)}
+        iconProp={{
+          style: {
+            transform: "scale(-1)"
+          },
+          icon: "arrowRight",
+          size: "small"
+        }}
         mode="flat"
         float="left"
         iconClasses={["JDbtn__icon--left"]}
@@ -31,8 +54,11 @@ const Navbar = ({
       <Button
         size="small"
         className="DayPicker__navbtns--right"
-        label={next}
-        icon="arrowRight"
+        label={JDMonthTextChanger(next)}
+        iconProp={{
+          icon: "arrowRight",
+          size: "small"
+        }}
         mode="flat"
         float="right"
         onClick={() => onNextClick()}

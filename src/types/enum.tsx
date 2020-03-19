@@ -11,6 +11,15 @@ export enum Language {
   CHINESE = "CHINESE"
 }
 
+export enum WindowSize {
+  sm = "sm",
+  md = "sm",
+  wmd = "wmd",
+  lg = "lg",
+  wlg = "wlg",
+  full = "full"
+}
+
 export type TNationalShort = "kr" | "gb" | "jp" | "cn";
 export type TLanguageShort = "kr" | "en" | "jp" | "cn";
 

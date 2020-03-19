@@ -9,6 +9,7 @@ html {
 main {
   height: 100%;
 }
+
 .container {
   margin: 0 auto;
   max-width: $container-width;
@@ -23,71 +24,57 @@ main {
   }
   @include response($mobile) {
   }
-}
 
-.container--full {
-  margin: 0 auto;
-  width: auto;
-  max-width: none;
-}
-
-.container--sm {
-  margin: 0 auto;
-  max-width: $container-small-width;
-}
-
-.container--md {
-  margin: 0 auto;
-  max-width: $container-middle-width;
-}
-
-.container--lg {
-  margin: 0 auto;
-  max-width: $container-large-width;
-}
-
-.container--center {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-// 상하 좌우 가운데로
-.container--centerlize {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  max-width: none;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: $header-height;
-  transition: 0.3s;
-}
-
-.bookingHost--sideOpen {
-  @include response($full, $phablet) {
-    .container--centerlize {
-      padding-left: $sideNav-width;
-    }
+  &--full {
+    margin: 0 auto;
+    width: auto;
+    max-width: none;
   }
-  @include response($tablet, $phablet) {
-    .container--centerlize {
-      padding-left: $sideNav-width-wmd;
-    }
+
+  &--sm {
+    margin: 0 auto;
+    max-width: $container-small-width;
+  }
+
+  &--md {
+    margin: 0 auto;
+    max-width: $container-middle-width;
+  }
+
+  &--lg {
+    margin: 0 auto;
+    max-width: $container-large-width;
+  }
+
+  &--center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  // 상하 좌우 가운데로
+  &--centerlize {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: $header-height/2;
+    transition: 0.3s;
+  }
+  &:after {
+      position: absolute;
+    clear: both;
+    content: "";
+    display: table;
+
   }
 }
 
-/* Self Clearing Goodness */
-.container:after,
-.row:after {
-  position: absolute;
-  clear: both;
-  content: "";
-  display: table;
-}

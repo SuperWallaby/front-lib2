@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
-import Icon from "../icons/Icons";
+import { IConProps } from "../icons/Icons";
 import Preloader from "../preloader/Preloader";
 import { colorClass } from "../../utils/autoClasses";
 import s4 from "../../utils/keyGen";
@@ -8,15 +8,16 @@ import Tooltip from "../tooltip/Tooltip";
 import { JDColor, TMarginSize } from "../../types/enum";
 import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
 import { JDatomExtentionSet, TElements } from "../../types/interface";
-import { IIcons } from "../icons/declation";
 import userTacking from "../../utils/userTracking";
+import JDIcon from "../icons/Icons";
+import { IconConifgProps } from "../icons/declation";
 
 export interface IButtonProps
   extends React.HTMLAttributes<HTMLButtonElement>,
     JDatomExtentionSet {
   disabled?: boolean;
   label?: string | TElements;
-  icon?: IIcons;
+  iconProp?: IConProps & IconConifgProps;
   refContainer?: any;
   cunsumPadding?: boolean;
   onClick?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
@@ -46,7 +47,7 @@ export interface IButtonProps
 const Button: React.FC<IButtonProps> = ({
   disabled,
   label,
-  icon,
+  iconProp,
   tooltip,
   onClick,
   iconClasses,
@@ -139,11 +140,11 @@ const Button: React.FC<IButtonProps> = ({
         <span className="JDbtn__contents">
           {children}
           {preloader ? <Preloader loading={true} /> : label}
-          {!preloader && icon && (
+          {!preloader && iconProp && (
             <i
               className={`JDbtn__icon ${iconClasses && iconClasses.join(" ")}`}
             >
-              {icon && <Icon icon={icon} />}
+              {iconProp && <JDIcon {...iconProp} />}
             </i>
           )}
         </span>

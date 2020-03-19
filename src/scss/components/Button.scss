@@ -186,7 +186,7 @@
 
   // Flat button
   &--flat {
-    box-shadow: none;
+    box-shadow: none !important;
     background-color: white;
     color: $button-flat-color;
     cursor: pointer;

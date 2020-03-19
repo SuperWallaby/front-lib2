@@ -8,8 +8,9 @@ import JDlabel from "./components/label/JDLabel";
 import JDpreloader from "./components/preloader/Preloader";
 import JDpreloaderModal from "./components/preloaderModal/PreloaderModal";
 import InputText from "./components/InputText/InputText";
-
-
+import JDalign from "./components/align/Align"
+import JDdayPicker from "./components/dayPicker/DayPicker"
+import JDdayPickerModal from "./components/dayPickerModal/DayPickerModal"
 
 import hooks, { IUseModal, IUseCheckBoxTable, IUseColor, IUseDrawer, IUseDayPicker, IUseImgsManager, IUseSelect, IusePageNation, IuseImageUploaderOption } from "./hooks/hook";
 import { JDColor, Day, IconSize, TextSize, TMarginSize } from "./types/enum"
@@ -19,7 +20,8 @@ import utills from "./utils/utils"
 const { useCheckBox, useCheckBoxTable, useDayPicker, useDebounce, useInput, useModal, usePageNation, useRadio, useRange, useRedirect, useSelect, useShouldSave, useSideNav, useStoreSelect, useSwitch, useToggle } = hooks
 
 export {
-    useCheckBox, useCheckBoxTable, useDayPicker, useDebounce, useInput, useModal, usePageNation, useRadio, useRange, useRedirect, useSelect, useShouldSave, useSideNav, useStoreSelect, useSwitch, useToggle,
+    JDdayPicker, JDdayPickerModal,
+    useCheckBox, JDalign, useCheckBoxTable, useDayPicker, useDebounce, useInput, useModal, usePageNation, useRadio, useRange, useRedirect, useSelect, useShouldSave, useSideNav, useStoreSelect, useSwitch, useToggle,
     DEFAULT_PHOTO, JDbutton, JDColor, Day, IconSize, JDicon, TextSize, TMarginSize, JDtooltip,
     hooks, IUseModal, IUseCheckBoxTable, IUseColor, IUseDrawer,
     IUseDayPicker, IUseImgsManager, IUseSelect, IusePageNation, IuseImageUploaderOption, JDcard, JDmodal,

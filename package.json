@@ -1,6 +1,6 @@
 {
   "name": "@janda-com/front",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -37,6 +37,7 @@
     "@types/moment-timezone": "^0.5.12",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "@types/react-slick": "^0.23.4",
     "@types/react-tooltip": "^3.11.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
@@ -90,6 +91,7 @@
     "@types/react-modal": "^3.10.5",
     "@types/react-select": "^3.0.10",
     "@types/react-toastify": "^4.1.0",
+    "@types/react-window-size": "^1.2.0",
     "apollo-client": "^2.6.8",
     "classnames": "^2.2.6",
     "graphql": "^14.6.0",
@@ -100,7 +102,9 @@
     "react-day-picker": "7.4",
     "react-image-file-resizer": "^0.2.1",
     "react-modal": "^3.11.2",
+    "react-slick": "^0.25.2",
     "react-toastify": "^5.5.0",
-    "react-tooltip": "^4.1.2"
+    "react-tooltip": "^4.1.2",
+    "react-window-size": "^1.2.2"
   }
 }

@@ -69,12 +69,19 @@ main {
     padding-top: $header-height/2;
     transition: 0.3s;
   }
+
+  &--vps {
+    padding-top: $standard-largest-space;
+  }
+
+  &--vpSmall {
+    padding-top: $standard-huge-space;
+  }
+
   &:after {
-      position: absolute;
+    position: absolute;
     clear: both;
     content: "";
     display: table;
-
   }
 }
-

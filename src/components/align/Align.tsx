@@ -10,6 +10,7 @@ type TFlex = {
   around?: boolean;
   wrap?: boolean;
   end?: boolean;
+  column?: boolean;
   oneone?: boolean;
   grow?: boolean;
 };
@@ -61,17 +62,16 @@ const Align: React.FC<IProps> = ({
   });
 
   if (typeof flex === "object") {
-    console.log("?");
     classes = classNames("", classes, {
       "JDflex--end": flex?.end,
       "JDflex--between": flex?.between,
       "JDflex--center": flex?.center,
       "JDflex--vCenter": flex?.vCenter,
+      "JDflex--column": flex?.column,
       "JDflex--wrap": flex?.wrap,
       "JDflex--oneone": flex?.oneone,
       "JDflex--grow": flex?.grow
     });
-    console.log(classes);
   }
 
   if (grid) {

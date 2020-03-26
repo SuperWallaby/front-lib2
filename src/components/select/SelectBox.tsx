@@ -1,15 +1,12 @@
 // TODO
 // 셀렉트박스 Width 값을 오토로 해주기
 import React from "react";
-import Select from "react-select";
-import "./SelectBox.scss";
+import Select, { ValueType } from "react-select";
 import classNames from "classnames";
-// @ts-ignore
-import { SelectComponentsProps } from "react-select/lib/Select";
+import { SelectComponentsProps } from "react-select/src/Select";
+import userTacking from "../../utils/userTracking";
 import { JDatomExtentionSet } from "../../types/interface";
 import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
-import { ValueType } from "react-select";
-import userTacking from "../../utils/userTracking";
 
 export interface IselectedOption<T = any> {
   label: string;
@@ -45,9 +42,6 @@ export interface JDselectProps extends SelectComponentsProps {
   borderColor?: "primary";
   displayArrow?: boolean;
   menuItemCenterlize?: boolean;
-  noOptionsMessage?: string;
-  placeholder?: string;
-  autoSize?: boolean;
 }
 
 const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
@@ -107,6 +101,8 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
     width: size
   };
 
+  const deafultPlaceHolder = "select";
+
   return (
     <div style={selectStyle} className={classes}>
       {label !== "" ? (
@@ -122,7 +118,7 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
         classNamePrefix="react-select"
         isDisabled={disabled}
         noOptionsMessage={() => noOptionsMessage}
-        placeholder={placeholder || "select"}
+        placeholder={placeholder || deafultPlaceHolder}
       />
       {rightLabel && (
         <span className="JDselect__label JDselect__label--right">

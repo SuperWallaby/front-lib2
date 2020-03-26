@@ -1,7 +1,7 @@
 import React from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import Container from "./Container";
-import "../../scss/components/card/Card.scss";
+import "../../scss/all.scss";
 
 export default {
   title: "Card",

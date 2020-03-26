@@ -1,7 +1,7 @@
 import React from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import DayPicker from "./DayPicker";
-import "../../scss/components/card/Card.scss";
+import "../../scss/all.scss";
 import { useDayPicker } from "../../hooks/hook";
 
 export default {

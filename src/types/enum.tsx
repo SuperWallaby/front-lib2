@@ -11,6 +11,22 @@ export enum Language {
   CHINESE = "CHINESE"
 }
 
+export enum WindowSizeNumber {
+  MOBILE = 400,
+  PHABLET = 550,
+  TABLET = 750,
+  DESKTOP = 1000,
+  DESKTOPHD = 1200
+}
+
+export enum WindowSizeShort {
+  MOBILE = "sm",
+  PHABLET = "md",
+  TABLET = "wmd",
+  DESKTOP = "lg",
+  DESKTOPHD = "wlg"
+}
+
 export enum WindowSize {
   sm = "sm",
   md = "sm",

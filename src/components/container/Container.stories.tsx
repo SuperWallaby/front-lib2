@@ -1,21 +1,30 @@
 import React from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import Container from "./Container";
+import MDX from "./container.mdx";
 import "../../scss/all.scss";
 
 export default {
-  title: "Card",
-  component: () => <Container />,
-  decorators: [withKnobs]
+  title: "Container",
+  component: <Container />,
+  decorators: [withKnobs],
+  parameters: {
+    componentSubtitle: "버튼 컴포넌트",
+    docs: {
+      page: MDX
+    }
+  }
 };
 
 export const standard = () => {
   return (
     <Container
       style={{
-        background: "#ccc"
+        backgroundColor: "#ccc"
       }}
-    />
+    >
+      Content
+    </Container>
   );
 };
 

@@ -4,7 +4,13 @@ import { IDiv, JDatomExtentionSet } from "../../types/interface";
 import { JDatomClasses } from "../../utils/autoClasses";
 import JDIcon from "../icons/Icons";
 
+
+
+
 interface IProps extends IDiv {
+  /**
+   * Sets the button size.
+   */
   children?: JSX.Element[] | JSX.Element | string;
   hover?: boolean;
   toogleCard?: boolean;
@@ -20,7 +26,7 @@ interface IProps extends IDiv {
 
 export interface CardProps extends IProps {}
 
-const JDcard: React.FC<IProps & JDatomExtentionSet> = ({
+export const JDcard: React.FC<IProps & JDatomExtentionSet> = ({
   children,
   hover,
   align,
@@ -35,7 +41,7 @@ const JDcard: React.FC<IProps & JDatomExtentionSet> = ({
   mb,
   mr,
   ...props
-}) => {
+}: IProps & JDatomExtentionSet) => {
   const [render, setRender] = useState(true);
 
   const classes = classNames("JDcard", className, {

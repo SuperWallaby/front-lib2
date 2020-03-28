@@ -6,7 +6,7 @@ import JDcontainer from "../container/Container";
 
 export default {
   title: "Card",
-  component: () => <Card />,
+  component: <Card />,
   decorators: [withKnobs]
 };
 

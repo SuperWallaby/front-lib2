@@ -4,11 +4,16 @@ import { WindowSize } from "../../types/enum";
 import classNames from "classnames";
 
 interface IProps extends IDiv {
+  // 콘테이너 사이즈
   size?: WindowSize;
+  /**
+   * Value to display, either empty (" ") or "X" / "O".
+   *
+   * @default false*/
   verticalPadding?: "normal" | "small" | boolean;
 }
 
-const JDcontainer: React.FC<IProps> = ({
+export const JDcontainer: React.FC<IProps> = ({
   className,
   size,
   verticalPadding,

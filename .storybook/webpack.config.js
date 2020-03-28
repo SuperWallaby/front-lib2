@@ -11,6 +11,14 @@ module.exports = ({ config }) => {
         options: {
           configFileName: "./tsconfig.json"
         }
+      },
+      {
+        loader: require.resolve("react-docgen-typescript-loader"),
+        options: {
+          shouldExtractLiteralValuesFromEnum: true,
+          skipPropsWithoutDoc: true,
+          tsconfigPath: path.resolve(__dirname, "../tsconfig.json")
+        }
       }
     ]
   });

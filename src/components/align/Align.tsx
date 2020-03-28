@@ -27,13 +27,15 @@ type TGrid = {
   grow?: boolean;
 };
 
-interface IProps extends IDiv, JDatomExtentionSet {
+interface IProps {
   flex?: TFlex | true;
   grid?: TGrid | true;
   col?: TCol | true;
 }
 
-const Align: React.FC<IProps> = ({
+export const TypeAlign: React.FC<IProps> = () => <div />;
+
+const Align: React.FC<IProps & IDiv & JDatomExtentionSet> = ({
   mb,
   flex,
   mr,

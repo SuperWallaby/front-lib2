@@ -47,7 +47,9 @@ const Navbar = ({
           size: "small"
         }}
         mode="flat"
-        float="left"
+        style={{
+          float: "left"
+        }}
         iconClasses={["JDbtn__icon--left"]}
         onClick={() => onPreviousClick()}
       />
@@ -60,7 +62,9 @@ const Navbar = ({
           size: "small"
         }}
         mode="flat"
-        float="right"
+        style={{
+          float: "right"
+        }}
         onClick={() => onNextClick()}
       />
     </div>

@@ -14,7 +14,7 @@
     "lint": "standard",
     "format": "prettier-standard --format",
     "test": "jest --coverage",
-    "storybook": "start-storybook",
+    "storybook": "start-storybook --port 9090",
     "build-storybook": "build-storybook"
   },
   "keywords": [],
@@ -86,6 +86,7 @@
   },
   "dependencies": {
     "@storybook/addon-knobs": "^5.3.14",
+    "@storybook/preset-create-react-app": "^2.1.1",
     "@types/jquery": "^3.3.33",
     "@types/react-day-picker": "^5.3.0",
     "@types/react-modal": "^3.10.5",
@@ -100,6 +101,7 @@
     "moment-timezone": "^0.5.28",
     "node-sass": "^4.13.1",
     "react-day-picker": "7.4",
+    "react-docgen-typescript-loader": "^3.7.1",
     "react-image-file-resizer": "^0.2.1",
     "react-modal": "^3.11.2",
     "react-slick": "^0.25.2",

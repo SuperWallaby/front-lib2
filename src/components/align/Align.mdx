@@ -1,0 +1,45 @@
+import { Meta, Props, Story, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { TypeAlign } from "./Align";
+import "../../scss/all.scss";
+import { IDiv } from "../../types/interface";
+import JDcontainer from "../container/Container";
+import { WindowSize } from "../../types/enum";
+
+# Align
+
+## yes this is **MDX**!
+
+<Props of={TypeAlign} />
+
+```
+type TFlex = {
+center?: boolean;
+vCenter?: boolean;
+between?: boolean;
+around?: boolean;
+wrap?: boolean;
+end?: boolean;
+column?: boolean;
+oneone?: boolean;
+grow?: boolean;
+};
+
+type TCol = {
+wlg?: number;
+lg?: number;
+md?: number;
+sm?: number;
+full?: number;
+};
+
+type TGrid = {
+grow?: boolean;
+};
+
+interface IProps {
+flex?: TFlex | true;
+grid?: TGrid | true;
+col?: TCol | true;
+}
+```

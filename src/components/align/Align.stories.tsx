@@ -3,33 +3,22 @@ import { withKnobs } from "@storybook/addon-knobs";
 import Align from "./Align";
 import "../../scss/all.scss";
 import { JDlabel } from "../..";
-import { IDiv } from "../../types/interface";
 import JDcontainer from "../container/Container";
 import { WindowSize } from "../../types/enum";
+import { Block } from "./Block";
+import AlignMdx from "./Align.mdx";
 
 export default {
   title: "Align",
   component: () => <Align />,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
+  parameters: {
+    componentSubtitle: '"안녕하세요"라고 보여주는 컴포넌트',
+    docs: {
+      page: AlignMdx
+    }
+  }
 };
-
-interface IBlockProp extends IDiv {
-  full?: boolean;
-}
-
-const Block = ({ style, full, ...prop }: IBlockProp) => (
-  <div
-    style={{
-      height: "100px",
-      width: full ? `calc("100%" - "20px")` : "100px",
-      backgroundColor: "#ccc",
-      margin: "10px",
-      boxSizing: "border-box",
-      ...style
-    }}
-    {...prop}
-  />
-);
 
 export const standard = () => {
   return (

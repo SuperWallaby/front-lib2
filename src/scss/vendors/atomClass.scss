@@ -233,20 +233,89 @@ a.JDanchor {
   color: $grey-level2;
 }
 
-.JDbgColor--green {
-  background-color: $green-color;
-}
+.JDbgColor {
+  &--primary {
+    background-color: $primary-color;
+    &:hover {
+      background-color: $primary-color-dark;
+    }
+  }
 
-.JDbgColor--grey {
-  background-color: $grey-level2;
-}
+  &--point {
+    background-color: $point-color;
+    &:hover {
+      background-color: $point-color-dark;
+    }
+  }
 
-.JDbgColor--point {
-  background-color: $point-color;
-}
+  &--black {
+    background-color: $html-color;
 
-.JDbgColor--primary {
-  background-color: $primary-color;
+    &:hover {
+      background-color: $grey-level5;
+    }
+  }
+
+  &--white {
+    background-color: white;
+
+    &:hover {
+      background-color: $grey-level1;
+    }
+  }
+
+  &--new {
+    background-color: $new-color;
+    &:hover {
+      background-color: $new-color-dark;
+    }
+  }
+
+  &--error {
+    background-color: $error-color;
+    &:hover {
+      background-color: $error-color-dark;
+    }
+  }
+
+  &--positive {
+    background-color: $positive-color;
+    &:hover {
+      background-color: $positive-color-dark;
+    }
+  }
+
+  &--warn {
+    background-color: $orange-color;
+    &:hover {
+      background-color: $orange-color-dark;
+    }
+  }
+
+  &--grey1 {
+    background-color: $grey-level1;
+  }
+
+  &--grey2 {
+    background-color: $grey-level2;
+  }
+  &--grey3 {
+    background-color: $grey-level3;
+  }
+
+  &--grey4 {
+    background-color: $grey-level4;
+  }
+  &--grey5 {
+    background-color: $grey-level5;
+  }
+
+  &--blue {
+    background-color: $blue-color;
+    &:hover {
+      background-color: $blue-color-dark;
+    }
+  }
 }
 
 // else

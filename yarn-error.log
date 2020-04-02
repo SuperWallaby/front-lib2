@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add preset-create-react-app
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-tabs
 
 PATH: 
-  C:\Program Files (x86)\NAT Service;C:\ProgramData\Boxstarter;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;"C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk1.8.0_181\bin";C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\PuTTY\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\edb\as11\bin;C:\Program Files\edb\as11\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\minjae\AppData\Roaming\Python\Python37\Scripts;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files\7-Zip;C:\Program Files\Amazon\AWSCLI\bin\;C:\Go\bin;"C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;";C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Users\colto\AppData\Local\Microsoft\WindowsApps;;C:\Users\colto\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\colto\go\bin;C:\Users\colto\AppData\Local\Yarn\bin;C:\Users\colto\AppData\Roaming\npm
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\김민재\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\Users\김민재\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\김민재\AppData\Local\Programs\Python\Python38;C:\Users\김민재\AppData\Local\Microsoft\WindowsApps;C:\Users\김민재\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\김민재\AppData\Roaming\npm;C:\Users\김민재\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.22.4
@@ -14,22 +14,21 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/preset-create-react-app: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
-      at Request.emit (events.js:311:20)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141720:10)
-      at Request.emit (events.js:311:20)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141642:12)
-      at Object.onceWrapper (events.js:417:28)
-      at IncomingMessage.emit (events.js:323:22)
-      at endReadableNT (_stream_readable.js:1204:12)
-      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+  SyntaxError: Invalid value type 9439:0 in C:\Users\김민재\Desktop\projects\janda-lib\yarn.lock
+      at Parser.unexpected (C:\Program Files (x86)\Yarn\lib\cli.js:63441:11)
+      at Parser.parse (C:\Program Files (x86)\Yarn\lib\cli.js:63569:16)
+      at Parser.parse (C:\Program Files (x86)\Yarn\lib\cli.js:63546:26)
+      at parse (C:\Program Files (x86)\Yarn\lib\cli.js:63646:21)
+      at module.exports.exports.default (C:\Program Files (x86)\Yarn\lib\cli.js:63208:96)
+      at Function.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:3064:63)
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
     "name": "@janda-com/front",
-    "version": "0.1.11",
+    "version": "0.2.1",
     "description": "@jd-com/front",
     "main": "build/index.js",
     "module": "build/index.es.js",
@@ -43,7 +42,7 @@ npm manifest:
       "lint": "standard",
       "format": "prettier-standard --format",
       "test": "jest --coverage",
-      "storybook": "start-storybook",
+      "storybook": "start-storybook --port 9090",
       "build-storybook": "build-storybook"
     },
     "keywords": [],
@@ -115,6 +114,7 @@ npm manifest:
     },
     "dependencies": {
       "@storybook/addon-knobs": "^5.3.14",
+      "@storybook/preset-create-react-app": "^2.1.1",
       "@types/jquery": "^3.3.33",
       "@types/react-day-picker": "^5.3.0",
       "@types/react-modal": "^3.10.5",
@@ -1780,7 +1780,7 @@ Lockfile:
     dependencies:
       lodash "^4.17.15"
   
-  "@storybook/node-logger@5.3.17":
+  "@storybook/node-logger@5.3.17", "@storybook/node-logger@^5.3.17":
     version "5.3.17"
     resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-5.3.17.tgz#f3ad5bf9dd74d8e1cdfb8d831d66a80c5039cf4c"
     integrity sha512-onfcxl37BYZI1HGuPI9MelkyUWjn7NpfN8RUYdqG9P6WKiIY5xbpG0V6qod5jvIKIypK0NmfJTtneOu46L/oDg==
@@ -1798,6 +1798,17 @@ Lockfile:
     integrity sha512-bWmXwux1J4iVC6/tLJIfjK02VUMTo4G9g09BxboRDYLB+Y1byQYK8dcZIqVVZag33AbZWFL9s4QA2cCb0KBFsg==
     dependencies:
       core-js "^3.0.1"
+  
+  "@storybook/preset-create-react-app@^2.1.1":
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/@storybook/preset-create-react-app/-/preset-create-react-app-2.1.1.tgz#6e4249d4c594596bdced74213e4c9238505c085c"
+    integrity sha512-ywnpCr7gHuIv/fv8yiQHLY8RikQRqn401CPTKh5nsWwkUbIOQ47Cyewjo2QuVTpivOLLuyJiIpq1jAAS1iW2Ow==
+    dependencies:
+      "@storybook/node-logger" "^5.3.17"
+      "@types/babel__core" "^7.1.6"
+      "@types/webpack" "^4.41.7"
+      pnp-webpack-plugin "^1.6.4"
+      semver "^7.1.3"
   
   "@storybook/preset-typescript@^2.1.0":
     version "2.1.0"
@@ -2060,12 +2071,17 @@ Lockfile:
       "@testing-library/dom" "^6.15.0"
       "@types/testing-library__react" "^9.1.2"
   
+  "@types/anymatch@*":
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
+    integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
+  
   "@types/babel-types@*", "@types/babel-types@^7.0.0":
     version "7.0.7"
     resolved "https://registry.yarnpkg.com/@types/babel-types/-/babel-types-7.0.7.tgz#667eb1640e8039436028055737d2b9986ee336e3"
     integrity sha512-dBtBbrc+qTHy1WdfHYjBwRln4+LWqASWakLHsWHR2NWHIFkv4W3O070IGoGLEBrJBvct3r0L1BUPuvURi7kYUQ==
   
-  "@types/babel__core@^7.1.0":
+  "@types/babel__core@^7.1.0", "@types/babel__core@^7.1.6":
     version "7.1.6"
     resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.6.tgz#16ff42a5ae203c9af1c6e190ed1f30f83207b610"
     integrity sha512-tTnhWszAqvXnhW7m5jQU9PomXSiKXk2sFxpahXvI20SZKu9ylPi8WtIxueZ6ehDWikPT0jeFujMj3X4ZHuf3Tg==
@@ -2322,10 +2338,20 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
     integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
   
+  "@types/source-list-map@*":
+    version "0.1.2"
+    resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
+    integrity sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
+  
   "@types/stack-utils@^1.0.1":
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
     integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
+  
+  "@types/tapable@*":
+    version "1.0.5"
+    resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.5.tgz#9adbc12950582aa65ead76bffdf39fe0c27a3c02"
+    integrity sha512-/gG2M/Imw7cQFp8PGvz/SwocNrmKFjFsm5Pb8HdbHkZ1K8pmuPzOX4VeVoiEecFCVf4CsN1r3/BRvx+6sNqwtQ==
   
   "@types/testing-library__dom@*":
     version "7.0.0"
@@ -2350,6 +2376,13 @@ Lockfile:
       "@types/testing-library__dom" "*"
       pretty-format "^25.1.0"
   
+  "@types/uglify-js@*":
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-3.0.4.tgz#96beae23df6f561862a830b4288a49e86baac082"
+    integrity sha512-SudIN9TRJ+v8g5pTG8RRCqfqTMNqgWCKKd3vtynhGzkIIjxaicNAMuY5TRadJ6tzDu3Dotf3ngaMILtmOdmWEQ==
+    dependencies:
+      source-map "^0.6.1"
+  
   "@types/unist@^2.0.0", "@types/unist@^2.0.2":
     version "2.0.3"
     resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
@@ -2359,6 +2392,27 @@ Lockfile:
     version "1.15.1"
     resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.15.1.tgz#c8e84705e08eed430b5e15b39c65b0944e4d1422"
     integrity sha512-eWN5ElDTeBc5lRDh95SqA8x18D0ll2pWudU3uWiyfsRmIZcmUXpEsxPU+7+BsdCrO2vfLRC629u/MmjbmF+2tA==
+  
+  "@types/webpack-sources@*":
+    version "0.1.7"
+    resolved "https://registry.yarnpkg.com/@types/webpack-sources/-/webpack-sources-0.1.7.tgz#0a330a9456113410c74a5d64180af0cbca007141"
+    integrity sha512-XyaHrJILjK1VHVC4aVlKsdNN5KBTwufMb43cQs+flGxtPAf/1Qwl8+Q0tp5BwEGaI8D6XT1L+9bSWXckgkjTLw==
+    dependencies:
+      "@types/node" "*"
+      "@types/source-list-map" "*"
+      source-map "^0.6.1"
+  
+  "@types/webpack@^4.41.7":
+    version "4.41.8"
+    resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.8.tgz#d2244f5f612ee30230a5c8c4ae678bce90d27277"
+    integrity sha512-mh4litLHTlDG84TGCFv1pZldndI34vkrW9Mks++Zx4KET7DRMoCXUvLbTISiuF4++fMgNnhV9cc1nCXJQyBYbQ==
+    dependencies:
+      "@types/anymatch" "*"
+      "@types/node" "*"
+      "@types/tapable" "*"
+      "@types/uglify-js" "*"
+      "@types/webpack-sources" "*"
+      source-map "^0.6.0"
   
   "@types/yargs-parser@*":
     version "15.0.0"
@@ -9664,6 +9718,13 @@ Lockfile:
     dependencies:
       ts-pnp "^1.1.2"
   
+  pnp-webpack-plugin@^1.6.4:
+    version "1.6.4"
+    resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.6.4.tgz#c9711ac4dc48a685dabafc86f8b6dd9f8df84149"
+    integrity sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==
+    dependencies:
+      ts-pnp "^1.1.6"
+  
   polished@^3.3.1:
     version "3.5.1"
     resolved "https://registry.yarnpkg.com/polished/-/polished-3.5.1.tgz#657b6faf4c2308f3e0b1951196803a5e5d67b122"
@@ -10911,8 +10972,7 @@ Lockfile:
     integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
   
   require-main-filename@^1.0.1:
-    version "1.0.1"
-    resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
+    version "1.0.1"-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
     integrity sha1-l/cXtp1IeE9fUmpsWqj/3aBVpNE=
   
   require-main-filename@^2.0.0:
@@ -11283,6 +11343,11 @@ Lockfile:
     version "6.3.0"
     resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
     integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+  
+  semver@^7.1.3:
+    version "7.1.3"
+    resolved "https://registry.yarnpkg.com/semver/-/semver-7.1.3.tgz#e4345ce73071c53f336445cfc19efb1c311df2a6"
+    integrity sha512-ekM0zfiA9SCBlsKa2X1hxyxiI4L3B6EbVJkkdgQXnSEEaHlGdvyodMruTiulSRWMMB4NeIuYNMC9rTKTz97GxA==
   
   semver@~5.3.0:
     version "5.3.0"
@@ -12388,7 +12453,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ts-map/-/ts-map-1.0.3.tgz#1c4d218dec813d2103b7e04e4bcf348e1471c1ff"
     integrity sha512-vDWbsl26LIcPGmDpoVzjEP6+hvHZkBkLW7JpvwbCv/5IYPJlsbzCVXY3wsCeAxAUeTclNOUZxnLdGh3VBD/J6w==
   
-  ts-pnp@^1.1.2:
+  ts-pnp@^1.1.2, ts-pnp@^1.1.6:
     version "1.1.6"
     resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.6.tgz#389a24396d425a0d3162e96d2b4638900fdc289a"
     integrity sha512-CrG5GqAAzMT7144Cl+UIFP7mz/iIhiy+xQ6GGcnjTezhALT02uPMRw7tgDSESgB5MsfKt55+GPWw4ir1kVtMIQ==

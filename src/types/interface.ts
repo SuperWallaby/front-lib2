@@ -20,7 +20,6 @@ export interface JDRoute {
   exact?: boolean;
 }
 
-
 export interface IPageInfo {
   currentPage: number;
   totalPage: number;

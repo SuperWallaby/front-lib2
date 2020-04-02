@@ -7,16 +7,23 @@ import {
 const DayPicker = require("react-day-picker").default;
 import classNames from "classnames";
 import Caption from "./component/Caption";
-import Information from "./component/Information";
 import Navbar from "./component/Navbar";
 import JDdayPickerInput from "./component/input/JDdayPickerInput";
 import HorizenDay from "./component/horizen/HorizenDays";
 import HorizenCaption from "./component/horizen/HorizenCaption";
 import { IUseDayPicker } from "../../hooks/hook";
 import { getDateCharLang } from "./helper";
-import { JDatomExtentionSet } from "../../types/interface";
+import { JDatomExtentionSet, IDiv, TElements } from "../../types/interface";
 import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
 import moment from "moment";
+import DayPickerDay from "./component/DayPickerDay";
+import { JDColor } from "../..";
+
+export interface TDayPickerDot extends IDiv {
+  tooltip?: string;
+  color: JDColor;
+  date: Date;
+}
 
 export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
   canSelectBeforeDay?: boolean;
@@ -29,6 +36,7 @@ export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
   canSelectSameDate?: boolean;
   format?: string;
   lang?: string;
+  dots?: TDayPickerDot[];
   displayIcon?: boolean;
   inputDisabled?: boolean;
   maxLimit?: boolean;
@@ -40,8 +48,8 @@ export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
   calenaderPosition?: "left" | "right" | "center";
   displayCaption?: boolean;
   displayHeader?: boolean;
-  displayInfo?: boolean;
   currentLang?: "kr" | "en";
+  Information?: TElements;
 }
 
 const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
@@ -56,7 +64,6 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     displayIcon = true,
     displayCaption = true,
     displayHeader = true,
-    displayInfo = false,
     format,
     placeholder,
     lang = "ko",
@@ -66,6 +73,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     setTo,
     currentLang,
     entered,
+    Information,
     displayYear = true,
     canSelectBeforeDay,
     inputClassName,
@@ -75,9 +83,11 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     readOnly,
     showWeekEndColor = true,
     className,
+    dots = [],
     mr,
     mb
   }) => {
+    console.log(dots);
     const dayPickerFullWrap: any = useRef();
     const isInitialMount = useRef(true);
 
@@ -145,13 +155,13 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       }
     };
 
-    // Effect : calendar With Set
+    // 가로 모드일때 스크롤 잡아줌
     useEffect(() => {
       if (isHorizen) {
         const Months = dayPickerFullWrap.current.querySelector(
           ".DayPicker-Months"
         );
-        const today = Months.querySelector(".DayPicker-Day--today");
+        const today = Months.querySelector(".DayPicker-Day__dot--today");
         const todayOffestX = today.offsetLeft;
         Months.scrollLeft = todayOffestX - Months.offsetWidth / 2 + 40;
       }
@@ -173,7 +183,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--showWeekEndColor": showWeekEndColor,
       "DayPicker--unDisplayCaption": displayCaption === false,
       "DayPicker--unDisplayNavbar": displayHeader === false,
-      "DayPicker--unDisplayInfo": displayInfo === false,
+      "DayPicker--unDisplayInfo": !Information,
       ...JDmbClass(mb),
       ...JDmrClass(mr)
     });
@@ -197,10 +207,14 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
 
     // 이부분 함수 또는 이넘으로 변경
 
+    console.log("modifiers");
+    console.log(modifiers);
+    const RenderDots = HorizenDay.bind(HorizenDay, dots);
+
     const horizenProps =
       mode === "horizen"
         ? {
-            renderDay: HorizenDay,
+            renderDay: RenderDots,
             numberOfMonths: 3,
             showWeekDays: false,
             captionElement: ({ date }: CaptionElementProps) => (
@@ -209,10 +223,12 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
           }
         : {};
 
+    const DayPickerRender = DayPickerDay.bind(DayPickerDay, dots);
     const dayPickerProps: DayPickerProps = {
       tabIndex: 1,
-      renderDay: undefined,
+      renderDay: DayPickerRender,
       numberOfMonths: 1,
+      initialMonth: moment(from || new Date()).toDate(),
       showWeekDays: true,
       captionElement: ({ date }: CaptionElementProps) => (
         <Caption displayYear={displayYear} date={date} />
@@ -253,7 +269,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
           />
         ) : (
           <Fragment>
-            <Information from={from} to={to} handler={handleDayMouseEnter} />
+            {Information}
             <DayPicker {...dayPickerProps} />
           </Fragment>
         )}

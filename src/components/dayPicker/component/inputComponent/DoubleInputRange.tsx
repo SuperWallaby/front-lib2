@@ -7,17 +7,24 @@ import { IDiv } from "../../../../types/interface";
 
 interface Iprops extends IDiv {
   dayPickerHook: IUseDayPicker;
+  fromLabel?: string;
+  toLabel?: string;
 }
 
-const DoubleInputRange: React.FC<Iprops> = ({ dayPickerHook, ...prop }) => {
+const DoubleInputRange: React.FC<Iprops> = ({
+  dayPickerHook,
+  fromLabel,
+  toLabel,
+  ...prop
+}) => {
   return (
     <div {...prop} className="JDflex--between standard">
       <JDbox>
-        <JDLabel txt={"checkin_date"} />
+        <JDLabel txt={fromLabel || ""} />
         <h6 className="JDnoWrap">{to4YMMDD(dayPickerHook.from)}</h6>
       </JDbox>
       <JDbox>
-        <JDLabel txt={"checkout_date"} />
+        <JDLabel txt={toLabel || ""} />
         <h6 className="JDnoWrap">{to4YMMDD(dayPickerHook.to)}</h6>
       </JDbox>
     </div>

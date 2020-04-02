@@ -55,6 +55,7 @@ export type IIcons =
   | "circleRightArrow"
   | "help"
   | "photoFile"
+  | "file"
   | "naver";
 
 type TConOrigin = {
@@ -1846,6 +1847,89 @@ export const IConOrigin: TConOrigin = {
           />
         </g>
       </g>
+    </svg>
+  ),
+  file: prop => (
+    <svg
+      {...prop}
+      id="Layer_1"
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 31.06 33.5"
+    >
+      <title>Untitled-1</title>
+      <polygon
+        points="0.75 0.75 0.75 8.27 8.27 0.75 0.75 0.75"
+        style={{
+          fill: "none",
+          stroke: "currentColor",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "1.5px"
+        }}
+      />
+      <polygon
+        points="8.27 0.75 0.75 8.27 0.75 32.75 30.31 32.75 30.31 0.75 8.27 0.75"
+        style={{
+          fill: "none",
+          stroke: "currentColor",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "1.5px"
+        }}
+      />
+      <line
+        x1="6.38"
+        y1="8.27"
+        x2="19.03"
+        y2="8.27"
+        style={{
+          fill: "none",
+          stroke: "currentColor",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "1.5px"
+        }}
+      />
+      <line
+        x1="6.38"
+        y1="20.81"
+        x2="19.03"
+        y2="20.81"
+        style={{
+          fill: "none",
+          stroke: "currentColor",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "1.5px"
+        }}
+      />
+      <line
+        x1="6.38"
+        y1="14.54"
+        x2="24.54"
+        y2="14.54"
+        style={{
+          fill: "none",
+          stroke: "currentColor",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "1.5px"
+        }}
+      />
+      <line
+        x1="6.38"
+        y1="27.07"
+        x2="24.54"
+        y2="27.07"
+        style={{
+          fill: "none",
+          stroke: "currentColor",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: "1.5px"
+        }}
+      />
     </svg>
   )
 };

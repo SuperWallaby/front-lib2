@@ -141,12 +141,14 @@ const JDmodal: React.SFC<IProps> = ({
   };
 
   const getChildren = () => (
-    <div className={contentClassName} style={modalContentsStyle}>
-      {children}
-      {info && info.children}
-      {typeof info === "string" && info}
-      {info && info.txt}
-    </div>
+    <Fragment>
+      <div className={contentClassName} style={modalContentsStyle}>
+        {children}
+        {info && info.children}
+        {typeof info === "string" && info}
+        {info && info.txt}
+      </div>
+    </Fragment>
   );
 
   if (loading) {

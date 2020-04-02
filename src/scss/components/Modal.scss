@@ -1,7 +1,7 @@
 @import "../style_config.scss";
 
 $modal-padding: $standard-large-space !default;
-$modal-header-padding: $modal-padding;
+
 // ⚠️ JDmodal 로 수정할수없음
 .ReactModal {
   overflow-x: hidden !important;
@@ -145,7 +145,6 @@ $modal-header-padding: $modal-padding;
 
   // 엔드섹션
   &__endSection {
-    padding-top: 0;
     &--confirm {
       padding-top: $modal-section-padding;
     }
@@ -153,13 +152,8 @@ $modal-header-padding: $modal-padding;
     &--float {
       position: absolute;
     }
-
-    bottom: 0 + $modal-padding;
-    left: $modal-padding;
-    right: $modal-padding;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
+    padding: $modal-end-padding;
+    padding-top: 0;
     .JDbtn {
       margin-bottom: 0;
     }

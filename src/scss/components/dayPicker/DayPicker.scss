@@ -16,6 +16,27 @@
   }
 }
 
+// Dots css
+.DayPicker-Day {
+  &__dotsWrap {
+    display: flex;
+    position: absolute;
+    top: $daypicker-dot-top;
+    left: calc(50% - 2px);
+  }
+
+  &__dot {
+    display: block;
+    width: $daypicker-dot-size;
+    height: $daypicker-dot-size;
+    border-radius: 50%;
+
+    &--today {
+      background-color: $daypicker-today-color;
+    }
+  }
+}
+
 @include accent() {
   .DayPicker {
     color: $html-color;
@@ -195,6 +216,7 @@
               transition: border-radius $daypicker-day-transition;
               transition-timing-function: ease-out;
               border-radius: 50%;
+              position: relative;
 
               &--outside {
                 cursor: default;
@@ -224,23 +246,6 @@
 
               &--end {
                 border-radius: 0 50% 50% 0;
-              }
-
-              &--today {
-                font-weight: bold;
-                position: relative;
-
-                &:before {
-                  width: $daypicker-dot-size;
-                  height: $daypicker-dot-size;
-                  border-radius: 50%;
-                  content: "";
-                  display: block;
-                  position: absolute;
-                  top: $daypicker-dot-top;
-                  left: 50% - ($daypicker-dot-size / 2px);
-                  background-color: $daypicker-today-color;
-                }
               }
 
               &--outside {

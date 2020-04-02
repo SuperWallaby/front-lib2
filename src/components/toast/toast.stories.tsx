@@ -26,6 +26,20 @@ export const standard = () => {
         }}
         label="토스트"
       />
+      <JDbutton
+        onClick={() => {
+          toast.warn("토스트");
+        }}
+        thema="error"
+        label="토스트"
+      />
+      <JDbutton
+        onClick={() => {
+          toast.success("토스트");
+        }}
+        thema="primary"
+        label="토스트"
+      />
       <Toast />
     </JDcontainer>
   );

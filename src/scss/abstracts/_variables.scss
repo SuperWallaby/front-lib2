@@ -294,7 +294,7 @@ $daypicker-border-tick: 0.2rem !default;
 $daypicker-disabled-color: $grey-level2 !default;
 $daypicker-otuside-bgcolor: #fff !default;
 $daypicker-dot-size: 5px !default; // calculator
-$daypicker-dot-top: 5px !default; // calculator
+$daypicker-dot-top: 3px !default; // calculator
 $daypicker-caption-margin-bottom: 1rem !default; // it must be a pixcel
 $daypicker-caption-height: $standard-line-height !default;
 $daypicker-day-transition: 0.2s !default;
@@ -359,7 +359,8 @@ $button-height: $standard-line-height !default;
 
 $modal-background-color: $curtain-color !default;
 $modal-padding: space(5) !default;
-$modal-header-padding: $standard-large-space !default;
+$modal-end-padding: space(4) !default;
+$modal-header-padding: space(4) !default;
 $modal-border-radius: $standard-border-radius !default;
 $modal-section-padding: $standard-largest-space !default;
 
@@ -444,7 +445,7 @@ $tabs-margin-bottom: $standard-margin-bottom !default;
 $tabs-tab-padding: 0 !default;
 $tabs-tab-border-color: $grey-level1 !default;
 $tabs-tab-border-radious: $standard-border-radius !default;
-$tabs-tab-selected-color: $sky-color !default;
+$tabs-tab-selected-color: $primary-color !default;
 $tabs-tab-selected-border-bottom: 2px solid $tabs-tab-selected-color !default;
 
 // 16 ToolTipList 툴팁리스트

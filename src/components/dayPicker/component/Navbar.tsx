@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../button/Button";
 
-const JDMonthTextChanger = (Month: string | number): string => {
+export const JDMonthTextChanger = (Month: string | number): string => {
   if (Month === "December" || Month === 11) return "12";
   if (Month === "November" || Month === 10) return "11";
   if (Month === "October" || Month === 9) return "10";
@@ -21,24 +21,12 @@ const JDMonthTextChanger = (Month: string | number): string => {
   return "";
 };
 
-const Navbar = ({
-  nextMonth,
-  previousMonth,
-  onPreviousClick,
-  onNextClick,
-  className,
-  localeUtils
-}: any) => {
-  const months = localeUtils.getMonths();
-  const prev = months[previousMonth.getMonth()];
-  const next = months[nextMonth.getMonth()];
-
+const Navbar = ({ onPreviousClick, onNextClick, className }: any) => {
   return (
     <div className={className}>
       <Button
         size="small"
         className={"DayPicker__navbtns--left"}
-        label={JDMonthTextChanger(prev)}
         iconProp={{
           style: {
             transform: "scale(-1)"
@@ -56,7 +44,6 @@ const Navbar = ({
       <Button
         size="small"
         className="DayPicker__navbtns--right"
-        label={JDMonthTextChanger(next)}
         iconProp={{
           icon: "arrowRight",
           size: "small"

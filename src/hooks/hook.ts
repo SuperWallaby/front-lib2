@@ -17,15 +17,12 @@ import s4 from "../utils/keyGen";
 import { removeSpecialChar } from "../utils/autoFormat";
 import moment from "moment-timezone";
 
-
-
 export type IUseFetch = [
   any,
   boolean,
   boolean,
   (url: string | undefined) => void
 ];
-
 
 const useShouldSave = (updateValue: any[]) => {
   const isInitialMount = useRef(true);
@@ -49,278 +46,235 @@ export interface IuseImageUploaderOption {
   quality?: number;
 }
 
-
 export type IuseTimePickerProps = {
-  timeUnit?: number,
+  timeUnit?: number;
   defaultRange?: {
-    startHour: number,
-    endHour: number
-  },
-  startDate?: number | Date,
+    startHour: number;
+    endHour: number;
+  };
+  startDate?: number | Date;
 };
 
-const useStoreSelect = (stores: {
-  code?: string,
-  _id?: string,
-  name: string,
-  [key: string]: any
-}[], withCode?: boolean, defaultPropCode?: string, defaultIdProp?: string) => {
-
+const useStoreSelect = (
+  stores: {
+    code?: string;
+    _id?: string;
+    name: string;
+    [key: string]: any;
+  }[],
+  withCode?: boolean,
+  defaultPropCode?: string,
+  defaultIdProp?: string
+) => {
   const storesOp = stores.map(s => ({
     value: (withCode ? s.code : s._id) || "",
     label: s.name
   }));
 
-  const defaultId = defaultIdProp || localStorage.getItem("lastSelectStore") || storesOp[0].value;
+  const defaultId =
+    defaultIdProp ||
+    localStorage.getItem("lastSelectStore") ||
+    storesOp[0].value;
   const defaultCode = defaultPropCode || storesOp[0].value;
 
   const storeSelectHook = useSelect(
-    optionFineder(storesOp, withCode ? defaultCode : defaultId));
+    optionFineder(storesOp, withCode ? defaultCode : defaultId)
+  );
   const selectedStoreValue = storeSelectHook.selectedOption?.value || "";
   withCode || localStorage.setItem("lastSelectStore", selectedStoreValue);
 
-  return { storeSelectHook, selectedStoreValue, storesOp }
-}
+  return { storeSelectHook, selectedStoreValue, storesOp };
+};
 
-// // 오늘기준
-// const DdefaultRange = {
-//   endHour: 24 // hour
-//   startHour: 0, // hour
-// }
-
-
-
-export type TlocalImg = {
+export type TlocalFile = {
   key: string;
-  base64: string,
-  fileName: string,
-  mimeType: string
-}
+  base64: string;
+  fileName: string;
+  mimeType: string;
+};
 
-
-const getlocalImgs = (localImgKey: string) => {
-  let localImgs: TlocalImg[] = [];
-  const temps = localStorage.getItem(localImgKey);
+const getlocalFiles = (localFileKey: string) => {
+  let localFiles: TlocalFile[] = [];
+  const temps = localStorage.getItem(localFileKey);
   if (temps) {
     const parse = JSON.parse(temps);
-    if (parse)
-      localImgs = [...JSON.parse(temps)];
+    if (parse) localFiles = [...JSON.parse(temps)];
   }
-  return localImgs;
-}
+  return localFiles;
+};
 
-
-
-const validateFile = (event: React.ChangeEvent<HTMLInputElement>, handleErr: () => void) => {
+const validateFile = (
+  event: React.ChangeEvent<HTMLInputElement>,
+  handleErr: () => void
+) => {
   const {
     target: { files, validity }
   } = event;
 
-
   if (!validity || !files || files.length !== 1 || !files[0]) {
     handleErr();
-    return false
-  };
+    return false;
+  }
 
   const file = files[0];
 
   if (!file || !file.type) {
     handleErr();
-    return false
-  };
+    return false;
+  }
 
-  const isVideo = file.type.includes("video");
-
-
-  if (isVideo) return false
+  const isImg = file.type.includes("image");
 
   const { name } = file;
   const filteredName = removeSpecialChar(name.slice(0, name.lastIndexOf(".")));
 
-  return { file, filteredName }
-}
+  return { file, isImg, filteredName };
+};
 
-
-export interface IUseImgsManager {
-  onChangeFile: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
-  deletelocalImg: (deleteKey: string[]) => void;
+export interface IuseFilesManager {
+  onChangeFile: (
+    event: ChangeEvent<HTMLInputElement>,
+    index?: number
+  ) => Promise<void>;
+  deletelocalFile: (deleteKey: string[]) => void;
   deleteUrl: (deleteUrl: string[]) => void;
   urls: string[];
   uploading: boolean;
-  setlocalImgs: Dispatch<SetStateAction<TlocalImg[]>>
+  setlocalFiles: Dispatch<SetStateAction<TlocalFile[]>>;
   isError: boolean;
   setUrls: Dispatch<SetStateAction<string[]>>;
-  localImgs: TlocalImg[];
+  localFiles: TlocalFile[];
 }
 
-export const useImgsManager = (
-  localImgKey: string,
-  defaultUrls: string[],
-  option: IuseImageUploaderOption = DEFAULT_IMAGEUP_LOADER_OPTION,
-): IUseImgsManager => {
-  const tempLocalImgs = getlocalImgs(localImgKey);
-  const [urls, setUrls] = useState<string[]>(defaultUrls);
-  const [localImgs, setlocalImgs] = useState<TlocalImg[]>(tempLocalImgs);
+// Notice
+// 파일 매니저는 세션스토리지에 해당 File을 저장하여 최종 업로드 되기전까지 관리합니다.
+// HOOK 에 저장된 정보가 지워지지 않게 계속 유지해야할 경우에
+// localFileKey를 사용하여 해당키를 세션에 저장해두세요
+// 서버에서 리턴하는 값이 URL이기떄문에 defaultFiles는 존재하지 않습니다.
+// singleFile 에 값을 주면 파일 하나만 오르락 내리락 합니다.
+const useFilesManager = (
+  defaultUrls?: string[],
+  localFileKey?: string,
+  imgOption: IuseImageUploaderOption = DEFAULT_IMAGEUP_LOADER_OPTION
+): IuseFilesManager => {
+  const templocalFiles = localFileKey ? getlocalFiles(localFileKey) : undefined;
+  // 이미 서버에 저장되어있는 URL들일 경우 해당 HOOk에 저장됩니다.
+  const [urls, setUrls] = useState<string[]>(defaultUrls || []);
+  const [localFiles, setlocalFiles] = useState<TlocalFile[]>(
+    templocalFiles || []
+  );
   const [uploading, setUploading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const handleErr = () => {
     setIsError(true);
     setUploading(false);
-  }
+  };
 
-  const saveTemp = (localImgs: TlocalImg[]) => {
-    sessionStorage.setItem(localImgKey, JSON.stringify(localImgs));
-    setlocalImgs(localImgs)
-  }
+  // 해당파일을 hook과 세션에 둘다 저장 합니다.
+  const saveTemp = (localFiles: TlocalFile[]) => {
+    if (localFileKey)
+      sessionStorage.setItem(localFileKey, JSON.stringify(localFiles));
+    setlocalFiles(localFiles);
+  };
 
   const deleteUrl = (deleteUrl: string[]) => {
-    const updateUrls = urls.filter(url => !deleteUrl.includes(url))
+    const updateUrls = urls.filter(url => !deleteUrl.includes(url));
     setUrls(updateUrls);
-  }
+  };
 
-  const addlocalImg = (localImg: TlocalImg) => {
-    const updateTemps = [localImg, ...localImgs];
-    saveTemp(updateTemps);
+  const addLocalFile = (localFile: TlocalFile, index?: number) => {
+    let updateTemps: TlocalFile[] = [];
+    if (index === undefined) {
+      updateTemps = [localFile, ...localFiles];
+    } else {
+      if (localFiles[index]) {
+        localFiles.splice(index, 1, localFile);
+        updateTemps = localFiles;
+      } else {
+        localFiles[index] = localFile;
+        updateTemps = localFiles;
+      }
+    }
 
-  }
-  const deletelocalImg = (deleteKey: string[]) => {
-    const updateTemps = localImgs.filter(ti => !deleteKey.includes(ti.key));
+    saveTemp([...updateTemps]);
+  };
+
+  const deletelocalFile = (deleteKey: string[]) => {
+    const updateTemps = localFiles.filter(ti => !deleteKey.includes(ti.key));
     saveTemp(updateTemps);
-  }
+  };
 
   //  이벤트 객체 => uploadImg(파일객체);
-  const onChangeFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeFile = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index?: number
+  ) => {
     event.persist();
     setIsError(false);
     setUploading(true);
     const result = validateFile(event, handleErr);
 
     if (result) {
-      const { file, filteredName } = result;
-      Resizer.imageFileResizer(
-        file,
-        option.resizeMaxWidth,
-        option.resizeMaxHeight,
-        "JPEG",
-        option.quality,
-        0,
-        async (base64: string) => {
+      const { file, filteredName, isImg } = result;
+
+      if (isImg) {
+        Resizer.imageFileResizer(
+          file,
+          imgOption.resizeMaxWidth,
+          imgOption.resizeMaxHeight,
+          "JPEG",
+          imgOption.quality,
+          0,
+          async (base64: string) => {
+            setUploading(false);
+            const uploadFile = {
+              base64,
+              fileName: filteredName,
+              mimeType: file.type,
+              key: s4()
+            };
+            addLocalFile(uploadFile, index);
+          },
+          "base64"
+        );
+      } else {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+          if (reader.result) {
+            const uploadFile = {
+              base64: reader.result.toString(),
+              fileName: filteredName,
+              mimeType: file.type,
+              key: s4()
+            };
+            addLocalFile(uploadFile, index);
+            setUploading(false);
+          }
+        };
+        reader.onerror = function(error) {
           setUploading(false);
-          addlocalImg({ base64, fileName: filteredName, mimeType: file.type, key: s4() });
-        },
-        'base64'
-      );
+          console.log("Error: ", error);
+        };
+      }
     }
   };
 
-  return { onChangeFile, deletelocalImg, deleteUrl, urls, uploading, isError, localImgs, setlocalImgs, setUrls }
-}
+  return {
+    onChangeFile,
+    deletelocalFile,
+    deleteUrl,
+    urls,
+    uploading,
+    isError,
+    localFiles,
+    setlocalFiles,
+    setUrls
+  };
+};
 
-// //  이미지 업로더
-// const useImageUploader = (
-//   imgKey: string,
-//   defaultFileUrl?: string[],
-//   propOption?: IuseImageUploaderOption,
-//   onUpload?: (file: any) => void
-// ): IuseImageUploader => {
-
-//   const defaultFileProp: TFile | undefined = defaultFileUrl ? {
-//     fileName: "",
-//     mimeType: "image/jpeg",
-//     base64: undefined,
-//     url: defaultFileUrl[0]
-//   } : undefined;
-
-//   const localImg = sessionStorage.getItem(imgKey);
-//   const defaultFile = localImg ? JSON.parse(localImg) : defaultFileProp || DEFAULT_FILE;
-//   const [file, setFile] = useState<TFile>(defaultFile);
-
-//   const [uploading, seTUploading] = useState(false);
-//   const [isError, setIsError] = useState(false);
-
-//   let option = propOption || DEFAULT_IMAGEUP_LOADER_OPTION;
-
-
-//   const handleErr = () => {
-//     setIsError(true);
-//     seTUploading(false);
-//   }
-
-//   const setView = (file: TFile) => {
-//     setIsError(false);
-//     seTUploading(false);
-//     setFile(file);
-//   }
-
-//   // 로컬로 업로드
-//   const uploadImg = async ({
-//     base64,
-//     fileName,
-//     mimeType
-//   }: TFile) => {
-//     const saveData: TFile = {
-//       base64,
-//       fileName: fileName.replace("\(|\)", ""),
-//       mimeType,
-//     }
-//     sessionStorage.setItem(imgKey, JSON.stringify(saveData));
-//     setView(saveData);
-//   };
-
-//   //  이벤트 객체 => uploadImg(파일객체);
-//   const onChangeFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
-//     event.persist();
-//     seTUploading(true);
-//     const {
-//       target: { files, validity }
-//     } = event;
-
-//     if (!validity || !files || files.length !== 1 || !files[0]) {
-//       handleErr();
-//       return
-//     };
-
-//     const file = files[0];
-
-//     if (!file || !file.type) {
-//       handleErr();
-//       return
-//     };
-
-//     const isVideo = file.type.includes("video");
-//     const filteredName = file.name.replace(/!@#$%^&*(),?"{}|<>:/gi, "_");
-
-//     Resizer.imageFileResizer(
-//       file,
-//       option.resizeMaxWidth,
-//       option.resizeMaxHeight,
-//       "JPEG",
-//       option.quality,
-//       0,
-//       async (base64: string) => {
-//         uploadImg({ base64, fileName: filteredName, mimeType: file.type });
-//       },
-//       'base64'
-//     );
-//   };
-
-//   useEffect(() => {
-//     return () => {
-//       seTUploading(false);
-//     };
-//   }, []);
-
-//   return {
-//     file,
-//     uploading,
-//     onChangeFile,
-//     isError,
-//     option: propOption
-//   };
-// };
-
-// 디바운스 정
+// Defreacated.
 function useDebounce(value: any, delay: number) {
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -463,7 +417,6 @@ export interface IUseColor {
   setDisplay: (inInfo: boolean) => void;
   display: boolean;
 }
-
 
 // 라디오 훅
 function useRadio(defaultValue: any = "") {
@@ -651,7 +604,6 @@ const useCheckBoxTable = (
   };
 };
 
-
 export default {
   useInput,
   useCheckBox,
@@ -669,7 +621,8 @@ export default {
   usePageNation,
   useRedirect,
   useCheckBoxTable,
-}
+  useFilesManager
+};
 
 export {
   useInput,
@@ -686,6 +639,7 @@ export {
   useShouldSave,
   useDayPicker,
   usePageNation,
+  useFilesManager,
   useRedirect,
   useCheckBoxTable
 };

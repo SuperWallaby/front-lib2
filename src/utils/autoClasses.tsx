@@ -77,6 +77,29 @@ const colorClass = (boxName: string, color?: JDColor | null) => {
   return obj;
 };
 
+const bgColorClass = (color?: JDColor | null) => {
+  let obj: any = {};
+  if (!color) return {};
+  obj[`JDbgColor--primary`] = color === "primary";
+  obj[`JDbgColor--point`] = color === "point";
+  obj[`JDbgColor--positive`] = color === "positive";
+  obj[`JDbgColor--warn`] = color === "warn";
+  obj[`JDbgColor--grey1`] = color === "grey1";
+  obj[`JDbgColor--grey2`] = color === "grey2";
+  obj[`JDbgColor--grey3`] = color === "grey3";
+  obj[`JDbgColor--grey4`] = color === "grey4";
+  obj[`JDbgColor--grey5`] = color === "grey5";
+  obj[`JDbgColor--darkPrimary`] = color === "darkPrimary";
+  obj[`JDbgColor--error`] = color === "error";
+  obj[`JDbgColor--new`] = color === "new";
+  obj[`JDbgColor--black`] = color === "black";
+  obj[`JDbgColor--white`] = color === "white";
+  obj[`JDbgColor--blue`] = color === "blue";
+  obj[`JDbgColor--third`] = color === "third";
+
+  return obj;
+};
+
 const textAlignClass = (boxName: string, align?: TextAlign) => {
   let obj: any = {};
   obj[`${boxName}--left`] = align === "left";
@@ -130,6 +153,7 @@ export {
   JDmbClass,
   JDmrClass,
   mbClass,
+  bgColorClass,
   textAlignClass,
   colorClass,
   textSizeClass

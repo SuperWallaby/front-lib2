@@ -1,6 +1,6 @@
 {
   "name": "@janda-com/front",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -34,6 +34,7 @@
     "@types/classnames": "^2.2.10",
     "@types/graphql": "^14.5.0",
     "@types/jest": "^24.0.24",
+    "@types/leven": "^2.1.2",
     "@types/moment-timezone": "^0.5.12",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
@@ -42,6 +43,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
+    "leven": "^3.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rollup": "^1.27.13",

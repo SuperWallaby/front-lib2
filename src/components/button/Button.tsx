@@ -11,6 +11,7 @@ import { JDatomExtentionSet, TElements } from "../../types/interface";
 import userTacking from "../../utils/userTracking";
 import JDIcon from "../icons/Icons";
 import { IconConifgProps } from "../icons/declation";
+import JDtypho from "../typho/Typho";
 
 interface IButtonConstum {
   /** 사용 불가능함*/
@@ -19,8 +20,6 @@ interface IButtonConstum {
   label?: string | TElements;
   /**  아이콘 PROP 들 */
   iconProp?: IConProps & IconConifgProps;
-  // will deprecate
-  refContainer?: any;
   /** 패딩을 제거합니다. */
   cunsumPadding?: boolean;
   iconClasses?: string[];
@@ -31,9 +30,9 @@ interface IButtonConstum {
   /** 버튼 패딩 */
   padding?: TMarginSize;
   /** 버튼의 모양을 조절 */
-  mode?: "flat" | "normal" | "border";
+  mode?: "flat" | "normal" | "border" | "iconButton";
   /** 버튼의 크기를 조절 */
-  size?: "tiny" | "small" | "large" | "long" | "longLarge";
+  size?: "small" | "large" | "long" | "longLarge";
   /** 해당 버튼은 float 속성을 지닙니다. */
   type?: "button" | "submit" | "reset" | undefined;
   /** 버튼 색상 */
@@ -53,6 +52,7 @@ interface IButtonConstum {
   tooltip?: string;
   /** 해당 버튼을 Redirect 하는 용도로 사용합니다. */
   redirect?: string;
+  /** 폰트 색상을 강제합니다. */
   color?: "white";
 }
 
@@ -76,7 +76,6 @@ export const Button: React.FC<IButtonProps> = ({
   dataFor,
   mode,
   cunsumPadding,
-  refContainer,
   type,
   color,
   thema,
@@ -104,7 +103,6 @@ export const Button: React.FC<IButtonProps> = ({
     "JDbtn--plarge": padding === "large",
     "JDbtn--phuge": padding === "huge",
     "JDbtn--small": size === "small",
-    "JDbtn--tiny": size === "tiny",
     "JDbtn--large": size === "large" || size === "longLarge",
     "JDbtn--long": size === "long" || size === "longLarge",
     "JDbtn--border": mode === "border",
@@ -113,6 +111,7 @@ export const Button: React.FC<IButtonProps> = ({
     "JDbtn--text-white": color === "white",
     ...colorClass("JDbtn", thema),
     "JDwaves-effect-dark": mode === "flat" && thema === "normal",
+    "JDbtn--iconButton": mode === "iconButton",
     "JDbtn--pulse": pulse,
     "JDbtn--toogleOn": toggle === true,
     "JDbtn--toogle111Off": toggle === false,
@@ -120,7 +119,7 @@ export const Button: React.FC<IButtonProps> = ({
     "JDtext-blink": blink,
     "visibility-none": props.hidden,
     ...JDmbClass(mb),
-    ...JDmrClass(mr)
+    ...JDmrClass(mr),
   });
 
   const handleClickButton = (
@@ -139,11 +138,34 @@ export const Button: React.FC<IButtonProps> = ({
 
   const newId = s4();
 
+  if (mode === "iconButton") {
+    return (
+      <button
+        {...props}
+        type={type}
+        disabled={disabled}
+        className={`JDbtn JDwaves-effect ${classes}`}
+        onClick={handleClickButton}
+        onKeyPress={handleKeyPress}
+        data-tip={tooltip ? true : dataTip}
+        data-for={tooltip ? `btnTooltip${newId}` : dataFor}
+      >
+        <div>
+          <JDIcon {...iconProp!} />
+        </div>
+        {label && (
+          <JDtypho className="JDbtn--iconButton__label" size="tiny">
+            {label}
+          </JDtypho>
+        )}
+      </button>
+    );
+  }
+
   return (
     <Fragment>
       <button
         {...props}
-        ref={refContainer}
         type={type}
         disabled={disabled}
         className={`JDbtn JDwaves-effect ${classes}`}

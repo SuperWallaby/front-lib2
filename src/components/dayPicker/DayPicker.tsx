@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useEffect } from "react";
 import {
   CaptionElementProps,
   DayModifiers,
-  DayPickerProps
+  DayPickerProps,
 } from "react-day-picker";
 const DayPicker = require("react-day-picker").default;
 import classNames from "classnames";
@@ -85,9 +85,8 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     className,
     dots = [],
     mr,
-    mb
+    mb,
   }) => {
-    console.log(dots);
     const dayPickerFullWrap: any = useRef();
     const isInitialMount = useRef(true);
 
@@ -120,20 +119,20 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       // 불가능한 날자를 눌럿을경우에
       if (modifiers.disabled) return;
 
-      // 같은날을 선택할수 없는경우에
-
-      if (from && !canSelectSameDate && moment(from).isSame(day, "d")) return;
-
-      if (from && day <= from) {
-        handleResetClick();
-        return;
-      }
-
       // 범위선택이 아닌 경우에
       if (!isRange) {
         setFrom(day);
         setEntered(day);
         setTo(day);
+        return;
+      }
+
+      // 같은날을 선택할수 없는경우에
+      if (from && !canSelectSameDate && moment(from).isSame(day, "d")) return;
+
+      // 선택한 날자 뒤를 누른경우에
+      if (from && day <= from) {
+        handleResetClick();
         return;
       }
 
@@ -185,7 +184,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--unDisplayNavbar": displayHeader === false,
       "DayPicker--unDisplayInfo": !Information,
       ...JDmbClass(mb),
-      ...JDmrClass(mr)
+      ...JDmrClass(mr),
     });
 
     // 이건 순수하게 달력부분
@@ -197,7 +196,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--unRange": !isRange,
       "DayPicker--right": calenaderPosition === "right",
       "DayPicker--left": calenaderPosition === "left",
-      "DayPicker--center": calenaderPosition === "left"
+      "DayPicker--center": calenaderPosition === "left",
     });
 
     const { MONTHS, WEEKDAYS_EN, WEEKDAYS_KR } = getDateCharLang();
@@ -207,8 +206,6 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
 
     // 이부분 함수 또는 이넘으로 변경
 
-    console.log("modifiers");
-    console.log(modifiers);
     const RenderDots = HorizenDay.bind(HorizenDay, dots);
 
     const horizenProps =
@@ -219,7 +216,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
             showWeekDays: false,
             captionElement: ({ date }: CaptionElementProps) => (
               <HorizenCaption date={date} onChange={() => {}} />
-            )
+            ),
           }
         : {};
 
@@ -246,7 +243,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       locale: lang,
       showOutsideDays: false,
       disabledDays: canSelectBeforeDay ? undefined : [{ before: new Date() }],
-      ...horizenProps
+      ...horizenProps,
     };
 
     return (

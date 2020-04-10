@@ -16,7 +16,7 @@ import { IIcons, IconConifgProps } from "../icons/declation";
 import Preloader from "../preloader/Preloader";
 import userTacking from "../../utils/userTracking";
 
-interface IInputTextCutsomProp {
+export interface IInputTextCutsomProp {
   placeholder?: string;
   readOnly?: boolean;
   disabled?: boolean;

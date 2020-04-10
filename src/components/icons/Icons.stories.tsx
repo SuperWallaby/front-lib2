@@ -10,7 +10,7 @@ import JDtypho from "../typho/Typho";
 export default {
   title: "Icon",
   component: () => <Icon icon={"close"} />,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 const Wrapper: React.FC = ({ children }) => (
@@ -20,7 +20,7 @@ const Wrapper: React.FC = ({ children }) => (
       padding: ".4rem",
       margin: ".2rem",
       borderRadius: "5px",
-      background: "#eee"
+      background: "#eee",
     }}
   >
     {children}
@@ -33,22 +33,22 @@ export const standard = () => {
     <JDcontainer verticalPadding>
       <Align
         flex={{
-          wrap: true
+          wrap: true,
         }}
       >
-        {keys.map(key => (
+        {keys.map((key) => (
           <Wrapper key={key}>
             <div>
               <JDtypho
                 style={{
-                  fontSize: "4px"
+                  fontSize: "4px",
                 }}
                 mb="small"
               >
                 {key}
               </JDtypho>
             </div>
-            <Icon key={key} size="huge" icon={key as any} />
+            <Icon icon={key as any} />
           </Wrapper>
         ))}
       </Align>
@@ -57,5 +57,5 @@ export const standard = () => {
 };
 
 standard.story = {
-  name: "standard"
+  name: "standard",
 };

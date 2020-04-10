@@ -5,7 +5,7 @@ const cardExpToObj = (period: string = "") => {
   var inputYear = replaceCard.substring(2, 4); // 선언한 변수 year에 년의 정보값을 담는다.
   return {
     month: inputMonth,
-    year: inputYear
+    year: inputYear,
   };
 };
 
@@ -109,10 +109,15 @@ export {
   numberStr,
   cardExpire,
   toNumber,
-  card_space
+  card_space,
 };
 
 export const removeSpecialChar = (str: string) => {
   const test = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
   return str.replace(test, "_");
+};
+
+export const removeSpecial = (str: string) => {
+  const test = /[\{\}\[\]\/?.,;:\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+  return str.replace(test, "");
 };

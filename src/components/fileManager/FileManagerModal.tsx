@@ -25,7 +25,7 @@ const ImageManagerModal: React.FC<IProps> = ({
   modalProp,
   uploaderHook,
   addBtnProps,
-  langs = defaultLangSet
+  langs = defaultLangSet,
 }) => {
   const { setUrls, urls } = uploaderHook;
 
@@ -41,7 +41,7 @@ const ImageManagerModal: React.FC<IProps> = ({
 
   const { head, foot, ...modaProps } = modalProp || {
     head: undefined,
-    foot: undefined
+    foot: undefined,
   };
 
   return (
@@ -52,13 +52,13 @@ const ImageManagerModal: React.FC<IProps> = ({
           handleCancel();
         },
         title: langs.headTitle,
-        ...head
+        ...head,
       }}
       foot={
         foot || (
           <Align
             flex={{
-              between: true
+              between: true,
             }}
           >
             <Button
@@ -66,7 +66,7 @@ const ImageManagerModal: React.FC<IProps> = ({
               onClick={() => {
                 modalHook.closeModal();
               }}
-              size="tiny"
+              size="small"
               padding="large"
               br="round"
               thema="primary"
@@ -78,7 +78,7 @@ const ImageManagerModal: React.FC<IProps> = ({
               onClick={() => {
                 handleCancel();
               }}
-              size="tiny"
+              size="small"
               padding="large"
               br="round"
               mode="flat"

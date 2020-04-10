@@ -379,6 +379,14 @@ export interface IUseDayPicker {
   setDate: (date: Date) => void;
 }
 
+const pureDate = (date: Date | null) => {
+  return date
+    ? moment(date)
+        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+        .toDate()
+    : null;
+};
+
 function useDayPicker(
   defaultFrom: Date | null | string,
   defaultTo: Date | null | string
@@ -389,9 +397,9 @@ function useDayPicker(
   if (typeof defaultTo === "string") toTemp = moment(defaultTo).toDate();
   if (typeof fromTemp === "string") throw Error;
   if (typeof toTemp === "string") throw Error;
-  const [from, setFrom] = useState<Date | null>(fromTemp);
-  const [entered, setEntered] = useState<Date | null>(toTemp);
-  const [to, setTo]: any = useState<Date | null>(toTemp);
+  const [from, setFrom] = useState<Date | null>(pureDate(fromTemp));
+  const [entered, setEntered] = useState<Date | null>(pureDate(toTemp));
+  const [to, setTo]: any = useState<Date | null>(pureDate(toTemp));
 
   const setDate = useCallback((date: Date) => {
     setFrom(date);
@@ -454,6 +462,7 @@ function useRange(defaultValue: number, maxValue?: number, minValue?: number) {
 export interface IUseSelect<V = any> {
   selectedOption: IselectedOption<V> | null;
   onChange(foo: IselectedOption<V>): void;
+  options?: IselectedOption[];
 }
 
 export interface IUseDrawer {
@@ -463,7 +472,8 @@ export interface IUseDrawer {
 
 // 셀렉트박스 훅
 function useSelect<V = any>(
-  defaultValue: IselectedOption<V> | null
+  defaultValue: IselectedOption<V> | null,
+  options?: IselectedOption[]
 ): IUseSelect<V> {
   const [selectedOption, setSelectedOption] = useState(defaultValue);
 
@@ -471,7 +481,7 @@ function useSelect<V = any>(
     setSelectedOption(value);
   }, []);
 
-  return { selectedOption, onChange };
+  return { selectedOption, onChange, options };
 }
 
 // 투글 훅

@@ -28,6 +28,7 @@ export const DayPickerDay = (dots: TDayPickerDot[], date: Date, props: any) => {
           {targetDots.map(dot => (
             <Fragment key={dot.date.valueOf()}>
               <DayPickerDot
+                onClick={() => {}}
                 data-tip={dot.tooltip ? true : undefined}
                 data-for={
                   dot.tooltip ? `dotTooltip${date.valueOf()}` : undefined

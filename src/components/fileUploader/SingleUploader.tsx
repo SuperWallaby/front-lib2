@@ -1,14 +1,18 @@
-import React, { useRef, Fragment } from "react";
-import { InputText } from "../InputText/InputText";
+import React, { useRef } from "react";
+import { InputText, IInputTextCutsomProp } from "../InputText/InputText";
 import Button, { IButtonProps } from "../button/Button";
 import Align from "../align/Align";
+import classNames from "classnames";
 import { IuseFilesManager } from "../../hooks/hook";
 import { JDlabel } from "../..";
+import { IDiv, JDatomExtentionSet } from "../../types/interface";
+import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
 
-export interface IProps {
-  label: string;
+export interface IProps extends IDiv, JDatomExtentionSet {
+  label?: string;
   fileUploaderHook: IuseFilesManager;
   buttonProps?: IButtonProps;
+  inputProps?: IInputTextCutsomProp;
   index?: number;
 }
 
@@ -16,7 +20,11 @@ export const FileUploader: React.FC<IProps> = ({
   label,
   fileUploaderHook,
   buttonProps,
-  index
+  index,
+  inputProps,
+  className,
+  mb,
+  mr
 }) => {
   const { localFiles, onChangeFile } = fileUploaderHook;
   const file = localFiles[index || 0];
@@ -26,11 +34,13 @@ export const FileUploader: React.FC<IProps> = ({
     uploaderRef?.current?.click();
   };
 
-  console.log("file");
-  console.log(file);
+  const classes = classNames("JDsingleUploader", className, {
+    ...JDmbClass(mb),
+    ...JDmrClass(mr)
+  });
 
   return (
-    <Fragment>
+    <div className={classes}>
       {label && <JDlabel txt={label} />}
       <Align flex={{}}>
         <input
@@ -40,14 +50,15 @@ export const FileUploader: React.FC<IProps> = ({
             width: "1px",
             height: "1px"
           }}
+          className="JDsingleUploader__input"
           type="file"
           onChange={onChangeFile}
           ref={uploaderRef}
         />
-        <InputText value={file?.fileName} />
+        <InputText mb="no" value={file?.fileName} {...inputProps} />
         <Button onClick={handleBtnClick} {...buttonProps} />
       </Align>
-    </Fragment>
+    </div>
   );
 };
 

@@ -16,6 +16,13 @@ import JDdayPickerModal from "./components/dayPickerModal/DayPickerModal";
 import JDslider, { Slide as JDslide } from "./components/slider/Slider";
 import JDphotoFrame from "./components/photoFrame/PhotoFrame";
 import JDFileManagerModal from "./components/fileManager/FileManagerModal";
+import JDsearchInput, {
+  IJDsearchInputProp,
+} from "./components/searchInput/SearchInput";
+import {
+  IDateModalProps,
+  ISearchViewData,
+} from "./components/searchInput/DataModal";
 import JDsingleUploader from "./components/fileUploader/SingleUploader";
 import { JDtabs, Tab, TabList, TabPanel } from "./components/tabs/Tabs";
 import hooks, {
@@ -27,7 +34,7 @@ import hooks, {
   IuseFilesManager,
   IUseSelect,
   IusePageNation,
-  IuseImageUploaderOption
+  IuseImageUploaderOption,
 } from "./hooks/hook";
 import {
   JDColor,
@@ -36,7 +43,7 @@ import {
   TextSize,
   TMarginSize,
   WindowSize,
-  WindowSizeNumber
+  WindowSizeNumber,
 } from "./types/enum";
 import { DEFAULT_PHOTO } from "./types/defaults";
 import utills from "./utils/utils";
@@ -59,7 +66,7 @@ const {
   useStoreSelect,
   useSwitch,
   useToggle,
-  useFilesManager
+  useFilesManager,
 } = hooks;
 
 export {
@@ -119,10 +126,14 @@ export {
   TabList,
   JDtabs,
   JDpreloaderModal,
+  IDateModalProps,
+  ISearchViewData,
+  IJDsearchInputProp,
+  JDsearchInput,
   JDpreloader,
   JDlabel,
   utills,
   InputText,
   Toast,
-  toast
+  toast,
 };

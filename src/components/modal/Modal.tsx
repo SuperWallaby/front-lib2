@@ -29,6 +29,7 @@ export interface JDmodalConfigProps {
   trueMessage?: string | any[];
   contentClassName?: string;
   id?: string;
+  fullInMobile?: boolean;
   contentWrapStyle?: React.CSSProperties;
   confirmCallBackFn?(flag: boolean, key?: string): any;
 }
@@ -60,6 +61,7 @@ const JDmodal: React.SFC<IProps> = ({
   loading,
   contentClassName = "JDmodal__body",
   contentWrapStyle: contentWrapStyleProp,
+  fullInMobile,
   appElement = document.getElementById("root") || undefined,
   ...props
 }) => {
@@ -93,7 +95,8 @@ const JDmodal: React.SFC<IProps> = ({
     "JDmodal--alertWaring": info && info.thema === "warn",
     "JDmodal--noAnimation": !shouldAnimation,
     "JDmodal--paddingLarge": paddingSize === "large",
-    "JDmodal--loading": loading
+    "JDmodal--loading": loading,
+    "JDmodal--fullInMobile": fullInMobile
   });
 
   const defualtJDmodalProps = {

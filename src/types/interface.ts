@@ -125,6 +125,7 @@ export interface IHolidaysByApi {
 export interface JDatomExtentionSet {
   mb?: TMarginSize;
   mr?: TMarginSize;
+  hide?: boolean;
 }
 /*  -------------------------------------------------------------------------- */
 

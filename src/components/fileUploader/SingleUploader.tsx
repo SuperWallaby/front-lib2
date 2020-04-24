@@ -4,7 +4,7 @@ import Button, { IButtonProps } from "../button/Button";
 import Align from "../align/Align";
 import classNames from "classnames";
 import { IuseFilesManager } from "../../hooks/hook";
-import { JDlabel } from "../..";
+import JDlabel from "../label/JDLabel";
 import { IDiv, JDatomExtentionSet } from "../../types/interface";
 import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
 

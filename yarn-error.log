@@ -2,7 +2,7 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js publish
 
 PATH: 
-  C:\Users\김민재\AppData\Local\Temp\yarn--1586680005288-0.294257483593082;C:\Users\김민재\Desktop\projects\janda-lib\node_modules\.bin;C:\Users\김민재\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\김민재\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\Users\김민재\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\김민재\AppData\Local\Programs\Python\Python38;C:\Users\김민재\AppData\Local\Microsoft\WindowsApps;C:\Users\김민재\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\김민재\AppData\Roaming\npm;C:\Users\김민재\AppData\Local\Yarn\bin
+  C:\Users\김민재\AppData\Local\Temp\yarn--1587026020159-0.9023240399429171;C:\Users\김민재\Desktop\projects\janda-lib\node_modules\.bin;C:\Users\김민재\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\김민재\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\MinGW\bin;C:\Users\김민재\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\김민재\AppData\Local\Programs\Python\Python38;C:\Users\김민재\AppData\Local\Microsoft\WindowsApps;C:\Users\김민재\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\김민재\AppData\Roaming\npm;C:\Users\김민재\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.22.4
@@ -29,7 +29,7 @@ Trace:
 npm manifest: 
   {
   	"name": "@janda-com/front",
-  	"version": "0.4.4",
+  	"version": "0.4.6",
   	"description": "@jd-com/front",
   	"main": "build/index.js",
   	"module": "build/index.es.js",
@@ -93,24 +93,11 @@ npm manifest:
   	"jest": {
   		"preset": "ts-jest",
   		"testEnvironment": "jsdom",
-  		"testPathIgnorePatterns": [
-  			"build/"
-  		]
+  		"testPathIgnorePatterns": [ "build/" ]
   	},
   	"standard": {
-  		"ignore": [
-  			"node_modules/",
-  			"build/",
-  			".storybook/"
-  		],
-  		"globals": [
-  			"describe",
-  			"it",
-  			"test",
-  			"expect",
-  			"afterAll",
-  			"jest"
-  		]
+  		"ignore": [ "node_modules/", "build/", ".storybook/" ],
+  		"globals": [ "describe", "it", "test", "expect", "afterAll", "jest" ]
   	},
   	"publishConfig": {
   		"access": "public"
@@ -122,6 +109,7 @@ npm manifest:
   		"@types/react-day-picker": "^5.3.0",
   		"@types/react-modal": "^3.10.5",
   		"@types/react-select": "^3.0.10",
+  		"@types/react-table": "^6.8.3",
   		"@types/react-tabs": "^2.3.1",
   		"@types/react-toastify": "^4.1.0",
   		"@types/react-window-size": "^1.2.0",
@@ -137,6 +125,7 @@ npm manifest:
   		"react-image-file-resizer": "^0.2.1",
   		"react-modal": "^3.11.2",
   		"react-slick": "^0.25.2",
+  		"react-table": "^6.10.0",
   		"react-tabs": "^3.1.0",
   		"react-toastify": "^5.5.0",
   		"react-tooltip": "^4.1.2",
@@ -2297,6 +2286,13 @@ Lockfile:
     version "11.0.4"
     resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-11.0.4.tgz#d86d17697db62f98046874f62fdb3e53a0bbc4cd"
     integrity sha512-9GfTo3a0PHwQeTVoqs0g5bS28KkSY48pp5659wA+Dp4MqceDEa8EHBqrllJvvtyusszyJhViUEap0FDvlk/9Zg==
+    dependencies:
+      "@types/react" "*"
+  
+  "@types/react-table@^6.8.3", "@types/react-table@^6.8.5":
+    version "6.8.7"
+    resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-6.8.7.tgz#210ffa2862dd3711350676c0bdbbfbff45f14b84"
+    integrity sha512-1U0xl47jk0BzE+HNHgxZYSLvtybSvnlLhOpW9Mfqf9iuRm/fGqgRab3TKivPCY6Tl7WPFM2hWEJ1GnsuSFc9AQ==
     dependencies:
       "@types/react" "*"
   
@@ -10531,6 +10527,15 @@ Lockfile:
       lowlight "~1.11.0"
       prismjs "^1.8.4"
       refractor "^2.4.1"
+  
+  react-table@^6.10.0:
+    version "6.11.5"
+    resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.11.5.tgz#84e52885db426a07a6c4ce2c7e942f2cd4e2aa58"
+    integrity sha512-LM+AS9v//7Y7lAlgTWW/cW6Sn5VOb3EsSkKQfQTzOW8FngB1FUskLLNEVkAYsTX9LjOWR3QlGjykJqCE6eXT/g==
+    dependencies:
+      "@types/react-table" "^6.8.5"
+      classnames "^2.2.5"
+      react-is "^16.8.1"
   
   react-tabs@^3.1.0:
     version "3.1.0"

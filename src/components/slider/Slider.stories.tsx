@@ -8,50 +8,24 @@ import JDcontainer from "../container/Container";
 export default {
   title: "Slider",
   component: () => <Slider />,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const standard = () => {
   return (
     <JDcontainer verticalPadding>
-      <Slider>
+      <Slider >
+        <Slide>1</Slide>
+        <Slide>2</Slide>
         <Slide>
           <Align
             flex={{
               center: true,
-              vCenter: true
+              vCenter: true,
             }}
             style={{
               background: "#eee",
-              height: "100px"
-            }}
-          >
-            1
-          </Align>
-        </Slide>
-        <Slide>
-          <Align
-            flex={{
-              center: true,
-              vCenter: true
-            }}
-            style={{
-              background: "#eee",
-              height: "100px"
-            }}
-          >
-            2
-          </Align>
-        </Slide>
-        <Slide>
-          <Align
-            flex={{
-              center: true,
-              vCenter: true
-            }}
-            style={{
-              background: "#eee",
-              height: "100px"
+              height: "100px",
             }}
           >
             3
@@ -61,11 +35,11 @@ export const standard = () => {
           <Align
             flex={{
               center: true,
-              vCenter: true
+              vCenter: true,
             }}
             style={{
               background: "#eee",
-              height: "100px"
+              height: "100px",
             }}
           >
             4
@@ -75,11 +49,11 @@ export const standard = () => {
           <Align
             flex={{
               center: true,
-              vCenter: true
+              vCenter: true,
             }}
             style={{
               background: "#eee",
-              height: "100px"
+              height: "100px",
             }}
           >
             5
@@ -91,5 +65,5 @@ export const standard = () => {
 };
 
 standard.story = {
-  name: "standard"
+  name: "standard",
 };

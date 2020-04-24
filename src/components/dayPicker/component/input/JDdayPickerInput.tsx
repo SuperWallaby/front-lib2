@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, Fragment, forwardRef } from "react";
-import DayPickerInput from "react-day-picker/DayPickerInput";
 import moment from "moment";
 import InputText from "../../../InputText/InputText";
 import "moment/locale/ko";
 import { DateFormat } from "../../../../types/enum";
 import { DayPickerProps } from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
 // 데이픽커 인풋은 어레인이지를 지원하지 않을려는것만 같다.
 // 무리하게 바꾸었는데 잘 동작할지 모르겠다.
 
@@ -41,7 +41,7 @@ const JDdayPickerInput: React.FC<IProps> = ({
   disabled,
   ...props
 }) => {
-  let DayPickerInputRef = useRef<DayPickerInput | null>(null);
+  let DayPickerInputRef = useRef<any | null>(null);
   const isInitialMount = useRef(true);
 
   const dateForMatter = (

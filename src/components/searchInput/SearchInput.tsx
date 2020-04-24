@@ -13,6 +13,7 @@ export interface IJDsearchInputProp extends IDateModalProps {
   // 미구현
   filterBySearch?: boolean;
   sortBySmiliarity?: boolean;
+  focuseOutAfterSelect?: boolean;
 }
 
 // 이 컴포넌트는 검색하여 리스트를 보여주는것을 목적으로 합니다.
@@ -29,6 +30,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
   foot,
   langs,
   maxModalBodyHeight = 300,
+  focuseOutAfterSelect,
   ...prop
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -106,9 +108,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
       />
 
       <DataModal
-        style={{
-          display: modalVisible ? "block" : "none",
-        }}
+        className={modalVisible ? "dataModal--visible" : undefined}
         ref={ulRef}
         maxModalBodyHeight={maxModalBodyHeight}
         onSelectData={onSelectData}

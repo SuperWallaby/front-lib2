@@ -2,7 +2,6 @@ import React from "react";
 import { IUseModal } from "../../hooks/hook";
 import JDmodal from "../modal/Modal";
 import JDdayPicker, { IJDdayPickerProps } from "..//dayPicker/DayPicker";
-import { MODAL_MIN_WIDTH } from "../../types/const";
 
 interface Iprops extends IJDdayPickerProps {
   autoClose?: boolean;
@@ -28,13 +27,9 @@ const DayPickerModal: React.FC<Iprops> = ({
   };
 
   return (
-    <JDmodal
-      minWidth={MODAL_MIN_WIDTH}
-      className="DayPickerModal"
-      {...modalHook}
-    >
+    <JDmodal className="DayPickerModal" {...modalHook}>
       <div
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
         }}

@@ -1,0 +1,18 @@
+import { Meta, Props, Story, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import Doc, { DocHeader, DocSection } from "./Doc";
+import "../../scss/all.scss";
+import { IDiv } from "../../types/interface";
+import JDcontainer from "../container/Container";
+import { WindowSize } from "../../types/enum";
+
+# Doc
+
+## Doc 는 css 규격을 유한 컴포넌트 입니다. **MDX**!
+
+DOC prop **Extends Div**
+<Props of={Doc} />
+
+
+Doc Header Props **Extends Div**
+<Props of={DocHeader} />

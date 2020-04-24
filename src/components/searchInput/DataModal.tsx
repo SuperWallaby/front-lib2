@@ -54,6 +54,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
       langs = DEFUALT_LANGS,
       maxModalBodyHeight,
       loading,
+      className,
       ...props
     },
     ref
@@ -71,7 +72,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
     const words = value.trim().split(" ");
     const regax = RegExp(`${removeSpecial(words.join("|"))}`, "g");
 
-    const classes = classNames("dataModal", undefined, {
+    const classes = classNames("dataModal", className, {
       "dataModal--empty": !haveData,
     });
 

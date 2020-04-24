@@ -77,6 +77,12 @@
 			display: flex;
 			justify-content: center;
 		}
+		&--floating {
+			position: fixed !important;
+			bottom: 2% !important;
+			right: 3% !important;
+			transform-origin: left bottom;
+		}
 	}
 
 	&__outerline {

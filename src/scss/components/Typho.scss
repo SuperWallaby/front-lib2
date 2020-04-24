@@ -1,11 +1,12 @@
 @import "../style_config.scss";
 
 .JDtypho {
-  &--hover {
-    cursor: pointer;
-  }
+	line-height: $typho-line-height;
+	&--hover {
+		cursor: pointer;
+	}
 
-  color: inherit;
-  @include colorText--prefixer();
-  @include sizeText--prefixer();
+	color: inherit;
+	@include colorText--prefixer();
+	@include sizeText--prefixer();
 }

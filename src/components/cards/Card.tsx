@@ -5,8 +5,6 @@ import { JDatomClasses } from "../../utils/autoClasses";
 import JDIcon from "../icons/Icons";
 
 
-
-
 interface IProps extends IDiv {
   /**
    * Sets the button size.

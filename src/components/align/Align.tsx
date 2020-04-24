@@ -1,6 +1,6 @@
 import React from "react";
 import { IDiv, JDatomExtentionSet } from "../../types/interface";
-import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
+import { JDatomClasses } from "../../utils/autoClasses";
 import classNames from "classnames";
 
 type TFlex = {
@@ -43,6 +43,7 @@ const Align: React.FC<IProps & IDiv & JDatomExtentionSet> = ({
   children,
   grid,
   col,
+  hide,
   ...props
 }) => {
   let colString = "";
@@ -59,8 +60,11 @@ const Align: React.FC<IProps & IDiv & JDatomExtentionSet> = ({
   let classes = classNames("JDAlign", className, {
     JDflex: flex,
     "flex-grid__col": col,
-    ...JDmbClass(mb),
-    ...JDmrClass(mr)
+    ...JDatomClasses({
+      hide,
+      mb,
+      mr,
+    }),
   });
 
   if (typeof flex === "object") {
@@ -72,14 +76,14 @@ const Align: React.FC<IProps & IDiv & JDatomExtentionSet> = ({
       "JDflex--column": flex?.column,
       "JDflex--wrap": flex?.wrap,
       "JDflex--oneone": flex?.oneone,
-      "JDflex--grow": flex?.grow
+      "JDflex--grow": flex?.grow,
     });
   }
 
   if (grid) {
     classes = classNames("", classes, {
       "flex-grid-grow": typeof grid === "object" && grid.grow,
-      "flex-grid": grid === true
+      "flex-grid": grid === true,
     });
   }
 

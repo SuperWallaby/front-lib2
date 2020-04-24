@@ -221,6 +221,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
         : {};
 
     const DayPickerRender = DayPickerDay.bind(DayPickerDay, dots);
+    // @ts-ignore
     const dayPickerProps: DayPickerProps = {
       tabIndex: 1,
       renderDay: DayPickerRender,

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import ReactModal from "react-modal";
 import classNames from "classnames";
 import Button from "../button/Button";
@@ -6,7 +6,7 @@ import { IUseModal } from "../../hooks/hook";
 import { s4 } from "../../utils/utils";
 import ModalEndSection from "./components/ModalEndSection";
 import ModalHeadSection, {
-  IPropsModalHeadProps
+  IPropsModalHeadProps,
 } from "./components/ModalHeadSection";
 import Preloader from "../preloader/Preloader";
 import { TElements } from "../../types/interface";
@@ -22,7 +22,6 @@ export interface JDmodalConfigProps {
   children?: any;
   minWidth?: string;
   minContentsWidth?: string;
-  noAnimation?: boolean;
   paddingSize?: "large";
   visibleOverflow?: boolean;
   falseMessage?: string | any[];
@@ -56,17 +55,15 @@ const JDmodal: React.SFC<IProps> = ({
   confirmCallBackFn = info?.confirmCallBackFn,
   visibleOverflow,
   trueMessage,
-  noAnimation = true,
   falseMessage,
   loading,
+  overlayClassName: overlayClassNameProp,
   contentClassName = "JDmodal__body",
   contentWrapStyle: contentWrapStyleProp,
   fullInMobile,
   appElement = document.getElementById("root") || undefined,
   ...props
 }) => {
-  const [shouldAnimation] = useState(!noAnimation);
-
   // 여기에서 info로 들어온것과 openModal 명렁으로 들어온것들 조합함
   const inInfo = (() => {
     let inInInfo: any = {};
@@ -83,25 +80,25 @@ const JDmodal: React.SFC<IProps> = ({
 
   // 👿 curtton => overlay
 
-  const overlayClassNames = classNames("JDmodal-overlay", undefined, {
-    "JDmodal-overlay--noAnimation": !shouldAnimation,
-    "JDmodal-overlay--underHeader": isUnderHeader
-  });
+  const overlayClassNames = classNames(
+    "JDmodal-overlay",
+    overlayClassNameProp,
+    {}
+  );
 
   const classes = classNames("Modal JDmodal", className, {
     "JDmodal--center": center,
     "JDmodal--visibleOverflow": visibleOverflow,
     "JDmodal--alert": isAlert || confirm,
     "JDmodal--alertWaring": info && info.thema === "warn",
-    "JDmodal--noAnimation": !shouldAnimation,
     "JDmodal--paddingLarge": paddingSize === "large",
     "JDmodal--loading": loading,
-    "JDmodal--fullInMobile": fullInMobile
+    "JDmodal--fullInMobile": fullInMobile,
   });
 
   const defualtJDmodalProps = {
     className: `Modal ${classes}`,
-    overlayClassName: "Overlay"
+    overlayClassName: "Overlay",
   };
 
   const hanldeClickBtn = (flag: boolean, key?: string) => {
@@ -116,7 +113,7 @@ const JDmodal: React.SFC<IProps> = ({
     onClick: () => {
       hanldeClickBtn(true);
     },
-    label: trueMessage || "confirm"
+    label: trueMessage || "confirm",
   };
 
   const sharedFalseBtnProp: any = {
@@ -125,7 +122,7 @@ const JDmodal: React.SFC<IProps> = ({
     onClick: () => {
       hanldeClickBtn(false);
     },
-    label: falseMessage || "close"
+    label: falseMessage || "close",
   };
 
   const misClickPreventCloseModal = () => {
@@ -135,12 +132,12 @@ const JDmodal: React.SFC<IProps> = ({
   };
 
   const modalStyle = {
-    minWidth: loading || minWidth
+    minWidth: loading || minWidth,
   };
 
   const modalContentsStyle = {
     minWidth: minContentsWidth,
-    ...contentWrapStyleProp
+    ...contentWrapStyleProp,
   };
 
   const getChildren = () => (
@@ -179,7 +176,7 @@ const JDmodal: React.SFC<IProps> = ({
       overlayClassName={overlayClassNames}
     >
       <div
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
         }}
       >

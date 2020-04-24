@@ -3,20 +3,20 @@ import { withKnobs } from "@storybook/addon-knobs";
 import Toast from "./Toast";
 import "../../scss/all.scss";
 import JDcontainer from "../container/Container";
-import { JDbutton } from "../..";
+import JDbutton from "../button/Button";
 import { toast } from "react-toastify";
 
 export default {
   title: "Toast",
   component: () => <Toast />,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const standard = () => {
   return (
     <JDcontainer
       style={{
-        minHeight: "500px"
+        minHeight: "500px",
       }}
       verticalPadding
     >
@@ -46,5 +46,5 @@ export const standard = () => {
 };
 
 standard.story = {
-  name: "standard"
+  name: "standard",
 };

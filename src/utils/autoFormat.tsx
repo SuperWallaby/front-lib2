@@ -1,3 +1,5 @@
+import moment, { Moment } from "moment-timezone";
+
 // 카드 만료일 Get
 const cardExpToObj = (period: string = "") => {
   var replaceCard = period.replace(/\//g, "");
@@ -120,4 +122,11 @@ export const removeSpecialChar = (str: string) => {
 export const removeSpecial = (str: string) => {
   const test = /[\{\}\[\]\/?.,;:\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
   return str.replace(test, "");
+};
+
+const defaultForamt = "YYYY-MM-DD";
+type TDate = Date | Moment | number | string;
+export const dateRangeFormat = (from: TDate, to: TDate, format?: string) => {
+  const f = format || defaultForamt;
+  return moment(from).format(f) + " ~ " + moment(to).format(f);
 };

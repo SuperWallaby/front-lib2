@@ -2,7 +2,7 @@ import React from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import Align from "./Align";
 import "../../scss/all.scss";
-import { JDlabel } from "../..";
+import JDlabel from "../label/JDLabel";
 import JDcontainer from "../container/Container";
 import { WindowSize } from "../../types/enum";
 import { Block } from "./Block";
@@ -15,9 +15,9 @@ export default {
   parameters: {
     componentSubtitle: '"안녕하세요"라고 보여주는 컴포넌트',
     docs: {
-      page: AlignMdx
-    }
-  }
+      page: AlignMdx,
+    },
+  },
 };
 
 export const standard = () => {
@@ -26,7 +26,7 @@ export const standard = () => {
       <JDlabel txt="flex" />
       <Align
         style={{
-          minHeight: "100px"
+          minHeight: "100px",
         }}
         flex={{}}
       >
@@ -38,7 +38,7 @@ export const standard = () => {
       <JDlabel txt="flex-between" />
       <Align
         flex={{
-          between: true
+          between: true,
         }}
       >
         <Block />
@@ -49,23 +49,23 @@ export const standard = () => {
       <JDlabel txt="vertical-center" />
       <Align
         flex={{
-          vCenter: true
+          vCenter: true,
         }}
       >
         <Block
           style={{
-            height: "50px"
+            height: "50px",
           }}
         />
         <Block
           style={{
-            height: "70px"
+            height: "70px",
           }}
         />
         <Block />
         <Block
           style={{
-            height: "30px"
+            height: "30px",
           }}
         />
       </Align>
@@ -87,7 +87,7 @@ export const standard = () => {
           col={{
             sm: 1,
             lg: 3,
-            full: 6
+            full: 6,
           }}
         >
           <Block full />
@@ -96,7 +96,7 @@ export const standard = () => {
           col={{
             sm: 1,
             lg: 3,
-            full: 6
+            full: 6,
           }}
         >
           <Block full />
@@ -105,7 +105,7 @@ export const standard = () => {
           col={{
             sm: 1,
             lg: 3,
-            full: 6
+            full: 6,
           }}
         >
           <Block full />
@@ -114,7 +114,7 @@ export const standard = () => {
           col={{
             sm: 1,
             lg: 3,
-            full: 6
+            full: 6,
           }}
         >
           <Block full />
@@ -146,5 +146,5 @@ export const standard = () => {
 };
 
 standard.story = {
-  name: "standard"
+  name: "standard",
 };

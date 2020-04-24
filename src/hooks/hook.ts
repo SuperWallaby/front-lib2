@@ -5,7 +5,7 @@ import {
   Dispatch,
   SetStateAction,
   useCallback,
-  ChangeEvent
+  ChangeEvent,
 } from "react";
 import { IselectedOption } from "../types/interface";
 import { TLanguageShort } from "../types/enum";
@@ -66,9 +66,9 @@ const useStoreSelect = (
   defaultPropCode?: string,
   defaultIdProp?: string
 ) => {
-  const storesOp = stores.map(s => ({
+  const storesOp = stores.map((s) => ({
     value: (withCode ? s.code : s._id) || "",
-    label: s.name
+    label: s.name,
   }));
 
   const defaultId =
@@ -108,7 +108,7 @@ const validateFile = (
   handleErr: () => void
 ) => {
   const {
-    target: { files, validity }
+    target: { files, validity },
   } = event;
 
   if (!validity || !files || files.length !== 1 || !files[0]) {
@@ -179,7 +179,7 @@ const useFilesManager = (
   };
 
   const deleteUrl = (deleteUrl: string[]) => {
-    const updateUrls = urls.filter(url => !deleteUrl.includes(url));
+    const updateUrls = urls.filter((url) => !deleteUrl.includes(url));
     setUrls(updateUrls);
   };
 
@@ -201,7 +201,7 @@ const useFilesManager = (
   };
 
   const deletelocalFile = (deleteKey: string[]) => {
-    const updateTemps = localFiles.filter(ti => !deleteKey.includes(ti.key));
+    const updateTemps = localFiles.filter((ti) => !deleteKey.includes(ti.key));
     saveTemp(updateTemps);
   };
 
@@ -232,7 +232,7 @@ const useFilesManager = (
               base64,
               fileName: filteredName,
               mimeType: file.type,
-              key: s4()
+              key: s4(),
             };
             addLocalFile(uploadFile, index);
           },
@@ -241,19 +241,19 @@ const useFilesManager = (
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = function() {
+        reader.onload = function () {
           if (reader.result) {
             const uploadFile = {
               base64: reader.result.toString(),
               fileName: filteredName,
               mimeType: file.type,
-              key: s4()
+              key: s4(),
             };
             addLocalFile(uploadFile, index);
             setUploading(false);
           }
         };
-        reader.onerror = function(error) {
+        reader.onerror = function (error) {
           setUploading(false);
           console.log("Error: ", error);
         };
@@ -270,7 +270,7 @@ const useFilesManager = (
     isError,
     localFiles,
     setlocalFiles,
-    setUrls
+    setUrls,
   };
 };
 
@@ -341,7 +341,7 @@ function useInput<T = string>(
     value,
     onChange,
     isValid,
-    onChangeValid
+    onChangeValid,
   };
 }
 
@@ -355,7 +355,7 @@ function useCheckBox(defaultValue: boolean) {
 
   return {
     checked,
-    onChange
+    onChange,
   };
 }
 
@@ -414,7 +414,7 @@ function useDayPicker(
     setFrom,
     setTo,
     setEntered,
-    setDate
+    setDate,
   };
 }
 
@@ -482,6 +482,35 @@ function useSelect<V = any>(
   }, []);
 
   return { selectedOption, onChange, options };
+}
+
+function useWindowSize() {
+  const isClient = typeof window === "object";
+
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : 0,
+      height: isClient ? window.innerHeight : 0,
+    };
+  }
+
+  
+  const [windowSize, setWindowSize] = useState(getSize);
+
+  useEffect(() => {
+    if (!isClient) {
+      return;
+    }
+
+    function handleResize() {
+      setWindowSize(getSize());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount and unmount
+
+  return windowSize;
 }
 
 // 투글 훅
@@ -561,7 +590,7 @@ function useModal<T = any>(
     isOpen,
     openModal,
     closeModal,
-    info
+    info,
   };
 }
 
@@ -586,7 +615,7 @@ const useCheckBoxTable = (
 
   //    모든 라인들에대한 아이디를 투글함
   const onToogleAllRow = () => {
-    const updateSelecetedes = allIds.map(id =>
+    const updateSelecetedes = allIds.map((id) =>
       checkedIds.includes(id) ? "" : id
     );
     setCheckedIds(updateSelecetedes);
@@ -595,7 +624,7 @@ const useCheckBoxTable = (
 
   const onToogleRow = (key: string) => {
     if (checkedIds.includes(key)) {
-      setCheckedIds([...checkedIds.filter(value => value !== key)]);
+      setCheckedIds([...checkedIds.filter((value) => value !== key)]);
     } else {
       setCheckedIds([...checkedIds, key]);
     }
@@ -610,7 +639,7 @@ const useCheckBoxTable = (
     setCheckedIds,
     selectAll,
     setSelectAll,
-    isSelected
+    isSelected,
   };
 };
 
@@ -631,7 +660,8 @@ export default {
   usePageNation,
   useRedirect,
   useCheckBoxTable,
-  useFilesManager
+  useFilesManager,
+  useWindowSize,
 };
 
 export {
@@ -651,5 +681,6 @@ export {
   usePageNation,
   useFilesManager,
   useRedirect,
-  useCheckBoxTable
+  useCheckBoxTable,
+  useWindowSize,
 };

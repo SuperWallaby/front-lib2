@@ -1,6 +1,6 @@
 {
 	"name": "@janda-com/front",
-	"version": "0.4.13",
+	"version": "0.4.14",
 	"description": "@jd-com/front",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
@@ -16,7 +16,9 @@
 		"format": "prettier-standard --format",
 		"test": "jest --coverage",
 		"storybook": "start-storybook --port 9090",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"precodegen": "apollo schema:download --endpoint=https://temp-booking.stayjanda.cloud/graphql",
+		"codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/apollo/queries.ts --addTypename --localSchemaFile=schema.json --target=typescript --outputFlat"
 	},
 	"keywords": [],
 	"author": "",

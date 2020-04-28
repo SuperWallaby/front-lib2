@@ -1,7 +1,7 @@
-import OutReactTooltip from "react-tooltip";
+import OutReactTooltip, { TooltipProps } from "react-tooltip";
 import React from "react";
 
-interface IProps extends OutReactTooltip.Props {
+interface IProps extends TooltipProps {
   children?: string | JSX.Element;
 }
 

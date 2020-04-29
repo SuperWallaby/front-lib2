@@ -13,6 +13,10 @@ export interface IProps extends IDiv, JDatomExtentionSet {
   fileUploaderHook: IuseFilesManager;
   buttonProps?: IButtonProps;
   inputProps?: IInputTextCutsomProp;
+  // 하나의 파일 메니저 훅에 
+  // 여러개의 업로더를 연결한 경우
+  // 인덱스를 넣어서 해당 파일의 인덱스를 찾아주어야합니다. 
+  // DEFAULT = 0;
   index?: number;
 }
 

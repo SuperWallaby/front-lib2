@@ -7,6 +7,7 @@
 	"jsnext:main": "build/index.es.js",
 	"scripts": {
 		"prebuild": "rm -r ./build",
+		"buildw": "rollup -c -w",
 		"build": "rollup -c",
 		"onlyBuild": "rollup -c",
 		"scssBuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../",
@@ -68,24 +69,11 @@
 	"jest": {
 		"preset": "ts-jest",
 		"testEnvironment": "jsdom",
-		"testPathIgnorePatterns": [
-			"build/"
-		]
+		"testPathIgnorePatterns": [ "build/" ]
 	},
 	"standard": {
-		"ignore": [
-			"node_modules/",
-			"build/",
-			".storybook/"
-		],
-		"globals": [
-			"describe",
-			"it",
-			"test",
-			"expect",
-			"afterAll",
-			"jest"
-		]
+		"ignore": [ "node_modules/", "build/", ".storybook/" ],
+		"globals": [ "describe", "it", "test", "expect", "afterAll", "jest" ]
 	},
 	"publishConfig": {
 		"access": "public"

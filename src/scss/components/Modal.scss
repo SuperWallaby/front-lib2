@@ -1,178 +1,165 @@
 @import "../style_config.scss";
+// ⭐
+.JDmodal {
+	animation-delay: 300;
+	animation-name: zoomIn;
+
+	&--fullInMobile {
+		&.ReactModal__Content {
+			@include response($phablet) {
+				max-height: none;
+				max-width: none;
+				height: 100%;
+				margin: 0;
+				width: 100%;
+				border-radius: 0px;
+			}
+		}
+	}
+
+	&--loading {
+		min-width: 0 !important;
+		max-width: fit-content !important;
+		width: fit-content !important;
+	}
+
+	&--alert {
+		font-weight: bold;
+	}
+
+	&--center {
+		text-align: center;
+	}
+
+	&--visibleOverflow {
+		overflow: visible !important;
+		@include response($tablet) {
+			overflow: auto;
+		}
+	}
+
+	&__body {
+		padding: $modal-padding;
+	}
+
+	&__closeIcon {
+		position: absolute;
+		top: $modal-header-padding;
+		right: $modal-header-padding;
+	}
+
+	&__head {
+		padding: $modal-header-padding;
+		padding-bottom: $standard-space;
+		border-bottom: 1px solid $grey-level1;
+	}
+
+	&__paddingBottom {
+		padding: $modal-padding;
+		padding-top: 0;
+	}
+
+	// 엔드섹션
+	&__endSection {
+		padding: $modal-end-padding;
+		padding-top: 0;
+
+		&--confirm {
+			padding-top: $modal-section-padding;
+		}
+
+		&--float {
+			position: absolute;
+		}
+
+		.JDbtn {
+			margin-bottom: 0;
+		}
+		h6 {
+			margin-bottom: 0;
+		}
+	}
+
+	.JDmodal__head + .JDmodal__body {
+		padding-top: $standard-space;
+	}
+
+	// 모달 내부 영역구분
+	.modal__section {
+		padding-bottom: $modal-section-padding;
+	}
+}
 
 .ReactModal {
-  overflow-x: hidden !important;
-  // 모달 장막
-  &__Overlay {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    align-items: center;
-    justify-content: center;
-    z-index: $z-index-9;
-    background-color: $modal-background-color;
-    opacity: 0;
+	overflow-x: hidden !important;
+	// 모달 장막
+	&__Overlay {
+		display: flex;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		align-items: center;
+		justify-content: center;
+		z-index: $z-index-9;
+		background-color: $modal-background-color;
+		opacity: 0;
 
-    &--after-open {
-      opacity: 1;
-    }
-  }
+		&--after-open {
+			opacity: 1;
+		}
+	}
 
-  // 모달 전체 내용
-  &__Content {
-    background-color: white;
-    position: relative;
-    outline: none;
-    border-radius: $modal-border-radius;
-    opacity: 0;
-    transform: scale(0);
-    transition: 0.3s;
-    transition-timing-function: ease-out;
+	// 모달 전체 내용
+	&__Content {
+		background-color: white;
+		position: relative;
+		outline: none;
+		border-radius: $modal-border-radius;
+		opacity: 0;
+		transform: scale(0);
+		transition: 0.3s;
+		transition-timing-function: ease-out;
+		max-height: 88vh;
+		@extend %JDscrollbar;
+		@extend %z-depth-3;
 
-    &--after-open {
-      transform: scale(1);
-      opacity: 1;
-    }
+		&--after-open {
+			transform: scale(1);
+			opacity: 1;
+		}
 
-    @extend %z-depth-3;
+		@include response($full, $phablet) {
+			max-width: 80%;
+		}
 
-    @include response($full, $phablet) {
-      max-width: 80%;
-    }
+		@include response($phablet) {
+			width: 100%;
+			max-width: 95%;
+			min-width: 90%;
+			margin: $container-padding;
+		}
 
-    @include response($phablet) {
-      width: 100%;
-      max-width: 95%;
-      min-width: 90%;
-      margin: $container-padding;
-    }
+		@include response($phablet) {
+			// padding: $modal-padding /2;
+			max-height: 88%;
+			margin-bottom: 10%;
+		}
 
-    max-height: 88vh;
-
-    @extend %JDscrollbar;
-
-    .container {
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 0;
-    }
-
-    @include response($phablet) {
-      // padding: $modal-padding /2;
-      max-height: 88%;
-      margin-bottom: 10%;
-    }
-  }
+		.container {
+			padding-left: 0;
+			padding-right: 0;
+			padding-bottom: 0;
+		}
+	}
 }
 
 .inIframe {
-  .ReactModal {
-    &__Content {
-      margin-bottom: 0% !important;
-      margin-top: 0% !important;
-    }
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-// ⭐
-.JDmodal {
-  animation-delay: 300;
-  animation-name: zoomIn;
-
-  &__body {
-    padding: $modal-padding;
-  }
-
-  .JDmodal__head + .JDmodal__body {
-    padding-top: $standard-space;
-  }
-
-  &__closeIcon {
-    position: absolute;
-    top: $modal-header-padding;
-    right: $modal-header-padding;
-  }
-
-  &__head {
-    padding: $modal-header-padding;
-    padding-bottom: $standard-space;
-    border-bottom: 1px solid $grey-level1;
-  }
-  &--loading {
-    min-width: 0 !important;
-    max-width: fit-content !important;
-    width: fit-content !important;
-  }
-
-  &--alert {
-    font-weight: bold;
-  }
-
-  &--center {
-    text-align: center;
-  }
-
-  &--visibleOverflow {
-    overflow: visible !important;
-    @include response($tablet) {
-      overflow: auto;
-    }
-  }
-
-  &__paddingBottom {
-    padding: $modal-padding;
-    padding-top: 0;
-  }
-
-  // 엔드섹션
-  &__endSection {
-    &--confirm {
-      padding-top: $modal-section-padding;
-    }
-
-    &--float {
-      position: absolute;
-    }
-    padding: $modal-end-padding;
-    padding-top: 0;
-    .JDbtn {
-      margin-bottom: 0;
-    }
-    h6 {
-      margin-bottom: 0;
-    }
-  }
-
-  // 모달 내부 영역구분
-  .modal__section {
-    padding-bottom: $modal-section-padding;
-  }
-  //❤ 이거 라이브러리에도 적용 업데이트
-  &--fullInMobile {
-    &.ReactModal__Content {
-      @include response($phablet) {
-        max-height: none;
-        max-width: none;
-        height: 100%;
-        margin: 0;
-        width: 100%;
-        border-radius: 0px;
-      }
-    }
-  }
+	.ReactModal {
+		&__Content {
+			margin-bottom: 0% !important;
+			margin-top: 0% !important;
+		}
+	}
 }

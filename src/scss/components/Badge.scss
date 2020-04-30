@@ -3,7 +3,6 @@
 .JDbadge {
 	display: inline-block;
 	padding: $badge-padding;
-	border-radius: $standard-border-radius;
 	line-height: 1;
 	text-transform: uppercase;
 	text-align: center;
@@ -11,6 +10,7 @@
 	white-space: nowrap;
 	margin-left: $standard-small-space;
 	vertical-align: text-top;
+	border-radius: $badge-br;
 
 	&--tiny {
 		font-size: $typho-superTiny;

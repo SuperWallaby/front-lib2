@@ -122,6 +122,13 @@ export interface JDatomExtentionSet {
 	mr?: TMarginSize;
 	hide?: boolean;
 }
+
+export interface JDatomConfig {
+	mb?: TMarginSize;
+	mr?: TMarginSize;
+	hide?: boolean;
+	[key: string]: any;
+}
 /*  -------------------------------------------------------------------------- */
 
 export interface JDpageInfo {

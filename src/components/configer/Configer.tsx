@@ -67,9 +67,9 @@ export const Configer: React.FC<IConfigerProp> = ({ allItem, enableItems, onEnab
 			<div className="configer__buttons">
 				<div>
 					<Button
-						iconButton
+						
 						size="small"
-						mode="border"
+						mode={["border","iconButton"]}
 						mb="small"
 						iconProp={{
 							size: "small",
@@ -82,9 +82,8 @@ export const Configer: React.FC<IConfigerProp> = ({ allItem, enableItems, onEnab
 				</div>
 				<div>
 					<Button
-						iconButton
 						size="small"
-						mode="border"
+						mode={["border","iconButton"]}
 						style={{
 							transform: 'scale(-1)'
 						}}

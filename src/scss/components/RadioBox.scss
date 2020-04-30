@@ -1,0 +1,39 @@
+@import "../style_config.scss";
+
+$br: $standard-border-radius;
+
+.radioBox {
+	max-width: 100%;
+	margin-bottom: $standard-margin-bottom;
+
+	&--gather {
+		.radioBox__inner {
+			.JDbtn {
+				border-radius: 0 !important;
+				margin: 0 !important;
+
+				&:nth-child(2) {
+					border-radius: $br 0px 0px $br !important;
+				}
+				&:last-child {
+					border-radius: 0px $br $br 0px !important;
+				}
+			}
+		}
+	}
+
+	&__inner {
+		margin: -4px;
+		padding: 4px;
+
+		&--noWrap {
+			white-space: nowrap;
+			@extend %JDscrollbar--slender;
+		}
+	}
+	.JDbtn {
+		border-color: $grey-opacity2 !important;
+		margin-bottom: 0;
+		margin-right: -1px;
+	}
+}

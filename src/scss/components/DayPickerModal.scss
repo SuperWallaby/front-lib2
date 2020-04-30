@@ -1,9 +1,10 @@
 .DayPickerModal {
-  overflow: hidden;
-  .DayPicker-box {
-    width: 100%;
-    & > div {
-      width: 100%;
-    }
-  }
+	overflow: hidden;
+	min-width: 280px;
+	.DayPicker-box {
+		width: 100%;
+		& > div {
+			width: 100%;
+		}
+	}
 }

@@ -6,6 +6,7 @@ import Toast from './components/toast/Toast';
 import JDmodal from './components/modal/Modal';
 import JDlabel from './components/label/JDLabel';
 import JDbadge from './components/badge/Badge';
+import JDsplinter from './components/splinter/Splinter';
 import JDswitch from './components/switch/Switch';
 import JDpreloader from './components/preloader/Preloader';
 import JDpreloaderModal from './components/preloaderModal/PreloaderModal';
@@ -20,6 +21,7 @@ import JDslider, { Slide as JDslide } from './components/slider/Slider';
 import JDphotoFrame from './components/photoFrame/PhotoFrame';
 import JDdoc, { DocHeader as JDdocHeader, DocSection as JDdocSection } from './components/doc/Doc';
 import JDconfiger from './components/configer/Configer';
+import JDlogo from './components/logo/Logo';
 import JDtable, { IJDTableProps, JDcolumn, ReactTableDefault } from './components/table/Table';
 import JDFileManagerModal from './components/fileManager/FileManagerModal';
 import JDsearchInput, { IJDsearchInputProp } from './components/searchInput/SearchInput';
@@ -98,6 +100,7 @@ export {
 	DEFAULT_PHOTO,
 	JDbutton,
 	JDColor,
+	JDlogo,
 	Day,
 	IconSize,
 	JDicon,
@@ -124,6 +127,7 @@ export {
 	Tab,
 	TabList,
 	JDtabs,
+	JDsplinter,
 	JDpreloaderModal,
 	IDateModalProps,
 	ISearchViewData,

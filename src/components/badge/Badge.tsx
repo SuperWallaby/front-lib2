@@ -1,11 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 import { JDColor } from '../../types/enum';
-import { colorClass, s4 } from '../../utils/utils';
+import { s4 } from '../../utils/utils';
 import JDToolTip from '../tooltip/Tooltip';
-import { TElements } from '../../types/interface';
+import { TElements, JDatomExtentionSet } from '../../types/interface';
+import { JDatomClasses, colorClass } from '../../utils/autoClasses';
 
-export interface IJDbadge extends React.HTMLAttributes<HTMLSpanElement> {
+export interface IJDbadge extends React.HTMLAttributes<HTMLSpanElement>, JDatomExtentionSet {
 	badgeSize?: 'noraml' | 'tiny';
 	thema?: JDColor;
 	hover?: boolean;
@@ -14,11 +15,12 @@ export interface IJDbadge extends React.HTMLAttributes<HTMLSpanElement> {
 	tooltip?: TElements;
 }
 
-const JDbadge: React.SFC<IJDbadge> = ({ className, hover, tooltip, badgeSize, thema, children, ...props }) => {
+const JDbadge: React.FC<IJDbadge> = ({ className, hover, tooltip, badgeSize, thema, children, ...props }) => {
 	const classNames = classnames('JDbadge', className, {
 		'JDbadge--tiny': badgeSize === 'tiny',
 		'JDbadge--hover': hover,
-		...colorClass('JDbadge', thema)
+		...colorClass('JDbadge', thema),
+		...JDatomClasses(props)
 	});
 
 	const newId = s4();

@@ -470,6 +470,27 @@ export interface IUseDrawer {
   open: boolean;
 }
 
+function useRadioBox(
+  defaultValues: string[],
+  options: IselectedOption[] = []
+)  {
+  const [selectedValues,setSelectedValues] = useState(defaultValues);
+
+  const onChangeSelect = (values: string[]) => {
+    let temp = []
+    values.forEach(v => {
+      const isIncluded = selectedValues.includes(v); 
+    })
+    setSelectedValues(values)
+  }
+  
+  return {
+    options,
+    selectedValues,
+    onChangeSelect
+  }
+}
+
 // 셀렉트박스 훅
 function useSelect<V = any>(
   defaultValue: IselectedOption<V> | null,
@@ -674,6 +695,7 @@ export {
   useModal,
   useSideNav,
   useRange,
+  useRadioBox,
   useDebounce,
   useStoreSelect,
   useShouldSave,

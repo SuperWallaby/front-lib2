@@ -2,7 +2,7 @@ import React from 'react';
 import { TextSize, JDColor } from '../../types/enum';
 import { IDiv, JDatomExtentionSet } from '../../types/interface';
 import classNames from 'classnames';
-import { JDmbClass, JDmrClass, textSizeClass, colorClass } from '../../utils/autoClasses';
+import { textSizeClass, colorClass, JDatomClasses } from '../../utils/autoClasses';
 
 export interface IJDtyphoProp extends IDiv, JDatomExtentionSet {
 	size?: TextSize;
@@ -20,9 +20,10 @@ const JDtypho: React.FC<IJDtyphoProp> = ({
 	className,
 	children,
 	color,
-	mb,
 	weight,
+	mb,
 	mr,
+	hide,
 	hover,
 	style,
 	...props
@@ -30,10 +31,13 @@ const JDtypho: React.FC<IJDtyphoProp> = ({
 	const classes = classNames('JDtypho', className, {
 		'JDtypho--hover': hover,
 		'JDtypho-deco--bar': decoration === 'bar',
-		...JDmbClass(mb),
-		...JDmrClass(mr),
-		...textSizeClass('JDtypho', size),
-		...colorClass('JDtypho', color)
+		...textSizeClass(size),
+		...colorClass('JDtypho', color),
+		...JDatomClasses({
+			hide,
+			mb,
+			mr
+		})
 	});
 
 	const commonProps = {

@@ -28,9 +28,9 @@ export const elementHeader = () => {
 								타이틀 커스텀
 							</JDtypho>
 							<JDtypho size="small">
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse officiis fugit quaerat animi cum autem
-								consectetur unde a molestiae aliquid alias quae perferendis, praesentium, omnis nihil non odio? Debitis,
-								est.
+								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse officiis fugit quaerat
+								animi cum autem consectetur unde a molestiae aliquid alias quae perferendis,
+								praesentium, omnis nihil non odio? Debitis, est.
 							</JDtypho>
 						</div>
 					)
@@ -85,9 +85,23 @@ export const standard = () => {
 	);
 };
 
+export const loading = () => {
+	const modalHook = useModal(true);
+	return (
+		<JDcontainer verticalPadding>
+			<Modal loading {...modalHook}>
+				content content content content content content content content content
+			</Modal>
+		</JDcontainer>
+	);
+};
+
 withTab.story = {
 	name: 'with tab'
 };
 standard.story = {
 	name: 'standard'
+};
+loading.story = {
+	name: 'loading'
 };

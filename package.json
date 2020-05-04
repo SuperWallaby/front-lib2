@@ -1,6 +1,6 @@
 {
 	"name": "@janda-com/front",
-	"version": "0.5.1",
+	"version": "1.0.0",
 	"description": "@jd-com/front",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
@@ -16,6 +16,7 @@
 		"lint": "standard",
 		"format": "prettier-standard --format",
 		"test": "jest --coverage",
+		"sb": "start-storybook --port 9090",
 		"storybook": "start-storybook --port 9090",
 		"build-storybook": "build-storybook",
 		"precodegen": "apollo schema:download --endpoint=https://temp-booking.stayjanda.cloud/graphql",
@@ -43,11 +44,13 @@
 		"@types/leven": "^2.1.2",
 		"@types/moment-timezone": "^0.5.12",
 		"@types/react": "^16.9.17",
+		"@types/react-paginate": "^6.2.1",
 		"@types/react-window-size": "^1.2.0",
 		"awesome-typescript-loader": "^5.2.1",
 		"babel-loader": "^8.0.6",
 		"jest": "^24.9.0",
 		"leven": "^3.1.0",
+		"node-sass": "^4.14.0",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
 		"rollup": "^1.27.13",
@@ -69,11 +72,24 @@
 	"jest": {
 		"preset": "ts-jest",
 		"testEnvironment": "jsdom",
-		"testPathIgnorePatterns": [ "build/" ]
+		"testPathIgnorePatterns": [
+			"build/"
+		]
 	},
 	"standard": {
-		"ignore": [ "node_modules/", "build/", ".storybook/" ],
-		"globals": [ "describe", "it", "test", "expect", "afterAll", "jest" ]
+		"ignore": [
+			"node_modules/",
+			"build/",
+			".storybook/"
+		],
+		"globals": [
+			"describe",
+			"it",
+			"test",
+			"expect",
+			"afterAll",
+			"jest"
+		]
 	},
 	"publishConfig": {
 		"access": "public"
@@ -98,6 +114,7 @@
 		"react-docgen-typescript-loader": "^3.7.1",
 		"react-image-file-resizer": "^0.2.1",
 		"react-modal": "^3.11.2",
+		"react-paginate": "^6.3.2",
 		"react-slick": "^0.25.2",
 		"react-table": "^6.10.0",
 		"react-tabs": "^3.1.0",

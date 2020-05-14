@@ -1,6 +1,6 @@
 {
 	"name": "@janda-com/front",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"description": "@jd-com/front",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
@@ -105,7 +105,6 @@
 		"@types/react-table": "^6.8.3",
 		"@types/react-tabs": "^2.3.1",
 		"@types/react-toastify": "^4.1.0",
-		"@types/react-tooltip": "^3.11.0",
 		"apollo-client": "^2.6.8",
 		"classnames": "^2.2.6",
 		"graphql": "^14.6.0",
@@ -118,9 +117,10 @@
 		"react-modal": "^3.11.2",
 		"react-paginate": "^6.3.2",
 		"react-slick": "^0.25.2",
+		"react-spring": "^8.0.27",
 		"react-tabs": "^3.1.0",
 		"react-toastify": "^5.5.0",
-		"react-tooltip": "^4.1.2",
+		"react-tooltip": "^4.2.6",
 		"react-window-size": "^1.2.2"
 	}
 }

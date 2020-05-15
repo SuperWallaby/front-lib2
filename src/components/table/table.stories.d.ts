@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../scss/all.scss';
 declare const _default: {
     title: string;
     component: React.FC<import("./Table").IJDTableProps<any>>;

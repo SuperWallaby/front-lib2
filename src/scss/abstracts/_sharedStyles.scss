@@ -32,3 +32,20 @@
         }
     }
 }
+
+
+@-webkit-keyframes blinker {
+    20% {opacity: 1.0;}
+    50% {opacity: 0.3;}
+    80% {opacity: 1.0;}
+  }
+
+  .loading-blink{
+      text-decoration: blink;
+      -webkit-animation-name: blinker;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count:infinite;
+      -webkit-animation-timing-function:ease-in-out;
+      -webkit-animation-direction: alternate;
+  }
+  

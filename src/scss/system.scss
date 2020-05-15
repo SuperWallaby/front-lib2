@@ -1,5 +1,5 @@
 // 1. Vendors
-@import "vendors/normalize", "vendors/globalClass.scss";
+@import "vendors/normalize", "vendors/globalClass.scss", "vendors/customalize.scss";
 
 // 2. Layout-related sections
 @import "grid/grid", "grid/_sectionsSpace", "grid/grid-flex", "grid/container";

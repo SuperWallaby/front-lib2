@@ -115,18 +115,19 @@ export interface IHolidaysByApi {
 	locdate: string;
 	seq: number;
 }
-// 일부만 시험적용중
-// 추후에 모든 아톰에 적용할에정
+
+export interface JDinputExtention {
+	require?: boolean;
+}
+
 export interface JDatomExtentionSet {
 	mb?: TMarginSize;
 	mr?: TMarginSize;
 	hide?: boolean;
+	z?: number;
 }
 
-export interface JDatomConfig {
-	mb?: TMarginSize;
-	mr?: TMarginSize;
-	hide?: boolean;
+export interface JDatomConfig extends JDatomExtentionSet {
 	[key: string]: any;
 }
 /*  -------------------------------------------------------------------------- */

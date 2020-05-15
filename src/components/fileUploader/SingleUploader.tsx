@@ -4,12 +4,12 @@ import Button, { IButtonProps } from "../button/Button";
 import Align from "../align/Align";
 import classNames from "classnames";
 import { IuseFilesManager } from "../../hooks/hook";
-import JDlabel from "../label/JDLabel";
+import JDlabel, { ILabelProp } from "../label/JDLabel";
 import { IDiv, JDatomExtentionSet } from "../../types/interface";
 import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
 
 export interface IProps extends IDiv, JDatomExtentionSet {
-  label?: string;
+  labelProp?: ILabelProp;
   fileUploaderHook: IuseFilesManager;
   buttonProps?: IButtonProps;
   inputProps?: IInputTextCutsomProp;
@@ -21,7 +21,7 @@ export interface IProps extends IDiv, JDatomExtentionSet {
 }
 
 export const FileUploader: React.FC<IProps> = ({
-  label,
+  labelProp,
   fileUploaderHook,
   buttonProps,
   index,
@@ -45,7 +45,7 @@ export const FileUploader: React.FC<IProps> = ({
 
   return (
     <div className={classes}>
-      {label && <JDlabel txt={label} />}
+      {labelProp && <JDlabel {...labelProp} />}
       <Align flex={{}}>
         <input
           style={{

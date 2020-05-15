@@ -1,9 +1,9 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import RadioButton from './RadioButton';
-import '../../scss/all.scss';
 import JDcontainer from '../container/Container';
-import { useRadioBox } from '../../hooks/hook';
+import { useRadioButton } from '../../hooks/hook';
+import MDX from './radioButton.mdx';
 
 const options = [
 	{
@@ -23,17 +23,34 @@ const options = [
 export default {
 	title: 'RadioButton',
 	component: <RadioButton onChangeSelect={() => {}} options={[]} selectedValues={[ '' ]} />,
-	decorators: [ withKnobs ]
+	decorators: [ withKnobs ],
+	parameters: {
+		componentSubtitle: '버튼 컴포넌트',
+		docs: {
+			page: MDX
+		}
+	}
 };
 
 export const standard = () => {
-	const radioBoxHook = useRadioBox([ '1' ], options);
+	const radioBoxHook = useRadioButton([ '1' ], options);
 
 	return (
 		<JDcontainer verticalPadding>
-			<RadioButton mode="gather" {...radioBoxHook} />
-			<RadioButton only {...radioBoxHook} />
+			<h6>Noraml</h6>
 			<RadioButton {...radioBoxHook} />
+			<h6>Border</h6>
+			<RadioButton
+				btnProps={{
+					mode: 'border'
+				}}
+				{...radioBoxHook}
+			/>
+			<h6>Gather</h6>
+			<RadioButton mode="gather" {...radioBoxHook} />
+			<h6>Only</h6>
+			<RadioButton only {...radioBoxHook} />
+			<h6>With All</h6>
 			<RadioButton withAllTooglerLabel="전체투글" withAllToogler {...radioBoxHook} />
 		</JDcontainer>
 	);

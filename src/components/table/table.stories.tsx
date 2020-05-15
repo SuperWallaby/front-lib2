@@ -1,10 +1,10 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Table, { JDcolumn, ReactTableDefault } from './Table';
-import '../../scss/all.scss';
 import JDcontainer from '../container/Container';
 import MDX from './table.mdx';
 import JDtypho from '../typho/Typho';
+
 export default {
 	title: 'Table',
 	component: Table,

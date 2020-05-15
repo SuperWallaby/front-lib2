@@ -1,6 +1,8 @@
 import isEmpty from "./isEmptyData";
 import { ExecutionResult } from "graphql";
 
+
+//defrecated
 function muResult<D, Q extends keyof D>(
   result: void | undefined | null | ExecutionResult<D>,
   queryName: Q,

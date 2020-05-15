@@ -22,7 +22,7 @@ const PhotoFrame: React.FC<Iprops> = ({
   mr,
   src: srcProp = "https://s3.ap-northeast-2.amazonaws.com/booking.stayjanda.files/infographic/noimg.png",
   type,
-  unStyle,
+  unStyle = true,
   lang,
   context,
   className,
@@ -69,7 +69,7 @@ const PhotoFrame: React.FC<Iprops> = ({
           style={{
             backgroundImage: `url(${bg})`
           }}
-        className="photoFrame__bgimg"
+          className="photoFrame__bgimg"
         />
       )}
       {isBgImg || <img className="photoFrame__img" src={src} />}

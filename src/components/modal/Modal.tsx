@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactModal from 'react-modal';
 import classNames from 'classnames';
-import Button from '../button/Button';
+import Button, { IButtonProps } from '../button/Button';
 import { IUseModal } from '../../hooks/hook';
 import ModalEndSection from './components/ModalEndSection';
 import ModalHeadSection, { IPropsModalHeadProps } from './components/ModalHeadSection';
@@ -14,7 +14,13 @@ export type TAlertConfig = {
 	confirmCallBackFn?(flag: boolean): any;
 };
 
+type TPannel = {
+	buttons: IButtonProps[]
+}
+
 export interface JDmodalConfigProps {
+	/** 헤드 와 푸터 스티키로 변경 */
+	sticky?: boolean;
 	/** 헤드 설정 */
 	head?: IPropsModalHeadProps;
 	/** 헤드 설정 */
@@ -27,6 +33,8 @@ export interface JDmodalConfigProps {
 	confirm?: boolean;
 	/** 바텀부분 엘리먼트 */
 	foot?: TElements;
+	/** right 만들기 */
+	pannel?: TPannel;
 	/** 헤더아래로 붙일지 결정 */
 	isUnderHeader?: boolean;
 	/** 최소 넓이 고정 */
@@ -45,9 +53,9 @@ export interface JDmodalConfigProps {
 	contentWrapStyle?: React.CSSProperties;
 }
 
-interface IProps extends ReactModal.Props, IUseModal, JDmodalConfigProps {}
+interface IProps extends ReactModal.Props, IUseModal, JDmodalConfigProps { }
 
-const JDmodal: React.SFC<IProps> = ({
+export const JDmodal: React.FC<IProps> = ({
 	info,
 	center,
 	head,
@@ -61,6 +69,8 @@ const JDmodal: React.SFC<IProps> = ({
 	children,
 	confirm,
 	foot,
+	sticky,
+	pannel,
 	paddingSize,
 	visibleOverflow,
 	loading,
@@ -84,24 +94,6 @@ const JDmodal: React.SFC<IProps> = ({
 			}
 		}
 	}
-
-	const overlayClassNames = classNames('JDmodal-overlay', overlayClassNameProp, {});
-
-	const classes = classNames('Modal JDmodal', className, {
-		'JDmodal--center': center,
-		'JDmodal--visibleOverflow': visibleOverflow,
-		'JDmodal--alert': alert || confirm,
-		'JDmodal--alertWaring': info && info.thema === 'warn',
-		'JDmodal--paddingLarge': paddingSize === 'large',
-		'JDmodal--loading': loading,
-		'JDmodal--fullInMobile': fullInMobile
-	});
-
-	const defualtJDmodalProps = {
-		appElement: appElement,
-		className: `Modal ${classes}`,
-		overlayClassName: 'Overlay'
-	};
 
 	const hanldeClickBtn = (flag: boolean) => {
 		alert && alert.confirmCallBackFn?.(flag);
@@ -147,8 +139,37 @@ const JDmodal: React.SFC<IProps> = ({
 				{typeof info === 'string' && info}
 				{info && info.txt}
 			</div>
+			{pannel && <div className="JDmodal__pannel">
+				{pannel.buttons.map((b, i) => (
+					<Button key={i} {...b} />
+				))}
+			</div>}
 		</Fragment>
 	);
+
+
+	const overlayClassNames = classNames('JDmodal-overlay', overlayClassNameProp, {});
+
+	const classes = classNames('Modal JDmodal', className, {
+		'JDmodal--sticky': sticky,
+		'JDmodal--center': center,
+		'JDmodal--visibleOverflow': visibleOverflow,
+		'JDmodal--alert': alert || confirm,
+		'JDmodal--alertWaring': info && info.thema === 'warn',
+		'JDmodal--paddingLarge': paddingSize === 'large',
+		'JDmodal--loading': loading,
+		'JDmodal--fullInMobile': fullInMobile,
+	});
+
+	const innerClasses = classNames({
+		'JDmodal__inner': pannel,
+	});
+
+	const defualtJDmodalProps = {
+		appElement: appElement,
+		className: `Modal ${classes}`,
+		overlayClassName: 'Overlay'
+	};
 
 	if (loading) {
 		return (
@@ -156,8 +177,8 @@ const JDmodal: React.SFC<IProps> = ({
 				<Preloader loading={true} size="large" />
 			</ReactModal>
 		);
-  }
-  
+	}
+
 	return (
 		<ReactModal
 			isOpen={isOpen}
@@ -169,13 +190,14 @@ const JDmodal: React.SFC<IProps> = ({
 			overlayClassName={overlayClassNames}
 		>
 			<div
+				className={innerClasses}
 				onClick={e => {
 					e.stopPropagation();
 				}}
 			>
 				{head && <ModalHeadSection closeFn={closeModal} {...head} />}
 				{getChildren()}
-				{foot && <ModalEndSection>{foot}</ModalEndSection>}
+				{foot && <ModalEndSection className="JDmodal__foot">{foot}</ModalEndSection>}
 				{confirm && (
 					<ModalEndSection>
 						<Button {...sharedTrueBtnProp} />
@@ -186,6 +208,7 @@ const JDmodal: React.SFC<IProps> = ({
 		</ReactModal>
 	);
 };
+
 
 export default JDmodal;
 

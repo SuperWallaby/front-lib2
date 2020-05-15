@@ -1,11 +1,12 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Modal from './Modal';
-import '../../scss/all.scss';
 import JDcontainer from '../container/Container';
-import { useModal } from '../..';
+import { useModal } from '../../hooks/hook';
 import { JDtabs, Tab, TabList, TabPanel } from '../tabs/Tabs';
 import JDtypho from '../typho/Typho';
+import MDX from './modal.mdx';
+import { JDbutton } from '../..';
 
 export default {
 	title: 'Modal',
@@ -13,7 +14,13 @@ export default {
 		const modalHook = useModal(true);
 		return <Modal {...modalHook} />;
 	},
-	decorators: [ withKnobs ]
+	decorators: [withKnobs],
+	parameters: {
+		componentSubtitle: '모달',
+		docs: {
+			page: MDX
+		}
+	}
 };
 
 export const elementHeader = () => {
@@ -21,6 +28,17 @@ export const elementHeader = () => {
 	return (
 		<JDcontainer verticalPadding>
 			<Modal
+				sticky
+				foot={
+					<div>
+						<JDbutton thema="primary" mode="flat">
+							확인
+						</JDbutton>
+						<JDbutton thema="error" mode="flat">
+							취소
+						</JDbutton>
+					</div>
+				}
 				head={{
 					element: (
 						<div>
@@ -37,6 +55,40 @@ export const elementHeader = () => {
 				}}
 				{...modalHook}
 			>
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
+				content content content content content content content content content
 				content content content content content content content content content
 			</Modal>
 		</JDcontainer>
@@ -96,6 +148,38 @@ export const loading = () => {
 	);
 };
 
+export const withPannel = () => {
+	const modalHook = useModal(true);
+	return (
+		<JDcontainer verticalPadding>
+			<Modal
+				pannel={{
+					buttons: [
+						{
+							label: '111'
+						},
+						{
+							label: '222'
+						},
+						{
+							label: '333'
+						},
+						{
+							label: '444'
+						},
+						{
+							label: '555'
+						}
+					]
+				}}
+				{...modalHook}
+			>
+				content content content content content content content content content
+			</Modal>
+		</JDcontainer>
+	);
+};
+
 withTab.story = {
 	name: 'with tab'
 };
@@ -104,4 +188,7 @@ standard.story = {
 };
 loading.story = {
 	name: 'loading'
+};
+withPannel.story = {
+	name: 'with pannel'
 };

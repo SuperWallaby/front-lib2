@@ -1,7 +1,6 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Switch from './Switch';
-import '../../scss/all.scss';
 import JDcontainer from '../container/Container';
 import { useSwitch } from '../..';
 

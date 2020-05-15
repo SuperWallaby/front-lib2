@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import classNames from 'classnames';
 import { IConProps } from '../icons/Icons';
 import Preloader from '../preloader/Preloader';
-import { colorClass, JDatomClasses } from '../../utils/autoClasses';
+import { JDatomClasses, bgColorClass, borderClass, textColorClass } from '../../utils/autoClasses';
 import s4 from '../../utils/keyGen';
 import Tooltip from '../tooltip/Tooltip';
 import { JDColor, TMarginSize } from '../../types/enum';
@@ -12,9 +12,9 @@ import JDIcon from '../icons/Icons';
 import { IconConifgProps } from '../icons/declation';
 import JDtypho from '../typho/Typho';
 
-const handleKeyPress = () => {};
+const handleKeyPress = () => { };
 
-type Tshape  ='flat' | 'normal' | 'border' | 'iconButton';
+type Tshape = 'flat' | 'normal' | 'border' | 'iconButton';
 
 interface IButtonConstum {
 	/** 사용 불가능함*/
@@ -32,7 +32,7 @@ interface IButtonConstum {
 	/** 버튼의 모양을 조절 */
 	mode?: Tshape | Tshape[];
 	/** 버튼의 크기를 조절 */
-	size?: 'small' | 'large' | 'long' | 'longLarge';
+	size?: 'tiny' | 'small' | 'large' | 'long' | 'longLarge';
 	/** 해당 버튼은 float 속성을 지닙니다. */
 	type?: 'button' | 'submit' | 'reset' | undefined;
 	/** 버튼 색상 */
@@ -55,7 +55,7 @@ interface IButtonConstum {
 	color?: 'white';
 	/** 음수 마진으로 패딩값을 소모시킵니다. 패딩 곂침을 해야할때 유용합니다. */
 	cunsumPadding?: boolean;
-	// Defrecated
+	// ClassAdd
 	toggle?: boolean;
 }
 
@@ -63,22 +63,35 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement>, J
 	color?: 'white';
 }
 
-const modeClass = (mode?: Tshape | Tshape[]) => {
+
+const modeClass = (mode?: Tshape | Tshape[], thema?: JDColor | null) => {
 	let obj = {};
-	if(typeof mode === "string") {
-		obj = {
-			'JDbtn--flat': mode === 'flat',
-			'JDbtn--border': mode === 'border',
-			'JDbtn--iconButton': mode === 'iconButton'
-		} 
-	} else if(typeof mode === "object") {
+
+	if (mode) {
 		obj = {
 			'JDbtn--flat': mode.includes('flat'),
 			'JDbtn--border': mode.includes('border'),
-			'JDbtn--iconButton': mode.includes('iconButton')
-		} 
+			'JDbtn--iconButton': mode.includes('iconButton'),
+			'JDoutborder-color': !thema && mode.includes('border')
+		}
 	}
-	return obj 
+
+	if (thema) {
+		if (mode?.includes("border")) {
+			obj = {
+				...obj,
+				...borderClass(thema),
+				...textColorClass(thema),
+			}
+		} else {
+			obj = {
+				...obj,
+				...bgColorClass(thema)
+			}
+		}
+	}
+
+	return obj
 }
 
 export const Button: React.FC<IButtonProps> = ({
@@ -89,7 +102,7 @@ export const Button: React.FC<IButtonProps> = ({
 	onClick,
 	dataTip,
 	dataFor,
-	mode,
+	mode = "normal",
 	cunsumPadding,
 	type,
 	color,
@@ -107,12 +120,13 @@ export const Button: React.FC<IButtonProps> = ({
 	toggle,
 	...props
 }: IButtonProps) => {
-	const classes = classNames('JDbtn', className, {
+	const classes = classNames('JDbtn JDhover', className, {
 		'JDbtn--pno': padding === 'no',
 		'JDbtn--ptiny': padding === 'tiny',
 		'JDbtn--plargest': padding === 'largest',
 		'JDbtn--plarge': padding === 'large',
 		'JDbtn--phuge': padding === 'huge',
+		'JDbtn--tiny': size === 'tiny',
 		'JDbtn--small': size === 'small',
 		'JDbtn--large': size === 'large' || size === 'longLarge',
 		'JDbtn--long': size === 'long' || size === 'longLarge',
@@ -125,8 +139,7 @@ export const Button: React.FC<IButtonProps> = ({
 		'JDbtn--cunsumPadding': cunsumPadding,
 		'JDtext-blink': blink,
 		'visibility-none': props.hidden,
-		...modeClass(mode),
-		...colorClass('JDbtn', thema),
+		...useMemo(() => modeClass(mode, thema), [mode, thema]),
 		...JDatomClasses(props)
 	});
 
@@ -140,7 +153,19 @@ export const Button: React.FC<IButtonProps> = ({
 
 	const withIcon = !loading && iconProp;
 
-	const newId = s4();
+	let newId = "";
+	let tooltipObj = {
+		"data-tip": dataTip,
+		"data-for": dataFor,
+	}
+
+	if (tooltip) {
+		newId = s4();
+		tooltipObj = {
+			"data-for": true,
+			"data-tip": `btnTooltip${newId}`
+		}
+	}
 
 	if (mode?.includes('iconButton')) {
 		return (
@@ -151,8 +176,7 @@ export const Button: React.FC<IButtonProps> = ({
 				className={`JDbtn JDwaves-effect ${classes}`}
 				onClick={handleClickButton}
 				onKeyPress={handleKeyPress}
-				data-tip={tooltip ? true : dataTip}
-				data-for={tooltip ? `btnTooltip${newId}` : dataFor}
+				{...tooltipObj}
 			>
 				<div>
 					<JDIcon {...iconProp!} />
@@ -196,4 +220,5 @@ export const Button: React.FC<IButtonProps> = ({
 	);
 };
 
+export const ButtonMemo = React.memo(Button)
 export default Button;

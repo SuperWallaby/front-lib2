@@ -7,7 +7,7 @@ import {
   useCallback,
   ChangeEvent,
 } from "react";
-import { IselectedOption } from "../types/interface";
+import { IselectedOption, ISet } from "../types/interface";
 import { TLanguageShort } from "../types/enum";
 // @ts-ignore 타입이 존재하지않는 모듈
 import Resizer from "react-image-file-resizer";
@@ -16,6 +16,7 @@ import optionFineder from "../utils/optionFinder";
 import s4 from "../utils/keyGen";
 import { removeSpecialChar } from "../utils/autoFormat";
 import moment from "moment-timezone";
+import { IRadiosOps } from "../components/radioButton/RadioButton";
 
 export type IUseFetch = [
   any,
@@ -295,7 +296,7 @@ function useDebounce(value: any, delay: number) {
 export interface TUseInput<T = string> {
   value: T;
   onChangeValid: (value: boolean | string) => void;
-  onChange: (foo: any) => any;
+  OnChange: (foo: any) => any;
   isValid: any;
 }
 
@@ -327,7 +328,7 @@ function useInput<T = string>(
   const [value, setValue] = useState(defaultValue);
   const [isValid, setIsValid] = useState(defulatValid);
 
-  const onChange = useCallback((value: any) => {
+  const OnChange = useCallback((value: any) => {
     let prefixTemp = prefix || "";
     let suffixTemp = suffix || "";
     setValue(prefixTemp + value + suffixTemp);
@@ -339,10 +340,61 @@ function useInput<T = string>(
 
   return {
     value,
-    onChange,
+    OnChange,
     isValid,
     onChangeValid,
   };
+}
+
+
+type TPosition = {
+  left: number;
+  top: number;
+}
+
+
+type TOpen<T> = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>, position?: TPosition, inInfo?: T) => void;
+
+export interface IUseDropDown<T = any> {
+  isOpen: boolean;
+  open: TOpen<T>;
+  close: () => void;
+  info?: T;
+  position: TPosition
+  setInfo: ISet<T>
+  setPosition: ISet<TPosition>
+}
+
+
+function useDropDown<T = any>(defaultInfo?: T): IUseDropDown {
+  const [isOpen, setIsOpn] = useState(false);
+  const [info, setInfo] = useState(defaultInfo);
+  const [position, setPosition] = useState<TPosition>({
+    left: 0,
+    top: 0,
+  });
+
+  const open: TOpen<T> = (e, pos, info) => {
+    setIsOpn(true);
+    if (e) {
+      setPosition({
+        left: e.clientX,
+        top: e.clientY
+      })
+    }
+    if (pos) {
+      setPosition(pos);
+    }
+    if (info) {
+      setInfo(info);
+    }
+  }
+
+  const close = () => {
+    setIsOpn(false);
+  }
+
+  return { isOpen, info, position, open, close, setInfo, setPosition }
 }
 
 // 체크박스
@@ -382,8 +434,8 @@ export interface IUseDayPicker {
 const pureDate = (date: Date | null) => {
   return date
     ? moment(date)
-        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-        .toDate()
+      .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+      .toDate()
     : null;
 };
 
@@ -470,20 +522,16 @@ export interface IUseDrawer {
   open: boolean;
 }
 
-function useRadioBox(
+function useRadioButton(
   defaultValues: string[],
-  options: IselectedOption[] = []
-)  {
-  const [selectedValues,setSelectedValues] = useState(defaultValues);
+  options: IRadiosOps[] = []
+) {
+  const [selectedValues, setSelectedValues] = useState(defaultValues);
 
   const onChangeSelect = (values: string[]) => {
-    let temp = []
-    values.forEach(v => {
-      const isIncluded = selectedValues.includes(v); 
-    })
     setSelectedValues(values)
   }
-  
+
   return {
     options,
     selectedValues,
@@ -515,7 +563,7 @@ function useWindowSize() {
     };
   }
 
-  
+
   const [windowSize, setWindowSize] = useState(getSize);
 
   useEffect(() => {
@@ -568,13 +616,15 @@ function useSideNav(): IUseSideNav {
   return { sideNavIsOpen, setSideNavIsOpen };
 }
 
-export interface IusePageNation {
+export interface IusePagination {
   page: number;
   setPage: (page: number) => void;
 }
+
+
 // 투글 훅
-function usePageNation(defaultValue: number): IusePageNation {
-  const [page, inSetPage] = useState(defaultValue);
+function usePagination(defaultPage: number): IusePagination {
+  const [page, inSetPage] = useState(defaultPage);
 
   const setPage = (foo: number) => {
     inSetPage(foo);
@@ -587,13 +637,13 @@ export interface IUseModal<T = any> {
   isOpen: boolean;
   openModal: (inInfo?: T) => void;
   closeModal: () => void;
-  info: T;
+  info?: T;
 }
 
 // 모달훅
 function useModal<T = any>(
   defaultValue: boolean = false,
-  defaultInfo: any = {}
+  defaultInfo?: T
 ): IUseModal<T> {
   const [isOpen, setIsOpen] = useState(defaultValue);
   const [info, setInfo] = useState(defaultInfo);
@@ -678,11 +728,13 @@ export default {
   useStoreSelect,
   useShouldSave,
   useDayPicker,
-  usePageNation,
+  usePagination,
   useRedirect,
   useCheckBoxTable,
   useFilesManager,
   useWindowSize,
+  useDropDown,
+  useRadioButton
 };
 
 export {
@@ -695,12 +747,13 @@ export {
   useModal,
   useSideNav,
   useRange,
-  useRadioBox,
+  useRadioButton,
   useDebounce,
   useStoreSelect,
   useShouldSave,
+  useDropDown,
   useDayPicker,
-  usePageNation,
+  usePagination,
   useFilesManager,
   useRedirect,
   useCheckBoxTable,

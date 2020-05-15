@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
-import '../../scss/all.scss';
 import JDcontainer from '../container/Container';
 import Configer from './Configer';
 
@@ -21,7 +20,7 @@ export const standard = () => {
 					enableHeader: '적용',
 					unableHeader: '미적용'
 				}}
-				onEnableChange={(enableItems) => {
+				onEnableChange={enableItems => {
 					setEanbleItems(enableItems);
 				}}
 				allItem={allItems}

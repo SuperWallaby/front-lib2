@@ -1,7 +1,6 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Slider, { Slide } from './Slider';
-import '../../scss/all.scss';
 import Align from '../align/Align';
 import JDcontainer from '../container/Container';
 

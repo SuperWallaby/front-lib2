@@ -1,10 +1,11 @@
 import React from 'react';
 import { TextSize, JDColor } from '../../types/enum';
-import { IDiv, JDatomExtentionSet } from '../../types/interface';
 import classNames from 'classnames';
-import { textSizeClass, colorClass, JDatomClasses } from '../../utils/autoClasses';
+import { textSizeClass, textColorClass, JDatomClasses } from '../../utils/autoClasses';
+import { JDalign } from '../..';
+import { IJDalignProp } from "../align/Align"
 
-export interface IJDtyphoProp extends IDiv, JDatomExtentionSet {
+export interface IJDtyphoProp extends IJDalignProp {
 	size?: TextSize;
 	component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 	decoration?: 'bar';
@@ -32,7 +33,7 @@ const JDtypho: React.FC<IJDtyphoProp> = ({
 		'JDtypho--hover': hover,
 		'JDtypho-deco--bar': decoration === 'bar',
 		...textSizeClass(size),
-		...colorClass('JDtypho', color),
+		...textColorClass(color),
 		...JDatomClasses({
 			hide,
 			mb,
@@ -59,7 +60,7 @@ const JDtypho: React.FC<IJDtyphoProp> = ({
 		if (component === 'h1') return <h1 {...commonProps}>{children}</h1>;
 	}
 
-	return <div {...commonProps}>{children}</div>;
+	return <JDalign {...commonProps}>{children}</JDalign>;
 };
 
 export default JDtypho;

@@ -1,5 +1,4 @@
-@import "../style_config.scss";
-
+@import "../abstracts/mixins";
 // 아래 클래스 아래의
 // 콘테이너와 섹션 구격을 무너뜨립니다.
 // 다른 페이지를 통째로 가져올때 유용합니다.
@@ -127,13 +126,24 @@
 
 // ✏️ text
 .JDtext-align {
+	&--center {
+		text-align: center;
+	}
+	&--left {
+		text-align: left;
+	}
+	&--right {
+		text-align: right;
+	}
+
+	// DEFRECATED
 	&-center {
 		text-align: center;
 	}
 	&-left {
 		text-align: left;
 	}
-	&-align-right {
+	&-right {
 		text-align: right;
 	}
 }
@@ -174,110 +184,195 @@
 	}
 }
 
-.JDtextColor {
-	&--warn {
-		color: $orange-color;
-	}
+html {
+	.JDbgColor {
+		&--darkPrimary {
+			color: $primary-color-dark-on;
+			background-color: $primary-color-dark;
+			&.JDhover:hover {
+				background-color: $primary-color;
+			}
+		}
 
-	&--primary {
-		color: $primary-color;
-	}
-	&--error {
-		color: $error-color;
-	}
+		&--primary {
+			color: $primary-color-on;
+			background-color: $primary-color;
+			&.JDhover:hover {
+				background-color: $primary-color-dark;
+			}
+		}
 
-	&--point {
-		color: $point-color;
-	}
-	&--placeHolder {
-		color: $grey-level1;
-	}
-	&--grey-level2 {
-		color: $grey-level2;
+		&--darkPoint {
+			color: $point-color-on;
+			background-color: $point-color-dark;
+			&.JDhover:hover {
+				background-color: $point-color;
+			}
+		}
+
+		&--point {
+			color: $point-color-on;
+			background-color: $point-color;
+			&.JDhover:hover {
+				background-color: $point-color-dark;
+			}
+		}
+
+		&--black {
+			color: white;
+			background-color: $html-color;
+
+			&.JDhover:hover {
+				background-color: $grey-level5;
+			}
+		}
+
+		&--white {
+			color: $html-color;
+			background-color: white;
+
+			&.JDhover:hover {
+				background-color: $grey-level1;
+			}
+		}
+
+		&--new {
+			color: $new-color-on;
+			background-color: $new-color;
+			&.JDhover:hover {
+				background-color: $new-color-dark;
+			}
+		}
+
+		&--error {
+			color: $error-color-on;
+			background-color: $error-color;
+			&.JDhover:hover {
+				background-color: $error-color-dark;
+			}
+		}
+
+		&--positive {
+			color: $positive-color-on;
+			background-color: $positive-color;
+			&.JDhover:hover {
+				color: $positive-color-on;
+				background-color: $positive-color-dark;
+			}
+		}
+
+		&--warn {
+			background-color: $orange-color;
+			&.JDhover:hover {
+				background-color: $orange-color-dark;
+			}
+		}
+
+		&--grey1 {
+			color: $grey-level1-on;
+			background-color: $grey-level1;
+		}
+
+		&--grey2 {
+			color: $grey-level2-on;
+			background-color: $grey-level2;
+		}
+		&--grey3 {
+			color: $grey-level3-on;
+			background-color: $grey-level3;
+		}
+
+		&--grey4 {
+			color: $grey-level4-on;
+			background-color: $grey-level4;
+		}
+		&--grey5 {
+			color: $grey-level5-on;
+			background-color: $grey-level5;
+		}
+
+		&--blue {
+			background-color: $blue-color;
+			&.JDhover:hover {
+				background-color: $blue-color-dark;
+			}
+		}
 	}
 }
 
-.JDbgColor {
-	&--primary {
-		background-color: $primary-color;
-		&:hover {
-			background-color: $primary-color-dark;
+html {
+	.JDtextColor {
+		&--warn {
+			color: $orange-color;
+			&.JDhover:hover {
+				color: $orange-color-dark;
+			}
 		}
-	}
-
-	&--point {
-		background-color: $point-color;
-		&:hover {
-			background-color: $point-color-dark;
+		&--primary {
+			color: $primary-color;
+			&.JDhover:hover {
+				color: $primary-color-dark;
+			}
 		}
-	}
-
-	&--black {
-		background-color: $html-color;
-
-		&:hover {
-			background-color: $grey-level5;
+		&--error {
+			color: $error-color;
+			&.JDhover:hover {
+				color: $error-color-dark;
+			}
 		}
-	}
-
-	&--white {
-		background-color: white;
-
-		&:hover {
-			background-color: $grey-level1;
+		&--point {
+			color: $point-color;
+			&.JDhover:hover {
+				color: $point-color-dark;
+			}
 		}
-	}
-
-	&--new {
-		background-color: $new-color;
-		&:hover {
-			background-color: $new-color-dark;
+		&--placeHolder {
+			color: $grey-level1;
+			&.JDhover:hover {
+				color: $grey-level2;
+			}
 		}
-	}
-
-	&--error {
-		background-color: $error-color;
-		&:hover {
-			background-color: $error-color-dark;
+		&--grey5 {
+			color: $grey-level5;
+			&.JDhover:hover {
+				color: $grey-level4;
+			}
 		}
-	}
-
-	&--positive {
-		background-color: $positive-color;
-		&:hover {
-			background-color: $positive-color-dark;
+		&--grey4 {
+			color: $grey-level4;
+			&.JDhover:hover {
+				color: $grey-level3;
+			}
 		}
-	}
-
-	&--warn {
-		background-color: $orange-color;
-		&:hover {
-			background-color: $orange-color-dark;
+		&--grey3 {
+			color: $grey-level3;
+			&.JDhover:hover {
+				color: $grey-level4;
+			}
 		}
-	}
-
-	&--grey1 {
-		background-color: $grey-level1;
-	}
-
-	&--grey2 {
-		background-color: $grey-level2;
-	}
-	&--grey3 {
-		background-color: $grey-level3;
-	}
-
-	&--grey4 {
-		background-color: $grey-level4;
-	}
-	&--grey5 {
-		background-color: $grey-level5;
-	}
-
-	&--blue {
-		background-color: $blue-color;
-		&:hover {
-			background-color: $blue-color-dark;
+		&--grey2 {
+			color: $grey-level2;
+			&.JDhover:hover {
+				color: $grey-level3;
+			}
+		}
+		&--grey1 {
+			color: $grey-level1;
+			&.JDhover:hover {
+				color: $grey-level2;
+			}
+		}
+		&--third {
+			color: $third-color;
+			&.JDhover:hover {
+				color: $third-color-dark;
+			}
+		}
+		&--white {
+			color: white;
+			&.JDhover:hover {
+				color: $grey-level0;
+			}
 		}
 	}
 }

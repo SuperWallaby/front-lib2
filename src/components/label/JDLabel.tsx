@@ -1,17 +1,32 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
+import RequireMark from '../requireMark/RequireMark';
+import { ISpan, JDatomConfig } from '../../types/interface';
+import classNames from 'classnames';
+import { JDatomClasses } from '../../utils/utils';
 
-interface IProp {
-  txt: string | JSX.Element;
-  className?: string;
+export interface ILabelProp extends ISpan, JDatomConfig {
+	txt: string | JSX.Element;
+	require?: boolean;
 }
 
-const JDLabel = ({ txt, className }: IProp) => (
-  <span className={`JDlabel ${className}`}>{txt}</span>
-);
+const JDLabel = ({ txt, className, require, ...props }: ILabelProp) => {
+
+
+	const classes = classNames('JDlabel', className, {
+		...JDatomClasses(props)
+	});
+
+
+	return (
+		<span className={classes} {...props}>
+			{txt} {require && <RequireMark />}
+		</span>
+	);
+}
 
 JDLabel.propTypes = {
-  txt: PropTypes.string.isRequired
+	txt: PropTypes.string.isRequired
 };
 
 export default JDLabel;

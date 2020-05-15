@@ -1,7 +1,6 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import DayPicker, { TDayPickerDot } from './DayPicker';
-import '../../scss/all.scss';
 import { useDayPicker } from '../../hooks/hook';
 import JDcontainer from '../container/Container';
 import JDtypho from '../typho/Typho';

@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import JDlabel from '../label/JDLabel';
 import s4 from '../../utils/keyGen';
 import Tooltip from '../tooltip/Tooltip';
-import { JDatomExtentionSet } from '../../types/interface';
-import { JDmrClass, JDmbClass } from '../../utils/autoClasses';
+import { JDatomExtentionSet, JDinputExtention } from '../../types/interface';
+import { JDatomClasses } from '../../utils/autoClasses';
 
-interface IProps extends JDatomExtentionSet {
+interface IProps extends JDatomExtentionSet, JDinputExtention {
 	disabled?: boolean;
 	checked?: boolean;
 	onChange?(foo: boolean): void;
@@ -26,8 +26,7 @@ const JDswitch: React.FC<IProps> = ({
 	tooltip,
 	rtxt,
 	label,
-	mr,
-	mb,
+	require,
 	className,
 	...props
 }) => {
@@ -43,8 +42,7 @@ const JDswitch: React.FC<IProps> = ({
 	const newId = s4();
 
 	const wrapClasses = classNames('JDswitch-wrap', undefined, {
-		...JDmbClass(mb),
-		...JDmrClass(mr)
+		...JDatomClasses(props)
 	});
 
 	return (
@@ -55,7 +53,7 @@ const JDswitch: React.FC<IProps> = ({
 			data-for={tooltip ? `btnTooltip${newId}` : undefined}
 		>
 			<span className={wrapClasses}>
-				{label && <JDlabel txt={label} />}
+				{label && <JDlabel require={require} txt={label} />}
 				<span
 					tabIndex={0}
 					className="JDswitch"

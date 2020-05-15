@@ -1,7 +1,8 @@
 import React from "react";
 import { IDiv, JDatomExtentionSet } from "../../types/interface";
-import { JDatomClasses } from "../../utils/autoClasses";
+import { JDatomClasses, textAlignClass } from "../../utils/autoClasses";
 import classNames from "classnames";
+import { TextAlign } from "../../types/enum";
 
 type TFlex = {
   center?: boolean;
@@ -21,29 +22,27 @@ type TCol = {
   md?: number;
   sm?: number;
   full?: number;
+  flex?: boolean;
 };
 
 type TGrid = {
   grow?: boolean;
 };
 
-interface IProps {
+export interface IJDalignProp extends IDiv, JDatomExtentionSet {
+  text?: TextAlign
   flex?: TFlex | true;
   grid?: TGrid | true;
   col?: TCol | true;
 }
 
-export const TypeAlign: React.FC<IProps> = () => <div />;
-
-const Align: React.FC<IProps & IDiv & JDatomExtentionSet> = ({
-  mb,
+const Align: React.FC<IJDalignProp> = ({
   flex,
-  mr,
   className,
   children,
   grid,
   col,
-  hide,
+  text,
   ...props
 }) => {
   let colString = "";
@@ -54,17 +53,15 @@ const Align: React.FC<IProps & IDiv & JDatomExtentionSet> = ({
       if (col.md) colString += `col--md-${col.md} `;
       if (col.sm) colString += `col--sm-${col.sm} `;
       if (col.wlg) colString += `col--wlg-${col.wlg} `;
+      if (col.flex) colString += 'JDflex--float '
     }
   }
 
   let classes = classNames("JDAlign", className, {
     JDflex: flex,
     "flex-grid__col": col,
-    ...JDatomClasses({
-      hide,
-      mb,
-      mr,
-    }),
+    ...textAlignClass(text),
+    ...JDatomClasses(props),
   });
 
   if (typeof flex === "object") {

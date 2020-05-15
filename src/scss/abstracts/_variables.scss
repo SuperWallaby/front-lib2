@@ -64,6 +64,12 @@ $grey-level2: #bebebe !default;
 $grey-level3: #989898 !default;
 $grey-level4: #595959 !default;
 $grey-level5: #4d4d4d !default;
+$black-color: $html-color !default;
+$grey-level1-on: $html-color !default;
+$grey-level2-on: $html-color !default;
+$grey-level3-on: white !default;
+$grey-level4-on: white !default;
+$grey-level5-on: white !default;
 $grey-opacity1: rgba(0, 0, 0, 0.068) !default;
 $grey-opacity2: rgba(0, 0, 0, 0.18) !default;
 $grey-opacity3: rgba(0, 0, 0, 0.25) !default;
@@ -82,6 +88,7 @@ $green-color: #009e6c !default;
 $sky-color: #c7daff !default;
 $error-color: #ff6760 !default;
 $error-color-dark: darken(#ff6760, 5%) !default;
+$error-color-on: white !default;
 $pupple: #705f93 !default;
 
 $third-color: $pupple;
@@ -100,6 +107,7 @@ $blue-color-dark: darken(rgba(0, 0, 255, 1), 15%) !default;
 $blue-opacity1: rgba(0, 0, 255, 0.04) !default;
 $blue-opacity2: rgba(0, 0, 255, 0.08) !default;
 
+$positive-color-on: white !default;
 $positive-color: $green-color !default;
 $positive-opacity1: rgba($positive-color, 0.1) !default;
 $positive-opacity2: rgba($positive-color, 0.3) !default;
@@ -138,6 +146,7 @@ $standard-line-height: space(5.5) !default;
 $standard-round-border-radius: $standard-line-height / 2 !default;
 $standard-input-outborder-color: $outborder-color !default;
 $standard-small-line-height: 1.8rem !default;
+
 // 💔 -- BreackPoints 브레이크 포인트
 // 각각은 최대크기
 $smobile: "330px" !default; // ssm  <-- 그리드 작동안함
@@ -187,6 +196,7 @@ $label-font-color: $grey-level4 !default;
 // -- Text Inputs + Textarea 인풋
 $input-outborder-color: $outborder-color;
 $input-height: $standard-line-height + 0.125rem !default;
+$input-big-height: $standard-largest2-space;
 $input-background: transparent !default;
 $input-border: 1px solid $input-outborder-color !default;
 $input-border-bottom: undefined;
@@ -221,7 +231,7 @@ $select-padding: $input-padding !default;
 $select-radius: $standard-border-radius !default;
 $select-disabled-color: $disabled-color !default;
 $select-menue-radius: $standard-border-radius !default;
-$select-background: transparent !default;
+$select-background: white !default;
 $select-focus-border-color: $primary-color !default;
 $selcet-placeholder-color: $placeholder-color !default;
 // -- Multi Select 멀티 셀렉트
@@ -324,7 +334,7 @@ $button-height: $standard-line-height !default;
 // 5 Modals
 // ANCHOR Modals =========================================================================
 $modal-background-color: $curtain-color !default;
-$modal-padding: space(5) !default;
+$modal-padding: space(4) !default;
 $modal-end-padding: space(4) !default;
 $modal-header-padding: space(4) !default;
 $modal-border-radius: $standard-border-radius !default;
@@ -372,7 +382,9 @@ $pagination-li-height: 0.25rem * 9 !default;
 $pagination-li-padding: 1rem !default;
 $pagination-li-margin: 0.5rem !default;
 $pagination-li-hover: $primary-color-light !default;
-$pagination-li-active: $primary-color !default;
+$pagination-active-bg: $primary-color !default;
+$pagination-li-bg: $primary-color !default;
+$pagination-li-bg-hover: $primary-color-light !default;
 // 12 Toast 토스트
 // ANCHOR toast Toast=========================================================================
 $toast-height: 3rem !default;
@@ -458,6 +470,7 @@ $assigItem-padding: 0.4rem !default;
 $badge-br: $standard-border-radius !default;
 $badge-padding: 0.3em 0.35em !default;
 $badge-padding-tiny: 0.15em 0.3em !default;
+$badge-padding-large: 0.4em 0.6em !default;
 $badge-radius-tiny: 2px !default;
 // 23 menu 메뉴
 // ANCHOR menu Menu=========================================================================
@@ -487,3 +500,6 @@ $typho-line-height: 1.3 !default;
 // 30 Splinter
 $splinter-color: inherit !default;
 $splinter-yzoom: 0.8 !default;
+
+//31 requireMark
+$requireMark-color: $point-color;

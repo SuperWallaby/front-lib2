@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
-import '../../scss/all.scss';
 import { action } from '@storybook/addon-actions';
 import JDcontainer from '../container/Container';
 import SearchInput from './SearchInput';
@@ -87,9 +86,9 @@ export const standard = () => {
 				onSearchChange={v => {
 					setValue(v);
 				}}
+				searchValue={value}
 				head={'DummyData'}
 				dataList={dummyData}
-				searchValue={value}
 			/>
 		</JDcontainer>
 	);

@@ -9,7 +9,7 @@ interface IProps extends JDatomExtentionSet {
 	className?: string;
 	defaultFocus?: boolean;
 	defaultIndex?: number;
-	tabsAlign?: 'spaceAround' | 'spaceBetween';
+	tabsAlign?: 'spaceAround' | 'spaceBetween' | 'full';
 	disabledTabClassName?: string;
 	domRef?: (node?: HTMLElement) => void;
 	forceRenderTabPanel?: boolean;
@@ -27,6 +27,7 @@ const JDtabs: React.FC<IProps> = ({ breakTabs, tabsAlign, styleMode, className, 
 		'JDtabs--tabsAlign-spaceAround': tabsAlign === 'spaceAround',
 		'JDtabs--tabsAlign-spaceBetween': tabsAlign === 'spaceBetween',
 		'JDtabs--tabsAlign-normal': tabsAlign === undefined,
+		'JDtabs--tabsAlign-full': tabsAlign === 'full',
 		...JDatomClasses(props)
 	});
 
@@ -36,5 +37,7 @@ const JDtabs: React.FC<IProps> = ({ breakTabs, tabsAlign, styleMode, className, 
 
 	return <Tabs {...props} className={classes} />;
 };
+
+
 
 export { Tab, JDtabs, TabList, TabPanel };

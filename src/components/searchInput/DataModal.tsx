@@ -59,7 +59,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
     },
     ref
   ) => {
-    if (!value)
+    if (!value || typeof value !== "string")
       return (
         <div
           style={{
@@ -67,6 +67,11 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
           }}
         />
       );
+
+    if (typeof value !== "string") {
+      alert(value);
+      alert(typeof value);
+    }
 
     const haveData = !isEmpty(dataList);
     const words = value.trim().split(" ");
@@ -133,7 +138,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
               return (
                 <div
                   id={id}
-                  onTouchStart={() => {}}
+                  onTouchStart={() => { }}
                   onMouseDown={() => {
                     onSelectData(d);
                   }}
@@ -171,8 +176,8 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
               );
             })
           ) : (
-            <div>{langs.noMatchedMessage(value)}</div>
-          )}
+              <div>{langs.noMatchedMessage(value)}</div>
+            )}
         </div>
         {foot && <div className="dataModal__foot">{foot}</div>}
       </div>

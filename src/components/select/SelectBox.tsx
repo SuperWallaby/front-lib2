@@ -5,8 +5,9 @@ import Select, { ValueType } from "react-select";
 import classNames from "classnames";
 import { SelectComponentsProps } from "react-select/src/Select";
 import userTacking from "../../utils/userTracking";
-import { JDatomExtentionSet } from "../../types/interface";
-import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
+import { JDatomExtentionSet, JDinputExtention } from "../../types/interface";
+import { JDatomClasses } from "../../utils/autoClasses";
+import { JDlabel } from "../..";
 
 export interface IselectedOption<T = any> {
   label: string;
@@ -22,29 +23,31 @@ export enum SelectBoxSize {
 
 // Value === selectedOption
 // defaultValue 는 그 값이 바뀌어도 업데이트 되지않을것임
-export interface JDselectProps extends SelectComponentsProps {
+export interface JDselectProps extends SelectComponentsProps, JDinputExtention {
   label?: string | JSX.Element;
   disabled?: boolean;
   selectedOption?: IselectedOption | null;
   selectedOptions?: ValueType<IselectedOption<any>>;
   options?: IselectedOption[];
-  onChange?(foo: IselectedOption): void;
+  onChanges?(selectedOps: IselectedOption[]): void;
+  onChange?(selecteds: IselectedOption): void;
   className?: string;
-  rightLabel?: string;
   props?: any;
+  mode?: "underline"
   defaultValue?: IselectedOption | null;
   isOpen?: boolean;
   menuCanOverflow?: boolean;
   textOverflow?: "visible" | "hidden";
-  mode?: "small";
-  size?: SelectBoxSize;
+  size?: "small";
+  width?: "";
+  labelPosition?: "left" | "right";
   background?: "white";
   borderColor?: "primary";
   displayArrow?: boolean;
   menuItemCenterlize?: boolean;
 }
 
-const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
+const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   label,
   disabled,
   selectedOption,
@@ -54,9 +57,11 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
   options,
   mode,
   className,
+  width,
   size,
   isOpen,
   defaultValue,
+  labelPosition,
   placeholder,
   textOverflow,
   background,
@@ -66,8 +71,8 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
   borderColor,
   selectedOptions,
   autoSize,
-  mb,
-  mr,
+  require,
+  onChanges,
   // eslint-disable-next-line no-unused-vars
   ...props
 }) => {
@@ -81,32 +86,35 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
   const handleChange = (selectOption: any) => {
     userTacking(label?.toString(), selectOption?.value);
     onChange && onChange(selectOption);
+    onChanges && onChanges(selectOption);
   };
 
   const classes = classNames("JDselect", className, {
     "JDselect--unDisplayArrow": displayArrow === false,
+    "JDselect--underline": mode === "underline",
     "JDselect--disabled": disabled,
-    "JDselect--small": mode === "small",
+    "JDselect--left": labelPosition === "left",
+    "JDselect--right": labelPosition === "right",
+    "JDselect--small": size === "small",
     "JDselect--bg": background === "white",
     "JDselect--border-primary": borderColor === "primary",
     "JDselect--textOverflowVisible": textOverflow === "visible",
     "JDselect--menuCanOverflow": menuCanOverflow,
     "JDselect--autoSize": autoSize,
     "JDselect--menuItem-centerlize": menuItemCenterlize,
-    ...JDmbClass(mb),
-    ...JDmrClass(mr)
+    ...JDatomClasses(props),
   });
 
   const selectStyle: any = {
-    width: size
+    width: ""
   };
 
   const deafultPlaceHolder = "select";
 
   return (
     <div style={selectStyle} className={classes}>
-      {label !== "" ? (
-        <span className="JDselect__label JDselect__label--top">{label}</span>
+      {label ? (
+        <JDlabel require={require} txt={label} className="JDselect__label JDselect__label--top" />
       ) : null}
       <Select
         {...props}
@@ -120,11 +128,6 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
         noOptionsMessage={() => noOptionsMessage}
         placeholder={placeholder || deafultPlaceHolder}
       />
-      {rightLabel && (
-        <span className="JDselect__label JDselect__label--right">
-          {rightLabel}
-        </span>
-      )}
     </div>
   );
 };
@@ -132,7 +135,7 @@ const JDselectTemp: React.SFC<JDselectProps & JDatomExtentionSet> = ({
 JDselectTemp.defaultProps = {
   disabled: false,
   label: "",
-  onChange: () => {},
+  onChange: () => { },
   selectedOption: undefined,
   props: {}
 };

@@ -4,24 +4,37 @@ import Button, { IButtonProps } from '../button/Button';
 import { JDatomExtentionSet, TElements, IDiv } from '../../types/interface';
 import { JDatomClasses } from '../../utils/autoClasses';
 
+export interface IRadiosOps extends IButtonProps {
+	label: TElements;
+	value: string;
+}
+
 interface IProps extends JDatomExtentionSet, IDiv {
-	options: {
-		label: TElements;
-		value: string;
-	}[];
-	mode?: 'gather';
+	/** 버튼 라벨과 값의 쌍 */
+	options: IRadiosOps[];
+	/** 선택된 값들 */
 	selectedValues: string[];
+	/** 선택된 값이 변할 때 */
 	onChangeSelect: (value: string[]) => void;
+	/** 모양결정 */
+	mode?: 'gather';
+	/** 선택 반전 행동 패턴 정의 */
 	reversal?: 'onlyFull' | 'always';
+	/** 선택 할수 있는 값은 하나로 고정 */
 	only?: boolean;
+	/** 전체 투글러와 함께 작동 */
 	withAllToogler?: boolean;
+	/** 전체 투글러 라벨*/
 	withAllTooglerLabel?: string;
+	/** DEFRECATED*/
 	defaultAllToogle?: boolean;
+	/** 흘러내림 설정 */
 	noWrap?: boolean;
+	/** 모든 버턴 공통 설정 */
 	btnProps?: IButtonProps;
 }
 
-const JDRadioBox: React.FC<IProps> = ({
+export const JDRadioBox: React.FC<IProps> = ({
 	selectedValues,
 	defaultAllToogle = false,
 	options,
@@ -36,7 +49,7 @@ const JDRadioBox: React.FC<IProps> = ({
 	btnProps,
 	...props
 }) => {
-	const [ allToogled, setAllToggle ] = useState(defaultAllToogle);
+	const [allToogled, setAllToggle] = useState(defaultAllToogle);
 
 	const handleRadioBoxAllChange = () => {
 		const allValues = options.map(op => op.value);
@@ -55,7 +68,7 @@ const JDRadioBox: React.FC<IProps> = ({
 		if (isUnSelectedValue) selectedValues.push(text);
 		else selectedValues.splice(selectedTagrgetIndex, 1);
 
-		if (only) selectedValues = [ text ];
+		if (only) selectedValues = [text];
 
 		onChangeSelect(selectedValues.slice());
 	};
@@ -87,6 +100,7 @@ const JDRadioBox: React.FC<IProps> = ({
 						label={op.label}
 						onClick={() => handleRadioBoxChange(op.value)}
 						{...btnProps}
+						{...op}
 					/>
 				))}
 			</div>

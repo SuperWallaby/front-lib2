@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
-import ReactTable, { TableProps, ReactTableDefaults, RowRenderProps } from 'react-table';
+import ReactTable, { TableProps, ReactTableDefaults, RowRenderProps, CellInfo } from 'react-table';
+
+export interface JDTCinfo extends CellInfo {}
 
 interface JDrowInfo<T> extends RowRenderProps {
 	original: T;

@@ -1,321 +1,327 @@
 $select-font-color: $grey-level4;
 
 .JDselect {
-	text-align: left;
-	font-size: $typho-normal;
+  text-align: left;
+  font-size: $typho-normal;
 
-	&--underline {
+  .react-select__control {
+    min-height: $standard-line-height;
+  }
 
-		.react-select__control {
-			background-color: transparent!important;
-		}
+  &--underline {
+    .react-select__control {
+      background-color: transparent !important;
+    }
+    .react-select__control {
+      padding: 0rem 0rem !important;
+    }
 
-		.react-select-container {
-		  .react-select {
-			&__control {
-			  border-top: 0px !important;
-			  border-left: 0px !important;
-			  border-right: 0px !important;
-			}
-		  }
-		}
-	  }
-	
-	&--right {
-		display: flex;
-		align-items: center;
-		
-		.JDselect__label {
-			order: 1;
-			padding-left: space(1);
-		}
-	}
-	
-	&--left {
-		display: flex;
-		align-items: center;
-		
-		.JDselect__label {
-			order: 0;
-			padding-right: space(1);
-		}
-	}
+    .react-select-container {
+      .react-select {
+        &__control {
+          border-top: 0px !important;
+          border-left: 0px !important;
+          border-right: 0px !important;
+        }
+      }
+    }
+  }
 
-	&--textOverflowVisible {
-		.react-select__placeholder,
-		.react-select__single-value {
-			overflow: visible !important;
-		}
-	}
+  &--right {
+    display: flex;
+    align-items: center;
 
-	&--menuItem-centerlize {
-		.react-select__option {
-			padding: 0px !important;
-			text-align: center;
-		}
-	}
+    .JDselect__label {
+      order: 1;
+      padding-left: space(1);
+    }
+  }
 
-	&--autoSize {
-		* {
-			text-overflow: unset !important;
-		}
-		.react-select__value-container {
-			.react-select__single-value {
-				max-width: none !important;
-				position: relative !important;
-				top: 0 !important;
-				transform: none !important;
-				& + div {
-					position: absolute;
-				}
-			}
-		}
-	}
+  &--left {
+    display: flex;
+    align-items: center;
 
-	html &--border-primary {
-		.react-select-container {
-			.react-select__control {
-				border-color: $primary-color;
-			}
-		}
-	}
+    .JDselect__label {
+      order: 0;
+      padding-right: space(1);
+    }
+  }
 
-	&--unDisplayArrow {
-		.react-select__indicator {
-			display: none;
-		}
-	}
+  &--textOverflowVisible {
+    .react-select__placeholder,
+    .react-select__single-value {
+      overflow: visible !important;
+    }
+  }
 
-	&--bg {
-		.react-select__control {
-			background-color: white !important;
-		}
-	}
+  &--menuItem-centerlize {
+    .react-select__option {
+      padding: 0px !important;
+      text-align: center;
+    }
+  }
 
-	&--menuCanOverflow {
-		.react-select__menu {
-			width: auto !important;
-		}
-	}
+  &--autoSize {
+    * {
+      text-overflow: unset !important;
+    }
+    .react-select__value-container {
+      .react-select__single-value {
+        max-width: none !important;
+        position: relative !important;
+        top: 0 !important;
+        transform: none !important;
+        & + div {
+          position: absolute;
+        }
+      }
+    }
+  }
 
-	.css-1g6gooi {
-		width: 1px;
-	}
+  html &--border-primary {
+    .react-select-container {
+      .react-select__control {
+        border-color: $primary-color;
+      }
+    }
+  }
 
-	// NO 옵션
-	.react-select__menu-Notice--no-options {
-		color: $selcet-placeholder-color;
-	}
+  &--unDisplayArrow {
+    .react-select__indicator {
+      display: none;
+    }
+  }
 
-	.JDselect__label {
-		font-size: $label-font-size;
-		color: $label-font-color;
+  &--bg {
+    .react-select__control {
+      background-color: white !important;
+    }
+  }
 
-		&--top {
-			display: inline-block;
-			margin: $standard-label-margin;
-			margin-left: 0;
-			margin-right: 0;
-			margin-top: 0;
-			vertical-align: top;
-		}
+  &--menuCanOverflow {
+    .react-select__menu {
+      width: auto !important;
+    }
+  }
 
-		&--right {
-			line-height: $select-height;
-			padding-left: $standard-small-space;
-		}
-	}
+  .css-1g6gooi {
+    width: 1px;
+  }
 
-	// disabled style
-	&--disabled {
-		.JDselect__label {
-			color: $select-disabled-color;
-		}
-	}
+  // NO 옵션
+  .react-select__menu-Notice--no-options {
+    color: $selcet-placeholder-color;
+  }
 
-	.react-select__value-container--is-multi {
-		padding: .2rem .6rem;
-	}
+  .JDselect__label {
+    font-size: $label-font-size;
+    color: $label-font-color;
 
-	.react-select-container {
-		.react-select {
-			&__placeholder {
-				padding-right: 0 !important;
-			}
+    &--top {
+      display: inline-block;
+      margin: $standard-label-margin;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      vertical-align: top;
+    }
 
-			// disabled style 2
-			&__control--is-disabled.react-select__control {
-				border-color: $select-disabled-color;
-				.react-select__placeholder {
-					color: $select-disabled-color;
-				}
-				// 화살표
-				.react-select__indicator {
-					color: $select-font-color;
-				}
-			}
+    &--right {
+      line-height: $select-height;
+      padding-left: $standard-small-space;
+    }
+  }
 
-			&__single-value {
-				width: 100%;
-				margin: 0;
-				// color: $select-font-color;
-				color: $html-color;
-			}
+  // disabled style
+  &--disabled {
+    .JDselect__label {
+      color: $select-disabled-color;
+    }
+  }
 
-			&__label {
-				color: $select-multi-color;
-				font-size: $typho-small;
-			}
+  .react-select__value-container--is-multi {
+    padding: 0.2rem 0.6rem;
+  }
 
-			&__multi-value {
-				background-color: $select-multi-bgcolor;
-				margin: space(.5) 0;
-				margin-right: space(1.5);
-				
-				&__label {
-					padding: space(1);
-				}
+  .react-select-container {
+    .react-select {
+      &__placeholder {
+        padding-right: 0 !important;
+      }
 
-				&__remove {
-					background-color: $select-multi-remove-bgcolor;
+      // disabled style 2
+      &__control--is-disabled.react-select__control {
+        border-color: $select-disabled-color;
+        .react-select__placeholder {
+          color: $select-disabled-color;
+        }
+        // 화살표
+        .react-select__indicator {
+          color: $select-font-color;
+        }
+      }
 
-					&:hover {
-						background-color: $select-multi-remove-hover-bgcolor;
-						color: $select-multi-remove-hover-color;
-					}
-				}
-			}
+      &__single-value {
+        width: 100%;
+        margin: 0;
+        // color: $select-font-color;
+        color: $html-color;
+      }
 
-			&__placeholder {
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				color: $selcet-placeholder-color;
-				padding-right: $standard-small-space;
-				width: calc(100% - #{$standard-small-space});
-				margin: 0;
-			}
+      &__label {
+        color: $select-multi-color;
+        font-size: $typho-small;
+      }
 
-			//아이콘 이전 라인
-			&__indicator {
-				color: $select-font-color;
-				padding: $select-padding;
-			}
+      &__multi-value {
+        background-color: $select-multi-bgcolor;
+        margin: space(0.5) 0;
+        margin-right: space(1.5);
 
-			&__indicator:hover {
-				color: $select-font-color;
-			}
+        &__label {
+          padding: space(1);
+        }
 
-			&__indicator-separator {
-				display: none;
-			}
+        &__remove {
+          background-color: $select-multi-remove-bgcolor;
 
-			&-container {
-				border-radius: $select-radius;
-			}
+          &:hover {
+            background-color: $select-multi-remove-hover-bgcolor;
+            color: $select-multi-remove-hover-color;
+          }
+        }
+      }
 
-			&__control {
-				flex-wrap: inherit;
-				border: $select-border;
-				background-color: $select-background;
-				border-radius: $select-radius;
-				&--is-focused {
-					border-color: $select-focus-border-color;
-					color: $html-color !important;
-					@extend %z-depth-1;
+      &__placeholder {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $selcet-placeholder-color;
+        padding-right: $standard-small-space;
+        width: calc(100% - #{$standard-small-space});
+        margin: 0;
+      }
 
-					.react-select__indicator {
-						color: $html-color !important;
-					}
-					.react-select__single-value {
-						color: $html-color;
-					}
-				}
-			}
+      //아이콘 이전 라인
+      &__indicator {
+        color: $select-font-color;
+        padding: $select-padding;
+      }
 
-			&__value-container {
-				padding: $select-padding;
-			}
+      &__indicator:hover {
+        color: $select-font-color;
+      }
 
-			//  메뉴 Wrap
-			&__menu {
-				border-radius: $select-menue-radius;
-				@extend %z-depth-2;
-				margin: 0;
-				width: 100%;
-			}
+      &__indicator-separator {
+        display: none;
+      }
 
-			//  메뉴
-			&__menu-list {
-				padding: 0;
-				max-height: $select-option-height * 4;
-				@extend %JDscrollbar;
-			}
+      &-container {
+        border-radius: $select-radius;
+      }
 
-			// this is a li !!! 😆
-			&__option {
-				overflow: hidden;
-				height: $select-option-height;
-				padding: $select-option-padding;
-				line-height: $select-option-height;
-				width: auto;
-				white-space: pre;
-				&--is-focused {
-					background-color: $select-option-hover-bgcolor;
-				}
+      &__control {
+        flex-wrap: inherit;
+        border: $select-border;
+        background-color: $select-background;
+        border-radius: $select-radius;
+        &--is-focused {
+          border-color: $select-focus-border-color;
+          color: $html-color !important;
+          @extend %z-depth-1;
 
-				&:hover {
-					background-color: $select-option-hover-bgcolor;
-				}
+          .react-select__indicator {
+            color: $html-color !important;
+          }
+          .react-select__single-value {
+            padding: 0px 2px;
+            color: $html-color;
+          }
+        }
+      }
 
-				&:active {
-					background-color: $select-option-active-bgcolor;
-				}
+      &__value-container {
+        padding: $select-padding;
+      }
 
-				&--is-selected {
-					background-color: $select-option-selected-bgcolor;
+      //  메뉴 Wrap
+      &__menu {
+        border-radius: $select-menue-radius;
+        @extend %z-depth-2;
+        margin: 0;
+        width: 100%;
+      }
 
-					&:hover {
-						background-color: $select-option-selected-bgcolor;
-					}
-				}
-			}
-		}
-	}
+      //  메뉴
+      &__menu-list {
+        padding: 0;
+        max-height: $select-option-height * 4;
+        @extend %JDscrollbar;
+      }
 
-	&--small {
-		font-size: $typho-small;
-		height: $standard-small-line-height;
-		
-		
-		.react-select-container {
-			width: 100%;
-			.react-select__control {
-				height: $standard-small-line-height;
-				padding: 0rem 0rem;
-				min-height: 0px;
-			}
-			.react-select__value-container {
-				padding: 0;
-			}
-			.react-select {
-				.css-bgvzuu-indicatorSeparator {
-					width: 0px;
-				}
-				&__placeholder {
-					width: 100%;
-					overflow: hidden;
-					text-overflow: clip;
-				}
+      // this is a li !!! 😆
+      &__option {
+        overflow: hidden;
+        height: $select-option-height;
+        padding: $select-option-padding;
+        line-height: $select-option-height;
+        width: auto;
+        white-space: pre;
+        &--is-focused {
+          background-color: $select-option-hover-bgcolor;
+        }
 
-				&__indicators {
-					display: none;
-					// .react-select__indicator  {
-					//   margin-left: $standard-small-space;
-					// }
-					// width: 0;
-				}
-			}
-		}
-	}
+        &:hover {
+          background-color: $select-option-hover-bgcolor;
+        }
+
+        &:active {
+          background-color: $select-option-active-bgcolor;
+        }
+
+        &--is-selected {
+          background-color: $select-option-selected-bgcolor;
+
+          &:hover {
+            background-color: $select-option-selected-bgcolor;
+          }
+        }
+      }
+    }
+  }
+
+  &--small {
+    font-size: $typho-small;
+    height: $standard-small-line-height;
+
+    .react-select-container {
+      width: 100%;
+      .react-select__control {
+        height: $standard-small-line-height;
+        padding: 0rem space(1);
+        min-height: 0px;
+      }
+      .react-select__value-container {
+        padding: 0;
+      }
+      .react-select {
+        .css-bgvzuu-indicatorSeparator {
+          width: 0px;
+        }
+        &__placeholder {
+          width: 100%;
+          overflow: hidden;
+          text-overflow: clip;
+        }
+
+        &__indicators {
+          display: none;
+          // .react-select__indicator  {
+          //   margin-left: $standard-small-space;
+          // }
+          // width: 0;
+        }
+      }
+    }
+  }
 }

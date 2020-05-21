@@ -1,6 +1,6 @@
 // TODO this should be in functions....
 @function space($number) {
-	@return ($number * 0.4rem);
+  @return ($number * 0.4rem);
 }
 
 // superTiny => tiny => small => normal => large => huge => largest;
@@ -33,10 +33,10 @@ $typho-tiny: 0.625rem !default;
 $typho-superTiny: 0.5625rem !default;
 
 :root {
-	--primary-color: #4c5b73;
-	--primary-color-light: #004a81;
-	--primary-color-dark: #162743;
-	--primary-color-on: #fff;
+  --primary-color: #4c5b73;
+  --primary-color-light: #637796;
+  --primary-color-dark: #162743;
+  --primary-color-on: #fff;
 }
 
 // -- 🌈 Colors 컬러 칼라
@@ -46,7 +46,9 @@ $html-color: #4d4d4d !default;
 $primary-color: var(--primary-color) !default;
 $primary-color-on: #fff !default;
 $primary-color-light: var(--primary-color-light) !default;
-$primary-color-dark: var(--primary-color-dark) !default; // 흰색 호버 bg 에 오버랩 되었을때 컬러임
+$primary-color-dark: var(
+  --primary-color-dark
+) !default; // 흰색 호버 bg 에 오버랩 되었을때 컬러임
 $primary-color-light-on: var(--primary-color-on) !default !default;
 $primary-color-dark-on: var(--primary-color-on) !default !default;
 
@@ -96,9 +98,14 @@ $third-color-dark: darken($third-color, 5%);
 
 $buyer-main-color: $third-color;
 $buyer-main-color-dark: $third-color-dark;
-$buyer-main-color-liner: linear-gradient(90deg, rgba(112, 95, 147, 1) 0%, rgba(138, 80, 130, 1) 100%);
+$buyer-main-color-liner: linear-gradient(
+  90deg,
+  rgba(112, 95, 147, 1) 0%,
+  rgba(138, 80, 130, 1) 100%
+);
 
 $orange-color: #ff6e16 !default;
+$orange-color-on: white !default;
 $orange-color-dark: darken(#f58f2c, 15%) !default;
 $orange-opacity1: rgba(#ff6e16, 10%) !default;
 
@@ -124,7 +131,12 @@ $disabled-color: $grey-level2 !default;
 $outborder-color: $grey-level2 !default; //화면 가장자리에 붙어있는 border들의 컬러
 $placeholder-color: $outborder-color !default;
 
-$curtain-color: rgba(0, 0, 0, 0.78) !default; // 사이드 네비와 모달의 화면 가림색
+$curtain-color: rgba(
+  0,
+  0,
+  0,
+  0.78
+) !default; // 사이드 네비와 모달의 화면 가림색
 
 // 📖 ---- 표준 단위
 $doc-section-space: space(10) !default;
@@ -462,8 +474,8 @@ $AT-mobile-assigGroup-roomType-width: 2.25rem !default;
 
 $AT-mobile-assigGroup-room-width: 2.25rem !default;
 $assigItem-selected-linked-border-thick: 1px !default;
-$assigItem-selected-linked-border: $assigItem-selected-linked-border-thick solid $assigItem-selected-border-color
-	!default;
+$assigItem-selected-linked-border: $assigItem-selected-linked-border-thick solid
+  $assigItem-selected-border-color !default;
 $assigItem-padding: 0.4rem !default;
 // 22 badge 뱃지
 // ANCHOR badge Badge=========================================================================

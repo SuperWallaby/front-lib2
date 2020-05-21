@@ -1,248 +1,255 @@
 .JDbtn {
-	// border: $button-border;
-	border-radius: $button-radius;
-	display: inline-block;
-	height: $button-height;
-	line-height: 100%;
-	outline: 0;
-	padding: $button-padding;
-	text-transform: uppercase;
-	vertical-align: middle;
-	-webkit-tap-highlight-color: transparent;
-	text-decoration: none;
-	color: $button-color;
-	background-color: $button-bgColor;
-	text-align: center;
-	letter-spacing: $button-letter-spacing;
-	@extend %z-depth-1;
-	transition: background-color 0.2s ease-out;
-	cursor: pointer;
-	border: none;
-	font-weight: 300;
+  // border: $button-border;
+  border-radius: $button-radius;
+  display: inline-block;
+  height: $button-height;
+  line-height: 100%;
+  outline: 0;
+  padding: $button-padding;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color: $button-color;
+  background-color: $button-bgColor;
+  text-align: center;
+  letter-spacing: $button-letter-spacing;
+  @extend %z-depth-1;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  border: none;
+  font-weight: 300;
+  line-height: 0;
 
-	&:hover {
-		@extend %z-depth-1-half;
-		background-color: $grey-level0;
-	}
+  &.JDtextColor--primary {
+    font-weight: 500;
+  }
 
-	&--pno {
-		padding: 0;
-	}
+  &:hover {
+    @extend %z-depth-1-half;
+    background-color: $grey-level0;
+  }
 
-	&--plargest {
-		padding: 0 $standard-largest-space;
-	}
+  &--pno {
+    padding: 0;
+  }
 
-	&--plarge {
-		padding: 0 $standard-large-space;
-	}
+  &--plargest {
+    padding: 0 $standard-largest-space;
+  }
 
-	&--phuge {
-		padding: 0 $standard-huge-space;
-	}
+  &--plarge {
+    padding: 0 $standard-large-space;
+  }
 
-	&--ptiny {
-		padding: 0 $standard-tiny-space;
-	}
+  &--phuge {
+    padding: 0 $standard-huge-space;
+  }
 
-	&--unRound {
-		border-radius: 0px !important;
-	}
+  &--ptiny {
+    padding: 0 $standard-tiny-space;
+  }
 
-	&--round {
-		border-radius: $standard-round-border-radius;
-	}
+  &--unRound {
+    border-radius: 0px !important;
+  }
 
-	// Flot
-	&--left {
-		float: left;
-	}
+  &--round {
+    border-radius: $standard-round-border-radius;
+  }
 
-	&--right {
-		float: right;
-	}
+  // Flot
+  &--left {
+    float: left;
+  }
 
-	&__contents {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		white-space: nowrap;
-	}
+  &--right {
+    float: right;
+  }
 
-	&.JDwaves-effect {
-		overflow: hidden;
-	}
+  &__contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
 
-	&.JDbtn--white {
-		color: white;
-	}
+  &.JDwaves-effect {
+    overflow: hidden;
+  }
 
-	&.JDbtn--darkPrimary {
-		background-color: $primary-color-dark;
-		color: white;
-		&:hover {
-			background-color: $primary-color;
-		}
-	}
+  &.JDbtn--white {
+    color: white;
+  }
 
-	&.JDbtn--transparent {
-		background-color: transparent;
+  &.JDbtn--darkPrimary {
+    background-color: $primary-color-dark;
+    color: white;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
 
-		&:hover {
-			background-color: $grey-opacity1;
-		}
-	}
+  &.JDbtn--transparent {
+    background-color: transparent;
 
-	// Colors
-	&--text-white {
-		color: white !important;
-	}
+    &:hover {
+      background-color: $grey-opacity1;
+    }
+  }
 
-	// TODO: 왼쪽 아이콘은 아직 없음
-	&__icon {
-		line-height: inherit;
-		margin-left: $buttons-icon-margin;
-		float: right;
+  // Colors
+  &--text-white {
+    color: white !important;
+  }
 
-		&--left {
-			float: left;
-			order: -1;
-			margin-left: 0;
-			margin-right: $buttons-icon-margin;
-		}
-	}
+  // TODO: 왼쪽 아이콘은 아직 없음
+  &__icon {
+    line-height: inherit;
+    margin-left: $buttons-icon-margin;
+    float: right;
 
-	// Disabled shared style
+    &--left {
+      float: left;
+      order: -1;
+      margin-left: 0;
+      margin-right: $buttons-icon-margin;
+    }
+  }
 
-	&:disabled {
-		pointer-events: none;
-		background-color: $button-disabled-background;
-		box-shadow: none;
-		color: $button-disabled-color;
-		cursor: default;
+  // Disabled shared style
 
-		* {
-			pointer-events: none;
-		}
+  &:disabled {
+    pointer-events: none;
+    background-color: $button-disabled-background;
+    box-shadow: none;
+    color: $button-disabled-color;
+    cursor: default;
 
-		&:hover {
-			background-color: $button-disabled-background;
-			color: $button-disabled-color;
-		}
-	}
+    * {
+      pointer-events: none;
+    }
 
-	// Large button
-	&--large {
-		height: $button-large-height;
-		line-height: $button-large-height;
-		padding: $button-large-padding;
-		font-size: $button-large-font-size;
+    &:hover {
+      background-color: $button-disabled-background;
+      color: $button-disabled-color;
+    }
+  }
 
-		&.JDbtn--round {
-			border-radius: $button-large-height;
-		}
+  // Large button
+  &--large {
+    height: $button-large-height;
+    line-height: $button-large-height;
+    padding: $button-large-padding;
+    font-size: $button-large-font-size;
 
-		.JDbtn__icon {
-			font-size: $button-large-icon-font-size;
-		}
-	}
+    &.JDbtn--round {
+      border-radius: $button-large-height;
+    }
 
-	//long button
-	&--long {
-		width: 100%;
-		.JDbtn__icon {
-			float: none;
-		}
-	}
+    .JDbtn__icon {
+      font-size: $button-large-icon-font-size;
+    }
+  }
 
-	// Small button
-	&--small {
-		font-size: $button-tiny-font-size;
-		height: $buttons-tiny-height;
-		.JDbtn__icon {
-			margin-left: $buttons-tiny-icon-margin;
-		}
-	}
+  //long button
+  &--long {
+    width: 100%;
+    .JDbtn__icon {
+      float: none;
+    }
+  }
 
-	&--tiny {
-		font-size: $typho-tiny;
-	}
+  // Small button
+  &--small {
+    font-size: $button-tiny-font-size;
+    height: $buttons-tiny-height;
+    .JDbtn__icon {
+      margin-left: $buttons-tiny-icon-margin;
+    }
+  }
 
-	&--small {
-		font-size: $button-small-font-size;
+  &--tiny {
+    font-size: $typho-tiny;
+    height: space(3);
+    padding: 0 space(1);
+  }
 
-		&.JDbtn--cunsumPadding {
-			margin-left: -$button-small-padding-side;
-			margin-right: -$button-small-padding-side !important;
-		}
+  &--small {
+    font-size: $button-small-font-size;
 
-		.JDbtn__icon {
-			margin-left: $buttons-small-icon-margin;
+    &.JDbtn--cunsumPadding {
+      margin-left: -$button-small-padding-side;
+      margin-right: -$button-small-padding-side !important;
+    }
 
-			&--left {
-				float: left;
-				margin-left: 0;
-				margin-right: $buttons-small-icon-margin;
-			}
-		}
-	}
+    .JDbtn__icon {
+      margin-left: $buttons-small-icon-margin;
 
-	// Flat button
-	&--flat {
-		box-shadow: none !important;
-		background-color: white;
-		color: $button-flat-color;
-		cursor: pointer;
+      &--left {
+        float: left;
+        margin-left: 0;
+        margin-right: $buttons-small-icon-margin;
+      }
+    }
+  }
 
-		&.JDbtn--white {
-			color: white;
-		}
+  // Flat button
+  &--flat {
+    box-shadow: none !important;
+    background-color: white;
+    color: $button-flat-color;
+    cursor: pointer;
 
-		&:disabled {
-			color: $button-flat-disabled-color;
-			cursor: default;
-		}
+    &.JDbtn--white {
+      color: white;
+    }
 
-		&:hover {
-			background-color: $grey-level1;
-			box-shadow: none;
-		}
-	}
+    &:disabled {
+      color: $button-flat-disabled-color;
+      cursor: default;
+    }
 
-	&--toogleOn.JDbtn {
-		background-color: $primary-color!important;
-		color: $primary-color-on;
-	}
+    &:hover {
+      background-color: $grey-level1;
+      box-shadow: none;
+    }
+  }
 
-	&--cunsumPadding {
-		margin-left: -$button-padding-side;
-		margin-right: -$button-padding-side;
-	}
+  &--toogleOn.JDbtn {
+    background-color: $primary-color !important;
+    color: $primary-color-on;
+  }
+
+  &--cunsumPadding {
+    margin-left: -$button-padding-side;
+    margin-right: -$button-padding-side;
+  }
 }
 
 // border
 #root,
 .ReactModalPortal {
-	.JDbtn--border {
-		&.JDoutborder-color {
-			border-color: $outborder-color;
-			&:hover {
-				border-color: $grey-level3 !important;
-			}
-		}
+  .JDbtn--border {
+    &.JDoutborder-color {
+      border-color: $outborder-color;
+      &:hover {
+        border-color: $grey-level3 !important;
+      }
+    }
 
-		background-color: white;
-		border: 1px solid;
-		box-shadow: none;
+    background-color: white;
+    border: 1px solid;
+    box-shadow: none;
 
-		&:hover {
-			background-color: $outborder-color;
-		}
+    &:hover {
+      background-color: $outborder-color;
+    }
 
-		&.JDbtn {
-			&:hover {
-				background-color: white;
-			}
-		}
-	}
+    &.JDbtn {
+      &:hover {
+        background-color: white;
+      }
+    }
+  }
 }

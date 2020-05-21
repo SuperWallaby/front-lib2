@@ -522,10 +522,16 @@ export interface IUseDrawer {
   open: boolean;
 }
 
+export interface IUseRadioButton {
+  options: IRadiosOps[];
+  selectedValues: string[];
+  onChangeSelect: (values: string[]) => void;
+}
+
 function useRadioButton(
   defaultValues: string[],
   options: IRadiosOps[] = []
-) {
+): IUseRadioButton {
   const [selectedValues, setSelectedValues] = useState(defaultValues);
 
   const onChangeSelect = (values: string[]) => {

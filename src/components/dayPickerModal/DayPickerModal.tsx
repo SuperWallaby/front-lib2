@@ -2,6 +2,8 @@ import React from "react";
 import { IUseModal } from "../../hooks/hook";
 import JDmodal from "../modal/Modal";
 import JDdayPicker, { IJDdayPickerProps } from "..//dayPicker/DayPicker";
+import moment from "moment-timezone";
+import JDtypho from "../typho/Typho";
 
 interface Iprops extends IJDdayPickerProps {
   autoClose?: boolean;
@@ -15,6 +17,7 @@ const DayPickerModal: React.FC<Iprops> = ({
   to,
   autoClose,
   callBackChangeDate,
+  isRange,
   ...props
 }) => {
   const handleChangeDate = () => {
@@ -27,13 +30,27 @@ const DayPickerModal: React.FC<Iprops> = ({
   };
 
   return (
-    <JDmodal className="DayPickerModal" {...modalHook}>
+    <JDmodal paddingSize="no" className="DayPickerModal" {...modalHook}>
       <div
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
         }}
       >
+        <div className="DayPickerModal__head">
+          <JDtypho mb="small" color="grey3">
+            {moment(from || undefined).format("YYYY")}
+          </JDtypho>
+          <JDtypho mb="no" color="white" size="h5">
+            {isRange
+              ? (from ? moment(from).format("MM/DD dd") : "선택") +
+                ` ~ ` +
+                (to ? moment(to).format("MM/DD dd") : "선택")
+              : from
+              ? moment(from || undefined).format("MM/DD dd")
+              : "선택"}
+          </JDtypho>
+        </div>
         <JDdayPicker
           from={from}
           to={to}

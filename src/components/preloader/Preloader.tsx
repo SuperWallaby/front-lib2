@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React from "react";
 import classNames from "classnames";
+import { useTransition, animated } from "react-spring";
 export type PreloaderSize = "large" | "tiny" | "medium" | "small";
 
 export interface IPreloaderConfigProps
@@ -13,6 +14,56 @@ export interface IPreloaderConfigProps
   noAnimation?: boolean;
   wrapClassName?: string;
 }
+
+const LoadingDots = () => (
+  <div className="JDpageLoding" title="Loading">
+    <svg version="1.1" id="loading-dots" x="0px" y="0px" viewBox="0 0 512 512">
+      <path
+        d="M60.952,195.048C27.343,195.048,0,222.391,0,256s27.343,60.952,60.952,60.952
+    s60.952-27.343,60.952-60.952S94.562,195.048,60.952,195.048z"
+      >
+        <animate
+          attributeName="fill"
+          dur="3s"
+          begin="0s"
+          repeatCount="indefinite"
+          values="#000000;
+                   #f3f3f3;
+                   #000000;"
+        />
+      </path>
+      <path
+        d="M256,195.048c-33.609,0-60.952,27.343-60.952,60.952s27.343,60.952,60.952,60.952
+    s60.952-27.343,60.952-60.952S289.609,195.048,256,195.048z"
+      >
+        {" "}
+        <animate
+          attributeName="fill"
+          dur="3s"
+          begin="1s"
+          repeatCount="indefinite"
+          values="#000000;
+                   #f3f3f3;
+                   #000000;"
+        />
+      </path>
+      <path
+        d="M451.048,195.048c-33.609,0-60.952,27.343-60.952,60.952s27.343,60.952,60.952,60.952
+    S512,289.609,512,256S484.657,195.048,451.048,195.048z"
+      >
+        <animate
+          attributeName="fill"
+          dur="3s"
+          begin="2s"
+          repeatCount="indefinite"
+          values="#000000;
+                   #f3f3f3;
+                   #000000;"
+        />
+      </path>
+    </svg>
+  </div>
+);
 
 const JDpreloader: React.FC<IPreloaderConfigProps> = ({
   size = "tiny",
@@ -27,7 +78,7 @@ const JDpreloader: React.FC<IPreloaderConfigProps> = ({
 }) => {
   const wrapClasses = classNames("preloader__wrap", wrapClassName, {
     "preloader__wrap--center": position === "center",
-    "preloader__wrap--floating": floating
+    "preloader__wrap--floating": floating,
   });
 
   const classes = classNames("preloader", className, {
@@ -35,10 +86,14 @@ const JDpreloader: React.FC<IPreloaderConfigProps> = ({
     "preloader--large": size === "large",
     "preloader--medium": size === "medium",
     "preloader--small": size === "small",
-    "preloader--floating": floating
+    "preloader--floating": floating,
   });
 
-  if (!loading) return <span />;
+  const transitions = useTransition(loading, null, {
+    from: { zIndex: 9999, position: "absolute", opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
 
   const UnPagePreloader = () => (
     <span className={`preloader__wrap ${wrapClasses}`}>
@@ -82,16 +137,27 @@ const JDpreloader: React.FC<IPreloaderConfigProps> = ({
 
   const PagePreloader = () => (
     <div className={`preloader--page__wrap ${wrapClassName}`}>
-      <div className="preloader--page" />
+      <LoadingDots />
     </div>
   );
 
   const returnFn = () => {
     if (page) {
-      return <PagePreloader />;
-    } else {
-      return <UnPagePreloader />;
-    }
+      return (
+        <div>
+          {transitions.map(
+            ({ item, props, key }) =>
+              item && (
+                <animated.div key={key} style={props}>
+                  <PagePreloader />
+                </animated.div>
+              )
+          )}
+        </div>
+      );
+    } else if (!loading) {
+      return <span />;
+    } else return <UnPagePreloader />;
   };
 
   return returnFn();

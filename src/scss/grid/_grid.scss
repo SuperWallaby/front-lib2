@@ -131,16 +131,15 @@
 }
 
 .row {
-	@include grid-system(full);
-	@include grid-system(wlg);
-	@include grid-system(lg);
-	@include grid-system(wmd);
-	@include grid-system(wmd);
-	@include grid-system(md);
-	@include grid-system(sm);
+	@include grid-system(full,false,true);
+	@include grid-system(wlg,false,true);
+	@include grid-system(lg,false,true);
+	@include grid-system(wmd,false,true);
+	@include grid-system(wmd,false,true);
+	@include grid-system(md,false,true);
+	@include grid-system(sm,false,true);
 
 	&:after {
-		position: absolute;
 		clear: both;
 		content: "";
 		display: table;

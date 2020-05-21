@@ -5,7 +5,7 @@ import JDcard from './components/cards/Card';
 import JDdropDown from './components/dropDown/DropDown';
 import JDcheckBox from './components/checkbox/CheckBox';
 import Toast from './components/toast/Toast';
-import JDmodal from './components/modal/Modal';
+import JDmodal, { JDmodalConfigProps } from './components/modal/Modal';
 import JDlabel from './components/label/JDLabel';
 import JDbadge from './components/badge/Badge';
 import JDsplinter from './components/splinter/Splinter';
@@ -29,7 +29,6 @@ import JDlist from './components/list/List';
 import TooltipList, { ReactTooltip, TooltipButtons, TButtonProp } from './components/tooltipList/TooltipList';
 import JDpagination from './components/pagination/Pagination';
 import JDradioButton from './components/radioButton/RadioButton';
-import JDtable, { IJDTableProps, JDcolumn, ReactTableDefault, JDTCinfo } from './components/table/Table';
 import JDFileManagerModal from './components/fileManager/FileManagerModal';
 import JDsearchInput, { IJDsearchInputProp } from './components/searchInput/SearchInput';
 import { IDateModalProps, ISearchViewData } from './components/searchInput/DataModal';
@@ -124,7 +123,6 @@ export {
 	JDtypho,
 	JDslider,
 	JDbadge,
-	JDtable,
 	JDslide,
 	JDselect,
 	JDconfiger,
@@ -135,7 +133,7 @@ export {
 	JDdayPickerModal,
 	JDphotoFrame,
 	JDpagination,
-	JDTCinfo,
+	JDmodalConfigProps,
 	useCheckBox,
 	JDdropDown,
 	JDalign,
@@ -214,9 +212,6 @@ export {
 	TooltipList,
 	Toast,
 	toast,
-	IJDTableProps,
-	JDcolumn,
-	ReactTableDefault,
 	DEFAULT_PAGINATION_SETTING,
 	JDatomClasses,
 	arraySum,

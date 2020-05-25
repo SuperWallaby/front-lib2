@@ -127,7 +127,9 @@ const validateFile = (
   const isImg = file.type.includes("image");
 
   const { name } = file;
-  const filteredName = removeSpecialChar(name.slice(0, name.lastIndexOf(".")));
+  const appender = name.slice(1, name.lastIndexOf("."));
+  const namePart = name.slice(0, name.lastIndexOf("."));
+  const filteredName = removeSpecialChar(namePart) + "." + appender;
 
   return { file, isImg, filteredName };
 };

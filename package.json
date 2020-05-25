@@ -1,6 +1,6 @@
 {
 	"name": "@janda-com/front",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"description": "@jd-com/front",
 	"main": "build/index.js",
 	"module": "build/index.es.js",

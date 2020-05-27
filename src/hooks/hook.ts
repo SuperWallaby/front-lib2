@@ -127,7 +127,9 @@ const validateFile = (
   const isImg = file.type.includes("image");
 
   const { name } = file;
-  const appender = name.slice(1, name.lastIndexOf("."));
+  console.log("name");
+  console.log(name);
+  const appender = name.slice(name.lastIndexOf(".") + 1,name.length);
   const namePart = name.slice(0, name.lastIndexOf("."));
   const filteredName = removeSpecialChar(namePart) + "." + appender;
 
@@ -242,6 +244,7 @@ const useFilesManager = (
           "base64"
         );
       } else {
+
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {

@@ -18,6 +18,7 @@ import JDalign, { IJDalignProp } from './components/align/Align';
 import JDcontainer from './components/container/Container';
 import JDtypho from './components/typho/Typho';
 import JDselect from './components/select/SelectBox';
+import JDtable,{IJDTableProps,JDTCinfo,JDcolumn,ReactTableDefault} from './components/table/Table';
 import JDdayPicker, { TDayPickerDot } from './components/dayPicker/DayPicker';
 import JDdayPickerModal from './components/dayPickerModal/DayPickerModal';
 import JDslider, { Slide as JDslide } from './components/slider/Slider';
@@ -227,6 +228,11 @@ export {
 	isEmpty,
 	isHaveNumber,
 	isHaveScharacter,
+	JDtable,
+	IJDTableProps,
+	JDTCinfo,
+	JDcolumn,
+	ReactTableDefault,
 	isIncludeSpecialChar,
 	isLast,
 	isLengthIn,

@@ -27,12 +27,12 @@ const JDicon: React.FC<ICONPROP> = ({
 	selected,
 	dots,
 	tooltipProp,
+	hover = true,
 	...props
 }) => {
 
-	if (props.hover === undefined) props.hover = true;
 	const wrapClasses = classNames('iconWrapper', className, {
-		...JDatomClasses(props)
+		...JDatomClasses({hover,...props})
 	});
 
 	const classes = classNames('JDicon JDhover', undefined, {

@@ -1,6 +1,6 @@
 {
 	"name": "@janda-com/front",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "@jd-com/front",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
@@ -108,7 +108,7 @@
 		"is-mobile": "^2.2.1",
 		"jquery": "^3.4.1",
 		"moment-timezone": "^0.5.28",
-		"react-day-picker": "^7.4.8",
+		"react-day-picker": "^7.3",
 		"react-docgen-typescript-loader": "^3.7.1",
 		"react-image-file-resizer": "^0.2.1",
 		"react-modal": "^3.11.2",

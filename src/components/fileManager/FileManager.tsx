@@ -22,7 +22,7 @@ export interface ImageUploaderProps {
 
 let lastLength = 0;
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({
+const FileManager: React.FC<ImageUploaderProps> = ({
   uploaderHook,
   addBtnProps,
   langs = defaultLangSet
@@ -125,4 +125,4 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   );
 };
 
-export default ImageUploader;
+export default FileManager;

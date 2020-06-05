@@ -20,7 +20,7 @@ import JDtypho from './components/typho/Typho';
 import JDselect from './components/select/SelectBox';
 import JDdayPicker, { TDayPickerDot } from './components/dayPicker/DayPicker';
 import JDdayPickerModal from './components/dayPickerModal/DayPickerModal';
-import JDslider, { Slide as JDslide } from './components/slider/Slider';
+import JDslider, { Slide as JDslide, TJDsliderProp } from './components/slider/Slider';
 import JDphotoFrame from './components/photoFrame/PhotoFrame';
 import JDdoc, { DocHeader as JDdocHeader, DocSection as JDdocSection } from './components/doc/Doc';
 import JDconfiger from './components/configer/Configer';
@@ -29,6 +29,7 @@ import JDlist from './components/list/List';
 import TooltipList, { ReactTooltip, TooltipButtons, TButtonProp } from './components/tooltipList/TooltipList';
 import JDpagination from './components/pagination/Pagination';
 import JDradioButton from './components/radioButton/RadioButton';
+import JDfileManager from './components/fileManager/FileManager';
 import JDFileManagerModal from './components/fileManager/FileManagerModal';
 import JDsearchInput, { IJDsearchInputProp } from './components/searchInput/SearchInput';
 import { IDateModalProps, ISearchViewData } from './components/searchInput/DataModal';
@@ -37,7 +38,6 @@ import { DEFAULT_PAGINATION_SETTING } from './types/defaults';
 import { JDtabs, Tab, TabList, TabPanel } from './components/tabs/Tabs';
 import hooks, {
 	IUseModal,
-	IUseCheckBoxTable,
 	IUseColor,
 	IUseDrawer,
 	IUseDayPicker,
@@ -53,7 +53,6 @@ import { toast } from 'react-toastify';
 
 const {
 	useCheckBox,
-	useCheckBoxTable,
 	useDayPicker,
 	useDebounce,
 	useInput,
@@ -115,7 +114,10 @@ const {
 	searchListFormat,
 	setMidNight,
 	textAlignClass,
-	toNumber
+	toNumber,
+	getFromUrl,
+	getAllFromUrl,
+	copytoClipboard
 } = utills;
 
 export {
@@ -138,7 +140,6 @@ export {
 	JDdropDown,
 	JDalign,
 	JDcheckBox,
-	useCheckBoxTable,
 	useDayPicker,
 	useDebounce,
 	useInput,
@@ -171,7 +172,6 @@ export {
 	useFilesManager,
 	IuseFilesManager,
 	IUseModal,
-	IUseCheckBoxTable,
 	IUseColor,
 	IUseDrawer,
 	IUseDayPicker,
@@ -197,6 +197,7 @@ export {
 	JDpreloaderModal,
 	IDateModalProps,
 	ISearchViewData,
+	TJDsliderProp,
 	IJDsearchInputProp,
 	JDsearchInput,
 	TButtonProp,
@@ -227,11 +228,6 @@ export {
 	isEmpty,
 	isHaveNumber,
 	isHaveScharacter,
-	JDtable,
-	IJDTableProps,
-	JDTCinfo,
-	JDcolumn,
-	ReactTableDefault,
 	isIncludeSpecialChar,
 	isLast,
 	isLengthIn,
@@ -245,6 +241,7 @@ export {
 	isYYYYMMDD,
 	jsonString,
 	muResult,
+	JDfileManager,
 	numberStr,
 	onCompletedMessage,
 	queryDataFormater,
@@ -252,8 +249,11 @@ export {
 	removeNullOfObject,
 	removeSpecialChar,
 	s4,
+	getAllFromUrl,
+	copytoClipboard,
 	searchListFormat,
 	setMidNight,
 	textAlignClass,
+	getFromUrl,
 	toNumber
 };

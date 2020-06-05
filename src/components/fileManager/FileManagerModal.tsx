@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import JDmodal, { JDmodalConfigProps } from "../modal/Modal";
 import { IUseModal } from "../../hooks/hook";
 import ImageManager, { ImageUploaderProps } from "./FileManager";
-import Button from "../button/Button";
+import Button, { IButtonProps } from "../button/Button";
 import Align from "../align/Align";
 import { defaultLangSet } from "./FileManager";
 
@@ -15,6 +15,7 @@ export type TFileManagerLangs = {
 };
 
 interface IProps extends ImageUploaderProps {
+  btnCommon?: IButtonProps;
   modalProp?: JDmodalConfigProps;
   modalHook: IUseModal;
   langs?: TFileManagerLangs;
@@ -25,6 +26,7 @@ const ImageManagerModal: React.FC<IProps> = ({
   modalProp,
   uploaderHook,
   addBtnProps,
+  btnCommon,
   langs = defaultLangSet,
 }) => {
   const { setUrls, urls } = uploaderHook;
@@ -71,6 +73,7 @@ const ImageManagerModal: React.FC<IProps> = ({
               br="round"
               thema="primary"
               label={langs.confrimLabel}
+              {...btnCommon}
             />
             <Button
               thema="grey3"
@@ -83,6 +86,7 @@ const ImageManagerModal: React.FC<IProps> = ({
               br="round"
               mode="flat"
               label={langs.cancelLabel}
+              {...btnCommon}
             />
           </Align>
         )
@@ -90,7 +94,7 @@ const ImageManagerModal: React.FC<IProps> = ({
       {...modaProps}
       {...modalHook}
     >
-      <ImageManager addBtnProps={addBtnProps} uploaderHook={uploaderHook} />
+      <ImageManager addBtnProps={{ ...btnCommon, ...addBtnProps }} uploaderHook={uploaderHook} />
     </JDmodal>
   );
 };

@@ -44,16 +44,17 @@ const DayPickerModal: React.FC<Iprops> = ({
           <JDtypho mb="no" color="white" size="h5">
             {isRange
               ? (from ? moment(from).format("MM/DD dd") : "선택") +
-                ` ~ ` +
-                (to ? moment(to).format("MM/DD dd") : "선택")
+              ` ~ ` +
+              (to ? moment(to).format("MM/DD dd") : "선택")
               : from
-              ? moment(from || undefined).format("MM/DD dd")
-              : "선택"}
+                ? moment(from || undefined).format("MM/DD dd")
+                : "선택"}
           </JDtypho>
         </div>
         <JDdayPicker
           from={from}
           to={to}
+          isRange={isRange}
           onChangeDate={handleChangeDate}
           {...props}
         />

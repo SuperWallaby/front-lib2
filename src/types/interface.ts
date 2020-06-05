@@ -2,14 +2,19 @@ import { Dispatch } from 'react';
 import { TMarginSize } from './enum';
 import { MutationFunctionOptions } from '@apollo/react-common';
 import { ExecutionResult } from 'graphql';
-export interface ANY {}
-export interface IInput extends React.HTMLAttributes<HTMLInputElement> {}
-export interface IDiv extends React.HTMLAttributes<HTMLDivElement> {}
-export interface ISpan extends React.HTMLAttributes<HTMLSpanElement> {}
-export interface IUl extends React.HTMLAttributes<HTMLUListElement> {}
+export interface ANY { }
+export interface IInput extends React.HTMLAttributes<HTMLInputElement> { }
+export interface IDiv extends React.HTMLAttributes<HTMLDivElement> { }
+export interface ISpan extends React.HTMLAttributes<HTMLSpanElement> { }
+export interface IUl extends React.HTMLAttributes<HTMLUListElement> { }
 export type TRef = React.MutableRefObject<any>;
 export type TElements = string | JSX.Element | JSX.Element[] | string[];
 export type TMuFn<m, mv> = (options?: MutationFunctionOptions<m, mv> | undefined) => Promise<ExecutionResult<m>>;
+
+export type TKeyValue = {
+	key: string
+	value: string
+}[]
 
 export interface JDRoute {
 	Component: React.FC<any>;

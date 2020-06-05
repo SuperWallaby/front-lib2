@@ -43,6 +43,9 @@ const Align: React.FC<IJDalignProp> = ({
   grid,
   col,
   text,
+  hide,
+  mb,
+  mr,
   ...props
 }) => {
   let colString = "";
@@ -61,7 +64,11 @@ const Align: React.FC<IJDalignProp> = ({
     JDflex: flex,
     "flex-grid__col": col,
     ...textAlignClass(text),
-    ...JDatomClasses(props),
+    ...JDatomClasses({
+      hide,
+      mb,
+      mr,
+    }),
   });
 
   if (typeof flex === "object") {

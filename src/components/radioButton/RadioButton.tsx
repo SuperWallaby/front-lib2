@@ -74,6 +74,7 @@ export const JDRadioBox: React.FC<IProps> = ({
 	};
 
 	const classes = classNames('radioBox', className, {
+		'radioBox--withAllToogler': withAllToogler,
 		'radioBox--noWrap': noWrap,
 		'radioBox--gather': mode === 'gather',
 		...JDatomClasses(props)

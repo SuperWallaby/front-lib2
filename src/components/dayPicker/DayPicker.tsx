@@ -14,10 +14,12 @@ import HorizenCaption from "./component/horizen/HorizenCaption";
 import { IUseDayPicker } from "../../hooks/hook";
 import { getDateCharLang } from "./helper";
 import { JDatomExtentionSet, IDiv, TElements } from "../../types/interface";
-import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
 import moment from "moment";
 import DayPickerDay from "./component/DayPickerDay";
-import { JDColor } from "../..";
+import { JDColor, JDatomClasses } from "../..";
+
+// !!! 주의 
+// DayPicker-input이 다른 경로로서 참조되면 어려움.
 
 export interface TDayPickerDot extends IDiv {
   tooltip?: string;
@@ -25,7 +27,9 @@ export interface TDayPickerDot extends IDiv {
   date: Date;
 }
 
-export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
+
+// react-day-Picker 에서 명시한 public Method는 ref 가 없으면 사용할 수가 없습니다.  
+export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet, DayPickerProps {
   canSelectBeforeDay?: boolean;
   placeholder?: string;
   mode?: "horizen" | "input" | "checkInOutStyle";
@@ -41,7 +45,7 @@ export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
   inputDisabled?: boolean;
   maxLimit?: boolean;
   showWeekEndColor?: boolean;
-  inputComponent?: any;
+  inputComponent?: (inputProp: any) => any;
   onChangeDate?(foo?: string | Date | null, foo2?: string | Date | null): void;
   className?: string;
   inputClassName?: string;
@@ -50,7 +54,10 @@ export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet {
   displayHeader?: boolean;
   currentLang?: "kr" | "en";
   Information?: TElements;
+  maxRange?: number;
+  callBackMaxRangeOut?: () => void;
 }
+
 
 const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
   ({
@@ -83,9 +90,10 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     readOnly,
     showWeekEndColor = true,
     className,
+    maxRange,
+    callBackMaxRangeOut,
     dots = [],
-    mr,
-    mb,
+    ...prop
   }) => {
     const dayPickerFullWrap: any = useRef();
     const isInitialMount = useRef(true);
@@ -142,6 +150,14 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
         return;
       }
 
+      //최대기간 이상을 선정한 경우에
+      if (maxRange !== undefined && from && day) {
+        if (moment(from).diff(day, "d") > maxRange) {
+          callBackMaxRangeOut && callBackMaxRangeOut();
+          return;
+        }
+      }
+
       // 첫선택 인가?
       if (isFromSelect(from, to, day)) {
         // 첫날을 셋팅하고 나머지날자는 널 기입
@@ -183,8 +199,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--unDisplayCaption": displayCaption === false,
       "DayPicker--unDisplayNavbar": displayHeader === false,
       "DayPicker--unDisplayInfo": !Information,
-      ...JDmbClass(mb),
-      ...JDmrClass(mr),
+      ...JDatomClasses(prop)
     });
 
     // 이건 순수하게 달력부분
@@ -211,13 +226,13 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     const horizenProps =
       mode === "horizen"
         ? {
-            renderDay: RenderDots,
-            numberOfMonths: 3,
-            showWeekDays: false,
-            captionElement: ({ date }: CaptionElementProps) => (
-              <HorizenCaption date={date} onChange={() => {}} />
-            ),
-          }
+          renderDay: RenderDots,
+          numberOfMonths: 3,
+          showWeekDays: false,
+          captionElement: ({ date }: CaptionElementProps) => (
+            <HorizenCaption date={date} onChange={() => { }} />
+          ),
+        }
         : {};
 
     const DayPickerRender = DayPickerDay.bind(DayPickerDay, dots);
@@ -245,6 +260,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       showOutsideDays: false,
       disabledDays: canSelectBeforeDay ? undefined : [{ before: new Date() }],
       ...horizenProps,
+      ...prop,
     };
 
     return (
@@ -266,11 +282,11 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
             displayYear={displayYear}
           />
         ) : (
-          <Fragment>
-            {Information}
-            <DayPicker {...dayPickerProps} />
-          </Fragment>
-        )}
+            <Fragment>
+              {Information}
+              <DayPicker {...dayPickerProps} />
+            </Fragment>
+          )}
       </div>
     );
   }

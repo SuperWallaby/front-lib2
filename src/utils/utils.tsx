@@ -8,6 +8,8 @@ import autoHypen, {
 	dateRangeFormat,
 	removeSpecialChar
 } from './autoFormat';
+import { getFromUrl, getAllFromUrl } from './getFromUrl';
+import copytoClipboard from './copyToClipboard';
 import insideRedirect from './insideRedirect';
 import { textAlignClass, JDatomClasses } from './autoClasses';
 import searchListFormat from './searchListFormater';
@@ -81,6 +83,9 @@ const JDutils = {
 	isLengthIn,
 	isHaveScharacter,
 	isHaveNumber,
+	getFromUrl,
+	getAllFromUrl,
+	copytoClipboard,
 	isIncludeSpecialChar
 };
 
@@ -114,7 +119,10 @@ export {
 	isYYYYMMDD,
 	isPhone,
 	JDatomClasses,
+	getFromUrl,
+	copytoClipboard,
 	isName,
+	getAllFromUrl,
 	isUrl,
 	isMaxOver,
 	isPassword,

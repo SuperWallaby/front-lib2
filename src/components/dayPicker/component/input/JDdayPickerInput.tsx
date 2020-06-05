@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, Fragment, forwardRef } from "react";
+import { DayPickerProps } from "react-day-picker";
+import React, { useRef, useEffect } from "react";
 import moment from "moment";
-import InputText from "../../../InputText/InputText";
 import "moment/locale/ko";
 import { DateFormat } from "../../../../types/enum";
-import { DayPickerProps } from "react-day-picker";
-import DayPickerInput from "react-day-picker/DayPickerInput";
+import { InputText } from "../../../InputText/InputText";
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 // 데이픽커 인풋은 어레인이지를 지원하지 않을려는것만 같다.
 // 무리하게 바꾸었는데 잘 동작할지 모르겠다.
 
@@ -35,7 +35,7 @@ const JDdayPickerInput: React.FC<IProps> = ({
   dayPickerProps,
   displayYear,
   inputClassName,
-  placeholder = "please_select_date",
+  placeholder = "",
   format = displayYear ? DateFormat.YYMMDD : DateFormat.MMDD,
   InputComponent,
   disabled,
@@ -94,38 +94,37 @@ const JDdayPickerInput: React.FC<IProps> = ({
     return `${formatFrom}`;
   };
 
-  const MyComponent = forwardRef((prop: any, ref: any) =>
-    InputComponent ? (
-      <InputComponent {...props} />
-    ) : (
-      <InputText
-        tabIndex={readOnly ? "-1" : undefined}
-        wrapClassName={"DayPicker__inputWrap"}
-        className={`DayPicker__input ${inputClassName}`}
-        readOnly={readOnly}
-        disabled={disabled}
-        label={label}
-        icon={label && displayIcon ? "calendar" : undefined}
-        {...props}
-        {...prop}
-        ref={ref}
-      />
-    )
-  );
+  const MyComponent = InputComponent ? InputComponent
+    : () => <div />
+
+  const Default = (prop: any) => <InputText
+    tabIndex={readOnly ? "-1" : undefined}
+    wrapClassName={"DayPicker__inputWrap"}
+    className={`DayPicker__input ${inputClassName}`}
+    readOnly={readOnly}
+    disabled={disabled}
+    label={label}
+    icon={label && displayIcon ? "calendar" : undefined}
+    {...props}
+    {...prop}
+  />
 
   return (
-    <Fragment>
+    <div>
       {/* 😶 REF는 잘 작동하지만 브라우저상 오류를 낸다 이유는... ref가
       그냥 맨껍데기에 적용되서 그렇다는데 아무래도 해결방법은 깃허브에 문의해봐야겠다. */}
       <DayPickerInput
+        ref={(el: any) => {
+          DayPickerInputRef.current = el;
+        }}
         placeholder={placeholder}
         dayPickerProps={{ ...dayPickerProps }}
         format={format}
-        component={MyComponent}
+        component={InputComponent ? MyComponent : Default}
         hideOnDayClick={!isRange}
         value={valueFormatter(from, to, format, "kr")}
       />
-    </Fragment>
+    </div>
   );
 };
 

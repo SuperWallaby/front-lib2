@@ -11,7 +11,9 @@ interface IProps extends Settings, JDatomExtentionSet {
   condition?: boolean;
 }
 
-const JDSlider: React.FC<IProps & IDiv> = ({
+export type TJDsliderProp = IProps & IDiv;
+
+const JDSlider: React.FC<TJDsliderProp> = ({
   children,
   whiteIcon,
   condition = true,
@@ -40,13 +42,13 @@ const JDSlider: React.FC<IProps & IDiv> = ({
         className="JDslider__arrow--left"
       />
     ) : (
-      undefined
-    ),
+        undefined
+      ),
     prevArrow: displayArrow ? (
       <Icon className="JDslider__arrow--right" size="small" icon="arrowRight" />
     ) : (
-      undefined
-    )
+        undefined
+      )
   };
 
   const classes = classnames(JDslideDefaultSettings.className, className, {

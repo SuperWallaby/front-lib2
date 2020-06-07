@@ -27,6 +27,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
   onSelectData,
   className,
   inputProp,
+  /** 로딩중에는 Data모달을 업데이트 하지않습니다. => 덜렁거림방지 */
   loading,
   head,
   foot,
@@ -119,6 +120,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
         langs={langs}
         foot={foot}
         head={head}
+        loading={loading}
         dataList={dataList}
         value={searchValue}
       />

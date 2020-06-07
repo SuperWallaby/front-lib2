@@ -1,8 +1,9 @@
 import React from "react";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { withKnobs, boolean, number } from "@storybook/addon-knobs";
 import DayPickerModal from "./DayPickerModal";
 import { useDayPicker } from "../../hooks/hook";
 import { useModal, TDayPickerDot } from "../..";
+import { action } from '@storybook/addon-actions';
 import Button from "../button/Button";
 
 export default {
@@ -37,6 +38,10 @@ export const standard = () => {
       <DayPickerModal
         dots={dots}
         {...DayPickerHook}
+        callBackMaxRangeOut={() => {
+          action("callBackMaxRangeOut");
+        }}
+        maxRange={number("maxRange", 90)}
         autoClose={boolean("autoClose", true)}
         isRange={boolean("isRange", true)}
         modalHook={DayPickerModalHook}

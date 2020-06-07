@@ -127,6 +127,8 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       // 불가능한 날자를 눌럿을경우에
       if (modifiers.disabled) return;
 
+      const isFristSelect = isFromSelect(from, to, day);
+
       // 범위선택이 아닌 경우에
       if (!isRange) {
         setFrom(day);
@@ -151,15 +153,15 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       }
 
       //최대기간 이상을 선정한 경우에
-      if (maxRange !== undefined && from && day) {
-        if (moment(from).diff(day, "d") > maxRange) {
+      if (from && maxRange && day && !to) {
+        if (moment(day).diff(from, "d") >= maxRange) {
           callBackMaxRangeOut && callBackMaxRangeOut();
           return;
         }
       }
 
-      // 첫선택 인가?
-      if (isFromSelect(from, to, day)) {
+      // From 선택일때
+      if (isFristSelect) {
         // 첫날을 셋팅하고 나머지날자는 널 기입
         setFrom(day);
         setEntered(null);

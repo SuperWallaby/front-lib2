@@ -79,8 +79,6 @@ const textColorClass = (color?: JDColor | null) => {
 
 const bgColorClass = (color?: JDColor | null) => {
 	let obj: any = {};
-	console.log('color');
-	console.log(color);
 	if (!color) return {};
 	obj[`JDbgColor--primary`] = color === 'primary';
 	obj[`JDbgColor--point`] = color === 'point';

@@ -185,4 +185,6 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
   }
 );
 
-export default DataModal;
+export default React.memo(DataModal, function (_, { loading }) {
+  return loading || true
+});

@@ -17,6 +17,9 @@ import InputText from "./components/InputText/InputText";
 import JDalign, { IJDalignProp } from "./components/align/Align";
 import JDcontainer from "./components/container/Container";
 import JDtypho from "./components/typho/Typho";
+import JDphotoModal, {
+  TPhotoModalInfo,
+} from "./components/photoModal/PhotoModal";
 import JDselect from "./components/select/SelectBox";
 import JDdayPicker, { TDayPickerDot } from "./components/dayPicker/DayPicker";
 import JDdayPickerModal from "./components/dayPickerModal/DayPickerModal";
@@ -103,6 +106,7 @@ const {
   autoComma,
   autoHypen,
   card_space,
+  to4YMMDD,
   dateRangeFormat,
   fromToRender,
   getFromResult,
@@ -152,6 +156,7 @@ export {
   JDslide,
   JDselect,
   JDconfiger,
+  to4YMMDD,
   JDradioButton,
   WindowSize,
   WindowSizeNumber,
@@ -188,6 +193,7 @@ export {
   JDlogo,
   Day,
   IconSize,
+  TPhotoModalInfo,
   JDicon,
   TextSize,
   TMarginSize,
@@ -248,6 +254,7 @@ export {
   fromToRender,
   getFromResult,
   insideRedirect,
+  JDphotoModal,
   instanceOfA,
   isEmail,
   isEmpty,

@@ -15,7 +15,7 @@ import dataURLtoFile from "./dataURLtoFile";
 import { textAlignClass, JDatomClasses } from "./autoClasses";
 import searchListFormat from "./searchListFormater";
 import queryDataFormater, { getFromResult } from "./queryFormater";
-import setMidNight from "./setMidNight";
+import setMidNight, { to4YMMDD } from "./setMidNight";
 import removeNullOfObject from "./removeNullOfObject";
 import s4 from "./keyGen";
 import { fromToRender } from "./fromToRender";
@@ -83,6 +83,7 @@ const JDutils = {
   isPassword,
   isNumberMinMax,
   isLengthIn,
+  to4YMMDD,
   isHaveScharacter,
   isHaveNumber,
   getFromUrl,
@@ -128,6 +129,7 @@ export {
   getAllFromUrl,
   isUrl,
   isMaxOver,
+  to4YMMDD,
   isPassword,
   isNumberMinMax,
   isLengthIn,

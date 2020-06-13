@@ -94,7 +94,10 @@ const ImageManagerModal: React.FC<IProps> = ({
       {...modaProps}
       {...modalHook}
     >
-      <ImageManager addBtnProps={{ ...btnCommon, ...addBtnProps }} uploaderHook={uploaderHook} />
+      <ImageManager
+        addBtnProps={{ ...btnCommon, ...addBtnProps }}
+        uploaderHook={uploaderHook}
+      />
     </JDmodal>
   );
 };

@@ -1,22 +1,22 @@
 import React from "react";
 import { IUseModal } from "../../hooks/hook";
-import JDmodal from "../modal/Modal";
+import JDmodal, { JDmodalConfigProps } from "../modal/Modal";
 import JDSlider from "../slider/Slider";
 import PhotoFrame from "../photoFrame/PhotoFrame";
 import { Slide } from "../slider/Slider";
 
-type TPhotoModalInfo = {
+export type TPhotoModalInfo = {
   images: string[];
 };
 
-interface IProps {
+interface IProps extends JDmodalConfigProps {
   modalHook: IUseModal<TPhotoModalInfo>;
 }
 
-const PhotoModal: React.FC<IProps> = ({ modalHook }) => {
+const PhotoModal: React.FC<IProps> = ({ modalHook, ...props }) => {
   const { images } = modalHook.info || { images: [] };
   return (
-    <JDmodal {...modalHook}>
+    <JDmodal {...modalHook} {...props}>
       <JDSlider>
         {(images || []).map((img: string) => (
           <Slide>

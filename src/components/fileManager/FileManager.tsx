@@ -5,13 +5,14 @@ import Align from "../align/Align";
 import Button, { IButtonProps } from "../button/Button";
 import FileLi from "./FileLi";
 import { TFileManagerLangs } from "./FileManagerModal";
+import { s4 } from "../../utils/utils";
 
 export const defaultLangSet = {
   cancelLabel: "취소",
   confrimLabel: "확인",
   fileAddLabel: "파일 추가",
   headTitle: "파일 관리하기",
-  unExsistFileMessage: "파일이 존재하지 않습니다."
+  unExsistFileMessage: "파일이 존재하지 않습니다.",
 };
 
 export interface ImageUploaderProps {
@@ -25,7 +26,7 @@ let lastLength = 0;
 const FileManager: React.FC<ImageUploaderProps> = ({
   uploaderHook,
   addBtnProps,
-  langs = defaultLangSet
+  langs = defaultLangSet,
 }) => {
   const {
     deleteUrl,
@@ -34,7 +35,7 @@ const FileManager: React.FC<ImageUploaderProps> = ({
     onChangeFile,
     uploading,
     urls,
-    deletelocalFile
+    deletelocalFile,
   } = uploaderHook;
 
   const fileInput = useRef<HTMLInputElement>(null);
@@ -52,22 +53,28 @@ const FileManager: React.FC<ImageUploaderProps> = ({
     deleteUrl,
     selectFile,
     deletelocalFile,
-    langs
+    langs,
   };
 
-  useEffect(() => {
-    const isInUrls = urls.find(url => url === selectFile);
-    const isInLocal = localFiles.find(file => file === selectFile);
+  const onChangeSelectFile = () => {
+    const isInUrls = urls.find((url) => url === selectFile);
+    const isInLocal = localFiles.find((file) => file === selectFile);
     if (!isInLocal && !isInUrls) {
       setSelectFile(null);
     }
+  };
+
+  useEffect(() => {
+    onChangeSelectFile();
   }, [urls.length + localFiles.length]);
 
   useEffect(() => {
-    if (lastLength !== localFiles.length) {
-      if (lastLength < localFiles.length) {
-        setSelectFile(localFiles[localFiles.length - 1]);
-      }
+    const isChanged = lastLength !== localFiles.length;
+    const isDeleted = lastLength < localFiles.length;
+    const lastFile = localFiles[localFiles.length - 1];
+
+    if (isChanged) {
+      if (isDeleted) setSelectFile(lastFile);
       lastLength = localFiles.length;
     }
   }, [localFiles.length]);
@@ -78,7 +85,7 @@ const FileManager: React.FC<ImageUploaderProps> = ({
         <Align
           col={{
             full: 6,
-            wlg: 12
+            wlg: 12,
           }}
         >
           <ImgViewer
@@ -86,7 +93,7 @@ const FileManager: React.FC<ImageUploaderProps> = ({
             minHeight={"9.375rem"}
             error={isError}
             uploaderRef={fileInput}
-            urlOrBase64={
+            source={
               //   @ts-ignore
               selectFile ? selectFile.base64 || selectFile : undefined
             }
@@ -109,14 +116,19 @@ const FileManager: React.FC<ImageUploaderProps> = ({
         <Align
           col={{
             full: 6,
-            wlg: 12
+            wlg: 12,
           }}
         >
-          {urls.map(url => (
-            <FileLi fileContext={fileContext} url={url} isUrl={true} />
+          {urls.map((url) => (
+            <FileLi
+              key={s4()}
+              fileContext={fileContext}
+              url={url}
+              isUrl={true}
+            />
           ))}
-          {localFiles.map(file => (
-            <FileLi fileContext={fileContext} file={file} />
+          {localFiles.map((file) => (
+            <FileLi key={s4()} fileContext={fileContext} file={file} />
           ))}
           {isEmptyFile && <FileLi fileContext={fileContext} isSkelton />}
         </Align>

@@ -59,7 +59,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
     },
     ref
   ) => {
-    if (!value || typeof value !== "string")
+    if (!value || typeof value !== "string") {
       return (
         <div
           style={{
@@ -67,6 +67,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
           }}
         />
       );
+    }
 
     if (typeof value !== "string") {
       alert(value);
@@ -138,7 +139,7 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
               return (
                 <div
                   id={id}
-                  onTouchStart={() => { }}
+                  onTouchStart={() => {}}
                   onMouseDown={() => {
                     onSelectData(d);
                   }}
@@ -176,8 +177,8 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
               );
             })
           ) : (
-              <div>{langs.noMatchedMessage(value)}</div>
-            )}
+            <div>{langs.noMatchedMessage(value)}</div>
+          )}
         </div>
         {foot && <div className="dataModal__foot">{foot}</div>}
       </div>
@@ -185,6 +186,6 @@ export const DataModal = forwardRef<HTMLDivElement, IDateModalProps>(
   }
 );
 
-export default React.memo(DataModal, function (_, { loading }) {
-  return loading || true
+export default React.memo(DataModal, (_, { loading }) => {
+  return loading || false;
 });

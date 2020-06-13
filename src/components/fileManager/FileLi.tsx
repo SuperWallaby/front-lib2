@@ -23,24 +23,25 @@ const FileLi: React.FC<IProps> = ({
   url,
   isUrl,
   isSkelton,
-  fileContext
+  fileContext,
 }) => {
   const {
     deleteUrl,
     handleSelect,
     selectFile,
     deletelocalFile,
-    langs
+    langs,
   } = fileContext;
   const isSelected = (file || url) === selectFile;
 
   const classes = classNames("filesManager__urlBox", undefined, {
     "filesManager__urlBox--skelton": isSkelton,
     "filesManager__urlBox--selected": !isSkelton && isSelected,
-    "filesManager__urlBox--localFile": !isSkelton && !isUrl
+    "filesManager__urlBox--localFile": !isSkelton && !isUrl,
   });
 
   const isFile = file && !file.mimeType.includes("image");
+  const urlFileName = decodeURIComponent(url?.split("/").reverse()[0] || "");
 
   if (isSkelton) {
     return (
@@ -50,7 +51,7 @@ const FileLi: React.FC<IProps> = ({
         mb="small"
         flex={{
           vCenter: true,
-          between: true
+          between: true,
         }}
         onClick={() => {
           handleSelect(url || file!);
@@ -68,20 +69,20 @@ const FileLi: React.FC<IProps> = ({
       mb="small"
       flex={{
         vCenter: true,
-        between: true
+        between: true,
       }}
       onClick={() => {
         handleSelect(url || file!);
       }}
     >
       <Align
+        className="filesManager__url"
         flex={{
-          vCenter: true
+          vCenter: true,
         }}
       >
         <JDIcon mr="small" icon={isFile ? "file" : "photoFile"} />
-        {file?.fileName ||
-          decodeURIComponent(url?.split("/").reverse()[0] || "")}
+        {file?.fileName || urlFileName}
       </Align>
       <JDIcon
         onClick={() => {

@@ -6,7 +6,7 @@ import Preloader from "../preloader/Preloader";
 import classnames from "classnames";
 import { s4 } from "../../utils/utils";
 
-const fileImg =
+const FILE_IMG =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgwZFJ7m2AzVe95PD2yra_4VpLvf7JvIUDRLikQ_-Zs0D0eAAX&usqp=CAU";
 
 interface IProps extends JDatomExtentionSet, IDiv {
@@ -18,7 +18,7 @@ interface IProps extends JDatomExtentionSet, IDiv {
   autoHeight?: boolean;
   label?: string;
   onChangeFile?: (event: ChangeEvent<HTMLInputElement>) => Promise<void>;
-  urlOrBase64?: string;
+  source?: string;
   loading?: boolean;
   uploaderRef?: React.RefObject<HTMLInputElement>;
   error?: boolean;
@@ -32,12 +32,12 @@ const ImgViewer: React.FC<IProps> = ({
   mr,
   minHeight,
   height,
-  urlOrBase64,
+  source,
   canUploadImg = true,
   onChangeFile,
   label,
   uploaderRef,
-  className
+  className,
 }) => {
   const imgViewerRef = useRef<HTMLDivElement>(null);
 
@@ -46,24 +46,38 @@ const ImgViewer: React.FC<IProps> = ({
     "imgViewer--loading": loading,
     "imgViewer--coverImg": coverImg,
     ...JDmbClass(mb),
-    ...JDmrClass(mr)
+    ...JDmrClass(mr),
   });
 
+  const isImgUrl = (url: string) => {
+    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+  };
+
+  const isImageBase64 = (source: string) => {
+    return source.includes("image");
+  };
+
   const randomKey = s4();
-  const isFile = urlOrBase64 && !urlOrBase64.includes("image");
+  const isImg = source && (isImgUrl || isImageBase64);
+  const noImg = !loading && !source;
+  const bgImg = noImg
+    ? undefined
+    : isImg
+    ? `url(${source})`
+    : `url(${FILE_IMG})`;
 
   const imageStyle = {
     minHeight,
-    backgroundImage: isFile ? `url(${fileImg})` : `url(${urlOrBase64})`
+    backgroundImage: bgImg,
   };
 
   const imgViewerStyle = {
     height,
-    minHeight
+    minHeight,
   };
   const imgViewer_loading_style = {
     backgroundImage: "none",
-    minHeight
+    minHeight,
   };
 
   return (
@@ -72,9 +86,7 @@ const ImgViewer: React.FC<IProps> = ({
       <div
         ref={imgViewerRef}
         className={classes}
-        style={
-          !loading && !urlOrBase64 ? imgViewerStyle : imgViewer_loading_style
-        }
+        style={noImg ? imgViewerStyle : imgViewer_loading_style}
       >
         {canUploadImg && (
           <input
@@ -88,17 +100,17 @@ const ImgViewer: React.FC<IProps> = ({
           />
         )}
         <div className="imgViewer__image-wrap">
-          <div className="imgViewer__image" style={imageStyle}></div>
+          <div className="imgViewer__image" style={imageStyle} />
         </div>
         {/* 아래 이미지는 이미지 크기를 재는 용도로만 사용됨 */}
         <img
           style={{
             visibility: "hidden",
             opacity: 0,
-            position: "absolute"
+            position: "absolute",
           }}
           id={`file${randomKey}`}
-          src={isFile ? fileImg : urlOrBase64}
+          src={isImg ? source : FILE_IMG}
         />
         <Preloader size="large" noAnimation loading={loading} />
       </div>

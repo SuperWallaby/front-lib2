@@ -111,7 +111,6 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
         icon="magnifier"
         {...inputProp}
       />
-
       <DataModal
         className={modalVisible ? "dataModal--visible" : undefined}
         ref={ulRef}

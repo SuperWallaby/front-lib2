@@ -96,7 +96,7 @@ export type TlocalFile = {
 
 const getlocalFiles = (localFileKey: string) => {
   let localFiles: TlocalFile[] = [];
-  const temps = localStorage.getItem(localFileKey);
+  const temps = sessionStorage.getItem(localFileKey);
   if (temps) {
     const parse = JSON.parse(temps);
     if (parse) localFiles = [...JSON.parse(temps)];
@@ -129,7 +129,7 @@ const validateFile = (
   const { name } = file;
   console.log("name");
   console.log(name);
-  const appender = name.slice(name.lastIndexOf(".") + 1,name.length);
+  const appender = name.slice(name.lastIndexOf(".") + 1, name.length);
   const namePart = name.slice(0, name.lastIndexOf("."));
   const filteredName = removeSpecialChar(namePart) + "." + appender;
 
@@ -163,6 +163,8 @@ const useFilesManager = (
   imgOption: IuseImageUploaderOption = DEFAULT_IMAGEUP_LOADER_OPTION
 ): IuseFilesManager => {
   const templocalFiles = localFileKey ? getlocalFiles(localFileKey) : undefined;
+  console.log("templocalFiles");
+  console.log(templocalFiles);
   // 이미 서버에 저장되어있는 URL들일 경우 해당 HOOk에 저장됩니다.
   const [urls, setUrls] = useState<string[]>(defaultUrls || []);
   const [localFiles, setlocalFiles] = useState<TlocalFile[]>(
@@ -244,10 +246,9 @@ const useFilesManager = (
           "base64"
         );
       } else {
-
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = function () {
+        reader.onload = function() {
           if (reader.result) {
             const uploadFile = {
               base64: reader.result.toString(),
@@ -259,7 +260,7 @@ const useFilesManager = (
             setUploading(false);
           }
         };
-        reader.onerror = function (error) {
+        reader.onerror = function(error) {
           setUploading(false);
           console.log("Error: ", error);
         };
@@ -351,25 +352,26 @@ function useInput<T = string>(
   };
 }
 
-
 type TPosition = {
   left: number;
   top: number;
-}
+};
 
-
-type TOpen<T> = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>, position?: TPosition, inInfo?: T) => void;
+type TOpen<T> = (
+  e?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  position?: TPosition,
+  inInfo?: T
+) => void;
 
 export interface IUseDropDown<T = any> {
   isOpen: boolean;
   open: TOpen<T>;
   close: () => void;
   info?: T;
-  position: TPosition
-  setInfo: ISet<T>
-  setPosition: ISet<TPosition>
+  position: TPosition;
+  setInfo: ISet<T>;
+  setPosition: ISet<TPosition>;
 }
-
 
 function useDropDown<T = any>(defaultInfo?: T): IUseDropDown {
   const [isOpen, setIsOpn] = useState(false);
@@ -384,8 +386,8 @@ function useDropDown<T = any>(defaultInfo?: T): IUseDropDown {
     if (e) {
       setPosition({
         left: e.clientX,
-        top: e.clientY
-      })
+        top: e.clientY,
+      });
     }
     if (pos) {
       setPosition(pos);
@@ -393,13 +395,13 @@ function useDropDown<T = any>(defaultInfo?: T): IUseDropDown {
     if (info) {
       setInfo(info);
     }
-  }
+  };
 
   const close = () => {
     setIsOpn(false);
-  }
+  };
 
-  return { isOpen, info, position, open, close, setInfo, setPosition }
+  return { isOpen, info, position, open, close, setInfo, setPosition };
 }
 
 // 체크박스
@@ -439,8 +441,8 @@ export interface IUseDayPicker {
 const pureDate = (date: Date | null) => {
   return date
     ? moment(date)
-      .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-      .toDate()
+        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+        .toDate()
     : null;
 };
 
@@ -540,14 +542,14 @@ function useRadioButton(
   const [selectedValues, setSelectedValues] = useState(defaultValues);
 
   const onChangeSelect = (values: string[]) => {
-    setSelectedValues(values)
-  }
+    setSelectedValues(values);
+  };
 
   return {
     options,
     selectedValues,
-    onChangeSelect
-  }
+    onChangeSelect,
+  };
 }
 
 // 셀렉트박스 훅
@@ -573,7 +575,6 @@ function useWindowSize() {
       height: isClient ? window.innerHeight : 0,
     };
   }
-
 
   const [windowSize, setWindowSize] = useState(getSize);
 
@@ -631,7 +632,6 @@ export interface IusePagination {
   page: number;
   setPage: (page: number) => void;
 }
-
 
 // 투글 훅
 function usePagination(defaultPage: number): IusePagination {
@@ -697,7 +697,7 @@ export default {
   useFilesManager,
   useWindowSize,
   useDropDown,
-  useRadioButton
+  useRadioButton,
 };
 
 export {

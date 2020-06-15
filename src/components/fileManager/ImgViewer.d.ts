@@ -1,5 +1,5 @@
-import React, { ChangeEvent } from "react";
-import { IDiv, JDatomExtentionSet } from "../../types/interface";
+import React, {ChangeEvent} from "react";
+import {IDiv, JDatomExtentionSet} from "../../types/interface";
 interface IProps extends JDatomExtentionSet, IDiv {
   minHeight?: string;
   height?: string;

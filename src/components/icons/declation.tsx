@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from "react";
-import { JDColor, IconSize } from "../../types/enum";
-import { TElements } from "../../types/interface";
+import React, {HTMLAttributes} from "react";
+import {JDColor, IconSize} from "../../types/enum";
+import {StyledIconSvg} from "./Icon.style";
 
 // 😪 Defrecated
 export type IIcons =
@@ -62,8 +62,8 @@ type TConOrigin = {
   [key: string]: (prop: HTMLAttributes<SVGElement>) => any;
 };
 export const IConOrigin: TConOrigin = {
-  photoFile: prop => (
-    <svg
+  photoFile: (prop) => (
+    <StyledIconSvg
       id="Layer_1"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <polygon
@@ -88,7 +88,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <circle
@@ -100,7 +100,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <polyline
@@ -110,7 +110,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <polyline
@@ -120,13 +120,13 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  help: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 24 24"}>
+  help: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 24 24"}>
       <g>
         <path
           d={
@@ -134,10 +134,10 @@ export const IConOrigin: TConOrigin = {
           }
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  camera: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 24 24"}>
+  camera: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 24 24"}>
       <g>
         <path
           d={
@@ -145,24 +145,24 @@ export const IConOrigin: TConOrigin = {
           }
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  shortRight: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 24 24"}>
+  shortRight: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 24 24"}>
       <g>
         <path d={"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"} />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  shortLeft: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 24 24"}>
+  shortLeft: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 24 24"}>
       <g>
         <path d={"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"} />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  addCircle: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 24 24"}>
+  addCircle: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 24 24"}>
       <g>
         <path
           d={
@@ -170,10 +170,10 @@ export const IConOrigin: TConOrigin = {
           }
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  magnifier: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 48 48"}>
+  magnifier: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 48 48"}>
       <g>
         <path
           d={
@@ -181,10 +181,10 @@ export const IConOrigin: TConOrigin = {
           }
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  menu: prop => (
-    <svg {...prop} {...prop} viewBox={"0 0 60 54"}>
+  menu: (prop) => (
+    <StyledIconSvg {...prop} {...prop} viewBox={"0 0 60 54"}>
       <g>
         <path
           d={
@@ -192,10 +192,10 @@ export const IConOrigin: TConOrigin = {
           }
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  jdR: prop => (
-    <svg
+  jdR: (prop) => (
+    <StyledIconSvg
       {...prop}
       {...prop}
       xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +210,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -221,7 +221,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <polyline
@@ -231,18 +231,18 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
         d="M38.56,180H37.5a1,1,0,0,0-1,1v3.29a1,1,0,0,1-.95.95h-.4a.94.94,0,0,1-1-.95V173.15a.94.94,0,0,1,1-1h4a5.48,5.48,0,0,1,1.79.27,4,4,0,0,1,1.32.73,3.26,3.26,0,0,1,.81,1.13,3.72,3.72,0,0,1,.27,1.43v.67a3.39,3.39,0,0,1-.5,1.84,3,3,0,0,1-.84.89,1,1,0,0,0-.32,1.17l.92,2,.65,1.46a1,1,0,0,1-.86,1.35H42a1,1,0,0,1-.88-.58l-1.69-4A1,1,0,0,0,38.56,180Zm-2-4.89v2a1,1,0,0,0,1,1h1.17a2.88,2.88,0,0,0,1.87-.47,1.55,1.55,0,0,0,.53-1.21v-.54a1.61,1.61,0,0,0-.51-1.23,2.4,2.4,0,0,0-1.69-.48H37.5A1,1,0,0,0,36.55,175.08Z"
         transform="translate(-21.25 -157.49)"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  jdT: prop => (
-    <svg
+  jdT: (prop) => (
+    <StyledIconSvg
       {...prop}
       {...prop}
       id="Layer_1"
@@ -259,7 +259,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -270,7 +270,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <polyline
@@ -280,7 +280,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -288,10 +288,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-114.07 -157.49)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  jdS: prop => (
-    <svg
+  jdS: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -307,7 +307,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -318,7 +318,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <polyline
@@ -328,7 +328,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -336,10 +336,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-162.07 -157.49)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  jdG: prop => (
-    <svg
+  jdG: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -355,7 +355,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -366,7 +366,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <polyline
@@ -376,7 +376,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <path
@@ -384,10 +384,14 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-70.24 -157.49)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  emptyStart: prop => (
-    <svg {...prop} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.5 32.16">
+  emptyStart: (prop) => (
+    <StyledIconSvg
+      {...prop}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 33.5 32.16"
+    >
       <path
         d="M581.82,73.15l3.16,6.4a2.27,2.27,0,0,0,1.73,1.26l7.06,1a2.3,2.3,0,0,1,1.28,3.93l-5.11,5a2.31,2.31,0,0,0-.66,2l1.2,7a2.3,2.3,0,0,1-3.34,2.43l-6.32-3.32a2.26,2.26,0,0,0-2.14,0l-6.32,3.32A2.3,2.3,0,0,1,569,99.83l1.2-7a2.31,2.31,0,0,0-.66-2l-5.11-5a2.3,2.3,0,0,1,1.28-3.93l7.06-1a2.27,2.27,0,0,0,1.73-1.26l3.16-6.4A2.31,2.31,0,0,1,581.82,73.15Z"
         transform="translate(-563 -71.12)"
@@ -396,13 +400,13 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  barGraph: prop => (
-    <svg
+  barGraph: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -420,7 +424,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <rect
@@ -433,7 +437,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <rect
@@ -446,13 +450,13 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  won: prop => (
-    <svg
+  won: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -470,7 +474,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -483,7 +487,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -496,7 +500,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -509,7 +513,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -522,13 +526,13 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  gear: prop => (
-    <svg
+  gear: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -546,10 +550,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-475.5 -158.5)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  location: prop => (
-    <svg
+  location: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -562,10 +566,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-277.67 -358)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  arrowUp: prop => (
-    <svg
+  arrowUp: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -577,10 +581,10 @@ export const IConOrigin: TConOrigin = {
         points="56.46 33.22 29.89 6.65 3.33 33.22 0 29.9 29.89 0 59.79 29.9 56.46 33.22"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  speechBubble: prop => (
-    <svg
+  speechBubble: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -618,10 +622,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-821.55 -191.51)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  recipt: prop => (
-    <svg
+  recipt: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -649,10 +653,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-798.32 -111.58)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  gearBox: prop => (
-    <svg
+  gearBox: (prop) => (
+    <StyledIconSvg
       {...prop}
       {...prop}
       xmlns="http://www.w3.org/2000/svg"
@@ -694,10 +698,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-711.3 -156.34)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  houseGear: prop => (
-    <svg
+  houseGear: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -730,10 +734,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-618.13 -148.03)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  speechBubble2: prop => (
-    <svg
+  speechBubble2: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -756,10 +760,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-10.89 -56.87)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  triWarn: prop => (
-    <svg
+  triWarn: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -777,10 +781,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-502.88 -14.21)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  diffuser: prop => (
-    <svg
+  diffuser: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -823,10 +827,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-413.25 -65.02)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  exclamation: prop => (
-    <svg
+  exclamation: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -844,10 +848,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-548.94 -11.57)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  chair: prop => (
-    <svg
+  chair: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -905,10 +909,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-239.45 -58.25)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  vim: prop => (
-    <svg
+  vim: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -951,10 +955,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-146.5 -71.49)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  board: prop => (
-    <svg
+  board: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1012,10 +1016,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-279.25 -63.79)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  wifi: prop => (
-    <svg
+  wifi: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1044,10 +1048,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-190 -65.84)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  arrowRight: prop => (
-    <svg
+  arrowRight: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1059,10 +1063,10 @@ export const IConOrigin: TConOrigin = {
         points="9.01 60 0 50.99 20.99 30 0 9.01 9.01 0 39.01 30 9.01 60"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  arrowDown: prop => (
-    <svg
+  arrowDown: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1074,10 +1078,10 @@ export const IConOrigin: TConOrigin = {
         points="30 39.01 0 9.01 9.01 0 30 20.99 50.99 0 60 9.01 30 39.01"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  bell: prop => (
-    <svg
+  bell: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1100,10 +1104,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-549.5 -145.37)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  share: prop => (
-    <svg
+  share: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1136,10 +1140,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-741.49 -10)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  trashCan: prop => (
-    <svg
+  trashCan: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1177,10 +1181,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-767.17 -59.12)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  close: prop => (
-    <svg
+  close: (prop) => (
+    <StyledIconSvg
       {...prop}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -1208,10 +1212,10 @@ export const IConOrigin: TConOrigin = {
           height="4.714"
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  fillStar: prop => (
-    <svg
+  fillStar: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1222,17 +1226,17 @@ export const IConOrigin: TConOrigin = {
       <path
         d="M653.45,161l5.66,11.47a4.13,4.13,0,0,0,3.11,2.26l12.65,1.83a4.14,4.14,0,0,1,2.29,7.05L668,192.57a4.12,4.12,0,0,0-1.18,3.65l2.16,12.6a4.13,4.13,0,0,1-6,4.35l-11.32-5.95a4.14,4.14,0,0,0-3.84,0l-11.32,5.95a4.13,4.13,0,0,1-6-4.35l2.16-12.6a4.12,4.12,0,0,0-1.18-3.65l-9.16-8.92a4.14,4.14,0,0,1,2.29-7.05l12.65-1.83a4.13,4.13,0,0,0,3.11-2.26L646.05,161A4.13,4.13,0,0,1,653.45,161Z"
         transform="translate(-619.75 -157.4)"
-        style={{ fill: "#ffd44d" }}
+        style={{fill: "#ffd44d"}}
       />
       <path
         d="M664.91,215a5.42,5.42,0,0,1-2.55-.64l-11.31-6a2.82,2.82,0,0,0-2.59,0l-11.32,6a5.47,5.47,0,0,1-7.94-5.77L631.36,196a2.76,2.76,0,0,0-.8-2.47l-9.15-8.92a5.47,5.47,0,0,1,3-9.34l12.65-1.83a2.82,2.82,0,0,0,2.1-1.53l5.65-11.46a5.48,5.48,0,0,1,9.82,0h0l5.65,11.46a2.82,2.82,0,0,0,2.1,1.53l12.65,1.83a5.47,5.47,0,0,1,3,9.34l-9.15,8.92a2.75,2.75,0,0,0-.8,2.46l2.16,12.6a5.44,5.44,0,0,1-2.18,5.36A5.5,5.5,0,0,1,664.91,215Zm-15.16-9.59a5.5,5.5,0,0,1,2.55.63L663.61,212a2.78,2.78,0,0,0,4-2.93l-2.16-12.6a5.46,5.46,0,0,1,1.57-4.84l9.16-8.93a2.7,2.7,0,0,0,.7-2.85,2.73,2.73,0,0,0-2.25-1.9L662,176.09a5.44,5.44,0,0,1-4.13-3l-5.65-11.46a2.79,2.79,0,0,0-5,0L641.6,173.1a5.44,5.44,0,0,1-4.13,3l-12.64,1.84a2.79,2.79,0,0,0-1.55,4.75l9.15,8.93a5.44,5.44,0,0,1,1.58,4.84l-2.16,12.6a2.78,2.78,0,0,0,4,2.93L647.21,206A5.43,5.43,0,0,1,649.75,205.41Z"
         transform="translate(-619.75 -157.4)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  plus: prop => (
-    <svg
+  plus: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1249,10 +1253,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-143.5 291.5) rotate(-90)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  search: prop => (
-    <svg
+  search: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1265,10 +1269,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-10.53 -58.8)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  arrowBack: prop => (
-    <svg
+  arrowBack: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1284,14 +1288,14 @@ export const IConOrigin: TConOrigin = {
           fill: "none",
           stroke: "#000",
           strokeMiterlimit: 10,
-          strokeWidth: 2
+          strokeWidth: 2,
         }}
       />
       <polygon points="9.57 18.92 0 9.35 9.35 0 10.76 1.41 2.83 9.35 10.98 17.5 9.57 18.92" />
-    </svg>
+    </StyledIconSvg>
   ),
-  kakaoTalk: prop => (
-    <svg
+  kakaoTalk: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1324,10 +1328,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-190.86 -106.1)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  email: prop => (
-    <svg
+  email: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1375,10 +1379,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-799.94 -151.51)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  list: prop => (
-    <svg
+  list: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1421,10 +1425,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-757.12 -144.07)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  doubleBlock: prop => (
-    <svg
+  doubleBlock: (prop) => (
+    <StyledIconSvg
       {...prop}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -1434,10 +1438,10 @@ export const IConOrigin: TConOrigin = {
         fillRule="evenodd"
         d="M-0.000,51.000 L-0.000,28.687 L60.000,28.687 L60.000,51.000 L-0.000,51.000 ZM-0.000,-0.000 L60.000,-0.000 L60.000,22.312 L-0.000,22.312 L-0.000,-0.000 Z"
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  threeBlock: prop => (
-    <svg
+  threeBlock: (prop) => (
+    <StyledIconSvg
       {...prop}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -1447,10 +1451,10 @@ export const IConOrigin: TConOrigin = {
         fillRule="evenodd"
         d="M47.375,51.000 L47.375,38.250 L60.000,38.250 L60.000,51.000 L47.375,51.000 ZM47.375,19.125 L60.000,19.125 L60.000,31.875 L47.375,31.875 L47.375,19.125 ZM47.375,-0.000 L60.000,-0.000 L60.000,12.750 L47.375,12.750 L47.375,-0.000 ZM-0.000,38.250 L44.312,38.250 L44.312,51.000 L-0.000,51.000 L-0.000,38.250 ZM-0.000,19.125 L44.312,19.125 L44.312,31.875 L-0.000,31.875 L-0.000,19.125 ZM-0.000,-0.000 L44.312,-0.000 L44.312,12.750 L-0.000,12.750 L-0.000,-0.000 Z"
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  question: prop => (
-    <svg
+  question: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1468,10 +1472,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-102 -104)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  point: prop => (
-    <svg
+  point: (prop) => (
+    <StyledIconSvg
       {...prop}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -1479,14 +1483,14 @@ export const IConOrigin: TConOrigin = {
       x="0px"
       y="0px"
       viewBox="0 0 26 26"
-      style={{ background: "new 0 0 26 26" }}
+      style={{background: "new 0 0 26 26"}}
       xmlSpace="preserve"
     >
       <defs></defs>
-      <circle style={{ fill: "currentColor" }} cx={13} cy={13} r={13} />
+      <circle style={{fill: "currentColor"}} cx={13} cy={13} r={13} />
       <g>
         <path
-          style={{ fill: "#FFFFFF" }}
+          style={{fill: "#FFFFFF"}}
           d="M8.835,6.499h4.846c0.764,0,1.427,0.097,1.991,0.291c0.564,0.194,1.03,0.463,1.4,0.808
 		c0.369,0.344,0.645,0.755,0.826,1.23c0.181,0.476,0.272,0.989,0.272,1.54v0.394c0,0.551-0.097,1.068-0.291,1.549
 		c-0.195,0.482-0.479,0.905-0.855,1.268c-0.376,0.364-0.842,0.651-1.4,0.864c-0.557,0.213-1.205,0.32-1.944,0.32h-2.987v5.278h-1.86
@@ -1494,10 +1498,10 @@ export const IConOrigin: TConOrigin = {
 		c-0.47-0.369-1.143-0.554-2.019-0.554H10.695z"
         />
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  box: prop => (
-    <svg
+  box: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1530,10 +1534,10 @@ export const IConOrigin: TConOrigin = {
         transform="translate(-669.01 -151.59)"
         style={{}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  historyWatch: prop => (
-    <svg
+  historyWatch: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1549,7 +1553,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1562,7 +1566,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1575,7 +1579,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <polyline
@@ -1585,13 +1589,13 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  reservation: prop => (
-    <svg
+  reservation: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1609,7 +1613,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <rect
@@ -1617,70 +1621,70 @@ export const IConOrigin: TConOrigin = {
         y={10}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="9.4"
         y={10}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="15.05"
         y={10}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="20.71"
         y={10}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="3.75"
         y={20}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="15.05"
         y={20}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="9.4"
         y={15}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="15.05"
         y={15}
         width="3.39"
         height="3.39"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="4.75"
         width={3}
         height={3}
         rx="0.88"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <rect
         x="20.75"
         width={3}
         height={3}
         rx="0.79"
-        style={{ fill: "currentColor" }}
+        style={{fill: "currentColor"}}
       />
       <path
         d="M199.57,459.72v-7.85h-27v23h18.69"
@@ -1690,7 +1694,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <path
@@ -1701,7 +1705,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <path
@@ -1712,7 +1716,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1725,7 +1729,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1738,7 +1742,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1751,7 +1755,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1764,7 +1768,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1777,7 +1781,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1790,13 +1794,13 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  circleRightArrow: prop => (
-    <svg
+  circleRightArrow: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1807,21 +1811,21 @@ export const IConOrigin: TConOrigin = {
       <path
         d="M359.75,523.5A28.5,28.5,0,1,1,331.26,552,28.5,28.5,0,0,1,359.75,523.5Z"
         transform="translate(-329.75 -521.99)"
-        style={{ fill: "#fff", fillRule: "evenodd" }}
+        style={{fill: "#fff", fillRule: "evenodd"}}
       />
       <path
         d="M359.75,582a30,30,0,1,1,30-30A30,30,0,0,1,359.75,582Zm0-57a27,27,0,1,0,27,27A27,27,0,0,0,359.75,525Z"
         transform="translate(-329.75 -521.99)"
-        style={{ fill: "#f26e7d" }}
+        style={{fill: "#f26e7d"}}
       />
       <polygon
         points="27.08 40.63 23.89 37.44 31.32 30 23.89 22.56 27.08 19.37 37.71 30 27.08 40.63"
-        style={{ fill: "#f26e7d" }}
+        style={{fill: "#f26e7d"}}
       />
-    </svg>
+    </StyledIconSvg>
   ),
-  naver: prop => (
-    <svg
+  naver: (prop) => (
+    <StyledIconSvg
       {...prop}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -1835,7 +1839,7 @@ export const IConOrigin: TConOrigin = {
       <g>
         <g>
           <path
-            style={{ fill: "#4AB749" }}
+            style={{fill: "#4AB749"}}
             d="M1.194,0.064C2.096-0.053,3.011,0.03,3.919,0.011C21.071,0.014,38.223,0.02,55.373,0.008
 			c0.526-0.027,1.093,0.068,1.453,0.487c0.691,0.687,0.445,1.727,0.49,2.597c-0.019,17.522,0.006,35.042-0.012,52.56
 			c0.034,1.002-0.959,1.806-1.935,1.655c-17.895,0-35.793,0.009-53.691-0.003c-0.895,0.048-1.736-0.74-1.674-1.649
@@ -1847,10 +1851,10 @@ export const IConOrigin: TConOrigin = {
           />
         </g>
       </g>
-    </svg>
+    </StyledIconSvg>
   ),
-  file: prop => (
-    <svg
+  file: (prop) => (
+    <StyledIconSvg
       {...prop}
       id="Layer_1"
       data-name="Layer 1"
@@ -1865,7 +1869,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <polygon
@@ -1875,7 +1879,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1888,7 +1892,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1901,7 +1905,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1914,7 +1918,7 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
       <line
@@ -1927,11 +1931,11 @@ export const IConOrigin: TConOrigin = {
           stroke: "currentColor",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          strokeWidth: "1.5px"
+          strokeWidth: "1.5px",
         }}
       />
-    </svg>
-  )
+    </StyledIconSvg>
+  ),
 };
 
 export interface IconConifgProps {
@@ -1943,5 +1947,4 @@ export interface IconConifgProps {
   color?: JDColor;
   tooltip?: string;
   selected?: boolean;
-  dots?: TElements;
 }

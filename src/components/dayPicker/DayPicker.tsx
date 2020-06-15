@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useEffect } from "react";
+import React, {Fragment, useRef, useEffect} from "react";
 import {
   CaptionElementProps,
   DayModifiers,
@@ -11,14 +11,14 @@ import Navbar from "./component/Navbar";
 import JDdayPickerInput from "./component/input/JDdayPickerInput";
 import HorizenDay from "./component/horizen/HorizenDays";
 import HorizenCaption from "./component/horizen/HorizenCaption";
-import { IUseDayPicker } from "../../hooks/hook";
-import { getDateCharLang } from "./helper";
-import { JDatomExtentionSet, IDiv, TElements } from "../../types/interface";
+import {IUseDayPicker} from "../../hooks/hook";
+import {getDateCharLang} from "./helper";
+import {JDatomExtentionSet, IDiv, TElements} from "../../types/interface";
 import moment from "moment";
 import DayPickerDay from "./component/DayPickerDay";
-import { JDColor, JDatomClasses } from "../..";
+import {JDColor, JDatomClasses} from "../..";
 
-// !!! 주의 
+// !!! 주의
 // DayPicker-input이 다른 경로로서 참조되면 어려움.
 
 export interface TDayPickerDot extends IDiv {
@@ -27,9 +27,11 @@ export interface TDayPickerDot extends IDiv {
   date: Date;
 }
 
-
-// react-day-Picker 에서 명시한 public Method는 ref 가 없으면 사용할 수가 없습니다.  
-export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet, DayPickerProps {
+// react-day-Picker 에서 명시한 public Method는 ref 가 없으면 사용할 수가 없습니다.
+export interface IJDdayPickerProps
+  extends IUseDayPicker,
+    JDatomExtentionSet,
+    DayPickerProps {
   canSelectBeforeDay?: boolean;
   placeholder?: string;
   mode?: "horizen" | "input" | "checkInOutStyle";
@@ -57,7 +59,6 @@ export interface IJDdayPickerProps extends IUseDayPicker, JDatomExtentionSet, Da
   maxRange?: number;
   callBackMaxRangeOut?: () => void;
 }
-
 
 const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
   ({
@@ -201,7 +202,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--unDisplayCaption": displayCaption === false,
       "DayPicker--unDisplayNavbar": displayHeader === false,
       "DayPicker--unDisplayInfo": !Information,
-      ...JDatomClasses(prop)
+      ...JDatomClasses(prop),
     });
 
     // 이건 순수하게 달력부분
@@ -216,10 +217,10 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       "DayPicker--center": calenaderPosition === "left",
     });
 
-    const { MONTHS, WEEKDAYS_EN, WEEKDAYS_KR } = getDateCharLang();
+    const {MONTHS, WEEKDAYS_EN, WEEKDAYS_KR} = getDateCharLang();
 
-    const modifiers = { start: from || undefined, end: entered || undefined };
-    const selectedDays: any = [from, { from, to: entered }];
+    const modifiers = {start: from || undefined, end: entered || undefined};
+    const selectedDays: any = [from, {from, to: entered}];
 
     // 이부분 함수 또는 이넘으로 변경
 
@@ -228,13 +229,13 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
     const horizenProps =
       mode === "horizen"
         ? {
-          renderDay: RenderDots,
-          numberOfMonths: 3,
-          showWeekDays: false,
-          captionElement: ({ date }: CaptionElementProps) => (
-            <HorizenCaption date={date} onChange={() => { }} />
-          ),
-        }
+            renderDay: RenderDots,
+            numberOfMonths: 3,
+            showWeekDays: false,
+            captionElement: ({date}: CaptionElementProps) => (
+              <HorizenCaption date={date} onChange={() => {}} />
+            ),
+          }
         : {};
 
     const DayPickerRender = DayPickerDay.bind(DayPickerDay, dots);
@@ -245,7 +246,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       numberOfMonths: 1,
       initialMonth: moment(from || new Date()).toDate(),
       showWeekDays: true,
-      captionElement: ({ date }: CaptionElementProps) => (
+      captionElement: ({date}: CaptionElementProps) => (
         <Caption displayYear={displayYear} date={date} />
       ),
       navbarElement: <Navbar />,
@@ -260,7 +261,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
       weekdaysShort: currentLang ? WEEKDAYS_EN : WEEKDAYS_KR,
       locale: lang,
       showOutsideDays: false,
-      disabledDays: canSelectBeforeDay ? undefined : [{ before: new Date() }],
+      disabledDays: canSelectBeforeDay ? undefined : [{before: new Date()}],
       ...horizenProps,
       ...prop,
     };
@@ -284,11 +285,11 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
             displayYear={displayYear}
           />
         ) : (
-            <Fragment>
-              {Information}
-              <DayPicker {...dayPickerProps} />
-            </Fragment>
-          )}
+          <Fragment>
+            {Information}
+            <DayPicker {...dayPickerProps} />
+          </Fragment>
+        )}
       </div>
     );
   }

@@ -1,12 +1,14 @@
 import classNames from "classnames";
-import React, { useRef, useState } from "react";
-import { InputText, IInputTextCutsomProp } from "../InputText/InputText";
-import DataModal, { IDateModalProps } from "./DataModal";
+import React, {useRef, useState} from "react";
+import {InputText, IInputTextCutsomProp} from "../InputText/InputText";
+import DataModal, {IDateModalProps} from "./DataModal";
 import $ from "jquery";
-import { JDatomExtentionSet } from "../../types/interface";
-import { JDatomClasses } from "../../utils/utils";
+import {JDatomExtentionSet} from "../../types/interface";
+import {JDatomClasses} from "../../utils/utils";
 
-export interface IJDsearchInputProp extends IDateModalProps, JDatomExtentionSet {
+export interface IJDsearchInputProp
+  extends IDateModalProps,
+    JDatomExtentionSet {
   searchValue: string;
   onSearchChange: (v: any) => void;
   inputProp?: IInputTextCutsomProp & React.AllHTMLAttributes<HTMLInputElement>;
@@ -39,7 +41,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
   const [modalVisible, setModalVisible] = useState(false);
   const ulRef = useRef<HTMLDivElement>(null);
   const classes = classNames("JDsearchInput", className, {
-    ...JDatomClasses(prop)
+    ...JDatomClasses(prop),
   });
 
   const autoScrollList = (target: HTMLElement) => {
@@ -107,7 +109,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
           setModalVisible(true);
         }}
         value={searchValue}
-        OnChange={onSearchChange}
+        onChange={onSearchChange}
         icon="magnifier"
         {...inputProp}
       />

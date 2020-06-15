@@ -1,10 +1,10 @@
-import React, { useMemo } from "react";
-import JDmodal, { JDmodalConfigProps } from "../modal/Modal";
-import { IUseModal } from "../../hooks/hook";
-import ImageManager, { ImageUploaderProps } from "./FileManager";
-import Button, { IButtonProps } from "../button/Button";
+import React, {useMemo} from "react";
+import JDmodal, {JDmodalConfigProps} from "../modal/Modal";
+import {IUseModal} from "../../hooks/hook";
+import ImageManager, {ImageUploaderProps} from "./FileManager";
+import Button, {IButtonProps} from "../button/Button";
 import Align from "../align/Align";
-import { defaultLangSet } from "./FileManager";
+import {defaultLangSet} from "./FileManager";
 
 export type TFileManagerLangs = {
   headTitle: string;
@@ -29,7 +29,7 @@ const ImageManagerModal: React.FC<IProps> = ({
   btnCommon,
   langs = defaultLangSet,
 }) => {
-  const { setUrls, urls } = uploaderHook;
+  const {setUrls, urls} = uploaderHook;
 
   const originalUrls = useMemo(() => urls.slice(), []);
 
@@ -41,7 +41,7 @@ const ImageManagerModal: React.FC<IProps> = ({
     modalHook.closeModal();
   };
 
-  const { head, foot, ...modaProps } = modalProp || {
+  const {head, foot, ...modaProps} = modalProp || {
     head: undefined,
     foot: undefined,
   };
@@ -69,21 +69,21 @@ const ImageManagerModal: React.FC<IProps> = ({
                 modalHook.closeModal();
               }}
               size="small"
-              padding="large"
-              br="round"
-              thema="primary"
+              padding={4}
+              round={2}
+              color="primary"
               label={langs.confrimLabel}
               {...btnCommon}
             />
             <Button
-              thema="grey3"
+              color="grey3"
               id="ImgCancelBtn"
               onClick={() => {
                 handleCancel();
               }}
               size="small"
-              padding="large"
-              br="round"
+              padding={4}
+              round={2}
               mode="flat"
               label={langs.cancelLabel}
               {...btnCommon}
@@ -95,7 +95,7 @@ const ImageManagerModal: React.FC<IProps> = ({
       {...modalHook}
     >
       <ImageManager
-        addBtnProps={{ ...btnCommon, ...addBtnProps }}
+        addBtnProps={{...btnCommon, ...addBtnProps}}
         uploaderHook={uploaderHook}
       />
     </JDmodal>

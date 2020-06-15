@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
-import { IuseFilesManager, TlocalFile } from "../../hooks/hook";
+import React, {useState, useRef, useEffect} from "react";
+import {IuseFilesManager, TlocalFile} from "../../hooks/hook";
 import ImgViewer from "./ImgViewer";
 import Align from "../align/Align";
-import Button, { IButtonProps } from "../button/Button";
+import Button, {IButtonProps} from "../button/Button";
 import FileLi from "./FileLi";
-import { TFileManagerLangs } from "./FileManagerModal";
-import { s4 } from "../../utils/utils";
+import {TFileManagerLangs} from "./FileManagerModal";
+import {s4} from "../../utils/utils";
 
 export const defaultLangSet = {
   cancelLabel: "취소",
@@ -105,10 +105,10 @@ const FileManager: React.FC<ImageUploaderProps> = ({
             onClick={() => {
               fileInput.current?.click();
             }}
-            br="round"
+            round={2}
             size="long"
             mb="large"
-            thema="primary"
+            color="primary"
             label={langs.fileAddLabel}
             {...addBtnProps}
           />

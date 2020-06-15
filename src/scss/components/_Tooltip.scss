@@ -1,40 +1,40 @@
 .JDtooltip.__react_component_tooltip {
-	height: max-content;
-	border-radius: $standard-border-radius;
+  height: max-content;
+  border-radius: $br1;
 
-	&.show {
-		opacity: 1;
-	}
+  &.show {
+    opacity: 1;
+  }
 
-	&.type-info {
-		background-color: $blue-color;
+  &.type-info {
+    background-color: $blue-color;
 
-		&:after {
-			border-top-color: $blue-color;
-		}
-	}
+    &:after {
+      border-top-color: $blue-color;
+    }
+  }
 
-	&.type-success {
-		background-color: $primary-color;
+  &.type-success {
+    background-color: $primary-color;
 
-		&:after {
-			border-top-color: $primary-color;
-		}
-	}
+    &:after {
+      border-top-color: $primary-color;
+    }
+  }
 
-	&.type-error {
-		background-color: $error-color;
+  &.type-error {
+    background-color: $error-color;
 
-		&:after {
-			border-top-color: $error-color;
-		}
-	}
+    &:after {
+      border-top-color: $error-color;
+    }
+  }
 
-	&.type-dark {
-		background-color: $html-color;
+  &.type-dark {
+    background-color: $html-color;
 
-		&:after {
-			border-top-color: $html-color;
-		}
-	}
+    &:after {
+      border-top-color: $html-color;
+    }
+  }
 }

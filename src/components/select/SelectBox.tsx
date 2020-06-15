@@ -1,13 +1,13 @@
 // TODO
 // 셀렉트박스 Width 값을 오토로 해주기
 import React from "react";
-import Select, { ValueType } from "react-select";
+import Select, {ValueType} from "react-select";
 import classNames from "classnames";
-import { SelectComponentsProps } from "react-select/src/Select";
+import {SelectComponentsProps} from "react-select/src/Select";
 import userTacking from "../../utils/userTracking";
-import { JDatomExtentionSet, JDinputExtention } from "../../types/interface";
-import { JDatomClasses } from "../../utils/autoClasses";
-import { JDlabel } from "../..";
+import {JDatomExtentionSet, JDinputExtention} from "../../types/interface";
+import {JDatomClasses} from "../../utils/autoClasses";
+import {JDlabel} from "../..";
 
 export interface IselectedOption<T = any> {
   label: string;
@@ -18,7 +18,7 @@ export enum SelectBoxSize {
   TWO = "4rem",
   FOUR = "6rem",
   SIX = "9rem",
-  FIVE = "11rem"
+  FIVE = "11rem",
 }
 
 // Value === selectedOption
@@ -33,7 +33,7 @@ export interface JDselectProps extends SelectComponentsProps, JDinputExtention {
   onChange?(selecteds: IselectedOption): void;
   className?: string;
   props?: any;
-  mode?: "underline"
+  mode?: "underline";
   defaultValue?: IselectedOption | null;
   isOpen?: boolean;
   menuCanOverflow?: boolean;
@@ -106,7 +106,7 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   });
 
   const selectStyle: any = {
-    width: ""
+    width: "",
   };
 
   const deafultPlaceHolder = "select";
@@ -114,7 +114,11 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   return (
     <div style={selectStyle} className={classes}>
       {label ? (
-        <JDlabel require={require} txt={label} className="JDselect__label JDselect__label--top" />
+        <JDlabel
+          require={require}
+          txt={label}
+          className="JDselect__label JDselect__label--top"
+        />
       ) : null}
       <Select
         {...props}
@@ -135,9 +139,9 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
 JDselectTemp.defaultProps = {
   disabled: false,
   label: "",
-  onChange: () => { },
+  onChange: () => {},
   selectedOption: undefined,
-  props: {}
+  props: {},
 };
 
 const JDselect = React.memo(JDselectTemp);

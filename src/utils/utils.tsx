@@ -8,24 +8,24 @@ import autoHypen, {
   dateRangeFormat,
   removeSpecialChar,
 } from "./autoFormat";
-import { getFromUrl, getAllFromUrl } from "./getFromUrl";
+import {getFromUrl, getAllFromUrl} from "./getFromUrl";
 import copytoClipboard from "./copyToClipboard";
 import insideRedirect from "./insideRedirect";
 import dataURLtoFile from "./dataURLtoFile";
-import { textAlignClass, JDatomClasses } from "./autoClasses";
+import {textAlignClass, JDatomClasses} from "./autoClasses";
 import searchListFormat from "./searchListFormater";
-import queryDataFormater, { getFromResult } from "./queryFormater";
-import setMidNight, { to4YMMDD } from "./setMidNight";
+import queryDataFormater, {getFromResult} from "./queryFormater";
+import setMidNight, {to4YMMDD} from "./setMidNight";
 import removeNullOfObject from "./removeNullOfObject";
 import s4 from "./keyGen";
-import { fromToRender } from "./fromToRender";
+import {fromToRender} from "./fromToRender";
 import randomIntFromInterval from "./randomNumber";
 import muResult from "./mutationResultSafty";
 import instanceOfA from "./interfaceMatch";
 import jsonString from "./jsonString";
-import { selectOpCreater, enumToOption } from "./selectOptionCreater";
+import {selectOpCreater, enumToOption} from "./selectOptionCreater";
 import isLast from "./isLast";
-import { arraySum } from "./elses";
+import {arraySum} from "./elses";
 import onCompletedMessage from "./onCompletedMessage";
 import {
   isEmail,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, forwardRef } from "react";
+import React, {useEffect, useState, useMemo, forwardRef} from "react";
 import classNames from "classnames";
 import JDicon from "../icons/Icons";
 import autoHyphen, {
@@ -6,16 +6,16 @@ import autoHyphen, {
   toNumber,
   card_space,
 } from "../../utils/autoFormat";
-import { TMarginSize } from "../../types/enum";
-import { autoComma } from "../../utils/autoFormat";
+import {TMarginSize} from "../../types/enum";
+import {autoComma} from "../../utils/autoFormat";
 import $ from "jquery";
 import s4 from "../../utils/keyGen";
 import JDlabel from "../label/JDLabel";
-import { JDmrClass, JDmbClass } from "../../utils/autoClasses";
-import { IIcons, IconConifgProps } from "../icons/declation";
+import {JDmrClass, JDmbClass} from "../../utils/autoClasses";
+import {IIcons, IconConifgProps} from "../icons/declation";
 import Preloader from "../preloader/Preloader";
 import userTacking from "../../utils/userTracking";
-import { JDinputExtention, IInput } from "../../types/interface";
+import {JDinputExtention, IInput} from "../../types/interface";
 
 export interface IInputTextCutsomProp extends JDinputExtention, IInput {
   placeholder?: string;
@@ -57,7 +57,7 @@ export interface IInputTextCutsomProp extends JDinputExtention, IInput {
   bg?: "grey" | "noraml";
   /** 벨리데이션 (API 수정필요함) */
   validation?: any;
-  OnChange?(value?: any): void;
+  onChange?(value?: any): void;
   onChangeValid?: any;
   onBlur?(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): any;
   isValid?: any;
@@ -96,7 +96,7 @@ export const InputText = forwardRef<
       type,
       returnNumber,
       validation,
-      OnChange,
+      onChange,
       className,
       bg,
       onBlur,
@@ -156,20 +156,20 @@ export const InputText = forwardRef<
     };
 
     const inHandleChange = (event: any) => {
-      const { target } = event;
+      const {target} = event;
       const result = validation(target.value, max);
       autoChangeHeight();
 
-      if (OnChange) {
+      if (onChange) {
         if (hyphen || comma) {
           if (typeof value === "number" || returnNumber) {
-            OnChange(toNumber(target.value));
+            onChange(toNumber(target.value));
           } else {
-            OnChange(numberStr(target.value));
+            onChange(numberStr(target.value));
           }
         } else if (card) {
-          OnChange(target.value.replace(/ /gi, ""));
-        } else OnChange(target.value || "");
+          onChange(target.value.replace(/ /gi, ""));
+        } else onChange(target.value || "");
       }
 
       onChangeValid ? onChangeValid(result) : setSelfValid(result);
@@ -227,7 +227,7 @@ export const InputText = forwardRef<
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       event.persist();
       const {
-        currentTarget: { value },
+        currentTarget: {value},
       } = event;
       userTacking(label, value);
       onBlur && onBlur(event);

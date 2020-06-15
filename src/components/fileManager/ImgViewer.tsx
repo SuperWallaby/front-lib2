@@ -1,10 +1,10 @@
-import React, { Fragment, useRef, ChangeEvent } from "react";
-import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
-import { IDiv, JDatomExtentionSet } from "../../types/interface";
+import React, {Fragment, useRef, ChangeEvent} from "react";
+import {JDmbClass, JDmrClass} from "../../utils/autoClasses";
+import {IDiv, JDatomExtentionSet} from "../../types/interface";
 import JDLabel from "../label/JDLabel";
 import Preloader from "../preloader/Preloader";
 import classnames from "classnames";
-import { s4 } from "../../utils/utils";
+import {s4} from "../../utils/utils";
 
 const FILE_IMG =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgwZFJ7m2AzVe95PD2yra_4VpLvf7JvIUDRLikQ_-Zs0D0eAAX&usqp=CAU";

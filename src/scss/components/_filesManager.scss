@@ -1,6 +1,25 @@
 @import "./ImgViewer.scss";
 
 .filesManager {
+  &__urlBox {
+    @include shadow("half");
+    padding: space(1.5) space(2);
+    border-radius: $br1;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--skelton {
+      background-color: $grey-level2;
+    }
+
+    &--localFile {
+      background-color: $green-color;
+      color: white;
+    }
+  }
+
   &__url {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -14,7 +33,7 @@
   &__urlBox {
     @include shadow("half");
     padding: space(1.5) space(2);
-    border-radius: $standard-border-radius;
+    border-radius: $br1;
 
     &:hover {
       cursor: pointer;
@@ -37,10 +56,8 @@
 }
 
 .filesManagerModal {
+  width: 100%;
   @include response($full, $desktop) {
     min-width: 850px;
-  }
-  else {
-    width: 100%;
   }
 }

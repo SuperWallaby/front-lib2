@@ -7,16 +7,16 @@ import {
   useCallback,
   ChangeEvent,
 } from "react";
-import { IselectedOption, ISet } from "../types/interface";
-import { TLanguageShort } from "../types/enum";
+import {IselectedOption, ISet} from "../types/interface";
+import {TLanguageShort} from "../types/enum";
 // @ts-ignore 타입이 존재하지않는 모듈
 import Resizer from "react-image-file-resizer";
-import { DEFAULT_IMAGEUP_LOADER_OPTION } from "../types/defaults";
+import {DEFAULT_IMAGEUP_LOADER_OPTION} from "../types/defaults";
 import optionFineder from "../utils/optionFinder";
 import s4 from "../utils/keyGen";
-import { removeSpecialChar } from "../utils/autoFormat";
+import {removeSpecialChar} from "../utils/autoFormat";
 import moment from "moment-timezone";
-import { IRadiosOps } from "../components/radioButton/RadioButton";
+import {IRadiosOps} from "../components/radioButton/RadioButton";
 
 export type IUseFetch = [
   any,
@@ -38,7 +38,7 @@ const useShouldSave = (updateValue: any[]) => {
     }
   }, updateValue);
 
-  return { shouldSave, setShouldSave };
+  return {shouldSave, setShouldSave};
 };
 
 export interface IuseImageUploaderOption {
@@ -84,7 +84,7 @@ const useStoreSelect = (
   const selectedStoreValue = storeSelectHook.selectedOption?.value || "";
   withCode || localStorage.setItem("lastSelectStore", selectedStoreValue);
 
-  return { storeSelectHook, selectedStoreValue, storesOp };
+  return {storeSelectHook, selectedStoreValue, storesOp};
 };
 
 export type TlocalFile = {
@@ -109,7 +109,7 @@ const validateFile = (
   handleErr: () => void
 ) => {
   const {
-    target: { files, validity },
+    target: {files, validity},
   } = event;
 
   if (!validity || !files || files.length !== 1 || !files[0]) {
@@ -126,14 +126,14 @@ const validateFile = (
 
   const isImg = file.type.includes("image");
 
-  const { name } = file;
+  const {name} = file;
   console.log("name");
   console.log(name);
   const appender = name.slice(name.lastIndexOf(".") + 1, name.length);
   const namePart = name.slice(0, name.lastIndexOf("."));
   const filteredName = removeSpecialChar(namePart) + "." + appender;
 
-  return { file, isImg, filteredName };
+  return {file, isImg, filteredName};
 };
 
 export interface IuseFilesManager {
@@ -223,7 +223,7 @@ const useFilesManager = (
     const result = validateFile(event, handleErr);
 
     if (result) {
-      const { file, filteredName, isImg } = result;
+      const {file, filteredName, isImg} = result;
 
       if (isImg) {
         Resizer.imageFileResizer(
@@ -302,7 +302,7 @@ function useDebounce(value: any, delay: number) {
 export interface TUseInput<T = string> {
   value: T;
   onChangeValid: (value: boolean | string) => void;
-  OnChange: (foo: any) => any;
+  onChange: (foo: any) => any;
   isValid: any;
 }
 
@@ -334,7 +334,7 @@ function useInput<T = string>(
   const [value, setValue] = useState(defaultValue);
   const [isValid, setIsValid] = useState(defulatValid);
 
-  const OnChange = useCallback((value: any) => {
+  const onChange = useCallback((value: any) => {
     let prefixTemp = prefix || "";
     let suffixTemp = suffix || "";
     setValue(prefixTemp + value + suffixTemp);
@@ -346,7 +346,7 @@ function useInput<T = string>(
 
   return {
     value,
-    OnChange,
+    onChange,
     isValid,
     onChangeValid,
   };
@@ -401,7 +401,7 @@ function useDropDown<T = any>(defaultInfo?: T): IUseDropDown {
     setIsOpn(false);
   };
 
-  return { isOpen, info, position, open, close, setInfo, setPosition };
+  return {isOpen, info, position, open, close, setInfo, setPosition};
 }
 
 // 체크박스
@@ -441,7 +441,7 @@ export interface IUseDayPicker {
 const pureDate = (date: Date | null) => {
   return date
     ? moment(date)
-        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+        .set({hour: 0, minute: 0, second: 0, millisecond: 0})
         .toDate()
     : null;
 };
@@ -504,7 +504,7 @@ function useSwitch(defaultValue: boolean) {
     setChecked(value);
   };
 
-  return { checked, onChange };
+  return {checked, onChange};
 }
 
 // useRange
@@ -515,7 +515,7 @@ function useRange(defaultValue: number, maxValue?: number, minValue?: number) {
     setValue(value);
   };
 
-  return { value, onChange, maxValue, minValue };
+  return {value, onChange, maxValue, minValue};
 }
 
 export interface IUseSelect<V = any> {
@@ -563,7 +563,7 @@ function useSelect<V = any>(
     setSelectedOption(value);
   }, []);
 
-  return { selectedOption, onChange, options };
+  return {selectedOption, onChange, options};
 }
 
 function useWindowSize() {
@@ -625,7 +625,7 @@ function useSideNav(): IUseSideNav {
     [sideNavIsOpen]
   );
 
-  return { sideNavIsOpen, setSideNavIsOpen };
+  return {sideNavIsOpen, setSideNavIsOpen};
 }
 
 export interface IusePagination {
@@ -641,7 +641,7 @@ function usePagination(defaultPage: number): IusePagination {
     inSetPage(foo);
   };
 
-  return { page, setPage };
+  return {page, setPage};
 }
 
 export interface IUseModal<T = any> {

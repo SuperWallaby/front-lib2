@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import classNames from "classnames";
-import Button, { IButtonProps } from "../button/Button";
-import { JDatomExtentionSet, TElements, IDiv } from "../../types/interface";
-import { JDatomClasses } from "../../utils/autoClasses";
+import Button, {IButtonProps} from "../button/Button";
+import {JDatomExtentionSet, TElements, IDiv} from "../../types/interface";
+import {JDatomClasses} from "../../utils/autoClasses";
+import styled, {css} from "styled-components";
+interface IStyleProps {
+  /** 모양결정 */
+  mode?: "gather";
+  /** 전체 투글러와 함께 작동 */
+  withAllToogler?: boolean;
+  /** 흘러내림 설정 */
+  noWrap?: boolean;
+  /** 모든 버턴 공통 설정 */
+  btnProps?: IButtonProps;
+}
 
 export interface IRadiosOps extends IButtonProps {
   label: TElements;
   value: string;
 }
 
-interface IProps extends JDatomExtentionSet, IDiv {
+interface IProps extends JDatomExtentionSet, IDiv, IStyleProps {
   /** 버튼 라벨과 값의 쌍 */
   options: IRadiosOps[];
   /** 선택된 값들 */
@@ -33,6 +44,50 @@ interface IProps extends JDatomExtentionSet, IDiv {
   /** 모든 버턴 공통 설정 */
   btnProps?: IButtonProps;
 }
+
+const RadioButton = styled(Button)``;
+
+const RadioButtonsInner = styled.div``;
+
+const RadioButtons = styled.div<IStyleProps>`
+  ${(prop) => {
+    const {theme, mode, btnProps} = prop;
+    const {standardMarginBottom, greyOpacity1, outborderColor, br1} = theme;
+    const isBorder = btnProps?.mode === "border";
+    const isGather = mode === "gather";
+    return css`
+      max-width: 100%;
+      margin-bottom: ${standardMarginBottom};
+      ${() => {
+        if (isGather) {
+          return css`
+            width: max-content;      
+            ${RadioButton} {
+            border-right: 1px solid ${greyOpacity1};
+            eborder-radius: 0;
+            margin: 0;
+            ${isBorder &&
+              css`
+                &:not(:last-child) {
+                  border-right: none;
+                }
+                &:hover {
+                  border-color: ${outborderColor};
+                }
+              `}
+            &:nth-child(2) {
+              border-radius: ${br1} 0px 0px ${br1};
+            }
+            &:last-child {
+              border-right: none;
+              border-radius: 0px ${br1} ${br1} 0px;
+            }
+          `;
+        } else return "";
+      }}
+    `;
+  }}
+`;
 
 export const JDRadioBox: React.FC<IProps> = ({
   selectedValues,
@@ -77,8 +132,8 @@ export const JDRadioBox: React.FC<IProps> = ({
 
   const classes = classNames("radioBox", className, {
     "radioBox--withAllToogler": withAllToogler,
-    "radioBox--noWrap": noWrap,
-    "radioBox--gather": mode === "gather",
+    // 'radioBox--noWrap': noWrap,
+    // 'radioBox--gather': mode === 'gather',
     ...JDatomClasses(props),
   });
 
@@ -86,10 +141,16 @@ export const JDRadioBox: React.FC<IProps> = ({
     "radioBox__inner--noWrap": noWrap,
   });
 
+  const styles = {
+    withAllToogler,
+    mode,
+    noWrap,
+  };
+
   return (
-    <div className={`radioBox ${classes}`} {...props}>
-      <div className={innerClasses}>
-        <Button
+    <RadioButtons className={`radioBox ${classes}`} {...styles}>
+      <RadioButtonsInner className={innerClasses}>
+        <RadioButton
           hide={!withAllToogler}
           toggle={allToogled}
           label={withAllTooglerLabel}
@@ -97,7 +158,7 @@ export const JDRadioBox: React.FC<IProps> = ({
           {...btnProps}
         />
         {options.map((op) => (
-          <Button
+          <RadioButton
             key={op.value}
             toggle={selectedValues.includes(op.value)}
             onClick={() => handleRadioBoxChange(op.value)}
@@ -105,8 +166,8 @@ export const JDRadioBox: React.FC<IProps> = ({
             {...op}
           />
         ))}
-      </div>
-    </div>
+      </RadioButtonsInner>
+    </RadioButtons>
   );
 };
 

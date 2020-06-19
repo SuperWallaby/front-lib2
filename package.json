@@ -1,6 +1,6 @@
 {
   "name": "@janda-com/front",
-  "version": "2.0.25",
+  "version": "2.0.26",
   "description": "@jd-com/front",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -18,7 +18,9 @@
     "test": "jest --coverage",
     "sb": "start-storybook --port 9091",
     "storybook": "start-storybook --port 9091",
-    "build-storybook": "build-storybook",
+    "s-build": "build-storybook",
+    "s-upload": "aws s3 cp storybook-static s3://stayjanda.modules.public/jdUi/2.0.25/  --recursive",
+    "s-b-u": "yarn s-build && yarn s-upload",
     "precodegen": "apollo schema:download --endpoint=https://temp-booking.stayjanda.cloud/graphql",
     "codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/apollo/queries.ts --addTypename --localSchemaFile=schema.json --target=typescript --outputFlat"
   },
@@ -35,6 +37,7 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/preset-typescript": "^2.1.0",
     "@storybook/react": "^5.3.14",
+    "@storybook/theming": "^5.3.19",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "^9.4.0",
     "@types/classnames": "^2.2.10",

@@ -1,22 +1,29 @@
-import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
-import Avatar from './Avatar';
-import JDcontainer from '../container/Container';
+import React from "react";
+import { withKnobs } from "@storybook/addon-knobs";
+import Avatar from "./Avatar";
+import JDcontainer from "../container/Container";
+import { useFilesManager } from "../..";
 
 export default {
-    title: 'Card',
-    component: <Avatar />,
-    decorators: [withKnobs]
+  title: "Avatar",
+  component: <Avatar />,
+  decorators: [withKnobs],
 };
 
 export const standard = () => {
-    return (
-        <JDcontainer verticalPadding>
-            <Avatar />
-        </JDcontainer>
-    );
+  const uploader = useFilesManager();
+
+  return (
+    <JDcontainer verticalPadding>
+      <Avatar size="small" />
+      <Avatar />
+      <Avatar size="large" />
+      <Avatar size="huge" />
+      <Avatar size="huge" uploader={uploader} mode="edit" />
+    </JDcontainer>
+  );
 };
 
 standard.story = {
-    name: 'standard'
+  name: "standard",
 };

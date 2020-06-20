@@ -485,15 +485,27 @@ export interface IUseColor {
   display: boolean;
 }
 
-// 라디오 훅
-function useRadio(defaultValue: any = "") {
-  const [value, setValue] = useState(defaultValue);
+type Tradio = {
+  key: string;
+  value: any;
+  label: string;
+};
 
-  const onChange = (value: any) => {
-    setValue(value);
+export interface IUseRadio {
+  btns: Tradio[];
+  selectedValue: any;
+  onChange: (v: any) => void;
+}
+
+// 라디오 훅
+function useRadio(btns: Tradio[], defaultValue: any = ""): IUseRadio {
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
+
+  const onChange = (v: any) => {
+    setSelectedValue(v);
   };
 
-  return [value, onChange];
+  return { onChange, selectedValue, btns };
 }
 
 // 스위치 훅

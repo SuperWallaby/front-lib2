@@ -10,26 +10,32 @@ export default {
 	decorators: [ withKnobs ]
 };
 
+
+
 export const standard = () => {
+	const shared = {
+			mb:"small" as any,
+			mr:"small" as any
+	}
 	return (
 		<JDcontainer verticalPadding>
 			<JDalign mb="normal">
-				<Badge thema="primary">Badge</Badge>
-				<Badge thema="point">Badge</Badge>
-				<Badge thema="grey1">Badge</Badge>
-				<Badge thema="grey2">Badge</Badge>
-				<Badge thema="grey3">Badge</Badge>
-				<Badge thema="grey4">Badge</Badge>
-				<Badge thema="new">Badge</Badge>
+				<Badge {...shared} thema="primary">Badge</Badge>
+				<Badge {...shared} thema="point">Badge</Badge>
+				<Badge {...shared} thema="grey1">Badge</Badge>
+				<Badge {...shared} thema="grey2">Badge</Badge>
+				<Badge {...shared} thema="grey3">Badge</Badge>
+				<Badge {...shared} thema="grey4">Badge</Badge>
+				<Badge {...shared} thema="new">Badge</Badge>
 			</JDalign>
 			<div>
-				<Badge thema="new" size="tiny">
+				<Badge {...shared} thema="new" size="tiny">
 					Badge
 				</Badge>
-				<Badge thema="new" size="large">
+				<Badge {...shared} thema="new" size="large">
 					Badge
 				</Badge>
-				<Badge thema="new" mode="folded" size="large">
+				<Badge {...shared} thema="new" mode="folded" size="large">
 					Badge
 				</Badge>
 			</div>

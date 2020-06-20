@@ -20,6 +20,7 @@
 
 	&--selected {
 		color: $primary-color-light;
+
 		&:hover {
 			color: $primary-color-dark;
 		}
@@ -64,6 +65,7 @@
 	position: absolute;
 	background-color: $html-color;
 	border-radius: 50%;
+
 	.JDbadge {
 		margin: 0;
 		margin-top: -2px;

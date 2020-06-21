@@ -6,7 +6,9 @@ import {theme} from "./theme";
 const {columnMargin, columnWidth, totalColumns} = theme;
 
 export const gridWidth = (n: number) => {
-  return columnWidth * n - (columnMargin * (totalColumns - n)) / totalColumns;
+  return (
+    columnWidth * n - (columnMargin * (totalColumns - n)) / totalColumns + "%"
+  );
 };
 
 export function space(num: number) {

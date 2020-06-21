@@ -115,6 +115,7 @@ const gridFn = (grid: TGrid | true | undefined) => {
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
+      flex-wrap: wrap;
       ${
         // @ts-ignore
         grid.grow &&

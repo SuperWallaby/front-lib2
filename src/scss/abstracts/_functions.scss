@@ -31,14 +31,12 @@
 }
 
 @function grid-column-width($n) {
-  @return $column-width * $n -
-    ($column-margin * ($total-columns - $n) / $total-columns);
+  @return $column-width * $n - ($column-margin * ($total-columns - $n) / $total-columns);
 }
 
 //todo:아래 라인 그냥 grid 와 독립
 @function flex-grid-column-width($n) {
-  @return $column-width * $n -
-    ($flex-grid--column-margin * ($total-columns - $n) / $total-columns);
+  @return $column-width * $n - ($flex-grid--column-margin * ($total-columns - $n) / $total-columns);
 }
 
 //todo:아래 라인 그냥 grid 와 독립
@@ -47,7 +45,7 @@
 }
 
 @function grid-offset-length($n) {
-  @return grid-column-width($n) + $column-margin;
+  @return grid-column-width($n)+$column-margin;
 }
 
 @function calc-rem($target) {

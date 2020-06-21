@@ -1,14 +1,14 @@
 export enum DateFormat {
   WITH_TIME = "YY.MM.DD HH:mm",
   YYMMDD = "YY.MM.DD",
-  MMDD = "MM.DD"
+  MMDD = "MM.DD",
 }
 
 export enum Language {
   KOREAN = "KOREAN",
   ENGLISH = "ENGLISH",
   JAPANESE = "JAPANESE",
-  CHINESE = "CHINESE"
+  CHINESE = "CHINESE",
 }
 
 export enum WindowSizeNumber {
@@ -16,7 +16,7 @@ export enum WindowSizeNumber {
   PHABLET = 550,
   TABLET = 750,
   DESKTOP = 1000,
-  DESKTOPHD = 1200
+  DESKTOPHD = 1200,
 }
 
 export enum WindowSizeShort {
@@ -24,7 +24,7 @@ export enum WindowSizeShort {
   PHABLET = "md",
   TABLET = "wmd",
   DESKTOP = "lg",
-  DESKTOPHD = "wlg"
+  DESKTOPHD = "wlg",
 }
 
 export enum WindowSize {
@@ -33,7 +33,7 @@ export enum WindowSize {
   wmd = "wmd",
   lg = "lg",
   wlg = "wlg",
-  full = "full"
+  full = "full",
 }
 
 export type TNationalShort = "kr" | "gb" | "jp" | "cn";
@@ -43,28 +43,28 @@ export enum LanguageShortResverse {
   kr = "KOREAN",
   jp = "JAPANESE",
   cn = "CHINESE",
-  en = "ENGLISH"
+  en = "ENGLISH",
 }
 
 export enum LanguageResverseShort {
   KOREAN = "kr",
   ENGLISH = "en",
   JAPANESE = "jp",
-  CHINESE = "cn"
+  CHINESE = "cn",
 }
 
 export enum LangShortToNational {
   kr = "kr",
   en = "gb",
   jp = "jp",
-  cn = "cn"
+  cn = "cn",
 }
 
 export enum LanguageItSelf {
   KOREAN = "한국어",
   ENGLISH = "English",
   JAPANESE = "日本語",
-  CHINESE = "中國語"
+  CHINESE = "中國語",
 }
 
 export type TMarginSize =
@@ -94,7 +94,7 @@ export enum RoomGender {
   FEMALE = "FEMALE",
   MALE = "MALE",
   ANY = "ANY",
-  SEPARATELY = "SEPARATELY"
+  SEPARATELY = "SEPARATELY",
 }
 
 //= =============================================================
@@ -104,25 +104,25 @@ export enum RoomGender {
 export enum TimePerMs {
   DAY = 24 * 60 * 60 * 1000,
   H = 60 * 60 * 1000,
-  M = 60 * 1000
+  M = 60 * 1000,
 }
 
 export enum Gender {
   FEMALE = "FEMALE",
-  MALE = "MALE"
+  MALE = "MALE",
 }
 
 export enum ExcelExpress {
   SELECT_OP = "SELECT_OP",
   DATE_OP = "DATE_OP",
-  COUNT_OP = "COUNT_OP"
+  COUNT_OP = "COUNT_OP",
 }
 
 export enum NotiType {
   ELSE = "ELSE",
   NEW_BOOKING = "NEW_BOOKING",
   PRODUCT_EXPIRE = "PRODUCT_EXPIRE",
-  TO_ALL = "TO_ALL"
+  TO_ALL = "TO_ALL",
 }
 
 export type IconSize =
@@ -165,18 +165,18 @@ export enum Funnels {
   PHONE_CALL = "PHONE_CALL",
   WALK_IN = "WALK_IN",
   YANOLJA = "YANOLJA",
-  YEOGIEOTTAE = "YEOGIEOTTAE"
+  YEOGIEOTTAE = "YEOGIEOTTAE",
 }
 
 export enum SendTarget {
   BOTH = "BOTH",
   GUEST = "GUEST",
-  HOST = "HOST"
+  HOST = "HOST",
 }
 
 export enum LayoutType {
   Layout_A = "Layout_A",
-  Layout_B = "Layout_B"
+  Layout_B = "Layout_B",
 }
 
 export enum Day {
@@ -186,5 +186,5 @@ export enum Day {
   SUN = "SUN",
   THU = "THU",
   TUE = "TUE",
-  WED = "WED"
+  WED = "WED",
 }

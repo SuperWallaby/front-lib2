@@ -6,7 +6,6 @@ import classNames from "classnames";
 import {IuseFilesManager} from "../../hooks/hook";
 import JDlabel, {ILabelProp} from "../label/JDLabel";
 import {IDiv, JDatomExtentionSet} from "../../types/interface";
-import {JDmbClass, JDmrClass} from "../../utils/autoClasses";
 
 export interface IProps extends IDiv, JDatomExtentionSet {
   label?: string;
@@ -33,8 +32,6 @@ export const FileUploader: React.FC<IProps> = ({
   index,
   inputProps,
   className,
-  mb,
-  mr,
 }) => {
   const {localFiles, onChangeFile} = fileUploaderHook;
   const file = localFiles[index || 0];
@@ -44,10 +41,7 @@ export const FileUploader: React.FC<IProps> = ({
     uploaderRef?.current?.click();
   };
 
-  const classes = classNames("JDsingleUploader", className, {
-    ...JDmbClass(mb),
-    ...JDmrClass(mr),
-  });
+  const classes = classNames("JDsingleUploader", className, {});
 
   return (
     <div className={classes}>

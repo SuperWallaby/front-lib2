@@ -11,6 +11,57 @@
   }
 }
 
+// 가운데 정렬
+// .JDflex {
+
+//   &--end {
+//     justify-content: flex-end;
+//   }
+
+//   &--center {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//   &--between {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+
+//   &--spaceAround {
+//     display: flex;
+//     justify-content: space-around;
+//   }
+//   &--wrap {
+//     flex-wrap: wrap;
+//   }
+
+//   &--column {
+//     display: flex;
+//     flex-direction: column;
+//   }
+//   &--center {
+//     display: flex;
+//     justify-content: center;
+//   }
+//   &--grow {
+//     & > div {
+//       flex: 1 1;
+//     }
+//   }
+
+//   &--vCenter {
+//     display: flex;
+//     line-height: 1;
+//     align-items: center;
+//   }
+//   &--oneone {
+//     & > div {
+//       flex: 1 1;
+//     }
+//   }
+// }
+
 // 규격정의 ------------ 디프리 될겁니다.
 .JDstandard {
   &-superTiny-mb {
@@ -68,60 +119,6 @@
 
 .section {
   margin-bottom: $standard-largest-space;
-}
-
-// 가운데 정렬
-.JDflex {
-  display: flex !important;
-
-  &--end {
-    justify-content: flex-end;
-  }
-
-  &--center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &--between {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &--spaceAround {
-    display: flex;
-    justify-content: space-around;
-  }
-  &--wrap {
-    flex-wrap: wrap;
-  }
-
-  &--column {
-    display: flex;
-    flex-direction: column;
-  }
-  &--center {
-    display: flex;
-    justify-content: center;
-  }
-  &--grow {
-    & > div {
-      flex: 1 1;
-    }
-  }
-  &--selfDown {
-    align-self: flex-end;
-  }
-  &--vCenter {
-    display: flex;
-    line-height: 1;
-    align-items: center;
-  }
-  &--oneone {
-    & > div {
-      flex: 1 1;
-    }
-  }
 }
 
 // ✏️ text

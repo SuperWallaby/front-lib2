@@ -1,3 +1,4 @@
+import {WindowSizeNumber} from "../types/enum";
 import {css} from "styled-components";
 
 export const shadow7 =
@@ -20,3 +21,11 @@ export const lastMargin = css`
     margin-right: 0;
   }
 `;
+
+export const device = {
+  MOBILE: `(max-width: ${WindowSizeNumber.MOBILE})`,
+  PHABLET: `(max-width: ${WindowSizeNumber.PHABLET})`,
+  TABLET: `(max-width: ${WindowSizeNumber.TABLET})`,
+  DESKTOP: `(max-width: ${WindowSizeNumber.DESKTOP})`,
+  DESKTOPHD: `(max-width: ${WindowSizeNumber.DESKTOPHD})`,
+};

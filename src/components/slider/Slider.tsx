@@ -1,9 +1,8 @@
-import React, { Fragment } from "react";
-import Slider, { Settings } from "react-slick";
+import React, {Fragment} from "react";
+import Slider, {Settings} from "react-slick";
 import Icon from "../icons/Icons";
 import classnames from "classnames";
-import { IDiv, JDatomExtentionSet } from "../../types/interface";
-import { JDmbClass, JDmrClass } from "../../utils/autoClasses";
+import {IDiv, JDatomExtentionSet} from "../../types/interface";
 
 interface IProps extends Settings, JDatomExtentionSet {
   whiteIcon?: boolean;
@@ -36,25 +35,23 @@ const JDSlider: React.FC<TJDsliderProp> = ({
       <Icon
         icon="arrowRight"
         style={{
-          transform: "scale(-1)"
+          transform: "scale(-1)",
         }}
         size="small"
         className="JDslider__arrow--left"
       />
     ) : (
-        undefined
-      ),
+      undefined
+    ),
     prevArrow: displayArrow ? (
       <Icon className="JDslider__arrow--right" size="small" icon="arrowRight" />
     ) : (
-        undefined
-      )
+      undefined
+    ),
   };
 
   const classes = classnames(JDslideDefaultSettings.className, className, {
     "JDslider--unDisplayArrow": displayArrow === false,
-    ...JDmbClass(mb),
-    ...JDmrClass(mr)
   });
 
   JDslideDefaultSettings.className = classes;
@@ -68,7 +65,7 @@ const JDSlider: React.FC<TJDsliderProp> = ({
   );
 };
 
-export const Slide: React.FC = ({ children }) => (
+export const Slide: React.FC = ({children}) => (
   <div className="JDslider__slide-wrap">
     <div className="JDslider__slide">{children}</div>
   </div>

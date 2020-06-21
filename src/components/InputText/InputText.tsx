@@ -11,7 +11,6 @@ import {autoComma} from "../../utils/autoFormat";
 import $ from "jquery";
 import s4 from "../../utils/keyGen";
 import JDlabel from "../label/JDLabel";
-import {JDmrClass, JDmbClass} from "../../utils/autoClasses";
 import {IIcons, IconConifgProps} from "../icons/declation";
 import Preloader from "../preloader/Preloader";
 import userTacking from "../../utils/userTracking";
@@ -77,8 +76,8 @@ export interface IInputTextCutsomProp extends JDinputExtention, IInput {
   maxLength?: number;
   minLength?: number;
   falseMessage?: string;
-  mr?: TMarginSize;
-  mb?: TMarginSize;
+  mr?: TMarginSize | number;
+  mb?: TMarginSize | number;
   iconProps?: IconConifgProps;
 }
 
@@ -182,9 +181,6 @@ export const InputText = forwardRef<
     const wrapClasses = classNames("JDinput-wrap", wrapClassName, {
       "JDinput-wrap--big": Size === "big",
       "JDinput-wrap--round": br === "round",
-      ...JDmrClass(mr),
-
-      ...JDmbClass(mb),
     });
 
     const classes = classNames(textarea ? "JDtextarea" : "JDinput", className, {

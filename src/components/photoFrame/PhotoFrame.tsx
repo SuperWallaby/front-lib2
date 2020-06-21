@@ -1,8 +1,7 @@
 import React from "react";
 import classNames from "classnames";
-import { JDatomExtentionSet, IDiv } from "../../types/interface";
-import { JDmrClass, JDmbClass } from "../../utils/autoClasses";
-import { WindowSizeNumber } from "../../types/enum";
+import {JDatomExtentionSet, IDiv} from "../../types/interface";
+import {WindowSizeNumber} from "../../types/enum";
 
 interface Iprops extends JDatomExtentionSet, IDiv {
   src?: string;
@@ -56,8 +55,6 @@ const PhotoFrame: React.FC<Iprops> = ({
   const classes = classNames("photoFrame", className, {
     "photoFrame--fixHeight": isBgImg,
     "photoFrame--unStyle": unStyle,
-    ...JDmbClass(mb),
-    ...JDmrClass(mr)
   });
 
   const bg = src;
@@ -67,7 +64,7 @@ const PhotoFrame: React.FC<Iprops> = ({
       {isBgImg && (
         <div
           style={{
-            backgroundImage: `url(${bg})`
+            backgroundImage: `url(${bg})`,
           }}
           className="photoFrame__bgimg"
         />

@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import {color as mixinColor, margin, iconSize} from "../../style/mixin";
+import {color as mixinColor, iconSize, JDcommon} from "../../style/mixin";
 import {IConProps} from "./Icons";
 import {IconConifgProps} from "./declation";
 import {HTMLAttributes} from "react";
@@ -47,16 +47,12 @@ export const StyledIconLabel = styled.span`
 
 export const StyledIconWrap = styled.span<IconConifgProps & JDatomExtentionSet>`
   ${(prop) => {
-    const {theme, selected, color, mb, mr, size} = prop;
+    const {theme, selected, color, size} = prop;
     const {primaryColorLight, primaryColorDark} = theme;
-
-    console.log("iconSize");
-    console.log(iconSize(theme, size));
 
     return css`
       color: ${mixinColor(theme, color)};
-      margin-bottom: ${margin(theme, mb)};
-      margin-right: ${margin(theme, mr)};
+      ${JDcommon(prop, theme)}
 
       ${StyledIconSvg} {
         width: ${iconSize(theme, size)};

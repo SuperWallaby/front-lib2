@@ -1,9 +1,8 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import "./Vtable.scss";
 import JDLabel from "../label/JDLabel";
 import classNames from "classnames";
-import { IDiv, JDatomExtentionSet } from "../../types/interface";
-import { JDmrClass, JDmbClass } from "../../utils/autoClasses";
+import {IDiv, JDatomExtentionSet} from "../../types/interface";
 import BaseHeader from "../base/BaseHeader";
 
 interface IProps extends JDatomExtentionSet {
@@ -31,19 +30,15 @@ const Vtable: React.FC<IProps> = ({
   headerRgiht,
   cellColumn,
   mode,
-  mb,
-  mr
 }) => {
   const classes = classNames("vtable", className, {
     "vtable--noHeader": !header,
     "vtable--unBorder": border === "none",
     "vtable--unStyle": mode === "unStyle",
     "vtable--cellColumn": cellColumn,
-    ...JDmrClass(mr),
-    ...JDmbClass(mb)
   });
   const headerClasses = classNames("vtable__header", undefined, {
-    "vtable__header--borderBottom": headerMode === "bottomBorder"
+    "vtable__header--borderBottom": headerMode === "bottomBorder",
   });
 
   return (
@@ -65,7 +60,7 @@ const Vtable: React.FC<IProps> = ({
   );
 };
 
-export const VtableColumn: React.FC<IDiv> = ({ children }) => {
+export const VtableColumn: React.FC<IDiv> = ({children}) => {
   return <div className="vtable__column flex-grid-grow" children={children} />;
 };
 
@@ -73,7 +68,7 @@ interface IVtableCellProp {
   label: string;
 }
 
-export const VtableCell: React.FC<IVtableCellProp> = ({ label, children }) => (
+export const VtableCell: React.FC<IVtableCellProp> = ({label, children}) => (
   <div className="vtable__cell flex-grid">
     <div className="vtable__label">
       <JDLabel txt={label} />
@@ -91,11 +86,11 @@ interface IColumnCellsProps {
   datas: TData[] | TData[][];
 }
 
-export const ColumnCells: React.FC<IColumnCellsProps> = ({ datas }: any) => (
+export const ColumnCells: React.FC<IColumnCellsProps> = ({datas}: any) => (
   <Fragment>
     {datas.map((d: any) => {
       if (!Array.isArray(d)) {
-        const { label, Component } = d;
+        const {label, Component} = d;
         return (
           <VtableColumn key={label}>
             <VtableCell label={label}>{Component()}</VtableCell>
@@ -105,7 +100,7 @@ export const ColumnCells: React.FC<IColumnCellsProps> = ({ datas }: any) => (
         return (
           <VtableColumn key={d[0].label + d[1].label}>
             {d.map((inD: any) => {
-              const { label, Component } = inD;
+              const {label, Component} = inD;
               return <VtableCell label={label}>{Component()}</VtableCell>;
             })}
           </VtableColumn>

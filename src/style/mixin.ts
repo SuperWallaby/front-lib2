@@ -1,7 +1,16 @@
 import {JDColor, IconSize, TMarginSize} from "..";
+import {JDatomExtentionSet} from "../types/interface";
+import {css} from "styled-components";
+import {theme} from "./theme";
+
+const {columnMargin, columnWidth, totalColumns} = theme;
+
+export const gridWidth = (n: number) => {
+  return columnWidth * n - (columnMargin * (totalColumns - n)) / totalColumns;
+};
 
 export function space(num: number) {
-  return num * 0.4 + "rem";
+  return (num * 4) / 10 + "rem";
 }
 export function round(num: number) {
   return num * 3 + "px";
@@ -9,7 +18,7 @@ export function round(num: number) {
 
 export const color = (theme: any, color?: JDColor | null) => {
   const {
-    primaryColor,
+    primaryColor2,
     pointColor,
     positiveColor,
     orangeColor,
@@ -28,7 +37,7 @@ export const color = (theme: any, color?: JDColor | null) => {
 
   switch (color) {
     case "primary":
-      return primaryColor;
+      return primaryColor2;
     case "point":
       return pointColor;
     case "positive":
@@ -90,7 +99,12 @@ export const iconSize = (theme: any, size?: IconSize | null) => {
   }
 };
 
-export const margin = (theme: any, mb?: TMarginSize) => {
+export const margin2 = (margin: number) => {
+  return space(margin);
+};
+
+// 디프리케이트 할 함수
+export const margin = (theme: any, margin?: TMarginSize | number) => {
   const {
     standardLargestSpace,
     standardHugeSpace,
@@ -101,7 +115,11 @@ export const margin = (theme: any, mb?: TMarginSize) => {
     standardSuperTinySpace,
   } = theme;
 
-  switch (mb) {
+  if (typeof margin === "number") {
+    return margin2(margin);
+  }
+
+  switch (margin) {
     case "no":
       return "0px!important";
     case "superTiny":
@@ -119,4 +137,31 @@ export const margin = (theme: any, mb?: TMarginSize) => {
     case "largest":
       return standardLargestSpace;
   }
+};
+
+interface JDcommonProp extends JDatomExtentionSet {
+  [key: string]: any;
+}
+
+export const JDcommon = (prop: JDcommonProp, theme: any) => {
+  const {hide, mb, mr, z} = prop;
+
+  return css`
+    ${hide &&
+      css`
+        display: none !important;
+      `}
+    ${z &&
+      css`
+        z-index: ${z * 10};
+      `}
+    ${mb &&
+      css`
+        margin-bottom: ${margin(theme, mb)};
+      `}
+    ${mr &&
+      css`
+        margin-bottom: ${margin(theme, mr)};
+      `}
+  `;
 };

@@ -26,23 +26,24 @@
 // }
 
 .JDicon__dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 0;
-  color: white;
-  font-size: $typho-tiny;
-  width: $icon-size-small;
-  height: $icon-size-small;
-  top: -4px;
-  right: -4px;
-  position: absolute;
-  background-color: $html-color;
-  border-radius: 50%;
-  .JDbadge {
-    margin: 0;
-    margin-top: -2px;
-    margin-left: 2px;
-  }
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 0;
+	color: white;
+	font-size: $typho-tiny;
+	width: $icon-size-small;
+	height: $icon-size-small;
+	top: -4px;
+	right: -4px;
+	position: absolute;
+	background-color: $html-color;
+	border-radius: 50%;
+
+	.JDbadge {
+		margin: 0;
+		margin-top: -2px;
+		margin-left: 2px;
+	}
 }

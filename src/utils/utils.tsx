@@ -18,6 +18,12 @@ import queryDataFormater, {getFromResult} from "./queryFormater";
 import setMidNight, {to4YMMDD} from "./setMidNight";
 import removeNullOfObject from "./removeNullOfObject";
 import s4 from "./keyGen";
+import {
+  getScrollParent,
+  parentScrollMove,
+  parentScrollMoveToElement,
+  focusWithScroll,
+} from "./parentScroll";
 import {fromToRender} from "./fromToRender";
 import randomIntFromInterval from "./randomNumber";
 import muResult from "./mutationResultSafty";
@@ -55,6 +61,10 @@ const JDutils = {
   randomIntFromInterval,
   searchListFormat,
   autoHypen,
+  getScrollParent,
+  parentScrollMove,
+  parentScrollMoveToElement,
+  focusWithScroll,
   queryDataFormater,
   onCompletedMessage,
   setMidNight,

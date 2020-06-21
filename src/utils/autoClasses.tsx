@@ -188,11 +188,9 @@ const zClass = (index?: number) => {
 };
 
 const JDatomClasses = (configs: JDatomConfig) => {
-  const {mb, mr, hide, z} = configs;
+  const {hide, z} = configs;
   return {
     ...zClass(z),
-    ...JDmrClass(mr),
-    ...JDmbClass(mb),
     "JDdisplay-none": hide,
   };
 };

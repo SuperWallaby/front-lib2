@@ -14,7 +14,7 @@ export const StyledButtonContent = styled.span`
 `;
 
 export const StyledButtonIconWrap = styled.i<IBtnIcon>`
-  ${(prop) => {
+  ${(prop: any) => {
     const {theme, iconDir} = prop;
     const {buttonsIconMargin} = theme;
 
@@ -51,10 +51,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
       buttonLargePadding,
       buttonLargeFontSize,
       buttonLargeIconFontSize,
-      buttonFlatColor,
-      greyLevel1,
       outborderColor,
-      greyLevel3,
       buttonDisabledBackground,
       buttonDisabledColor,
       buttonTinyFontSize,
@@ -68,10 +65,13 @@ export const StyledButton = styled.button<IButtonStyleProps>`
     } = theme;
 
     const bgColor = colorMixin(theme, color) || buttonBgColor;
-    const bgColorDark = Color(bgColor)
-      .darken(0.5)
-      .rgb()
-      .string();
+    const bgColorDark = bgColor
+      ? Color(bgColor)
+          .darken(0.2)
+          .rgb()
+          .string()
+      : "null";
+    const isLightBg = Color(bgColor).isLight();
 
     return css`
       border-radius: ${buttonRadius};
@@ -84,7 +84,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
       vertical-align: middle;
       -webkit-tap-highlight-color: transparent;
       text-decoration: none;
-      color: ${buttonColor};
+      color: ${isLightBg ? buttonColor : "#fff"};
       text-align: center;
       letter-spacing: ${buttonLetterSpacing};
       box-shadow: ${shadow3};
@@ -187,20 +187,13 @@ export const StyledButton = styled.button<IButtonStyleProps>`
       ${mode === "flat" &&
         css`
           box-shadow: none;
-          color: ${buttonFlatColor};
           cursor: pointer;
 
-          &.JDbtn--white {
-            color: white;
-          }
-
           &:disabled {
-            color: ${buttonDisabledColor};
             cursor: default;
           }
 
           &:hover {
-            background-color: ${greyLevel1};
             box-shadow: none;
           }
         `}
@@ -211,7 +204,10 @@ export const StyledButton = styled.button<IButtonStyleProps>`
           box-shadow: none;
           border-color: ${outborderColor};
           &:hover {
-            border-color: ${greyLevel3};
+            border-color: ${Color(outborderColor)
+              .darken(0.2)
+              .rgb()
+              .string()};
           }
         `}
     `;

@@ -17,6 +17,7 @@ import InputText from "./components/InputText/InputText";
 import JDalign, { IJDalignProp } from "./components/align/Align";
 import JDcontainer from "./components/container/Container";
 import JDtypho from "./components/typho/Typho";
+import JDavatar from "./components/avatar/Avatar";
 import JDphotoModal, {
   TPhotoModalInfo,
 } from "./components/photoModal/PhotoModal";
@@ -214,6 +215,7 @@ export {
   dataURLtoFile,
   JDcard,
   JDmodal,
+  JDavatar,
   ReactTooltip,
   JDlist,
   JDcontainer,

@@ -32,7 +32,8 @@ $typho-small: 0.825rem !default;
 $typho-tiny: 0.625rem !default;
 $typho-superTiny: 0.5625rem !default;
 
-:root {
+:root,
+.themeProvider {
   --primary-color: #4c5b73;
   --primary-color-light: #637796;
   --primary-color-dark: #162743;
@@ -43,14 +44,14 @@ $typho-superTiny: 0.5625rem !default;
 $yellow-color: #febd69 !default;
 $pink-color: #f56e7d !default;
 $html-color: #4d4d4d !default;
+// 테밍으로 마이그레이션하면 글로벌 css는 defrecated 다
+$primary-color2: "#4c5b73" !default;
 $primary-color: var(--primary-color) !default;
-$primary-color-on: #fff !default;
 $primary-color-light: var(--primary-color-light) !default;
-$primary-color-dark: var(
-  --primary-color-dark
-) !default; // 흰색 호버 bg 에 오버랩 되었을때 컬러임
+$primary-color-dark: var(--primary-color-dark) !default; // 흰색 호버 bg 에 오버랩 되었을때 컬러임
 $primary-color-light-on: var(--primary-color-on) !default !default;
 $primary-color-dark-on: var(--primary-color-on) !default !default;
+$primary-color-on: #fff !default;
 
 $point-color: #d5673a !default;
 $point-color-on: #fff !default;
@@ -98,11 +99,9 @@ $third-color-dark: darken($third-color, 5%);
 
 $buyer-main-color: $third-color;
 $buyer-main-color-dark: $third-color-dark;
-$buyer-main-color-liner: linear-gradient(
-  90deg,
+$buyer-main-color-liner: linear-gradient(90deg,
   rgba(112, 95, 147, 1) 0%,
-  rgba(138, 80, 130, 1) 100%
-);
+  rgba(138, 80, 130, 1) 100%);
 
 $orange-color: #ff6e16 !default;
 $orange-color-on: white !default;
@@ -131,12 +130,10 @@ $disabled-color: $grey-level2 !default;
 $outborder-color: $grey-level2 !default; //화면 가장자리에 붙어있는 border들의 컬러
 $placeholder-color: $outborder-color !default;
 
-$curtain-color: rgba(
+$curtain-color: rgba(0,
   0,
   0,
-  0,
-  0.78
-) !default; // 사이드 네비와 모달의 화면 가림색
+  0.78) !default; // 사이드 네비와 모달의 화면 가림색
 
 // 📖 ---- 표준 단위
 $doc-section-space: space(10) !default;
@@ -207,7 +204,7 @@ $label-font-color: $grey-level4 !default;
 // ANCHOR Forms ==========================================================================
 // -- Text Inputs + Textarea 인풋
 $input-outborder-color: $outborder-color;
-$input-height: $standard-line-height + 0.125rem !default;
+$input-height: $standard-line-height+0.125rem !default;
 $input-big-height: $standard-largest2-space;
 $input-background: transparent !default;
 $input-border: 1px solid $input-outborder-color !default;
@@ -306,7 +303,7 @@ $daypicker-checkOut-bgColor: $orange-color !default;
 $horizen-caption-bgcolor: $grey-level1 !default;
 $horizen-month-bordeRight: none;
 // -- input
-$dayPicker-input-height: $input-height + 1rem !default;
+$dayPicker-input-height: $input-height+1rem !default;
 // 4 Buttons
 // ANCHOR Buttons =========================================================================
 // -- Shared styles
@@ -329,9 +326,6 @@ $button-large-icon-font-size: $typho-huge !default;
 $button-large-height: $standard-largest2-space !default;
 $button-large-padding: 0 $standard-huge-space !default;
 $button-large-font-size: $typho-huge !default;
-// -- Flat buttons
-$button-flat-color: $html-color !default;
-$button-flat-disabled-color: $button-disabled-color !default;
 // -- small buttons
 $button-small-padding-side: $standard-small-space !default;
 $button-small-padding: 0 $button-small-padding-side !default;
@@ -404,11 +398,11 @@ $toast-padding: 1rem !default;
 $toast-position-x: 8% !default;
 $toast-position-y: 5% !default;
 $toast-margin-bottom: $standard-margin-bottom/2 !default;
-// 13 ProfileCircle 프로파일 서클
+// 13 Avatar 프로파일 서클
 // ANCHOR toast Toast=========================================================================
-$profileCircle-size: 4rem !default;
+$avatar-size: 4rem !default;
 // border 옵션일 경우 넣어야 동작
-$profileCircle-border: 2px solid $grey-level2 !default;
+$avatar-border: 2px solid $grey-level2 !default;
 // 14 Card 카드
 // ANCHOR card Card=========================================================================
 $card-padding: $standard-large-space !default;
@@ -474,8 +468,7 @@ $AT-mobile-assigGroup-roomType-width: 2.25rem !default;
 
 $AT-mobile-assigGroup-room-width: 2.25rem !default;
 $assigItem-selected-linked-border-thick: 1px !default;
-$assigItem-selected-linked-border: $assigItem-selected-linked-border-thick solid
-  $assigItem-selected-border-color !default;
+$assigItem-selected-linked-border: $assigItem-selected-linked-border-thick solid $assigItem-selected-border-color !default;
 $assigItem-padding: 0.4rem !default;
 // 22 badge 뱃지
 // ANCHOR badge Badge=========================================================================

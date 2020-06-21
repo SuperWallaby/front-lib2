@@ -1,19 +1,21 @@
 import React from "react";
-import { IDiv } from "../../types/interface";
+import {IDiv} from "../../types/interface";
 
 interface IBlockProp extends IDiv {
   full?: boolean;
 }
 
-export const Block = ({ style, full, ...prop }: IBlockProp) => (
+export const Block = ({style, full, ...prop}: IBlockProp) => (
   <div
     style={{
+      whiteSpace: "pre-line",
+      textAlign: "center",
       height: "100px",
       width: full ? `calc("100%" - "20px")` : "100px",
       backgroundColor: "#ccc",
       margin: "10px",
       boxSizing: "border-box",
-      ...style
+      ...style,
     }}
     {...prop}
   />

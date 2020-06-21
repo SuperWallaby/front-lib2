@@ -13,7 +13,7 @@ const userTacking = (label: string = "", value: string = "") => {
     action: label || "",
     path: pathName.replace(process.env.REACT_APP_API_CLIENT_URL || "", ""),
     createAt: new Date().valueOf(),
-    value
+    value,
   };
   let histories: UTH[] = [];
   let UTH = localStorage.getItem("UTH");
@@ -27,7 +27,9 @@ const userTacking = (label: string = "", value: string = "") => {
         const prevHostory = JSON.parse(hexDecode(UTH) || "[]") as UTH[];
         histories = [...prevHostory, trakHistory];
       } catch (e) {
-        console.error("e");
+        console.error("TackError");
+        console.error(e);
+        localStorage.removeItem("UTH");
       }
     }
   }

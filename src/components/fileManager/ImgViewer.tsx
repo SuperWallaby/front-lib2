@@ -1,5 +1,4 @@
 import React, {Fragment, useRef, ChangeEvent} from "react";
-import {JDmbClass, JDmrClass} from "../../utils/autoClasses";
 import {IDiv, JDatomExtentionSet} from "../../types/interface";
 import JDLabel from "../label/JDLabel";
 import Preloader from "../preloader/Preloader";
@@ -28,8 +27,6 @@ const ImgViewer: React.FC<IProps> = ({
   loading,
   error,
   coverImg,
-  mb,
-  mr,
   minHeight,
   height,
   source,
@@ -45,8 +42,6 @@ const ImgViewer: React.FC<IProps> = ({
     "imgViewer--error": error,
     "imgViewer--loading": loading,
     "imgViewer--coverImg": coverImg,
-    ...JDmbClass(mb),
-    ...JDmrClass(mr),
   });
 
   const isImgUrl = (url: string) => {

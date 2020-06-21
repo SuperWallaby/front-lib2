@@ -4,7 +4,7 @@ import { WindowSize } from "../../types/enum";
 import classNames from "classnames";
 
 interface IProps extends IDiv {
-  // 콘테이너 사이즈
+  /** 사용 불가능함*/
   size?: WindowSize;
   /**
    * Value to display, either empty (" ") or "X" / "O".
@@ -25,7 +25,7 @@ export const JDcontainer: React.FC<IProps> = ({
     "container--md": size === WindowSize.md,
     "container--lg": size === WindowSize.lg,
     "container--vps": verticalPadding === "normal" || verticalPadding === true,
-    "container--vpSmall": verticalPadding === "small"
+    "container--vpSmall": verticalPadding === "small",
   });
 
   return <div className={classes} {...prop} />;

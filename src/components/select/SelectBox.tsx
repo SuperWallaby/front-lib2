@@ -8,10 +8,7 @@ import userTacking from "../../utils/userTracking";
 import { JDatomExtentionSet, JDinputExtention } from "../../types/interface";
 import { JDatomClasses } from "../../utils/autoClasses";
 import { JDlabel } from "../..";
-<<<<<<< Updated upstream
-=======
 import isMobile from "is-mobile";
->>>>>>> Stashed changes
 
 export interface IselectedOption<T = any> {
   label: string;

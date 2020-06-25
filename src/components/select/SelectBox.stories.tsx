@@ -6,26 +6,6 @@ import { useSelect } from '../..';
 import { IselectedOption } from '../../types/interface';
 
 export default {
-<<<<<<< Updated upstream
-	title: 'SelectBox',
-	component: () => <SelectBox />,
-	decorators: [withKnobs]
-};
-
-const options = [
-	{
-		label: 'Strawberry',
-		value: 'strawberry'
-	},
-	{
-		label: 'Apple',
-		value: 'apple'
-	},
-	{
-		label: 'Graph',
-		value: 'graph'
-	}
-=======
   title: 'SelectBox',
   component: () => <SelectBox />,
   decorators: [withKnobs]
@@ -44,50 +24,11 @@ const options = [
     label: 'Graph',
     value: 'graph'
   }
->>>>>>> Stashed changes
 ];
 
 export const standard = () => {
-	const selectBoxHook = useSelect(options[0], options);
+  const selectBoxHook = useSelect(options[0], options);
 
-<<<<<<< Updated upstream
-	return (
-		<JDcontainer
-			verticalPadding
-			style={{
-				minHeight: '31.25rem'
-			}}
-		>
-			<div>
-				<SelectBox
-					mode="underline"
-					label="size"
-					{...selectBoxHook}
-				/>
-			</div>
-			<div>
-				<SelectBox
-					mode="underline"
-					size="small"
-					labelPosition="left"
-					label="size"
-					{...selectBoxHook}
-				/>
-			</div>
-			<div>
-				<SelectBox
-					labelPosition="right"
-					size="small"
-					label="size"
-					{...selectBoxHook}
-				/>
-			</div>
-			<div>
-				<SelectBox require label="asdasd" {...selectBoxHook} />
-			</div>
-		</JDcontainer>
-	);
-=======
   return (
     <JDcontainer
       verticalPadding
@@ -112,40 +53,11 @@ export const standard = () => {
       </div>
     </JDcontainer>
   );
->>>>>>> Stashed changes
 };
 
 export const multiSelect = () => {
-	const [selecteds, setSelecteds] = useState<IselectedOption[]>(options);
+  const [selecteds, setSelecteds] = useState<IselectedOption[]>(options);
 
-<<<<<<< Updated upstream
-	return (
-		<JDcontainer
-			style={{
-				minHeight: '31.25rem'
-			}}
-			verticalPadding
-		>
-			<div>
-				<SelectBox
-					isMulti
-					onChanges={ops => {
-						setSelecteds(ops);
-					}}
-					selectedOptions={selecteds}
-					options={options}
-				/>
-			</div>
-		</JDcontainer>
-	);
-};
-
-multiSelect.story = {
-	name: 'multi'
-};
-standard.story = {
-	name: 'standard'
-=======
   return (
     <JDcontainer
       style={{
@@ -172,5 +84,4 @@ multiSelect.story = {
 };
 standard.story = {
   name: 'standard'
->>>>>>> Stashed changes
 };

@@ -1,7 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "workbench.colorTheme": "Halcyon"
-=======
     "workbench.colorTheme": "Halcyon",
     "editor.formatOnSave": true,
     "prettier.bracketSpacing": false,
@@ -9,5 +6,4 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     }
->>>>>>> Stashed changes
 }

@@ -1,5 +1,38 @@
 $select-font-color: $grey-level4;
 
+.JDselect--native {
+  min-height: $standard-line-height;
+  flex-wrap: inherit;
+  border: $select-border;
+  background-color: $select-background;
+  border-radius: $select-radius;
+  outline: none;
+
+  &:focus {
+    border-color: $select-focus-border-color;
+    color: $html-color !important;
+
+  }
+
+  &.JDselect--underline {
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    background-color: transparent !important;
+  }
+
+  &.JDselect--small {
+    height: $standard-small-line-height;
+    padding: 0rem space(1);
+    min-height: 0px;
+  }
+
+  &.JDselect--disabled {
+    border-color: $select-disabled-color;
+  }
+
+}
+
 .JDselect {
   text-align: left;
   font-size: $typho-normal;

@@ -8,6 +8,10 @@ import userTacking from "../../utils/userTracking";
 import { JDatomExtentionSet, JDinputExtention } from "../../types/interface";
 import { JDatomClasses } from "../../utils/autoClasses";
 import { JDlabel } from "../..";
+<<<<<<< Updated upstream
+=======
+import isMobile from "is-mobile";
+>>>>>>> Stashed changes
 
 export interface IselectedOption<T = any> {
   label: string;
@@ -45,6 +49,7 @@ export interface JDselectProps extends SelectComponentsProps, JDinputExtention {
   borderColor?: "primary";
   displayArrow?: boolean;
   menuItemCenterlize?: boolean;
+  nativeOptions?: boolean;
 }
 
 const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
@@ -72,6 +77,7 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   selectedOptions,
   autoSize,
   require,
+  nativeOptions = selectedOptions ? false : true,
   onChanges,
   // eslint-disable-next-line no-unused-vars
   ...props
@@ -101,6 +107,7 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
     "JDselect--textOverflowVisible": textOverflow === "visible",
     "JDselect--menuCanOverflow": menuCanOverflow,
     "JDselect--autoSize": autoSize,
+    "JDselect--native": isMobile() && nativeOptions,
     "JDselect--menuItem-centerlize": menuItemCenterlize,
     ...JDatomClasses(props),
   });
@@ -110,6 +117,15 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   };
 
   const deafultPlaceHolder = "select";
+
+
+  if (nativeOptions && isMobile())
+    return (
+      <select className={classes}>
+        {options?.map((op, i) =>
+          <option selected={op.value === selectedOption?.value} key={op.value + "option" + i} value={op.value}>{op.label}</option>
+        )}
+      </select>)
 
   return (
     <div style={selectStyle} className={classes}>

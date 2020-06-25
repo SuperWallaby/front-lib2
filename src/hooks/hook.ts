@@ -448,7 +448,7 @@ const pureDate = (date: Date | null) => {
 
 function useDayPicker(
   defaultFrom: Date | null | string,
-  defaultTo: Date | null | string
+  defaultTo: Date | null | string,
 ): IUseDayPicker {
   let fromTemp: Date | null | string = defaultFrom;
   let toTemp: Date | null | string = defaultTo;
@@ -461,9 +461,10 @@ function useDayPicker(
   const [to, setTo]: any = useState<Date | null>(pureDate(toTemp));
 
   const setDate = useCallback((date: Date) => {
-    setFrom(date);
-    setEntered(date);
-    setTo(date);
+    const newDate = pureDate(date);
+    setFrom(newDate);
+    setEntered(newDate);
+    setTo(newDate);
   }, []);
 
   return {

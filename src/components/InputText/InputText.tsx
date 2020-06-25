@@ -57,7 +57,7 @@ export interface IInputTextCutsomProp extends JDinputExtention, IInput {
   bg?: "grey" | "noraml";
   /** 벨리데이션 (API 수정필요함) */
   validation?: any;
-  OnChange?(value?: any): void;
+  onChange?(value?: any): void;
   onChangeValid?: any;
   onBlur?(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): any;
   isValid?: any;
@@ -96,7 +96,7 @@ export const InputText = forwardRef<
       type,
       returnNumber,
       validation,
-      OnChange,
+      onChange,
       className,
       bg,
       onBlur,
@@ -160,16 +160,16 @@ export const InputText = forwardRef<
       const result = validation(target.value, max);
       autoChangeHeight();
 
-      if (OnChange) {
+      if (onChange) {
         if (hyphen || comma) {
           if (typeof value === "number" || returnNumber) {
-            OnChange(toNumber(target.value));
+            onChange(toNumber(target.value));
           } else {
-            OnChange(numberStr(target.value));
+            onChange(numberStr(target.value));
           }
         } else if (card) {
-          OnChange(target.value.replace(/ /gi, ""));
-        } else OnChange(target.value || "");
+          onChange(target.value.replace(/ /gi, ""));
+        } else onChange(target.value || "");
       }
 
       onChangeValid ? onChangeValid(result) : setSelfValid(result);
@@ -259,16 +259,16 @@ export const InputText = forwardRef<
               {loading ? (
                 <Preloader noAnimation loading={loading} />
               ) : (
-                icon && (
-                  <JDicon
-                    size={"normal"}
-                    onClick={iconOnClick}
-                    hover={iconHover}
-                    icon={icon}
-                    {...iconProps}
-                  />
-                )
-              )}
+                  icon && (
+                    <JDicon
+                      size={"normal"}
+                      onClick={iconOnClick}
+                      hover={iconHover}
+                      icon={icon}
+                      {...iconProps}
+                    />
+                  )
+                )}
             </span>
           }
           {falseMessage && (
@@ -280,29 +280,29 @@ export const InputText = forwardRef<
         </div>
       </div>
     ) : (
-      <div className={wrapClasses}>
-        <textarea
-          disabled={disabled}
-          value={formatedValue || undefined}
-          onKeyDown={(e) => {
-            e.nativeEvent.stopImmediatePropagation();
-            e.stopPropagation();
-          }}
-          onKeyPress={(e) => {
-            e.nativeEvent.stopImmediatePropagation();
-            e.stopPropagation();
-          }}
-          onChange={inHandleChange}
-          onBlur={onBlur}
-          className={classes + ` JDtextarea${newId}`}
-          readOnly={readOnly}
-          id={id}
-        />
-        <label htmlFor="JDtextarea" className="JDtextarea_label">
-          {label}
-        </label>
-      </div>
-    );
+        <div className={wrapClasses}>
+          <textarea
+            disabled={disabled}
+            value={formatedValue || undefined}
+            onKeyDown={(e) => {
+              e.nativeEvent.stopImmediatePropagation();
+              e.stopPropagation();
+            }}
+            onKeyPress={(e) => {
+              e.nativeEvent.stopImmediatePropagation();
+              e.stopPropagation();
+            }}
+            onChange={inHandleChange}
+            onBlur={onBlur}
+            className={classes + ` JDtextarea${newId}`}
+            readOnly={readOnly}
+            id={id}
+          />
+          <label htmlFor="JDtextarea" className="JDtextarea_label">
+            {label}
+          </label>
+        </div>
+      );
   }
 );
 

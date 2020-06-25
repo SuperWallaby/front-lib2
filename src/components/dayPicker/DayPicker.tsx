@@ -17,7 +17,6 @@ import { JDatomExtentionSet, IDiv, TElements } from "../../types/interface";
 import moment from "moment";
 import DayPickerDay from "./component/DayPickerDay";
 import { JDColor, JDatomClasses } from "../..";
-import { pureDate } from "../../utils/pureDate";
 
 // !!! 주의
 // DayPicker-input이 다른 경로로서 참조되면 어려움.
@@ -125,7 +124,7 @@ const JDdayPicker: React.FC<IJDdayPickerProps> = React.memo(
 
     // handle --day : Click
     const handleDayClick = (rawDate: Date, modifiers: DayModifiers) => {
-      const day = pureDate(rawDate)!;
+      const day = rawDate;
       if (readOnly) return;
       // 불가능한 날자를 눌럿을경우에
       if (modifiers.disabled) return;

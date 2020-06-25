@@ -107,7 +107,7 @@ export const SearchInput: React.FC<IJDsearchInputProp> = ({
           setModalVisible(true);
         }}
         value={searchValue}
-        OnChange={onSearchChange}
+        onChange={onSearchChange}
         icon="magnifier"
         {...inputProp}
       />

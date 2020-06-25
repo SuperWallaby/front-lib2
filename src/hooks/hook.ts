@@ -248,7 +248,7 @@ const useFilesManager = (
       } else {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = function() {
+        reader.onload = function () {
           if (reader.result) {
             const uploadFile = {
               base64: reader.result.toString(),
@@ -260,7 +260,7 @@ const useFilesManager = (
             setUploading(false);
           }
         };
-        reader.onerror = function(error) {
+        reader.onerror = function (error) {
           setUploading(false);
           console.log("Error: ", error);
         };
@@ -302,7 +302,7 @@ function useDebounce(value: any, delay: number) {
 export interface TUseInput<T = string> {
   value: T;
   onChangeValid: (value: boolean | string) => void;
-  OnChange: (foo: any) => any;
+  onChange: (foo: any) => any;
   isValid: any;
 }
 
@@ -334,7 +334,7 @@ function useInput<T = string>(
   const [value, setValue] = useState(defaultValue);
   const [isValid, setIsValid] = useState(defulatValid);
 
-  const OnChange = useCallback((value: any) => {
+  const onChange = useCallback((value: any) => {
     let prefixTemp = prefix || "";
     let suffixTemp = suffix || "";
     setValue(prefixTemp + value + suffixTemp);
@@ -346,7 +346,7 @@ function useInput<T = string>(
 
   return {
     value,
-    OnChange,
+    onChange,
     isValid,
     onChangeValid,
   };
@@ -438,14 +438,6 @@ export interface IUseDayPicker {
   setDate: (date: Date) => void;
 }
 
-const pureDate = (date: Date | null) => {
-  return date
-    ? moment(date)
-        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-        .toDate()
-    : null;
-};
-
 function useDayPicker(
   defaultFrom: Date | null | string,
   defaultTo: Date | null | string,
@@ -456,12 +448,12 @@ function useDayPicker(
   if (typeof defaultTo === "string") toTemp = moment(defaultTo).toDate();
   if (typeof fromTemp === "string") throw Error;
   if (typeof toTemp === "string") throw Error;
-  const [from, setFrom] = useState<Date | null>(pureDate(fromTemp));
-  const [entered, setEntered] = useState<Date | null>(pureDate(toTemp));
-  const [to, setTo]: any = useState<Date | null>(pureDate(toTemp));
+  const [from, setFrom] = useState<Date | null>(fromTemp);
+  const [entered, setEntered] = useState<Date | null>(toTemp);
+  const [to, setTo]: any = useState<Date | null>(toTemp);
 
   const setDate = useCallback((date: Date) => {
-    const newDate = pureDate(date);
+    const newDate = date;
     setFrom(newDate);
     setEntered(newDate);
     setTo(newDate);

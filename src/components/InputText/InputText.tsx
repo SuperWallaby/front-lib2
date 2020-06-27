@@ -255,16 +255,16 @@ export const InputText = forwardRef<
               {loading ? (
                 <Preloader noAnimation loading={loading} />
               ) : (
-                icon && (
-                  <JDicon
-                    size={"normal"}
-                    onClick={iconOnClick}
-                    hover={iconHover}
-                    icon={icon}
-                    {...iconProps}
-                  />
-                )
-              )}
+                  icon && (
+                    <JDicon
+                      size={"normal"}
+                      onClick={iconOnClick}
+                      hover={iconHover}
+                      icon={icon}
+                      {...iconProps}
+                    />
+                  )
+                )}
             </span>
           }
           {falseMessage && (
@@ -276,29 +276,29 @@ export const InputText = forwardRef<
         </div>
       </div>
     ) : (
-      <div className={wrapClasses}>
-        <textarea
-          disabled={disabled}
-          value={formatedValue || undefined}
-          onKeyDown={(e) => {
-            e.nativeEvent.stopImmediatePropagation();
-            e.stopPropagation();
-          }}
-          onKeyPress={(e) => {
-            e.nativeEvent.stopImmediatePropagation();
-            e.stopPropagation();
-          }}
-          onChange={inHandleChange}
-          onBlur={onBlur}
-          className={classes + ` JDtextarea${newId}`}
-          readOnly={readOnly}
-          id={id}
-        />
-        <label htmlFor="JDtextarea" className="JDtextarea_label">
-          {label}
-        </label>
-      </div>
-    );
+        <div className={wrapClasses}>
+          <textarea
+            disabled={disabled}
+            value={formatedValue || undefined}
+            onKeyDown={(e) => {
+              e.nativeEvent.stopImmediatePropagation();
+              e.stopPropagation();
+            }}
+            onKeyPress={(e) => {
+              e.nativeEvent.stopImmediatePropagation();
+              e.stopPropagation();
+            }}
+            onChange={inHandleChange}
+            onBlur={onBlur}
+            className={classes + ` JDtextarea${newId}`}
+            readOnly={readOnly}
+            id={id}
+          />
+          <label htmlFor="JDtextarea" className="JDtextarea_label">
+            {label}
+          </label>
+        </div>
+      );
   }
 );
 

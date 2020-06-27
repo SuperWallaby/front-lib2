@@ -1,10 +1,10 @@
-import styled, {css} from "styled-components";
-import {IButtonProps, IBtnIcon} from "./Button";
-import {shadow3, shadow2} from "../../style/shared";
-import {space, round, color as colorMixin} from "../../style/mixin";
+import styled, { css } from "styled-components";
+import { IButtonProps, IBtnIcon } from "./Button";
+import { shadow3, shadow2 } from "../../style/shared";
+import { space, round, color as colorMixin, JDcommon } from "../../style/mixin";
 import Color from "color";
 
-export interface IButtonStyleProps extends IButtonProps {}
+export interface IButtonStyleProps extends IButtonProps { }
 
 export const StyledButtonContent = styled.span`
   display: flex;
@@ -15,8 +15,8 @@ export const StyledButtonContent = styled.span`
 
 export const StyledButtonIconWrap = styled.i<IBtnIcon>`
   ${(prop: any) => {
-    const {theme, iconDir} = prop;
-    const {buttonsIconMargin} = theme;
+    const { theme, iconDir } = prop;
+    const { buttonsIconMargin } = theme;
 
     return css`
       display: flex;
@@ -25,7 +25,7 @@ export const StyledButtonIconWrap = styled.i<IBtnIcon>`
       white-space: nowrap;
 
       ${iconDir === "left" &&
-        css`
+      css`
            {
             float: left;
             order: -1;
@@ -41,7 +41,7 @@ export const StyledButtonIconWrap = styled.i<IBtnIcon>`
 // 가장 근본적인 컴포넌트 부터 하나씩
 export const StyledButton = styled.button<IButtonStyleProps>`
   ${(prop) => {
-    const {theme, padding, mode, round: radius, size, color} = prop;
+    const { theme, padding, mode, round: radius, size, color } = prop;
     const {
       buttonRadius,
       buttonHeight,
@@ -67,13 +67,14 @@ export const StyledButton = styled.button<IButtonStyleProps>`
     const bgColor = colorMixin(theme, color) || buttonBgColor;
     const bgColorDark = bgColor
       ? Color(bgColor)
-          .darken(0.2)
-          .rgb()
-          .string()
+        .darken(0.2)
+        .rgb()
+        .string()
       : "null";
     const isLightBg = Color(bgColor).isLight();
 
     return css`
+      ${JDcommon(prop, theme)}
       border-radius: ${buttonRadius};
       display: inline-block;
       height: ${buttonHeight};
@@ -119,7 +120,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
       ${radius && `borderRadius: 0 ${round(radius)}`}
 
       ${size === "large" &&
-        css`
+      css`
           height: ${buttonLargeHeight};
           line-height: ${buttonLargeHeight};
           padding: ${buttonLargePadding};
@@ -135,7 +136,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
 
       ${size === "long" &&
-        css`
+      css`
           width: 100%;
           .JDbtn__icon {
             float: none;
@@ -143,7 +144,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
 
       ${size === "long" &&
-        css`
+      css`
           width: 100%;
           .JDbtn__icon {
             float: none;
@@ -151,7 +152,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
           
       ${size === "small" &&
-        css`
+      css`
           font-size: ${buttonTinyFontSize};
           height: ${buttonsTinyHeight};
           .JDbtn__icon {
@@ -160,14 +161,14 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
 
       ${size === "tiny" &&
-        css`
+      css`
           font-size: ${typhoTiny};
           height: ${space(3)};
           padding: 0 ${space(1)};
         `}
 
       ${size === "small" &&
-        css`
+      css`
           font-size: ${buttonSmallFontSize};
 
           .JDbtn__icon {
@@ -176,7 +177,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
 
       ${size === "small" &&
-        css`
+      css`
           font-size: ${buttonSmallFontSize};
 
           .JDbtn__icon {
@@ -185,7 +186,7 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
       
       ${mode === "flat" &&
-        css`
+      css`
           box-shadow: none;
           cursor: pointer;
 
@@ -199,15 +200,15 @@ export const StyledButton = styled.button<IButtonStyleProps>`
         `}
         
       ${mode === "border" &&
-        css`
+      css`
           border: 1px solid;
           box-shadow: none;
           border-color: ${outborderColor};
           &:hover {
             border-color: ${Color(outborderColor)
-              .darken(0.2)
-              .rgb()
-              .string()};
+          .darken(0.2)
+          .rgb()
+          .string()};
           }
         `}
     `;

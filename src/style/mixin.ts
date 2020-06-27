@@ -1,9 +1,10 @@
-import {JDColor, IconSize, TMarginSize} from "..";
-import {JDatomExtentionSet} from "../types/interface";
-import {css} from "styled-components";
-import {theme} from "./theme";
+import { JDColor, IconSize, TMarginSize } from "..";
+import { JDatomExtentionSet } from "../types/interface";
+import { css } from "styled-components";
+import { theme } from "./theme";
+import { shadow1, shadow2, shadow3, shadow4, shadow5, shadow6, shadow7 } from "./shared";
 
-const {columnMargin, columnWidth, totalColumns} = theme;
+const { columnMargin, columnWidth, totalColumns } = theme;
 
 export const gridWidth = (n: number) => {
   return (
@@ -16,6 +17,28 @@ export function space(num: number) {
 }
 export function round(num: number) {
   return num * 3 + "px";
+}
+
+
+export const shadow = (depth?: number) => {
+  switch (depth) {
+    case 1
+      : return shadow1;
+    case 2
+      : return shadow2;
+    case 3
+      : return shadow3;
+    case 4
+      : return shadow4;
+    case 5
+      : return shadow5;
+    case 6
+      : return shadow6;
+    case 7
+      : return shadow7;
+    default:
+      return ""
+  }
 }
 
 export const color = (theme: any, color?: JDColor | null) => {
@@ -146,23 +169,23 @@ interface JDcommonProp extends JDatomExtentionSet {
 }
 
 export const JDcommon = (prop: JDcommonProp, theme: any) => {
-  const {hide, mb, mr, z} = prop;
+  const { hide, mb, mr, z } = prop;
 
   return css`
     ${hide &&
-      css`
+    css`
         display: none !important;
       `}
     ${z &&
-      css`
+    css`
         z-index: ${z * 10};
       `}
     ${mb &&
-      css`
+    css`
         margin-bottom: ${margin(theme, mb)};
       `}
     ${mr &&
-      css`
+    css`
         margin-bottom: ${margin(theme, mr)};
       `}
   `;

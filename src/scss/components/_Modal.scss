@@ -97,7 +97,7 @@
   }
 
   &__closeIcon {
-    position: absolute;
+    position: absolute!important;
     top: $modal-header-padding;
     right: $modal-header-padding;
   }

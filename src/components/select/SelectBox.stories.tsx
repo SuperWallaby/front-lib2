@@ -1,29 +1,29 @@
-import React, {useState} from "react";
-import {withKnobs} from "@storybook/addon-knobs";
+import React, { useState } from "react";
+import { withKnobs } from "@storybook/addon-knobs";
 import SelectBox from "./SelectBox";
 import JDcontainer from "../container/Container";
-import {useSelect} from "../..";
-import {IselectedOption} from "../../types/interface";
+import { useSelect } from "../..";
+import { IselectedOption } from "../../types/interface";
 
 export default {
-  title: "SelectBox",
+  title: 'SelectBox',
   component: () => <SelectBox />,
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
 
 const options = [
   {
-    label: "Strawberry",
-    value: "strawberry",
+    label: 'Strawberry',
+    value: 'strawberry'
   },
   {
-    label: "Apple",
-    value: "apple",
+    label: 'Apple',
+    value: 'apple'
   },
   {
-    label: "Graph",
-    value: "graph",
-  },
+    label: 'Graph',
+    value: 'graph'
+  }
 ];
 
 export const standard = () => {
@@ -33,28 +33,20 @@ export const standard = () => {
     <JDcontainer
       verticalPadding
       style={{
-        minHeight: "31.25rem",
+        minHeight: '31.25rem'
       }}
     >
       <div>
         <SelectBox mode="underline" label="size" {...selectBoxHook} />
       </div>
       <div>
-        <SelectBox
-          mode="underline"
-          size="small"
-          labelPosition="left"
-          label="size"
-          {...selectBoxHook}
-        />
+        <SelectBox mode="underline" size="small" labelPosition="left" label="size" {...selectBoxHook} />
       </div>
       <div>
-        <SelectBox
-          labelPosition="right"
-          size="small"
-          label="size"
-          {...selectBoxHook}
-        />
+        <SelectBox labelPosition="right" size="small" label="size" {...selectBoxHook} />
+      </div>
+      <div>
+        <SelectBox nativeOptions={false} label="No-Native" {...selectBoxHook} />
       </div>
       <div>
         <SelectBox require label="asdasd" {...selectBoxHook} />
@@ -69,7 +61,7 @@ export const multiSelect = () => {
   return (
     <JDcontainer
       style={{
-        minHeight: "31.25rem",
+        minHeight: '31.25rem'
       }}
       verticalPadding
     >
@@ -88,8 +80,5 @@ export const multiSelect = () => {
 };
 
 multiSelect.story = {
-  name: "multi",
-};
-standard.story = {
-  name: "standard",
+  name: 'multi'
 };

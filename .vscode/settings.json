@@ -1,6 +1,9 @@
 {
     "workbench.colorTheme": "Halcyon",
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "remimarsal.prettier-now",
-    "prettier.bracketSpacing": false
+    "prettier.bracketSpacing": false,
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }

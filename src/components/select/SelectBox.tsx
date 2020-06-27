@@ -1,13 +1,14 @@
 // TODO
 // 셀렉트박스 Width 값을 오토로 해주기
 import React from "react";
-import Select, {ValueType} from "react-select";
+import Select, { ValueType } from "react-select";
 import classNames from "classnames";
-import {SelectComponentsProps} from "react-select/src/Select";
+import { SelectComponentsProps } from "react-select/src/Select";
 import userTacking from "../../utils/userTracking";
-import {JDatomExtentionSet, JDinputExtention} from "../../types/interface";
-import {JDatomClasses} from "../../utils/autoClasses";
-import {JDlabel} from "../..";
+import { JDatomExtentionSet, JDinputExtention } from "../../types/interface";
+import { JDatomClasses } from "../../utils/autoClasses";
+import { JDlabel } from "../..";
+import isMobile from "is-mobile";
 
 export interface IselectedOption<T = any> {
   label: string;
@@ -45,6 +46,7 @@ export interface JDselectProps extends SelectComponentsProps, JDinputExtention {
   borderColor?: "primary";
   displayArrow?: boolean;
   menuItemCenterlize?: boolean;
+  nativeOptions?: boolean;
 }
 
 const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
@@ -72,6 +74,7 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   selectedOptions,
   autoSize,
   require,
+  nativeOptions = selectedOptions ? false : true,
   onChanges,
   // eslint-disable-next-line no-unused-vars
   ...props
@@ -101,6 +104,7 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
     "JDselect--textOverflowVisible": textOverflow === "visible",
     "JDselect--menuCanOverflow": menuCanOverflow,
     "JDselect--autoSize": autoSize,
+    "JDselect--native": isMobile() && nativeOptions,
     "JDselect--menuItem-centerlize": menuItemCenterlize,
     ...JDatomClasses(props),
   });
@@ -110,6 +114,20 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
   };
 
   const deafultPlaceHolder = "select";
+
+
+  if (nativeOptions && isMobile())
+    return (
+      <select onChange={(e) => {
+        const value = e.currentTarget.value
+        handleChange(
+          options?.find(op => op.value === value) || { label: "", value: "" }
+        )
+      }} className={classes} >
+        {options?.map((op, i) =>
+          <option value={op.value} selected={op.value === selectedOption?.value} key={op.value + "option" + i} >{op.label}</option>
+        )}
+      </select >)
 
   return (
     <div style={selectStyle} className={classes}>
@@ -139,7 +157,7 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
 JDselectTemp.defaultProps = {
   disabled: false,
   label: "",
-  onChange: () => {},
+  onChange: () => { },
   selectedOption: undefined,
   props: {},
 };

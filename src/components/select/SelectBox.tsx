@@ -118,11 +118,16 @@ const JDselectTemp: React.FC<JDselectProps & JDatomExtentionSet> = ({
 
   if (nativeOptions && isMobile())
     return (
-      <select className={classes}>
+      <select onChange={(e) => {
+        const value = e.currentTarget.value
+        handleChange(
+          options?.find(op => op.value === value) || { label: "", value: "" }
+        )
+      }} className={classes} >
         {options?.map((op, i) =>
-          <option selected={op.value === selectedOption?.value} key={op.value + "option" + i} value={op.value}>{op.label}</option>
+          <option value={op.value} selected={op.value === selectedOption?.value} key={op.value + "option" + i} >{op.label}</option>
         )}
-      </select>)
+      </select >)
 
   return (
     <div style={selectStyle} className={classes}>

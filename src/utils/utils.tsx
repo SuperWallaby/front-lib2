@@ -8,6 +8,7 @@ import autoHypen, {
   dateRangeFormat,
   removeSpecialChar,
 } from "./autoFormat";
+import { share } from "./share";
 import { getFromUrl, getAllFromUrl } from "./getFromUrl";
 import copytoClipboard from "./copyToClipboard";
 import insideRedirect from "./insideRedirect";
@@ -33,6 +34,7 @@ import { selectOpCreater, enumToOption } from "./selectOptionCreater";
 import isLast from "./isLast";
 import { arraySum } from "./elses";
 import onCompletedMessage from "./onCompletedMessage";
+import { updateURLParameter } from "./updateURLParameter"
 import {
   isEmail,
   isNumber,
@@ -81,9 +83,10 @@ const JDutils = {
   s4,
   JDatomClasses,
   getFromResult,
-  isEmail,
   removeSpecialChar,
   dateRangeFormat,
+  share,
+  isEmail,
   isNumber,
   isYYYYMMDD,
   isPhone,
@@ -99,6 +102,7 @@ const JDutils = {
   getFromUrl,
   getAllFromUrl,
   copytoClipboard,
+  updateURLParameter,
   isIncludeSpecialChar,
 };
 
@@ -133,6 +137,7 @@ export {
   isYYYYMMDD,
   isPhone,
   JDatomClasses,
+  updateURLParameter,
   getFromUrl,
   copytoClipboard,
   isName,
@@ -146,5 +151,6 @@ export {
   isHaveScharacter,
   isHaveNumber,
   isIncludeSpecialChar,
+  share
 };
 export default JDutils;

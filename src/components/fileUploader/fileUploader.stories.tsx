@@ -4,13 +4,15 @@ import SingleUploader from './SingleUploader';
 import JDcontainer from '../container/Container';
 import { useFilesManager } from '../../hooks/hook';
 
+
+// #  자바스크립트 파일로 변환하는법: dataURLtoFile(localFile.base64, localFile.fileName) #
 export default {
 	title: 'FileUploader',
 	component: () => {
 		const fileManageHook = useFilesManager();
 		return <SingleUploader fileUploaderHook={fileManageHook} label="" />;
 	},
-	decorators: [ withKnobs ]
+	decorators: [withKnobs]
 };
 
 export const standard = () => {

@@ -2,7 +2,7 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js publish
 
 PATH: 
-  C:\Users\minjae\AppData\Local\Temp\yarn--1589525170959-0.21999761227994719;C:\Users\minjae\Desktop\projects\janda-lib\node_modules\.bin;C:\Users\minjae\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\minjae\AppData\Local\Yarn\bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\minjae\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\MinGW\bin;C:\Program Files\Amazon\AWSCLI\bin;C:\Users\minjae\AppData\Local\Microsoft\WindowsApps;C:\Users\minjae\AppData\Local\Programs\Microsoft VS Code\bin
+  C:\Users\minjae\AppData\Local\Temp\yarn--1593417469479-0.33920880476003856;C:\Users\minjae\Desktop\projects\janda-lib2\node_modules\.bin;C:\Users\minjae\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\minjae\AppData\Local\Yarn\bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\minjae\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\MinGW\bin;C:\Program Files\Amazon\AWSCLI\bin;C:\Users\Computer\AppData\Local\Programs\Python\Python36-32\Script;C:\Users\Computer\AppData\Local\Programs\Python\Python36-32\scripts";C:\Users\minjae\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\Scripts;C:\Users\minjae\AppData\Local\Microsoft\WindowsApps;C:\Users\minjae\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\minjae\.deno\bin
 
 Yarn version: 
   1.22.4
@@ -28,130 +28,133 @@ Trace:
 
 npm manifest: 
   {
-  	"name": "@janda-com/front",
-  	"version": "1.1.10",
-  	"description": "@jd-com/front",
-  	"main": "build/index.js",
-  	"module": "build/index.es.js",
-  	"jsnext:main": "build/index.es.js",
-  	"scripts": {
-  		"prebuild": "rm -r ./build",
-  		"buildw": "rollup -c -w",
-  		"build": "rollup -c",
-  		"onlyBuild": "rollup -c",
-  		"scssBuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../",
-  		"postbuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../ && yarn publish",
-  		"postonlyBuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../",
-  		"lint": "standard",
-  		"format": "prettier-standard --format",
-  		"test": "jest --coverage",
-  		"sb": "start-storybook --port 9091",
-  		"storybook": "start-storybook --port 9091",
-  		"build-storybook": "build-storybook",
-  		"precodegen": "apollo schema:download --endpoint=https://temp-booking.stayjanda.cloud/graphql",
-  		"codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/apollo/queries.ts --addTypename --localSchemaFile=schema.json --target=typescript --outputFlat"
-  	},
-  	"keywords": [],
-  	"author": "",
-  	"license": "ISC",
-  	"devDependencies": {
-  		"@babel/core": "^7.8.4",
-  		"@rollup/plugin-json": "^4.0.2",
-  		"@storybook/addon-actions": "^5.3.14",
-  		"@storybook/addon-docs": "^5.3.17",
-  		"@storybook/addon-knobs": "^5.3.14",
-  		"@storybook/addon-notes": "^5.3.14",
-  		"@storybook/preset-create-react-app": "^2.1.1",
-  		"@storybook/preset-typescript": "^2.1.0",
-  		"@storybook/react": "^5.3.14",
-  		"@testing-library/jest-dom": "4.2.4",
-  		"@testing-library/react": "^9.4.0",
-  		"@types/classnames": "^2.2.10",
-  		"@types/graphql": "^14.5.0",
-  		"@types/jest": "^24.0.24",
-  		"@types/jquery": "^3.3.33",
-  		"@types/leven": "^2.1.2",
-  		"@types/moment-timezone": "^0.5.12",
-  		"@types/react": "^16.9.17",
-  		"@types/react-window-size": "^1.2.0",
-  		"awesome-typescript-loader": "^5.2.1",
-  		"babel-loader": "^8.0.6",
-  		"jest": "^24.9.0",
-  		"leven": "^3.1.0",
-  		"node-sass": "^4.14.0",
-  		"react": "^16.12.0",
-  		"react-dom": "^16.12.0",
-  		"react-table": "^6.10.0",
-  		"rollup": "^1.27.13",
-  		"rollup-plugin-commonjs": "^10.1.0",
-  		"rollup-plugin-node-resolve": "^5.2.0",
-  		"rollup-plugin-peer-deps-external": "^2.2.0",
-  		"rollup-plugin-typescript2": "^0.25.3",
-  		"sass-loader": "^8.0.2",
-  		"standard": "^14.3.1",
-  		"standard-prettier": "^1.0.1",
-  		"ts-jest": "^24.2.0",
-  		"typescript": "^3.7.3"
-  	},
-  	"peerDependencies": {
-  		"node-sass": "^4.13.1",
-  		"react": "^16",
-  		"react-dom": "^16",
-  		"react-table": "^6.10.0"
-  	},
-  	"jest": {
-  		"preset": "ts-jest",
-  		"testEnvironment": "jsdom",
-  		"testPathIgnorePatterns": [
-  			"build/"
-  		]
-  	},
-  	"standard": {
-  		"ignore": [
-  			"node_modules/",
-  			"build/",
-  			".storybook/"
-  		],
-  		"globals": [
-  			"describe",
-  			"it",
-  			"test",
-  			"expect",
-  			"afterAll",
-  			"jest"
-  		]
-  	},
-  	"publishConfig": {
-  		"access": "public"
-  	},
-  	"dependencies": {
-  		"@apollo/react-common": "^3.1.3",
-  		"@types/react-dom": "^16.9.4",
-  		"@types/react-modal": "^3.10.5",
-  		"@types/react-paginate": "^6.2.1",
-  		"@types/react-select": "^3.0.10",
-  		"@types/react-slick": "^0.23.4",
-  		"@types/react-table": "^6.8.3",
-  		"@types/react-tabs": "^2.3.1",
-  		"@types/react-toastify": "^4.1.0",
-  		"apollo-client": "^2.6.8",
-  		"classnames": "^2.2.6",
-  		"graphql": "^14.6.0",
-  		"is-mobile": "^2.2.1",
-  		"jquery": "^3.4.1",
-  		"moment-timezone": "^0.5.28",
-  		"react-day-picker": "^7.4.8",
-  		"react-docgen-typescript-loader": "^3.7.1",
-  		"react-image-file-resizer": "^0.2.1",
-  		"react-modal": "^3.11.2",
-  		"react-paginate": "^6.3.2",
-  		"react-slick": "^0.25.2",
-  		"react-spring": "^8.0.27",
-  		"react-tabs": "^3.1.0",
-  		"react-toastify": "^5.5.0",
-  		"react-tooltip": "^4.2.6",
-  		"react-window-size": "^1.2.2"
-  	}
+    "name": "@janda-com/front",
+    "version": "2.1.0",
+    "description": "@jd-com/front",
+    "main": "build/index.js",
+    "module": "build/index.es.js",
+    "jsnext:main": "build/index.es.js",
+    "scripts": {
+      "prebuild": "rm -rf ./build",
+      "buildw": "rollup -c -w",
+      "build": "rollup -c",
+      "onlyBuild": "rollup -c",
+      "scssBuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../",
+      "postbuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../ && yarn publish",
+      "postonlyBuild": "cd ./src/scss && npx copy **/**/* **/* * ../../build/scss && cd ../../",
+      "lint": "standard",
+      "format": "prettier-standard --format",
+      "test": "jest --coverage",
+      "sb": "start-storybook --port 9091",
+      "storybook": "start-storybook --port 9091",
+      "s-build": "build-storybook",
+      "s-upload": "aws s3 cp storybook-static s3://stayjanda.modules.public/jdUi/2.0.25/  --recursive",
+      "s-b-u": "yarn s-build && yarn s-upload",
+      "precodegen": "apollo schema:download --endpoint=https://temp-booking.stayjanda.cloud/graphql",
+      "codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/apollo/queries.ts --addTypename --localSchemaFile=schema.json --target=typescript --outputFlat"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/core": "^7.8.4",
+      "@rollup/plugin-json": "^4.0.2",
+      "@storybook/addon-actions": "^5.3.14",
+      "@storybook/addon-docs": "^5.3.17",
+      "@storybook/addon-knobs": "^5.3.14",
+      "@storybook/addon-notes": "^5.3.14",
+      "@storybook/preset-create-react-app": "^2.1.1",
+      "@storybook/preset-typescript": "^2.1.0",
+      "@storybook/react": "^5.3.14",
+      "@storybook/theming": "^5.3.19",
+      "@testing-library/jest-dom": "4.2.4",
+      "@testing-library/react": "^9.4.0",
+      "@types/classnames": "^2.2.10",
+      "@types/graphql": "^14.5.0",
+      "@types/jest": "^24.0.24",
+      "@types/jquery": "^3.3.33",
+      "@types/leven": "^2.1.2",
+      "@types/moment-timezone": "^0.5.12",
+      "@types/react": "^16.9.17",
+      "@types/react-window-size": "^1.2.0",
+      "awesome-typescript-loader": "^5.2.1",
+      "babel-loader": "^8.0.6",
+      "jest": "^24.9.0",
+      "leven": "^3.1.0",
+      "node-sass": "^4.14.0",
+      "react": "^16.12.0",
+      "react-day-picker": "^7.4.8",
+      "react-dom": "^16.12.0",
+      "rollup": "^1.27.13",
+      "rollup-plugin-commonjs": "^10.1.0",
+      "rollup-plugin-node-resolve": "^5.2.0",
+      "rollup-plugin-peer-deps-external": "^2.2.0",
+      "rollup-plugin-typescript2": "^0.25.3",
+      "sass-loader": "^8.0.2",
+      "standard": "^14.3.1",
+      "standard-prettier": "^1.0.1",
+      "ts-jest": "^24.2.0",
+      "typescript": "^3.9.5"
+    },
+    "peerDependencies": {
+      "node-sass": "^4.13.1",
+      "react": "^16",
+      "react-day-picker": "^7.4.8",
+      "react-dom": "^16"
+    },
+    "jest": {
+      "preset": "ts-jest",
+      "testEnvironment": "jsdom",
+      "testPathIgnorePatterns": [
+        "build/"
+      ]
+    },
+    "standard": {
+      "ignore": [
+        "node_modules/",
+        "build/",
+        ".storybook/"
+      ],
+      "globals": [
+        "describe",
+        "it",
+        "test",
+        "expect",
+        "afterAll",
+        "jest"
+      ]
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "dependencies": {
+      "@apollo/react-common": "^3.1.3",
+      "@types/react-dom": "^16.9.4",
+      "@types/react-helmet": "^6.0.0",
+      "@types/react-modal": "^3.10.5",
+      "@types/react-paginate": "^6.2.1",
+      "@types/react-select": "^3.0.10",
+      "@types/react-slick": "^0.23.4",
+      "@types/react-tabs": "^2.3.1",
+      "@types/react-toastify": "^4.1.0",
+      "apollo-client": "^2.6.8",
+      "classnames": "^2.2.6",
+      "graphql": "^14.6.0",
+      "is-mobile": "^2.2.1",
+      "jquery": "^3.4.1",
+      "moment-timezone": "^0.5.28",
+      "react-docgen-typescript-loader": "^3.7.1",
+      "react-helmet": "^6.1.0",
+      "react-image-file-resizer": "^0.2.1",
+      "react-modal": "^3.11.2",
+      "react-paginate": "^6.3.2",
+      "react-slick": "^0.25.2",
+      "react-spring": "^8.0.27",
+      "react-tabs": "^3.1.0",
+      "react-toastify": "^5.5.0",
+      "react-tooltip": "^4.2.6",
+      "react-window-size": "^1.2.2"
+    }
   }
 
 yarn manifest: 
@@ -1675,6 +1678,13 @@ Lockfile:
     dependencies:
       core-js "^3.0.1"
   
+  "@storybook/client-logger@5.3.19":
+    version "5.3.19"
+    resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-5.3.19.tgz#fbbd186e82102eaca1d6a5cca640271cae862921"
+    integrity sha512-nHftT9Ow71YgAd2/tsu79kwKk30mPuE0sGRRUHZVyCRciGFQweKNOS/6xi2Aq+WwBNNjPKNlbgxwRt1yKe1Vkg==
+    dependencies:
+      core-js "^3.0.1"
+  
   "@storybook/components@5.3.18":
     version "5.3.18"
     resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.3.18.tgz#528f6ab1660981e948993a04b407a6fad7751589"
@@ -1896,6 +1906,24 @@ Lockfile:
       "@emotion/core" "^10.0.20"
       "@emotion/styled" "^10.0.17"
       "@storybook/client-logger" "5.3.18"
+      core-js "^3.0.1"
+      deep-object-diff "^1.1.0"
+      emotion-theming "^10.0.19"
+      global "^4.3.2"
+      memoizerific "^1.11.3"
+      polished "^3.3.1"
+      prop-types "^15.7.2"
+      resolve-from "^5.0.0"
+      ts-dedent "^1.1.0"
+  
+  "@storybook/theming@^5.3.19":
+    version "5.3.19"
+    resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.3.19.tgz#177d9819bd64f7a1a6ea2f1920ffa5baf9a5f467"
+    integrity sha512-ecG+Rq3hc1GOzKHamYnD4wZ0PEP9nNg0mXbC3RhbxfHj+pMMCWWmx9B2Uu75SL1PTT8WcfkFO0hU/0IO84Pzlg==
+    dependencies:
+      "@emotion/core" "^10.0.20"
+      "@emotion/styled" "^10.0.17"
+      "@storybook/client-logger" "5.3.19"
       core-js "^3.0.1"
       deep-object-diff "^1.1.0"
       emotion-theming "^10.0.19"
@@ -2273,6 +2301,13 @@ Lockfile:
     dependencies:
       "@types/react" "*"
   
+  "@types/react-helmet@^6.0.0":
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.0.0.tgz#5b74e44a12662ffb12d1c97ee702cf4e220958cf"
+    integrity sha512-NBMPAxgjpaMooXa51cU1BTgrX6T+hQbMiLm77JhBbfOzPQea3RB5rNpPOD5xGWHIVpGXHd59cltEzIq0qglGcQ==
+    dependencies:
+      "@types/react" "*"
+  
   "@types/react-modal@^3.10.5":
     version "3.10.5"
     resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.10.5.tgz#5aa40bcb71b59243126069330856eb430ed3adcc"
@@ -2307,13 +2342,6 @@ Lockfile:
     version "11.0.4"
     resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-11.0.4.tgz#d86d17697db62f98046874f62fdb3e53a0bbc4cd"
     integrity sha512-9GfTo3a0PHwQeTVoqs0g5bS28KkSY48pp5659wA+Dp4MqceDEa8EHBqrllJvvtyusszyJhViUEap0FDvlk/9Zg==
-    dependencies:
-      "@types/react" "*"
-  
-  "@types/react-table@^6.8.3", "@types/react-table@^6.8.5":
-    version "6.8.7"
-    resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-6.8.7.tgz#210ffa2862dd3711350676c0bdbbfbff45f14b84"
-    integrity sha512-1U0xl47jk0BzE+HNHgxZYSLvtybSvnlLhOpW9Mfqf9iuRm/fGqgRab3TKivPCY6Tl7WPFM2hWEJ1GnsuSFc9AQ==
     dependencies:
       "@types/react" "*"
   
@@ -10416,6 +10444,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
     integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
   
+  react-fast-compare@^3.1.1:
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+    integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+  
   react-focus-lock@^2.1.0:
     version "2.2.1"
     resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.2.1.tgz#1d12887416925dc53481914b7cedd39494a3b24a"
@@ -10438,6 +10471,16 @@ Lockfile:
       prop-types "^15.7.2"
       react-fast-compare "^2.0.4"
       shallowequal "^1.1.0"
+  
+  react-helmet@^6.1.0:
+    version "6.1.0"
+    resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+    integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
+    dependencies:
+      object-assign "^4.1.1"
+      prop-types "^15.7.2"
+      react-fast-compare "^3.1.1"
+      react-side-effect "^2.1.0"
   
   react-hotkeys@2.0.0:
     version "2.0.0"
@@ -10529,6 +10572,11 @@ Lockfile:
       react-input-autosize "^2.2.2"
       react-transition-group "^4.3.0"
   
+  react-side-effect@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
+    integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
+  
   react-sizeme@^2.6.7:
     version "2.6.12"
     resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-2.6.12.tgz#ed207be5476f4a85bf364e92042520499455453e"
@@ -10568,15 +10616,6 @@ Lockfile:
       lowlight "~1.11.0"
       prismjs "^1.8.4"
       refractor "^2.4.1"
-  
-  react-table@^6.10.0:
-    version "6.11.5"
-    resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.11.5.tgz#84e52885db426a07a6c4ce2c7e942f2cd4e2aa58"
-    integrity sha512-LM+AS9v//7Y7lAlgTWW/cW6Sn5VOb3EsSkKQfQTzOW8FngB1FUskLLNEVkAYsTX9LjOWR3QlGjykJqCE6eXT/g==
-    dependencies:
-      "@types/react-table" "^6.8.5"
-      classnames "^2.2.5"
-      react-is "^16.8.1"
   
   react-tabs@^3.1.0:
     version "3.1.0"
@@ -12627,10 +12666,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
-  typescript@^3.7.3:
-    version "3.8.3"
-    resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
-    integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
+  typescript@^3.9.5:
+    version "3.9.5"
+    resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.5.tgz#586f0dba300cde8be52dd1ac4f7e1009c1b13f36"
+    integrity sha512-hSAifV3k+i6lEoCJ2k6R2Z/rp/H3+8sdmcn5NrS3/3kE7+RyZXm9aqvxWqjEXHAd8b0pShatpcdMTvEdvAJltQ==
   
   uglify-js@^2.6.1:
     version "2.8.29"

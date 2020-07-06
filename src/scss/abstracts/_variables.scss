@@ -94,12 +94,6 @@ $pupple: #705f93 !default;
 $third-color: $pupple;
 $third-color-dark: darken($third-color, 5%);
 
-$buyer-main-color: $third-color;
-$buyer-main-color-dark: $third-color-dark;
-$buyer-main-color-liner: linear-gradient(90deg,
-  rgba(112, 95, 147, 1) 0%,
-  rgba(138, 80, 130, 1) 100%);
-
 $orange-color: #ff6e16 !default;
 $orange-color-on: white !default;
 $orange-color-dark: darken(#f58f2c, 15%) !default;

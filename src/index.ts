@@ -17,7 +17,10 @@ import InputText from "./components/InputText/InputText";
 import JDalign, { IJDalignProp } from "./components/align/Align";
 import JDcontainer from "./components/container/Container";
 import JDtypho from "./components/typho/Typho";
+import JDshareBtn from "./components/social/ShareBtn";
+import JDsocialHead from "./components/social/SocialHead";
 import JDavatar from "./components/avatar/Avatar";
+import JDcolorPicker from "./components/colorPicker/JDcolorPicker";
 import JDphotoModal, {
   TPhotoModalInfo,
 } from "./components/photoModal/PhotoModal";
@@ -42,6 +45,7 @@ import TooltipList, {
   TButtonProp,
 } from "./components/tooltipList/TooltipList";
 import JDpagination from "./components/pagination/Pagination";
+import JDradio from "./components/radio/Radio";
 import JDradioButton from "./components/radioButton/RadioButton";
 import JDfileManager from "./components/fileManager/FileManager";
 import JDFileManagerModal from "./components/fileManager/FileManagerModal";
@@ -98,6 +102,7 @@ const {
   useSwitch,
   useToggle,
   useFilesManager,
+  useColorPicker
 } = hooks;
 
 //TODO 유틸만 따로 모듈 분리
@@ -147,16 +152,21 @@ const {
   getAllFromUrl,
   copytoClipboard,
   dataURLtoFile,
+  share,
+  updateURLParameter
 } = utils;
 
 export {
   TDayPickerDot,
   JDtypho,
   JDslider,
+  JDshareBtn,
   JDbadge,
   JDslide,
   JDselect,
   JDconfiger,
+  JDsocialHead,
+  JDcolorPicker,
   to4YMMDD,
   JDradioButton,
   WindowSize,
@@ -187,6 +197,7 @@ export {
   useSwitch,
   useToggle,
   useRadioButton,
+  useColorPicker,
   DEFAULT_PHOTO,
   JDbutton,
   ButtonMemo,
@@ -217,6 +228,7 @@ export {
   JDmodal,
   JDavatar,
   ReactTooltip,
+  JDradio,
   JDlist,
   JDcontainer,
   TabPanel,
@@ -279,6 +291,7 @@ export {
   numberStr,
   onCompletedMessage,
   queryDataFormater,
+  updateURLParameter,
   randomIntFromInterval,
   removeNullOfObject,
   removeSpecialChar,
@@ -290,4 +303,5 @@ export {
   textAlignClass,
   getFromUrl,
   toNumber,
+  share,
 };

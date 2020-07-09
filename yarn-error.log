@@ -2,7 +2,11 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
 
 PATH: 
+<<<<<<< HEAD
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\MinGW\bin;C:\Program Files\Amazon\AWSCLI\bin\;"C:\Users\Computer\AppData\Local\Programs\Python\Python36-32\Scripts;C:\Users\Computer\AppData\Local\Programs\Python\Python36-32\scripts";C:\Users\minjae\AppData\Local\Microsoft\WindowsApps;;C:\Users\minjae\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\minjae\.deno\bin
+=======
+  C:\Users\minjae\AppData\Local\Temp\yarn--1593417469479-0.33920880476003856;C:\Users\minjae\Desktop\projects\janda-lib2\node_modules\.bin;C:\Users\minjae\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\minjae\AppData\Local\Yarn\bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\minjae\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\7-Zip;C:\MinGW\bin;C:\Program Files\Amazon\AWSCLI\bin;C:\Users\Computer\AppData\Local\Programs\Python\Python36-32\Script;C:\Users\Computer\AppData\Local\Programs\Python\Python36-32\scripts";C:\Users\minjae\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\Scripts;C:\Users\minjae\AppData\Local\Microsoft\WindowsApps;C:\Users\minjae\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\minjae\.deno\bin
+>>>>>>> develop
 
 Yarn version: 
   1.22.4
@@ -20,7 +24,11 @@ Trace:
 npm manifest: 
   {
     "name": "@janda-com/front",
+<<<<<<< HEAD
     "version": "2.0.27",
+=======
+    "version": "2.1.0",
+>>>>>>> develop
     "description": "@jd-com/front",
     "main": "build/index.js",
     "module": "build/index.es.js",
@@ -61,7 +69,10 @@ npm manifest:
       "@testing-library/jest-dom": "4.2.4",
       "@testing-library/react": "^9.4.0",
       "@types/classnames": "^2.2.10",
+<<<<<<< HEAD
       "@types/color": "^3.0.1",
+=======
+>>>>>>> develop
       "@types/graphql": "^14.5.0",
       "@types/jest": "^24.0.24",
       "@types/jquery": "^3.3.33",
@@ -69,12 +80,19 @@ npm manifest:
       "@types/moment-timezone": "^0.5.12",
       "@types/react": "^16.9.17",
       "@types/react-window-size": "^1.2.0",
+<<<<<<< HEAD
       "@types/styled-components": "^5.1.1",
+=======
+>>>>>>> develop
       "awesome-typescript-loader": "^5.2.1",
       "babel-loader": "^8.0.6",
       "jest": "^24.9.0",
       "leven": "^3.1.0",
+<<<<<<< HEAD
       "node-sass": "^4.14.1",
+=======
+      "node-sass": "^4.14.0",
+>>>>>>> develop
       "react": "^16.12.0",
       "react-day-picker": "^7.4.8",
       "react-dom": "^16.12.0",
@@ -83,12 +101,18 @@ npm manifest:
       "rollup-plugin-node-resolve": "^5.2.0",
       "rollup-plugin-peer-deps-external": "^2.2.0",
       "rollup-plugin-typescript2": "^0.25.3",
+<<<<<<< HEAD
       "sass-extract": "^2.1.0",
       "sass-extract-js": "^0.4.0",
       "sass-extract-loader": "^1.1.0",
       "sass-loader": "^8.0.2",
       "standard": "^14.3.1",
       "storybook-addon-styled-component-theme": "^1.3.0",
+=======
+      "sass-loader": "^8.0.2",
+      "standard": "^14.3.1",
+      "standard-prettier": "^1.0.1",
+>>>>>>> develop
       "ts-jest": "^24.2.0",
       "typescript": "^3.9.5"
     },
@@ -126,6 +150,10 @@ npm manifest:
     "dependencies": {
       "@apollo/react-common": "^3.1.3",
       "@types/react-dom": "^16.9.4",
+<<<<<<< HEAD
+=======
+      "@types/react-helmet": "^6.0.0",
+>>>>>>> develop
       "@types/react-modal": "^3.10.5",
       "@types/react-paginate": "^6.2.1",
       "@types/react-select": "^3.0.10",
@@ -134,12 +162,19 @@ npm manifest:
       "@types/react-toastify": "^4.1.0",
       "apollo-client": "^2.6.8",
       "classnames": "^2.2.6",
+<<<<<<< HEAD
       "color": "^3.1.2",
+=======
+>>>>>>> develop
       "graphql": "^14.6.0",
       "is-mobile": "^2.2.1",
       "jquery": "^3.4.1",
       "moment-timezone": "^0.5.28",
       "react-docgen-typescript-loader": "^3.7.1",
+<<<<<<< HEAD
+=======
+      "react-helmet": "^6.1.0",
+>>>>>>> develop
       "react-image-file-resizer": "^0.2.1",
       "react-modal": "^3.11.2",
       "react-paginate": "^6.3.2",
@@ -148,8 +183,12 @@ npm manifest:
       "react-tabs": "^3.1.0",
       "react-toastify": "^5.5.0",
       "react-tooltip": "^4.2.6",
+<<<<<<< HEAD
       "react-window-size": "^1.2.2",
       "styled-components": "^5.1.1"
+=======
+      "react-window-size": "^1.2.2"
+>>>>>>> develop
     }
   }
 
@@ -1727,10 +1766,24 @@ Lockfile:
     dependencies:
       core-js "^3.0.1"
   
+<<<<<<< HEAD
   "@storybook/components@5.3.19":
     version "5.3.19"
     resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.3.19.tgz#aac1f9eea1247cc85bd93b10fca803876fb84a6b"
     integrity sha512-3g23/+ktlocaHLJKISu9Neu3XKa6aYP2ctDYkRtGchSB0Q55hQsUVGO+BEVuT7Pk2D59mVCxboBjxcRoPUY4pw==
+=======
+  "@storybook/client-logger@5.3.19":
+    version "5.3.19"
+    resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-5.3.19.tgz#fbbd186e82102eaca1d6a5cca640271cae862921"
+    integrity sha512-nHftT9Ow71YgAd2/tsu79kwKk30mPuE0sGRRUHZVyCRciGFQweKNOS/6xi2Aq+WwBNNjPKNlbgxwRt1yKe1Vkg==
+    dependencies:
+      core-js "^3.0.1"
+  
+  "@storybook/components@5.3.18":
+    version "5.3.18"
+    resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.3.18.tgz#528f6ab1660981e948993a04b407a6fad7751589"
+    integrity sha512-LIN4aVCCDY7klOwtuqQhfYz4tHaMADhXEzZpij+3r8N68Inck6IJ1oo9A9umXQPsTioQi8e6FLobH1im90j/2A==
+>>>>>>> develop
     dependencies:
       "@storybook/client-logger" "5.3.19"
       "@storybook/theming" "5.3.19"
@@ -1958,10 +2011,35 @@ Lockfile:
       resolve-from "^5.0.0"
       ts-dedent "^1.1.0"
   
+<<<<<<< HEAD
   "@storybook/ui@5.3.19":
     version "5.3.19"
     resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-5.3.19.tgz#ac03b67320044a3892ee784111d4436b61874332"
     integrity sha512-r0VxdWab49nm5tzwvveVDnsHIZHMR76veYOu/NHKDUZ5hnQl1LMG1YyMCFFa7KiwD/OrZxRWr6/Ma7ep9kR4Gw==
+=======
+  "@storybook/theming@^5.3.19":
+    version "5.3.19"
+    resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.3.19.tgz#177d9819bd64f7a1a6ea2f1920ffa5baf9a5f467"
+    integrity sha512-ecG+Rq3hc1GOzKHamYnD4wZ0PEP9nNg0mXbC3RhbxfHj+pMMCWWmx9B2Uu75SL1PTT8WcfkFO0hU/0IO84Pzlg==
+    dependencies:
+      "@emotion/core" "^10.0.20"
+      "@emotion/styled" "^10.0.17"
+      "@storybook/client-logger" "5.3.19"
+      core-js "^3.0.1"
+      deep-object-diff "^1.1.0"
+      emotion-theming "^10.0.19"
+      global "^4.3.2"
+      memoizerific "^1.11.3"
+      polished "^3.3.1"
+      prop-types "^15.7.2"
+      resolve-from "^5.0.0"
+      ts-dedent "^1.1.0"
+  
+  "@storybook/ui@5.3.18":
+    version "5.3.18"
+    resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-5.3.18.tgz#c66f6d94a3c50bb706f4d5b1d5592439110f16f0"
+    integrity sha512-xyXK53fNe9lkGPmXf3Nk+n0gz9gOgXI+fDxetyDLpX79k3DIN/jCKEnv45vXof7OQ45mTmyBvUNTKrNLqKTt5Q==
+>>>>>>> develop
     dependencies:
       "@emotion/core" "^10.0.20"
       "@storybook/addons" "5.3.19"
@@ -2356,6 +2434,13 @@ Lockfile:
     version "16.9.8"
     resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
     integrity sha512-ykkPQ+5nFknnlU6lDd947WbQ6TE3NNzbQAkInC2EKY1qeYdTKp7onFusmYZb+ityzx2YviqT6BXSu+LyWWJwcA==
+    dependencies:
+      "@types/react" "*"
+  
+  "@types/react-helmet@^6.0.0":
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.0.0.tgz#5b74e44a12662ffb12d1c97ee702cf4e220958cf"
+    integrity sha512-NBMPAxgjpaMooXa51cU1BTgrX6T+hQbMiLm77JhBbfOzPQea3RB5rNpPOD5xGWHIVpGXHd59cltEzIq0qglGcQ==
     dependencies:
       "@types/react" "*"
   
@@ -10252,6 +10337,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
     integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
   
+  react-fast-compare@^3.1.1:
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+    integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+  
   react-focus-lock@^2.1.0:
     version "2.3.1"
     resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.3.1.tgz#9d5d85899773609c7eefa4fc54fff6a0f5f2fc47"
@@ -10274,6 +10364,16 @@ Lockfile:
       prop-types "^15.7.2"
       react-fast-compare "^3.0.1"
       shallowequal "^1.1.0"
+  
+  react-helmet@^6.1.0:
+    version "6.1.0"
+    resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+    integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
+    dependencies:
+      object-assign "^4.1.1"
+      prop-types "^15.7.2"
+      react-fast-compare "^3.1.1"
+      react-side-effect "^2.1.0"
   
   react-hotkeys@2.0.0:
     version "2.0.0"
@@ -10364,6 +10464,11 @@ Lockfile:
       prop-types "^15.6.0"
       react-input-autosize "^2.2.2"
       react-transition-group "^4.3.0"
+  
+  react-side-effect@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
+    integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
   
   react-sizeme@^2.6.7:
     version "2.6.12"
@@ -12422,6 +12527,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
+<<<<<<< HEAD
   typescript@^3.7.3:
     version "3.9.5"
     resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.5.tgz#586f0dba300cde8be52dd1ac4f7e1009c1b13f36"
@@ -12431,6 +12537,12 @@ Lockfile:
     version "0.7.21"
     resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
     integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
+=======
+  typescript@^3.9.5:
+    version "3.9.5"
+    resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.5.tgz#586f0dba300cde8be52dd1ac4f7e1009c1b13f36"
+    integrity sha512-hSAifV3k+i6lEoCJ2k6R2Z/rp/H3+8sdmcn5NrS3/3kE7+RyZXm9aqvxWqjEXHAd8b0pShatpcdMTvEdvAJltQ==
+>>>>>>> develop
   
   uglify-js@^2.6.1:
     version "2.8.29"

@@ -17,6 +17,7 @@ import s4 from "../utils/keyGen";
 import { removeSpecialChar } from "../utils/autoFormat";
 import moment from "moment-timezone";
 import { IRadiosOps } from "../components/radioButton/RadioButton";
+import randomColor from "randomcolor";
 
 export type IUseFetch = [
   any,
@@ -24,6 +25,46 @@ export type IUseFetch = [
   boolean,
   (url: string | undefined) => void
 ];
+
+
+// 색상 필커
+export interface IUseColor {
+  color: string;
+  setColor: (inInfo: string) => void;
+  setDisplay: (inInfo: boolean) => void;
+  display: boolean;
+}
+
+// NAME SPACE
+function useColorPicker(defaultValue: string | null): IUseColor {
+  let defaultColor: string = "";
+  if (!defaultValue) {
+    const temp: any = randomColor();
+    if (temp instanceof Array) {
+      defaultColor = temp[0];
+    }
+  } else {
+    defaultColor = defaultValue;
+  }
+
+  const [color, inSetColor] = useState(defaultColor);
+  const [display, inSetDisplay] = useState(false);
+
+  const setColor = (value: string) => {
+    inSetColor(value);
+  };
+
+  const setDisplay = (value: boolean) => {
+    inSetDisplay(value);
+  };
+
+  return {
+    color,
+    setColor,
+    setDisplay,
+    display,
+  };
+}
 
 const useShouldSave = (updateValue: any[]) => {
   const isInitialMount = useRef(true);
@@ -703,10 +744,12 @@ export default {
   useWindowSize,
   useDropDown,
   useRadioButton,
+  useColorPicker
 };
 
 export {
   useInput,
+  useColorPicker,
   useCheckBox,
   useRadio,
   useSwitch,

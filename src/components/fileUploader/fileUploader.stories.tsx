@@ -1,9 +1,11 @@
 import React from "react";
-import {withKnobs} from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 import SingleUploader from "./SingleUploader";
 import JDcontainer from "../container/Container";
-import {useFilesManager} from "../../hooks/hook";
+import { useFilesManager } from "../../hooks/hook";
 
+
+// #  자바스크립트 파일로 변환하는법: dataURLtoFile(localFile.base64, localFile.fileName) #
 export default {
   title: "FileUploader",
   component: () => {

@@ -264,14 +264,17 @@ const useFilesManager = (
     const result = validateFile(event, handleErr);
 
     if (result) {
+      let changeType = "JPEG";
       const { file, filteredName, isImg } = result;
-
+      if(file.type.includes("png")) 
+        changeType = "PNG";
+      
       if (isImg) {
         Resizer.imageFileResizer(
           file,
           imgOption.resizeMaxWidth,
           imgOption.resizeMaxHeight,
-          "JPEG",
+          changeType,
           imgOption.quality,
           0,
           async (base64: string) => {

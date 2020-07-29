@@ -1,6 +1,5 @@
 {
     "workbench.colorTheme": "Halcyon",
-    "editor.formatOnSave": true,
     "prettier.bracketSpacing": false,
     "editor.defaultFormatter": "vscode.typescript-language-features",
     "[typescriptreact]": {

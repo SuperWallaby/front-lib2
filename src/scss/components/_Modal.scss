@@ -23,6 +23,8 @@
         padding-bottom: space(2);
       }
       &__foot {
+
+        border-top: 1px solid $grey-level1;
         z-index: $z-index-6;
         padding-top: space(2);
         position: sticky;
@@ -53,6 +55,7 @@
     min-width: 0 !important;
     max-width: fit-content !important;
     width: fit-content !important;
+    transition: 0s!important;
   }
 
   &--alert {

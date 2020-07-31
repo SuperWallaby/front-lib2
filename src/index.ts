@@ -44,6 +44,7 @@ import TooltipList, {
   TooltipButtons,
   TButtonProp,
 } from "./components/tooltipList/TooltipList";
+import JDpriceViewer from "./components/priceViewer/PriceViewer";
 import JDpagination from "./components/pagination/Pagination";
 import JDradio from "./components/radio/Radio";
 import JDradioButton from "./components/radioButton/RadioButton";
@@ -81,6 +82,7 @@ import {
 import { DEFAULT_PHOTO } from "./types/defaults";
 import utils from "./utils/utils";
 import { toast } from "react-toastify";
+
 
 const {
   useCheckBox,
@@ -230,6 +232,7 @@ export {
   ReactTooltip,
   JDradio,
   JDlist,
+  JDpriceViewer,
   JDcontainer,
   TabPanel,
   Tab,

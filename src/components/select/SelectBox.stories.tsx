@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import SelectBox from "./SelectBox";
 import JDcontainer from "../container/Container";
 import { useSelect } from "../..";
 import { IselectedOption } from "../../types/interface";
+=======
+import React, { useState } from 'react';
+import { withKnobs } from '@storybook/addon-knobs';
+import SelectBox from './SelectBox';
+import JDcontainer from '../container/Container';
+import { useSelect } from '../..';
+import { IselectedOption } from '../../types/interface';
+import { enumToOption } from '../../utils/selectOptionCreater';
+import { NotiType } from '../../types/enum';
+>>>>>>> develop
 
 export default {
   title: 'SelectBox',
@@ -26,8 +37,20 @@ const options = [
   }
 ];
 
+const LANG_DUMMY = {
+  "NotiType": {
+    ELSE: "기타",
+    NEW_BOOKING: "새예약",
+    PRODUCT_EXPIRE: "만료상품",
+    TO_ALL: "모두에게"
+  }
+}
+const DUMMY_LANG_FN = (key1: string, key2: string) => LANG_DUMMY[key1][key2]
+
 export const standard = () => {
   const selectBoxHook = useSelect(options[0], options);
+  const NotiOps = enumToOption(DUMMY_LANG_FN, "NotiType", NotiType, true);
+  const selectBoxHook2 = useSelect(NotiOps[0], NotiOps);
 
   return (
     <JDcontainer
@@ -50,6 +73,9 @@ export const standard = () => {
       </div>
       <div>
         <SelectBox require label="asdasd" {...selectBoxHook} />
+      </div>
+      <div>
+        <SelectBox require label="asdasd" {...selectBoxHook2} />
       </div>
     </JDcontainer>
   );

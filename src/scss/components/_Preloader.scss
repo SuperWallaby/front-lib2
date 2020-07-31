@@ -59,6 +59,7 @@
     bottom: 2% !important;
     right: 3% !important;
     transform-origin: left bottom;
+    z-index: $z-index-7;
   }
 
   &__fill {

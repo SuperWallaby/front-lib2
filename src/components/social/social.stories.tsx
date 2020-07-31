@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
-import ShareBtn from './ShareBtn';
+import ShareBtn, { PCshareBtns } from './ShareBtn';
 import SocialHead from './SocialHead';
 import JDcontainer from '../container/Container';
 import JDbutton from '../button/Button';
@@ -18,6 +18,8 @@ export const standard = () => {
                     icon: "share"
                 }} />
             </ShareBtn>
+
+            <PCshareBtns />
         </JDcontainer>
     );
 };

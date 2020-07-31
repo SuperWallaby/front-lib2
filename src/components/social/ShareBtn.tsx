@@ -2,15 +2,12 @@ import React from "react";
 import { share, Tshare } from "../../utils/share";
 import { JDbutton, JDalign } from "../..";
 
-export const PCshare: React.FC = () => {
+export const PCshareBtns: React.FC = () => {
     const title_this_page = "공간예약";
-
     const url_default_ks = "https://story.kakao.com/share?url=";
     const url_default_fb = "https://www.facebook.com/sharer/sharer.php?u=";
     const url_default_tw_txt = "https://twitter.com/intent/tweet?text=";
     const url_default_tw_url = "&url=";
-    // const url_default_band = "http://band.us/plugin/share?body=";
-    // const url_route_band = "&route=";
     const url_default_naver = "http://share.naver.com/web/shareView.nhn?url=";
     const title_default_naver = "&title=";
     const url_this_page = location.href;
@@ -18,13 +15,6 @@ export const PCshare: React.FC = () => {
     const url_combine_fb = url_default_fb + url_this_page;
     const url_combine_tw =
         url_default_tw_txt + document.title + url_default_tw_url + url_this_page;
-    // const url_combine_band =
-    //     url_default_band +
-    //     encodeURI(url_this_page) +
-    //     "%0A" +
-    //     encodeURI(title_this_page) +
-    //     "%0A" +
-    //     "&route=tistory.com";
     const url_combine_naver =
         url_default_naver +
         encodeURI(url_this_page) +
@@ -95,7 +85,7 @@ export const PCshare: React.FC = () => {
                 }}
             >
                 <img
-                    src="//cfile27.uf.tistory.com/image/ 2356C533597DDB21169BDB"
+                    src="//cfile27.uf.tistory.com/image/2356C533597DDB21169BDB"
                     title="네이버로 공유하기"
                     className="sharebtn_custom"
                     style={{ width: 32 }}

@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
-import SelectBox from "./SelectBox";
-import JDcontainer from "../container/Container";
-import { useSelect } from "../..";
-import { IselectedOption } from "../../types/interface";
-=======
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import SelectBox from './SelectBox';
@@ -14,7 +6,6 @@ import { useSelect } from '../..';
 import { IselectedOption } from '../../types/interface';
 import { enumToOption } from '../../utils/selectOptionCreater';
 import { NotiType } from '../../types/enum';
->>>>>>> develop
 
 export default {
   title: 'SelectBox',

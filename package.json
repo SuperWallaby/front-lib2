@@ -41,11 +41,6 @@
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "^9.4.0",
     "@types/classnames": "^2.2.10",
-<<<<<<< HEAD
-    "@types/color": "^3.0.1",
-    "@types/graphql": "^14.5.0",
-=======
->>>>>>> develop
     "@types/jest": "^24.0.24",
     "@types/jquery": "^3.3.33",
     "@types/leven": "^2.1.2",
@@ -120,11 +115,8 @@
     "@types/react-toastify": "^4.1.0",
     "apollo-client": "^2.6.8",
     "classnames": "^2.2.6",
-<<<<<<< HEAD
     "color": "^3.1.2",
     "graphql": "^14.6.0",
-=======
->>>>>>> develop
     "is-mobile": "^2.2.1",
     "jquery": "^3.4.1",
     "moment-timezone": "^0.5.28",

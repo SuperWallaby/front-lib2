@@ -372,22 +372,29 @@ function useRedirect(
 function useInput<T = string>(
   defaultValue: T,
   defulatValid: boolean | string = "",
-  prefix?: any,
-  suffix?: any
-): TUseInput<T> {
+  prefix: string = "",
+  suffix: string = ""
+): T extends string ? TUseInput<string> : TUseInput<number> {
   const [value, setValue] = useState(defaultValue);
   const [isValid, setIsValid] = useState(defulatValid);
 
   const onChange = useCallback((value: any) => {
-    let prefixTemp = prefix || "";
-    let suffixTemp = suffix || "";
-    setValue(prefixTemp + value + suffixTemp);
+    if(typeof defaultValue === "string" && typeof value === "string") {
+      setValue(prefix + value + suffix as any);
+      return;
+    }
+
+    if(typeof defaultValue === "number" && typeof value === "string") 
+      setValue(parseInt(value) as any);
+    else if (typeof defaultValue === "number")
+      setValue(value);
   }, []);
 
   const onChangeValid = useCallback((value: boolean | string) => {
     setIsValid(value);
   }, []);
 
+  // @ts-ignore
   return {
     value,
     onChange,

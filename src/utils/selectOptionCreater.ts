@@ -15,14 +15,14 @@ export const selectOpCreater = ({
 	}));
 };
 
-export function enumToOption<T, D extends keyof T>(LANG: any, key: string, value: T, nullable:boolean): IselectedOption<D>[] {
+export function enumToOption<T, D extends keyof T>(LANG: any, key: string, value: T, nullable?:boolean): IselectedOption<D>[] {
 	let result: IselectedOption<D>[] = [];
 
 	if(nullable)
 		result.push({
 			label: "Select",
-			value: undefined as any
-		})
+			value: null as any
+		});
 
 	for (const key2 in value) {
 		const label = LANG(key, key2);

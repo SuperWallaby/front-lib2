@@ -26,7 +26,7 @@ interface ICalculaterProp {
     lastLine?: PriceLine;
 }
 
-const CalculateViewer: React.FC<ICalculaterProp> = ({ priceLine, shouldShowResult = true, lastLine }) => {
+const PriceViewer: React.FC<ICalculaterProp> = ({ priceLine, shouldShowResult = true, lastLine }) => {
     const total = arraySum(
         priceLine.map(
             p => toNumber(p.price) + arraySum(p.sub?.map(subp => toNumber(subp.price)) || [])
@@ -102,16 +102,16 @@ const CalculateViewer: React.FC<ICalculaterProp> = ({ priceLine, shouldShowResul
 
 
 interface IProp extends ICalculaterProp {
-    modalHook: IUseModal;
+    modalHook: IUseModal<ICalculaterProp>;
     modalProp: JDmodalConfigProps;
 }
 
 
 export const CalculateViewerModal: React.FC<IProp> = ({ modalHook, modalProp, ...props }) => {
     return <JDmodal {...modalProp} {...modalHook}>
-        <CalculateViewer {...props} />
+        <PriceViewer {...props} {...modalHook.info} />
     </JDmodal>
 
 }
 
-export default CalculateViewer;
+export default PriceViewer;

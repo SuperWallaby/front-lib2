@@ -34,6 +34,7 @@ import { selectOpCreater, enumToOption } from "./selectOptionCreater";
 import isLast from "./isLast";
 import { arraySum } from "./elses";
 import onCompletedMessage from "./onCompletedMessage";
+import { eraseCookie, getCookie, setCookie } from "./cookies";
 import { updateURLParameter } from "./updateURLParameter"
 import {
   isEmail,
@@ -54,6 +55,9 @@ import {
 
 const JDutils = {
   isEmpty,
+  eraseCookie,
+  getCookie,
+  setCookie,
   dataURLtoFile,
   enumToOption,
   card_space,
